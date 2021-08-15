@@ -17,6 +17,10 @@ public:
     glm::vec3 v;
     glm::vec3 n;
 
+    float pitch;
+    float roll;
+    float yaw;
+
     glm::vec3 position;
     glm::vec3 lookAtPoint;
 
@@ -27,6 +31,7 @@ public:
     Camera();
     void ResetPosition();
     void FrameObject(Model3D object);
+    void Rotate(float pitch, float roll, float yaw);
     void RotateRoll(float angle);
     void RotatePitch(float angle);
     void RotateYaw(float angle);

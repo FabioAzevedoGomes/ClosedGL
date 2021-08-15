@@ -2045,6 +2045,10 @@ CMakeFiles/ClosedGL.dir/src/PropertyManager.cpp.obj: ../src/PropertyManager.cpp 
   ../include/glm/ext/vector_uint3.hpp \
   ../include/glm/ext/vector_uint3_sized.hpp \
   ../include/glm/ext/scalar_uint_sized.hpp \
+  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cmath \
+  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/cpp_type_traits.h \
+  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/ext/type_traits.h \
+  C:/TDM-GCC-64/x86_64-w64-mingw32/include/math.h \
   ../lib/imgui/imgui.h \
   ../lib/imgui/imconfig.h \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/float.h \
@@ -2078,8 +2082,6 @@ CMakeFiles/ClosedGL.dir/src/PropertyManager.cpp.obj: ../src/PropertyManager.cpp 
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/char_traits.h \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/stl_algobase.h \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/functexcept.h \
-  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/cpp_type_traits.h \
-  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/ext/type_traits.h \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/ext/numeric_traits.h \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/stl_pair.h \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/stl_iterator_base_types.h \
@@ -2871,13 +2873,13 @@ CMakeFiles/ClosedGL.dir/src/Scene.cpp.obj: ../src/Scene.cpp \
   ../include/glm/ext/vector_uint3.hpp \
   ../include/glm/ext/vector_uint3_sized.hpp \
   ../include/glm/ext/scalar_uint_sized.hpp \
-  ../include/RenderUtils.hpp \
-  ../include/glm/glm.hpp \
-  ../include/glm/detail/_fixes.hpp \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cmath \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/cpp_type_traits.h \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/ext/type_traits.h \
   C:/TDM-GCC-64/x86_64-w64-mingw32/include/math.h \
+  ../include/RenderUtils.hpp \
+  ../include/glm/glm.hpp \
+  ../include/glm/detail/_fixes.hpp \
   ../include/glm/detail/setup.hpp \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/climits \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cfloat \
@@ -3380,13 +3382,13 @@ CMakeFiles/ClosedGL.dir/src/main.cpp.obj: ../src/main.cpp \
   ../include/glm/ext/vector_uint3.hpp \
   ../include/glm/ext/vector_uint3_sized.hpp \
   ../include/glm/ext/scalar_uint_sized.hpp \
-  ../include/RenderUtils.hpp \
-  ../include/glm/glm.hpp \
-  ../include/glm/detail/_fixes.hpp \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cmath \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/cpp_type_traits.h \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/ext/type_traits.h \
   C:/TDM-GCC-64/x86_64-w64-mingw32/include/math.h \
+  ../include/RenderUtils.hpp \
+  ../include/glm/glm.hpp \
+  ../include/glm/detail/_fixes.hpp \
   ../include/glm/detail/setup.hpp \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/climits \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cfloat \

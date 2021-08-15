@@ -215,6 +215,10 @@ CMakeFiles/ClosedGL.dir/src/PropertyManager.cpp.obj: \
  C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_uint3.hpp \
  C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_uint3_sized.hpp \
  C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/scalar_uint_sized.hpp \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cmath \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/cpp_type_traits.h \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/ext/type_traits.h \
+ C:/TDM-GCC-64/x86_64-w64-mingw32/include/math.h \
  C:/Users/Home/Desktop/CG/ClosedGL/lib/imgui/imgui.h \
  C:/Users/Home/Desktop/CG/ClosedGL/lib/imgui/imconfig.h \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/float.h \
@@ -248,8 +252,6 @@ CMakeFiles/ClosedGL.dir/src/PropertyManager.cpp.obj: \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/char_traits.h \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/stl_algobase.h \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/functexcept.h \
- C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/cpp_type_traits.h \
- C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/ext/type_traits.h \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/ext/numeric_traits.h \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/stl_pair.h \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/stl_iterator_base_types.h \

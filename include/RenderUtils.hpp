@@ -47,8 +47,9 @@ void SetupShaders();
 void BindObjectBuffers(Model3D object);
 
 void DrawObject(Model3D object, Properties vertexProperties);
-void RenderScene(std::vector<Model3D> objects, Camera camera, Properties renderProperties);
+void RenderScene(std::vector<Model3D> objects, Camera &camera, Properties renderProperties);
 
+void UpdateCameraValues(Camera &camera, Properties cameraProperties);
 void ApplyFrameProperties(Properties frameProperties);
 void ApplyVertexProperties(Properties vertexProperties);
 

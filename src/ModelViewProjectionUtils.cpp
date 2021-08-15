@@ -55,12 +55,14 @@ glm::mat4x4 ModelViewProjectionUtils::GetOrtographicProjectionMatrix(Camera came
 
 glm::mat4x4 ModelViewProjectionUtils::GetViewMatrix(Camera camera)
 {
-    return glm::lookAt(camera.position, camera.lookAtPoint, glm::vec3(0, 1, 0));
+    glm::vec4 lookAtPoint = glm::vec4(camera.position, 1.0f) + glm::vec4(camera.n, 0.0f);
+
+    return glm::lookAt(camera.position, glm::vec3(lookAtPoint), camera.v);
 
     /*
-    glm::vec3 u = camera.u;
-    glm::vec3 v = camera.v;
-    glm::vec3 n = camera.n;
+    glm::vec4 u = glm::normalize(glm::vec4(camera.u, 0.0f));
+    glm::vec4 v = glm::normalize(glm::vec4(camera.v, 0.0f));
+    glm::vec4 n = glm::normalize(glm::vec4(camera.n, 0.0f));
 
     return glm::mat4x4(
         u.x, u.y, u.z, -dotProductBetween(u, camera.position - ORIGIN),

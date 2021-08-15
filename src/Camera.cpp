@@ -1,5 +1,9 @@
 #include "Camera.hpp"
 
+#define U glm::vec3(1.0f, 0.0f, 0.0f)
+#define V glm::vec3(0.0f, 1.0f, 0.0f)
+#define N glm::vec3(0.0f, 0.0f, -1.0f)
+
 Camera::Camera()
 {
     this->ResetPosition();
@@ -7,9 +11,13 @@ Camera::Camera()
 
 void Camera::ResetPosition()
 {
-    this->u = glm::vec3(1.0f, 0.0f, 0.0f);
-    this->v = glm::vec3(0.0f, 1.0f, 0.0f);
-    this->n = glm::vec3(0.0f, 0.0f, -1.0f);
+    this->u = U;
+    this->v = V;
+    this->n = N;
+
+    this->pitch = 0.0f;
+    this->roll = 0.0f;
+    this->yaw = 0.0f;
 
     this->position = ORIGIN;
     this->fieldOfView = M_PI / 3.0f;
@@ -32,6 +40,16 @@ void Camera::FrameObject(Model3D object)
     this->position = glm::vec3(px, py, pz);
 }
 
+void Camera::Rotate(float pitch, float roll, float yaw)
+{
+    this->u = U;
+    this->v = V;
+    this->n = N;
+    RotatePitch(pitch);
+    RotateRoll(roll);
+    RotateYaw(yaw);
+}
+
 void Camera::RotateRoll(float alpha)
 {
     glm::vec3 newU = u * (float)cos(alpha) + v * (float)sin(alpha);
@@ -46,6 +64,8 @@ void Camera::RotatePitch(float alpha)
     // Right hand coordinate system rotation
     glm::vec3 newV = v * (float)cos(alpha) + n * (float)sin(alpha);
     glm::vec3 newN = -v * (float)sin(alpha) + n * (float)cos(alpha);
+
+    std::cout << "New v: (" << newV.x << ", " << newV.y << ", " << newV.z << ")" << std::endl;
 
     this->v = newV;
     this->n = newN;
@@ -68,6 +88,5 @@ void Camera::PrintDefinition()
               << " - V vector: (" << v.x << ", " << v.y << ", " << v.z << ")" << std::endl
               << " - W vector: (" << n.x << ", " << n.y << ", " << n.z << ")" << std::endl
               << " - Position: (" << position.x << ", " << position.y << ", " << position.z << ")" << std::endl
-              << " - LookAt: (" << lookAtPoint.x << ", " << lookAtPoint.y << ", " << lookAtPoint.z << ")" << std::endl
-              << std::endl;
+              << " - LookAt: (" << lookAtPoint.x << ", " << lookAtPoint.y << ", " << lookAtPoint.z << ")" << std::endl;
 }

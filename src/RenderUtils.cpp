@@ -66,11 +66,12 @@ void DrawObject(Model3D object, Properties vertexProperties)
     glBindVertexArray(0);
 }
 
-void RenderScene(std::vector<Model3D> objects, Camera camera, Properties properties)
+void RenderScene(std::vector<Model3D> objects, Camera &camera, Properties properties)
 {
     glClearBufferfv(GL_COLOR, 0, BLACK);
 
     ApplyFrameProperties(properties);
+    UpdateCameraValues(camera, properties);
 
     view = ModelViewProjectionUtils::GetViewMatrix(camera);
     projection = ModelViewProjectionUtils::GetPerspectiveProjectionMatrix(camera, ASPECT_RATIO);
@@ -78,6 +79,11 @@ void RenderScene(std::vector<Model3D> objects, Camera camera, Properties propert
 
     for (auto objectIterator = objects.begin(); objectIterator != objects.end(); objectIterator++)
         DrawObject(*objectIterator, properties);
+}
+
+void UpdateCameraValues(Camera &camera, Properties cameraProperties)
+{
+    camera.Rotate(cameraProperties.rotationPitch, cameraProperties.rotationRoll, cameraProperties.rotationYaw);
 }
 
 void ApplyFrameProperties(Properties frameProperties)

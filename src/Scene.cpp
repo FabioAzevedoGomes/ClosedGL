@@ -23,8 +23,8 @@ void Scene::SwapModel(int position, Model3D newModel)
 
 void Scene::AdvanceFrame()
 {
-    // TODO Any application domain logic goes here
-
     RenderScene(models, camera, scenePropertyManager->properties);
     scenePropertyManager->AdvanceFrame();
+
+    camera.PrintDefinition();
 }
