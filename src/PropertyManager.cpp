@@ -3,6 +3,7 @@
 PropertyManager::PropertyManager(GLFWwindow *window)
 {
     this->window = window;
+    this->showWindow = true;
 
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
@@ -14,6 +15,25 @@ PropertyManager::PropertyManager(GLFWwindow *window)
     ImGui_ImplOpenGL3_Init("#version 400");
 }
 
+void PropertyManager::RenderWindow()
+{
+    if (showWindow)
+    {
+        ImGui::Begin("Properties", &showWindow, ImGuiWindowFlags_MenuBar);
+
+        ImGui::Text("Model Color");
+        ImGui::ColorEdit3("clear color", (float *)&properties.modelColor);
+
+        ImGui::End();
+    }
+
+    ImGui::Render();
+    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
+    glfwSwapBuffers(window);
+    glfwPollEvents();
+}
+
 void PropertyManager::AdvanceFrame()
 {
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
@@ -22,16 +42,5 @@ void PropertyManager::AdvanceFrame()
     ImGui_ImplGlfw_NewFrame();
     ImGui::NewFrame();
 
-    bool show_demo_window = true;
-    if (show_demo_window)
-        ImGui::ShowDemoWindow(&show_demo_window);
-
-    ImGui::Render();
-    int display_w, display_h;
-    glfwGetFramebufferSize(window, &display_w, &display_h);
-
-    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-
-    glfwSwapBuffers(window);
-    glfwPollEvents();
+    RenderWindow();
 }

@@ -189,6 +189,32 @@ CMakeFiles/ClosedGL.dir/src/Scene.cpp.obj: \
  C:/Users/Home/Desktop/CG/ClosedGL/lib/glfw/include/GLFW/glfw3.h \
  C:/TDM-GCC-64/x86_64-w64-mingw32/include/GL/gl.h \
  C:/Users/Home/Desktop/CG/ClosedGL/include/Properties.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/vec3.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_bool3.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/detail/type_vec3.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/detail/qualifier.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/detail/setup.hpp \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cassert \
+ C:/TDM-GCC-64/x86_64-w64-mingw32/include/assert.h \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cstddef \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/simd/platform.h \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cstdint \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/type_traits \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/detail/type_vec3.inl \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/detail/compute_vector_relational.hpp \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/limits \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_bool3_precision.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_float3.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_float3_precision.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_double3.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_double3_precision.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_int3.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_int3_sized.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/scalar_int_sized.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/detail/setup.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_uint3.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_uint3_sized.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/scalar_uint_sized.hpp \
  C:/Users/Home/Desktop/CG/ClosedGL/include/RenderUtils.hpp \
  C:/Users/Home/Desktop/CG/ClosedGL/include/glm/glm.hpp \
  C:/Users/Home/Desktop/CG/ClosedGL/include/glm/detail/_fixes.hpp \
@@ -197,25 +223,15 @@ CMakeFiles/ClosedGL.dir/src/Scene.cpp.obj: \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/ext/type_traits.h \
  C:/TDM-GCC-64/x86_64-w64-mingw32/include/math.h \
  C:/Users/Home/Desktop/CG/ClosedGL/include/glm/detail/setup.hpp \
- C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cassert \
- C:/TDM-GCC-64/x86_64-w64-mingw32/include/assert.h \
- C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cstddef \
- C:/Users/Home/Desktop/CG/ClosedGL/include/glm/simd/platform.h \
- C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cstdint \
- C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/type_traits \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/climits \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cfloat \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/float.h \
  C:/TDM-GCC-64/x86_64-w64-mingw32/include/float.h \
- C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/limits \
  C:/Users/Home/Desktop/CG/ClosedGL/include/glm/fwd.hpp \
- C:/Users/Home/Desktop/CG/ClosedGL/include/glm/detail/qualifier.hpp \
- C:/Users/Home/Desktop/CG/ClosedGL/include/glm/detail/setup.hpp \
  C:/Users/Home/Desktop/CG/ClosedGL/include/glm/vec2.hpp \
  C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_bool2.hpp \
  C:/Users/Home/Desktop/CG/ClosedGL/include/glm/detail/type_vec2.hpp \
  C:/Users/Home/Desktop/CG/ClosedGL/include/glm/detail/type_vec2.inl \
- C:/Users/Home/Desktop/CG/ClosedGL/include/glm/detail/compute_vector_relational.hpp \
  C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_bool2_precision.hpp \
  C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_float2.hpp \
  C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_float2_precision.hpp \
@@ -223,24 +239,8 @@ CMakeFiles/ClosedGL.dir/src/Scene.cpp.obj: \
  C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_double2_precision.hpp \
  C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_int2.hpp \
  C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_int2_sized.hpp \
- C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/scalar_int_sized.hpp \
- C:/Users/Home/Desktop/CG/ClosedGL/include/glm/detail/setup.hpp \
  C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_uint2.hpp \
  C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_uint2_sized.hpp \
- C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/scalar_uint_sized.hpp \
- C:/Users/Home/Desktop/CG/ClosedGL/include/glm/vec3.hpp \
- C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_bool3.hpp \
- C:/Users/Home/Desktop/CG/ClosedGL/include/glm/detail/type_vec3.hpp \
- C:/Users/Home/Desktop/CG/ClosedGL/include/glm/detail/type_vec3.inl \
- C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_bool3_precision.hpp \
- C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_float3.hpp \
- C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_float3_precision.hpp \
- C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_double3.hpp \
- C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_double3_precision.hpp \
- C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_int3.hpp \
- C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_int3_sized.hpp \
- C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_uint3.hpp \
- C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_uint3_sized.hpp \
  C:/Users/Home/Desktop/CG/ClosedGL/include/glm/vec4.hpp \
  C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_bool4.hpp \
  C:/Users/Home/Desktop/CG/ClosedGL/include/glm/detail/type_vec4.hpp \

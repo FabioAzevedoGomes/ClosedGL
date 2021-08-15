@@ -46,8 +46,13 @@ void SetupVBOS(std::vector<Model3D> objects);
 void SetupShaders();
 void BindObjectBuffers(Model3D object);
 
-void SetRenderMode(RenderModes renderMode);
+void DrawObject(Model3D object, Properties vertexProperties);
+void RenderScene(std::vector<Model3D> objects, Camera camera, Properties renderProperties);
 
-void RenderScene(std::vector<Model3D> objects, Camera camera);
+void ApplyFrameProperties(Properties frameProperties);
+void ApplyVertexProperties(Properties vertexProperties);
+
+void SetRenderMode(RenderModes renderMode);
+void SetRenderUniformColor(glm::vec3 color);
 
 #endif

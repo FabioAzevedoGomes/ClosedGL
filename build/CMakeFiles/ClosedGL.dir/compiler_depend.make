@@ -2018,11 +2018,37 @@ CMakeFiles/ClosedGL.dir/src/PropertyManager.cpp.obj: ../src/PropertyManager.cpp 
   ../include/GL/glcorearb.h \
   ../lib/glfw/include/GLFW/glfw3.h \
   C:/TDM-GCC-64/x86_64-w64-mingw32/include/GL/gl.h \
+  ../include/Properties.hpp \
+  ../include/glm/vec3.hpp \
+  ../include/glm/ext/vector_bool3.hpp \
+  ../include/glm/detail/type_vec3.hpp \
+  ../include/glm/detail/qualifier.hpp \
+  ../include/glm/detail/setup.hpp \
+  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cassert \
+  C:/TDM-GCC-64/x86_64-w64-mingw32/include/assert.h \
+  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cstddef \
+  ../include/glm/simd/platform.h \
+  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cstdint \
+  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/type_traits \
+  ../include/glm/detail/type_vec3.inl \
+  ../include/glm/detail/compute_vector_relational.hpp \
+  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/limits \
+  ../include/glm/ext/vector_bool3_precision.hpp \
+  ../include/glm/ext/vector_float3.hpp \
+  ../include/glm/ext/vector_float3_precision.hpp \
+  ../include/glm/ext/vector_double3.hpp \
+  ../include/glm/ext/vector_double3_precision.hpp \
+  ../include/glm/ext/vector_int3.hpp \
+  ../include/glm/ext/vector_int3_sized.hpp \
+  ../include/glm/ext/scalar_int_sized.hpp \
+  ../include/glm/detail/setup.hpp \
+  ../include/glm/ext/vector_uint3.hpp \
+  ../include/glm/ext/vector_uint3_sized.hpp \
+  ../include/glm/ext/scalar_uint_sized.hpp \
   ../lib/imgui/imgui.h \
   ../lib/imgui/imconfig.h \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/float.h \
   C:/TDM-GCC-64/x86_64-w64-mingw32/include/float.h \
-  C:/TDM-GCC-64/x86_64-w64-mingw32/include/assert.h \
   ../lib/imgui/imgui_impl_glfw.h \
   ../lib/imgui/imgui_impl_opengl3.h \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/iostream \
@@ -2049,7 +2075,6 @@ CMakeFiles/ClosedGL.dir/src/PropertyManager.cpp.obj: ../src/PropertyManager.cpp 
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/nested_exception.h \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/move.h \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/concept_check.h \
-  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/type_traits \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/char_traits.h \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/stl_algobase.h \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/functexcept.h \
@@ -2064,7 +2089,6 @@ CMakeFiles/ClosedGL.dir/src/PropertyManager.cpp.obj: ../src/PropertyManager.cpp 
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/ptr_traits.h \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/debug/debug.h \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/predefined_ops.h \
-  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cstdint \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/localefwd.h \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/x86_64-w64-mingw32/bits/c++locale.h \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/clocale \
@@ -2821,6 +2845,32 @@ CMakeFiles/ClosedGL.dir/src/Scene.cpp.obj: ../src/Scene.cpp \
   ../lib/glfw/include/GLFW/glfw3.h \
   C:/TDM-GCC-64/x86_64-w64-mingw32/include/GL/gl.h \
   ../include/Properties.hpp \
+  ../include/glm/vec3.hpp \
+  ../include/glm/ext/vector_bool3.hpp \
+  ../include/glm/detail/type_vec3.hpp \
+  ../include/glm/detail/qualifier.hpp \
+  ../include/glm/detail/setup.hpp \
+  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cassert \
+  C:/TDM-GCC-64/x86_64-w64-mingw32/include/assert.h \
+  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cstddef \
+  ../include/glm/simd/platform.h \
+  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cstdint \
+  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/type_traits \
+  ../include/glm/detail/type_vec3.inl \
+  ../include/glm/detail/compute_vector_relational.hpp \
+  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/limits \
+  ../include/glm/ext/vector_bool3_precision.hpp \
+  ../include/glm/ext/vector_float3.hpp \
+  ../include/glm/ext/vector_float3_precision.hpp \
+  ../include/glm/ext/vector_double3.hpp \
+  ../include/glm/ext/vector_double3_precision.hpp \
+  ../include/glm/ext/vector_int3.hpp \
+  ../include/glm/ext/vector_int3_sized.hpp \
+  ../include/glm/ext/scalar_int_sized.hpp \
+  ../include/glm/detail/setup.hpp \
+  ../include/glm/ext/vector_uint3.hpp \
+  ../include/glm/ext/vector_uint3_sized.hpp \
+  ../include/glm/ext/scalar_uint_sized.hpp \
   ../include/RenderUtils.hpp \
   ../include/glm/glm.hpp \
   ../include/glm/detail/_fixes.hpp \
@@ -2829,25 +2879,15 @@ CMakeFiles/ClosedGL.dir/src/Scene.cpp.obj: ../src/Scene.cpp \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/ext/type_traits.h \
   C:/TDM-GCC-64/x86_64-w64-mingw32/include/math.h \
   ../include/glm/detail/setup.hpp \
-  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cassert \
-  C:/TDM-GCC-64/x86_64-w64-mingw32/include/assert.h \
-  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cstddef \
-  ../include/glm/simd/platform.h \
-  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cstdint \
-  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/type_traits \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/climits \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cfloat \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/float.h \
   C:/TDM-GCC-64/x86_64-w64-mingw32/include/float.h \
-  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/limits \
   ../include/glm/fwd.hpp \
-  ../include/glm/detail/qualifier.hpp \
-  ../include/glm/detail/setup.hpp \
   ../include/glm/vec2.hpp \
   ../include/glm/ext/vector_bool2.hpp \
   ../include/glm/detail/type_vec2.hpp \
   ../include/glm/detail/type_vec2.inl \
-  ../include/glm/detail/compute_vector_relational.hpp \
   ../include/glm/ext/vector_bool2_precision.hpp \
   ../include/glm/ext/vector_float2.hpp \
   ../include/glm/ext/vector_float2_precision.hpp \
@@ -2855,24 +2895,8 @@ CMakeFiles/ClosedGL.dir/src/Scene.cpp.obj: ../src/Scene.cpp \
   ../include/glm/ext/vector_double2_precision.hpp \
   ../include/glm/ext/vector_int2.hpp \
   ../include/glm/ext/vector_int2_sized.hpp \
-  ../include/glm/ext/scalar_int_sized.hpp \
-  ../include/glm/detail/setup.hpp \
   ../include/glm/ext/vector_uint2.hpp \
   ../include/glm/ext/vector_uint2_sized.hpp \
-  ../include/glm/ext/scalar_uint_sized.hpp \
-  ../include/glm/vec3.hpp \
-  ../include/glm/ext/vector_bool3.hpp \
-  ../include/glm/detail/type_vec3.hpp \
-  ../include/glm/detail/type_vec3.inl \
-  ../include/glm/ext/vector_bool3_precision.hpp \
-  ../include/glm/ext/vector_float3.hpp \
-  ../include/glm/ext/vector_float3_precision.hpp \
-  ../include/glm/ext/vector_double3.hpp \
-  ../include/glm/ext/vector_double3_precision.hpp \
-  ../include/glm/ext/vector_int3.hpp \
-  ../include/glm/ext/vector_int3_sized.hpp \
-  ../include/glm/ext/vector_uint3.hpp \
-  ../include/glm/ext/vector_uint3_sized.hpp \
   ../include/glm/vec4.hpp \
   ../include/glm/ext/vector_bool4.hpp \
   ../include/glm/detail/type_vec4.hpp \
@@ -3330,6 +3354,32 @@ CMakeFiles/ClosedGL.dir/src/main.cpp.obj: ../src/main.cpp \
   C:/TDM-GCC-64/x86_64-w64-mingw32/include/GL/gl.h \
   ../include/Scene.hpp \
   ../include/Properties.hpp \
+  ../include/glm/vec3.hpp \
+  ../include/glm/ext/vector_bool3.hpp \
+  ../include/glm/detail/type_vec3.hpp \
+  ../include/glm/detail/qualifier.hpp \
+  ../include/glm/detail/setup.hpp \
+  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cassert \
+  C:/TDM-GCC-64/x86_64-w64-mingw32/include/assert.h \
+  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cstddef \
+  ../include/glm/simd/platform.h \
+  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cstdint \
+  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/type_traits \
+  ../include/glm/detail/type_vec3.inl \
+  ../include/glm/detail/compute_vector_relational.hpp \
+  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/limits \
+  ../include/glm/ext/vector_bool3_precision.hpp \
+  ../include/glm/ext/vector_float3.hpp \
+  ../include/glm/ext/vector_float3_precision.hpp \
+  ../include/glm/ext/vector_double3.hpp \
+  ../include/glm/ext/vector_double3_precision.hpp \
+  ../include/glm/ext/vector_int3.hpp \
+  ../include/glm/ext/vector_int3_sized.hpp \
+  ../include/glm/ext/scalar_int_sized.hpp \
+  ../include/glm/detail/setup.hpp \
+  ../include/glm/ext/vector_uint3.hpp \
+  ../include/glm/ext/vector_uint3_sized.hpp \
+  ../include/glm/ext/scalar_uint_sized.hpp \
   ../include/RenderUtils.hpp \
   ../include/glm/glm.hpp \
   ../include/glm/detail/_fixes.hpp \
@@ -3338,25 +3388,15 @@ CMakeFiles/ClosedGL.dir/src/main.cpp.obj: ../src/main.cpp \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/ext/type_traits.h \
   C:/TDM-GCC-64/x86_64-w64-mingw32/include/math.h \
   ../include/glm/detail/setup.hpp \
-  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cassert \
-  C:/TDM-GCC-64/x86_64-w64-mingw32/include/assert.h \
-  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cstddef \
-  ../include/glm/simd/platform.h \
-  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cstdint \
-  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/type_traits \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/climits \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cfloat \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/float.h \
   C:/TDM-GCC-64/x86_64-w64-mingw32/include/float.h \
-  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/limits \
   ../include/glm/fwd.hpp \
-  ../include/glm/detail/qualifier.hpp \
-  ../include/glm/detail/setup.hpp \
   ../include/glm/vec2.hpp \
   ../include/glm/ext/vector_bool2.hpp \
   ../include/glm/detail/type_vec2.hpp \
   ../include/glm/detail/type_vec2.inl \
-  ../include/glm/detail/compute_vector_relational.hpp \
   ../include/glm/ext/vector_bool2_precision.hpp \
   ../include/glm/ext/vector_float2.hpp \
   ../include/glm/ext/vector_float2_precision.hpp \
@@ -3364,24 +3404,8 @@ CMakeFiles/ClosedGL.dir/src/main.cpp.obj: ../src/main.cpp \
   ../include/glm/ext/vector_double2_precision.hpp \
   ../include/glm/ext/vector_int2.hpp \
   ../include/glm/ext/vector_int2_sized.hpp \
-  ../include/glm/ext/scalar_int_sized.hpp \
-  ../include/glm/detail/setup.hpp \
   ../include/glm/ext/vector_uint2.hpp \
   ../include/glm/ext/vector_uint2_sized.hpp \
-  ../include/glm/ext/scalar_uint_sized.hpp \
-  ../include/glm/vec3.hpp \
-  ../include/glm/ext/vector_bool3.hpp \
-  ../include/glm/detail/type_vec3.hpp \
-  ../include/glm/detail/type_vec3.inl \
-  ../include/glm/ext/vector_bool3_precision.hpp \
-  ../include/glm/ext/vector_float3.hpp \
-  ../include/glm/ext/vector_float3_precision.hpp \
-  ../include/glm/ext/vector_double3.hpp \
-  ../include/glm/ext/vector_double3_precision.hpp \
-  ../include/glm/ext/vector_int3.hpp \
-  ../include/glm/ext/vector_int3_sized.hpp \
-  ../include/glm/ext/vector_uint3.hpp \
-  ../include/glm/ext/vector_uint3_sized.hpp \
   ../include/glm/vec4.hpp \
   ../include/glm/ext/vector_bool4.hpp \
   ../include/glm/detail/type_vec4.hpp \
@@ -5032,6 +5056,8 @@ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/stl_construct.h:
 
 ../include/PropertyManager.hpp:
 
+../include/Properties.hpp:
+
 ../src/RenderUtils.cpp:
 
 ../include/glm/ext/quaternion_relational.hpp:
@@ -5089,8 +5115,6 @@ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/stl_construct.h:
 C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cstring:
 
 ../include/glm/gtc/type_ptr.inl:
-
-../include/Properties.hpp:
 
 ../include/colors.hpp:
 

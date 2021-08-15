@@ -23,6 +23,10 @@ int main(int argc, char **argv)
     while (!glfwWindowShouldClose(mainWindow))
         mainScene->AdvanceFrame();
 
+    ImGui_ImplOpenGL3_Shutdown();
+    ImGui_ImplGlfw_Shutdown();
+    ImGui::DestroyContext();
+
     glfwDestroyWindow(mainWindow);
     glfwTerminate();
 }

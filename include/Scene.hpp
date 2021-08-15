@@ -21,12 +21,10 @@ public:
 
     Camera camera;
     std::vector<Model3D> models;
-    Properties properties;
     PropertyManager *scenePropertyManager;
 
     Scene(GLFWwindow *window);
     void SwapModel(int position, Model3D newModel);
-    void ApplyProperties();
     void AdvanceFrame();
 };
 

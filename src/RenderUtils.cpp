@@ -4,9 +4,8 @@ GLuint Buffers[NumBuffers];
 GLuint VAOs[NumVAOs];
 
 GLuint program;
-GLuint uniformViewId;
-GLuint uniformModelId;
-GLuint uniformProjectionId;
+GLuint uniformMvpId;
+GLuint uniformColorId;
 
 glm::mat4 view;
 glm::mat4 projection;
@@ -29,9 +28,8 @@ void SetupVBOS(std::vector<Model3D> objects)
 void SetupShaders()
 {
     program = InitializeShaders();
-    uniformViewId = glGetUniformLocation(program, "view");
-    uniformProjectionId = glGetUniformLocation(program, "projection");
-    uniformModelId = glGetUniformLocation(program, "model");
+    uniformMvpId = glGetUniformLocation(program, "modelViewProjection");
+    uniformColorId = glGetUniformLocation(program, "uniformColor");
 }
 
 void BindObjectBuffers(Model3D object)
@@ -55,15 +53,41 @@ void BindObjectBuffers(Model3D object)
     glEnableVertexAttribArray(vertexNormals);
 }
 
-void DrawObject(Model3D object)
+void DrawObject(Model3D object, Properties vertexProperties)
 {
     glm::mat4 model = glm::mat4(1.0f);
     glm::mat4 modelViewProjection = projectionView * model;
 
-    glUniformMatrix4fv(glGetUniformLocation(program, "modelViewProjection"), 1, GL_FALSE, glm::value_ptr(modelViewProjection));
+    ApplyVertexProperties(vertexProperties);
+
+    glUniformMatrix4fv(uniformMvpId, 1, GL_FALSE, glm::value_ptr(modelViewProjection));
     glBindVertexArray(VAOs[ModelObject]);
     glDrawArrays(GL_TRIANGLES, 0, 3 * object.triangleCount);
     glBindVertexArray(0);
+}
+
+void RenderScene(std::vector<Model3D> objects, Camera camera, Properties properties)
+{
+    glClearBufferfv(GL_COLOR, 0, BLACK);
+
+    ApplyFrameProperties(properties);
+
+    view = ModelViewProjectionUtils::GetViewMatrix(camera);
+    projection = ModelViewProjectionUtils::GetPerspectiveProjectionMatrix(camera, ASPECT_RATIO);
+    projectionView = projection * view;
+
+    for (auto objectIterator = objects.begin(); objectIterator != objects.end(); objectIterator++)
+        DrawObject(*objectIterator, properties);
+}
+
+void ApplyFrameProperties(Properties frameProperties)
+{
+    SetRenderMode(frameProperties.renderMode);
+    SetRenderUniformColor(frameProperties.modelColor);
+}
+
+void ApplyVertexProperties(Properties vertexProperties)
+{
 }
 
 void SetRenderMode(RenderModes renderMode)
@@ -80,14 +104,7 @@ void SetRenderMode(RenderModes renderMode)
     }
 }
 
-void RenderScene(std::vector<Model3D> objects, Camera camera)
+void SetRenderUniformColor(glm::vec3 color)
 {
-    glClearBufferfv(GL_COLOR, 0, BLACK);
-
-    view = ModelViewProjectionUtils::GetViewMatrix(camera);
-    projection = ModelViewProjectionUtils::GetPerspectiveProjectionMatrix(camera, ASPECT_RATIO);
-    projectionView = projection * view;
-
-    for (auto objectIterator = objects.begin(); objectIterator != objects.end(); objectIterator++)
-        DrawObject(*objectIterator);
+    glUniform3fv(uniformColorId, 1, glm::value_ptr(color));
 }

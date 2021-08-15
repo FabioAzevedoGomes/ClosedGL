@@ -188,11 +188,37 @@ CMakeFiles/ClosedGL.dir/src/PropertyManager.cpp.obj: \
  C:/Users/Home/Desktop/CG/ClosedGL/include/GL/glcorearb.h \
  C:/Users/Home/Desktop/CG/ClosedGL/lib/glfw/include/GLFW/glfw3.h \
  C:/TDM-GCC-64/x86_64-w64-mingw32/include/GL/gl.h \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/Properties.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/vec3.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_bool3.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/detail/type_vec3.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/detail/qualifier.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/detail/setup.hpp \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cassert \
+ C:/TDM-GCC-64/x86_64-w64-mingw32/include/assert.h \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cstddef \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/simd/platform.h \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cstdint \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/type_traits \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/detail/type_vec3.inl \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/detail/compute_vector_relational.hpp \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/limits \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_bool3_precision.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_float3.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_float3_precision.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_double3.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_double3_precision.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_int3.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_int3_sized.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/scalar_int_sized.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/detail/setup.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_uint3.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_uint3_sized.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/scalar_uint_sized.hpp \
  C:/Users/Home/Desktop/CG/ClosedGL/lib/imgui/imgui.h \
  C:/Users/Home/Desktop/CG/ClosedGL/lib/imgui/imconfig.h \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/float.h \
  C:/TDM-GCC-64/x86_64-w64-mingw32/include/float.h \
- C:/TDM-GCC-64/x86_64-w64-mingw32/include/assert.h \
  C:/Users/Home/Desktop/CG/ClosedGL/lib/imgui/imgui_impl_glfw.h \
  C:/Users/Home/Desktop/CG/ClosedGL/lib/imgui/imgui_impl_opengl3.h \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/iostream \
@@ -219,7 +245,6 @@ CMakeFiles/ClosedGL.dir/src/PropertyManager.cpp.obj: \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/nested_exception.h \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/move.h \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/concept_check.h \
- C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/type_traits \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/char_traits.h \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/stl_algobase.h \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/functexcept.h \
@@ -234,7 +259,6 @@ CMakeFiles/ClosedGL.dir/src/PropertyManager.cpp.obj: \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/ptr_traits.h \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/debug/debug.h \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/predefined_ops.h \
- C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cstdint \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/localefwd.h \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/x86_64-w64-mingw32/bits/c++locale.h \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/clocale \
