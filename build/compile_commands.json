@@ -1,0 +1,142 @@
+[
+{
+  "directory": "C:/Users/Home/Desktop/CG/ClosedGL/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe  @CMakeFiles/ClosedGL.dir/includes_CXX.rsp  -DIMGUI_IMPL_OPENGL_LOADER_GL3W -DGLFW_EXPOSE_NATIVE_WGL -g -o CMakeFiles\\ClosedGL.dir\\src\\main.cpp.obj -c C:\\Users\\Home\\Desktop\\CG\\ClosedGL\\src\\main.cpp",
+  "file": "C:/Users/Home/Desktop/CG/ClosedGL/src/main.cpp"
+},
+{
+  "directory": "C:/Users/Home/Desktop/CG/ClosedGL/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe  @CMakeFiles/ClosedGL.dir/includes_CXX.rsp  -DIMGUI_IMPL_OPENGL_LOADER_GL3W -DGLFW_EXPOSE_NATIVE_WGL -g -o CMakeFiles\\ClosedGL.dir\\src\\shaders\\ShaderUtils.cpp.obj -c C:\\Users\\Home\\Desktop\\CG\\ClosedGL\\src\\shaders\\ShaderUtils.cpp",
+  "file": "C:/Users/Home/Desktop/CG/ClosedGL/src/shaders/ShaderUtils.cpp"
+},
+{
+  "directory": "C:/Users/Home/Desktop/CG/ClosedGL/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe  @CMakeFiles/ClosedGL.dir/includes_CXX.rsp  -DIMGUI_IMPL_OPENGL_LOADER_GL3W -DGLFW_EXPOSE_NATIVE_WGL -g -o CMakeFiles\\ClosedGL.dir\\src\\Model3D.cpp.obj -c C:\\Users\\Home\\Desktop\\CG\\ClosedGL\\src\\Model3D.cpp",
+  "file": "C:/Users/Home/Desktop/CG/ClosedGL/src/Model3D.cpp"
+},
+{
+  "directory": "C:/Users/Home/Desktop/CG/ClosedGL/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe  @CMakeFiles/ClosedGL.dir/includes_CXX.rsp  -DIMGUI_IMPL_OPENGL_LOADER_GL3W -DGLFW_EXPOSE_NATIVE_WGL -g -o CMakeFiles\\ClosedGL.dir\\src\\Camera.cpp.obj -c C:\\Users\\Home\\Desktop\\CG\\ClosedGL\\src\\Camera.cpp",
+  "file": "C:/Users/Home/Desktop/CG/ClosedGL/src/Camera.cpp"
+},
+{
+  "directory": "C:/Users/Home/Desktop/CG/ClosedGL/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe  @CMakeFiles/ClosedGL.dir/includes_CXX.rsp  -DIMGUI_IMPL_OPENGL_LOADER_GL3W -DGLFW_EXPOSE_NATIVE_WGL -g -o CMakeFiles\\ClosedGL.dir\\src\\ModelViewProjectionUtils.cpp.obj -c C:\\Users\\Home\\Desktop\\CG\\ClosedGL\\src\\ModelViewProjectionUtils.cpp",
+  "file": "C:/Users/Home/Desktop/CG/ClosedGL/src/ModelViewProjectionUtils.cpp"
+},
+{
+  "directory": "C:/Users/Home/Desktop/CG/ClosedGL/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe  @CMakeFiles/ClosedGL.dir/includes_CXX.rsp  -DIMGUI_IMPL_OPENGL_LOADER_GL3W -DGLFW_EXPOSE_NATIVE_WGL -g -o CMakeFiles\\ClosedGL.dir\\src\\Scene.cpp.obj -c C:\\Users\\Home\\Desktop\\CG\\ClosedGL\\src\\Scene.cpp",
+  "file": "C:/Users/Home/Desktop/CG/ClosedGL/src/Scene.cpp"
+},
+{
+  "directory": "C:/Users/Home/Desktop/CG/ClosedGL/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe  @CMakeFiles/ClosedGL.dir/includes_CXX.rsp  -DIMGUI_IMPL_OPENGL_LOADER_GL3W -DGLFW_EXPOSE_NATIVE_WGL -g -o CMakeFiles\\ClosedGL.dir\\src\\RenderUtils.cpp.obj -c C:\\Users\\Home\\Desktop\\CG\\ClosedGL\\src\\RenderUtils.cpp",
+  "file": "C:/Users/Home/Desktop/CG/ClosedGL/src/RenderUtils.cpp"
+},
+{
+  "directory": "C:/Users/Home/Desktop/CG/ClosedGL/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe  @CMakeFiles/ClosedGL.dir/includes_CXX.rsp  -DIMGUI_IMPL_OPENGL_LOADER_GL3W -DGLFW_EXPOSE_NATIVE_WGL -g -o CMakeFiles\\ClosedGL.dir\\src\\PropertyManager.cpp.obj -c C:\\Users\\Home\\Desktop\\CG\\ClosedGL\\src\\PropertyManager.cpp",
+  "file": "C:/Users/Home/Desktop/CG/ClosedGL/src/PropertyManager.cpp"
+},
+{
+  "directory": "C:/Users/Home/Desktop/CG/ClosedGL/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe  @CMakeFiles/ClosedGL.dir/includes_C.rsp -g -o CMakeFiles\\ClosedGL.dir\\lib\\gl3w.c.obj -c C:\\Users\\Home\\Desktop\\CG\\ClosedGL\\lib\\gl3w.c",
+  "file": "C:/Users/Home/Desktop/CG/ClosedGL/lib/gl3w.c"
+},
+{
+  "directory": "C:/Users/Home/Desktop/CG/ClosedGL/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe  @CMakeFiles/ClosedGL.dir/includes_CXX.rsp  -DIMGUI_IMPL_OPENGL_LOADER_GL3W -DGLFW_EXPOSE_NATIVE_WGL -g -o CMakeFiles\\ClosedGL.dir\\lib\\imgui\\imgui_demo.cpp.obj -c C:\\Users\\Home\\Desktop\\CG\\ClosedGL\\lib\\imgui\\imgui_demo.cpp",
+  "file": "C:/Users/Home/Desktop/CG/ClosedGL/lib/imgui/imgui_demo.cpp"
+},
+{
+  "directory": "C:/Users/Home/Desktop/CG/ClosedGL/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe  @CMakeFiles/ClosedGL.dir/includes_CXX.rsp  -DIMGUI_IMPL_OPENGL_LOADER_GL3W -DGLFW_EXPOSE_NATIVE_WGL -g -o CMakeFiles\\ClosedGL.dir\\lib\\imgui\\imgui_draw.cpp.obj -c C:\\Users\\Home\\Desktop\\CG\\ClosedGL\\lib\\imgui\\imgui_draw.cpp",
+  "file": "C:/Users/Home/Desktop/CG/ClosedGL/lib/imgui/imgui_draw.cpp"
+},
+{
+  "directory": "C:/Users/Home/Desktop/CG/ClosedGL/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe  @CMakeFiles/ClosedGL.dir/includes_CXX.rsp  -DIMGUI_IMPL_OPENGL_LOADER_GL3W -DGLFW_EXPOSE_NATIVE_WGL -g -o CMakeFiles\\ClosedGL.dir\\lib\\imgui\\imgui_tables.cpp.obj -c C:\\Users\\Home\\Desktop\\CG\\ClosedGL\\lib\\imgui\\imgui_tables.cpp",
+  "file": "C:/Users/Home/Desktop/CG/ClosedGL/lib/imgui/imgui_tables.cpp"
+},
+{
+  "directory": "C:/Users/Home/Desktop/CG/ClosedGL/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe  @CMakeFiles/ClosedGL.dir/includes_CXX.rsp  -DIMGUI_IMPL_OPENGL_LOADER_GL3W -DGLFW_EXPOSE_NATIVE_WGL -g -o CMakeFiles\\ClosedGL.dir\\lib\\imgui\\imgui_widgets.cpp.obj -c C:\\Users\\Home\\Desktop\\CG\\ClosedGL\\lib\\imgui\\imgui_widgets.cpp",
+  "file": "C:/Users/Home/Desktop/CG/ClosedGL/lib/imgui/imgui_widgets.cpp"
+},
+{
+  "directory": "C:/Users/Home/Desktop/CG/ClosedGL/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe  @CMakeFiles/ClosedGL.dir/includes_CXX.rsp  -DIMGUI_IMPL_OPENGL_LOADER_GL3W -DGLFW_EXPOSE_NATIVE_WGL -g -o CMakeFiles\\ClosedGL.dir\\lib\\imgui\\imgui.cpp.obj -c C:\\Users\\Home\\Desktop\\CG\\ClosedGL\\lib\\imgui\\imgui.cpp",
+  "file": "C:/Users/Home/Desktop/CG/ClosedGL/lib/imgui/imgui.cpp"
+},
+{
+  "directory": "C:/Users/Home/Desktop/CG/ClosedGL/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe  @CMakeFiles/ClosedGL.dir/includes_CXX.rsp  -DIMGUI_IMPL_OPENGL_LOADER_GL3W -DGLFW_EXPOSE_NATIVE_WGL -g -o CMakeFiles\\ClosedGL.dir\\lib\\imgui\\imgui_impl_glfw.cpp.obj -c C:\\Users\\Home\\Desktop\\CG\\ClosedGL\\lib\\imgui\\imgui_impl_glfw.cpp",
+  "file": "C:/Users/Home/Desktop/CG/ClosedGL/lib/imgui/imgui_impl_glfw.cpp"
+},
+{
+  "directory": "C:/Users/Home/Desktop/CG/ClosedGL/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe  @CMakeFiles/ClosedGL.dir/includes_CXX.rsp  -DIMGUI_IMPL_OPENGL_LOADER_GL3W -DGLFW_EXPOSE_NATIVE_WGL -g -o CMakeFiles\\ClosedGL.dir\\lib\\imgui\\imgui_impl_opengl3.cpp.obj -c C:\\Users\\Home\\Desktop\\CG\\ClosedGL\\lib\\imgui\\imgui_impl_opengl3.cpp",
+  "file": "C:/Users/Home/Desktop/CG/ClosedGL/lib/imgui/imgui_impl_opengl3.cpp"
+},
+{
+  "directory": "C:/Users/Home/Desktop/CG/ClosedGL/build/lib/glfw/src",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H @CMakeFiles/glfw.dir/includes_C.rsp -g -o CMakeFiles\\glfw.dir\\context.c.obj -c C:\\Users\\Home\\Desktop\\CG\\ClosedGL\\lib\\glfw\\src\\context.c",
+  "file": "C:/Users/Home/Desktop/CG/ClosedGL/lib/glfw/src/context.c"
+},
+{
+  "directory": "C:/Users/Home/Desktop/CG/ClosedGL/build/lib/glfw/src",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H @CMakeFiles/glfw.dir/includes_C.rsp -g -o CMakeFiles\\glfw.dir\\init.c.obj -c C:\\Users\\Home\\Desktop\\CG\\ClosedGL\\lib\\glfw\\src\\init.c",
+  "file": "C:/Users/Home/Desktop/CG/ClosedGL/lib/glfw/src/init.c"
+},
+{
+  "directory": "C:/Users/Home/Desktop/CG/ClosedGL/build/lib/glfw/src",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H @CMakeFiles/glfw.dir/includes_C.rsp -g -o CMakeFiles\\glfw.dir\\input.c.obj -c C:\\Users\\Home\\Desktop\\CG\\ClosedGL\\lib\\glfw\\src\\input.c",
+  "file": "C:/Users/Home/Desktop/CG/ClosedGL/lib/glfw/src/input.c"
+},
+{
+  "directory": "C:/Users/Home/Desktop/CG/ClosedGL/build/lib/glfw/src",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H @CMakeFiles/glfw.dir/includes_C.rsp -g -o CMakeFiles\\glfw.dir\\monitor.c.obj -c C:\\Users\\Home\\Desktop\\CG\\ClosedGL\\lib\\glfw\\src\\monitor.c",
+  "file": "C:/Users/Home/Desktop/CG/ClosedGL/lib/glfw/src/monitor.c"
+},
+{
+  "directory": "C:/Users/Home/Desktop/CG/ClosedGL/build/lib/glfw/src",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H @CMakeFiles/glfw.dir/includes_C.rsp -g -o CMakeFiles\\glfw.dir\\window.c.obj -c C:\\Users\\Home\\Desktop\\CG\\ClosedGL\\lib\\glfw\\src\\window.c",
+  "file": "C:/Users/Home/Desktop/CG/ClosedGL/lib/glfw/src/window.c"
+},
+{
+  "directory": "C:/Users/Home/Desktop/CG/ClosedGL/build/lib/glfw/src",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H @CMakeFiles/glfw.dir/includes_C.rsp -g -o CMakeFiles\\glfw.dir\\win32_init.c.obj -c C:\\Users\\Home\\Desktop\\CG\\ClosedGL\\lib\\glfw\\src\\win32_init.c",
+  "file": "C:/Users/Home/Desktop/CG/ClosedGL/lib/glfw/src/win32_init.c"
+},
+{
+  "directory": "C:/Users/Home/Desktop/CG/ClosedGL/build/lib/glfw/src",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H @CMakeFiles/glfw.dir/includes_C.rsp -g -o CMakeFiles\\glfw.dir\\win32_monitor.c.obj -c C:\\Users\\Home\\Desktop\\CG\\ClosedGL\\lib\\glfw\\src\\win32_monitor.c",
+  "file": "C:/Users/Home/Desktop/CG/ClosedGL/lib/glfw/src/win32_monitor.c"
+},
+{
+  "directory": "C:/Users/Home/Desktop/CG/ClosedGL/build/lib/glfw/src",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H @CMakeFiles/glfw.dir/includes_C.rsp -g -o CMakeFiles\\glfw.dir\\win32_time.c.obj -c C:\\Users\\Home\\Desktop\\CG\\ClosedGL\\lib\\glfw\\src\\win32_time.c",
+  "file": "C:/Users/Home/Desktop/CG/ClosedGL/lib/glfw/src/win32_time.c"
+},
+{
+  "directory": "C:/Users/Home/Desktop/CG/ClosedGL/build/lib/glfw/src",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H @CMakeFiles/glfw.dir/includes_C.rsp -g -o CMakeFiles\\glfw.dir\\win32_tls.c.obj -c C:\\Users\\Home\\Desktop\\CG\\ClosedGL\\lib\\glfw\\src\\win32_tls.c",
+  "file": "C:/Users/Home/Desktop/CG/ClosedGL/lib/glfw/src/win32_tls.c"
+},
+{
+  "directory": "C:/Users/Home/Desktop/CG/ClosedGL/build/lib/glfw/src",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H @CMakeFiles/glfw.dir/includes_C.rsp -g -o CMakeFiles\\glfw.dir\\win32_window.c.obj -c C:\\Users\\Home\\Desktop\\CG\\ClosedGL\\lib\\glfw\\src\\win32_window.c",
+  "file": "C:/Users/Home/Desktop/CG/ClosedGL/lib/glfw/src/win32_window.c"
+},
+{
+  "directory": "C:/Users/Home/Desktop/CG/ClosedGL/build/lib/glfw/src",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H @CMakeFiles/glfw.dir/includes_C.rsp -g -o CMakeFiles\\glfw.dir\\winmm_joystick.c.obj -c C:\\Users\\Home\\Desktop\\CG\\ClosedGL\\lib\\glfw\\src\\winmm_joystick.c",
+  "file": "C:/Users/Home/Desktop/CG/ClosedGL/lib/glfw/src/winmm_joystick.c"
+},
+{
+  "directory": "C:/Users/Home/Desktop/CG/ClosedGL/build/lib/glfw/src",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H @CMakeFiles/glfw.dir/includes_C.rsp -g -o CMakeFiles\\glfw.dir\\wgl_context.c.obj -c C:\\Users\\Home\\Desktop\\CG\\ClosedGL\\lib\\glfw\\src\\wgl_context.c",
+  "file": "C:/Users/Home/Desktop/CG/ClosedGL/lib/glfw/src/wgl_context.c"
+}
+]

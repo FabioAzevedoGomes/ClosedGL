@@ -1,0 +1,43 @@
+file(REMOVE_RECURSE
+  "../bin/ClosedGL_d.exe"
+  "../bin/ClosedGL_d.exe.manifest"
+  "../bin/ClosedGL_d.pdb"
+  "CMakeFiles/ClosedGL.dir/lib/gl3w.c.obj"
+  "CMakeFiles/ClosedGL.dir/lib/gl3w.c.obj.d"
+  "CMakeFiles/ClosedGL.dir/lib/imgui/imgui.cpp.obj"
+  "CMakeFiles/ClosedGL.dir/lib/imgui/imgui.cpp.obj.d"
+  "CMakeFiles/ClosedGL.dir/lib/imgui/imgui_demo.cpp.obj"
+  "CMakeFiles/ClosedGL.dir/lib/imgui/imgui_demo.cpp.obj.d"
+  "CMakeFiles/ClosedGL.dir/lib/imgui/imgui_draw.cpp.obj"
+  "CMakeFiles/ClosedGL.dir/lib/imgui/imgui_draw.cpp.obj.d"
+  "CMakeFiles/ClosedGL.dir/lib/imgui/imgui_impl_glfw.cpp.obj"
+  "CMakeFiles/ClosedGL.dir/lib/imgui/imgui_impl_glfw.cpp.obj.d"
+  "CMakeFiles/ClosedGL.dir/lib/imgui/imgui_impl_opengl3.cpp.obj"
+  "CMakeFiles/ClosedGL.dir/lib/imgui/imgui_impl_opengl3.cpp.obj.d"
+  "CMakeFiles/ClosedGL.dir/lib/imgui/imgui_tables.cpp.obj"
+  "CMakeFiles/ClosedGL.dir/lib/imgui/imgui_tables.cpp.obj.d"
+  "CMakeFiles/ClosedGL.dir/lib/imgui/imgui_widgets.cpp.obj"
+  "CMakeFiles/ClosedGL.dir/lib/imgui/imgui_widgets.cpp.obj.d"
+  "CMakeFiles/ClosedGL.dir/src/Camera.cpp.obj"
+  "CMakeFiles/ClosedGL.dir/src/Camera.cpp.obj.d"
+  "CMakeFiles/ClosedGL.dir/src/Model3D.cpp.obj"
+  "CMakeFiles/ClosedGL.dir/src/Model3D.cpp.obj.d"
+  "CMakeFiles/ClosedGL.dir/src/ModelViewProjectionUtils.cpp.obj"
+  "CMakeFiles/ClosedGL.dir/src/ModelViewProjectionUtils.cpp.obj.d"
+  "CMakeFiles/ClosedGL.dir/src/PropertyManager.cpp.obj"
+  "CMakeFiles/ClosedGL.dir/src/PropertyManager.cpp.obj.d"
+  "CMakeFiles/ClosedGL.dir/src/RenderUtils.cpp.obj"
+  "CMakeFiles/ClosedGL.dir/src/RenderUtils.cpp.obj.d"
+  "CMakeFiles/ClosedGL.dir/src/Scene.cpp.obj"
+  "CMakeFiles/ClosedGL.dir/src/Scene.cpp.obj.d"
+  "CMakeFiles/ClosedGL.dir/src/main.cpp.obj"
+  "CMakeFiles/ClosedGL.dir/src/main.cpp.obj.d"
+  "CMakeFiles/ClosedGL.dir/src/shaders/ShaderUtils.cpp.obj"
+  "CMakeFiles/ClosedGL.dir/src/shaders/ShaderUtils.cpp.obj.d"
+  "lib/libClosedGL_d.dll.a"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang C CXX)
+  include(CMakeFiles/ClosedGL.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()
