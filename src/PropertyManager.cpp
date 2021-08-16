@@ -21,14 +21,40 @@ void PropertyManager::RenderWindow()
     {
         ImGui::Begin("Properties", &showWindow, ImGuiWindowFlags_MenuBar);
 
-        ImGui::Text("Model Color");
-        ImGui::ColorEdit3("clear color", (float *)&properties.modelColor);
+        if (ImGui::CollapsingHeader("Camera"))
+        {
+            ImGui::Text("Rotation");
+            ImGui::SliderFloat("Pitch", (float *)&properties.rotationPitch, -2.0f * M_PI, 2.0f * M_PI);
+            ImGui::SliderFloat("Roll", (float *)&properties.rotationRoll, -2.0f * M_PI, 2.0f * M_PI);
+            ImGui::SliderFloat("Yaw", (float *)&properties.rotationYaw, -2.0f * M_PI, 2.0f * M_PI);
 
-        ImGui::Text("Camera");
-        ImGui::SliderFloat("Pitch", (float *)&properties.rotationPitch, -2.0f * M_PI, 2.0f * M_PI);
-        ImGui::SliderFloat("Roll", (float *)&properties.rotationRoll, -2.0f * M_PI, 2.0f * M_PI);
-        ImGui::SliderFloat("Yaw", (float *)&properties.rotationYaw, -2.0f * M_PI, 2.0f * M_PI);
+            ImGui::Text("Movement");
+            // TODO
 
+            ImGui::Text("Field of View");
+            ImGui::SliderFloat("FoV", (float *)&properties.fieldOfView, 0, M_PI);
+
+            ImGui::Text("Planes");
+            ImGui::SliderFloat("Near", (float *)&properties.nearPlane, 0.1f, 10000.0f);
+            ImGui::SliderFloat("Far", (float *)&properties.farPlane, 0.1f, 10000.0f);
+        }
+
+        if (ImGui::CollapsingHeader("Model"))
+        {
+            ImGui::Text("Uniform Color");
+            ImGui::ColorEdit3("", (float *)&properties.modelColor);
+
+            ImGui::Text("Rendering Mode");
+            ImGui::RadioButton("Filled", &properties.renderMode, 0);
+            ImGui::SameLine();
+            ImGui::RadioButton("Wireframe", &properties.renderMode, 1);
+
+            ImGui::Text("Model source");
+            // TODO
+
+            ImGui::Text("Orientation");
+            // TODO
+        }
         ImGui::End();
     }
 

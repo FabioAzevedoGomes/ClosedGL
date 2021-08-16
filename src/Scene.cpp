@@ -25,6 +25,4 @@ void Scene::AdvanceFrame()
 {
     RenderScene(models, camera, scenePropertyManager->properties);
     scenePropertyManager->AdvanceFrame();
-
-    camera.PrintDefinition();
 }

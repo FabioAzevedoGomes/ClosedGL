@@ -219,12 +219,6 @@ CMakeFiles/ClosedGL.dir/src/PropertyManager.cpp.obj: \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/cpp_type_traits.h \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/ext/type_traits.h \
  C:/TDM-GCC-64/x86_64-w64-mingw32/include/math.h \
- C:/Users/Home/Desktop/CG/ClosedGL/lib/imgui/imgui.h \
- C:/Users/Home/Desktop/CG/ClosedGL/lib/imgui/imconfig.h \
- C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/float.h \
- C:/TDM-GCC-64/x86_64-w64-mingw32/include/float.h \
- C:/Users/Home/Desktop/CG/ClosedGL/lib/imgui/imgui_impl_glfw.h \
- C:/Users/Home/Desktop/CG/ClosedGL/lib/imgui/imgui_impl_opengl3.h \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/iostream \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/ostream \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/ios \
@@ -322,4 +316,10 @@ CMakeFiles/ClosedGL.dir/src/PropertyManager.cpp.obj: \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/basic_ios.tcc \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/ostream.tcc \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/istream \
- C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/istream.tcc
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/istream.tcc \
+ C:/Users/Home/Desktop/CG/ClosedGL/lib/imgui/imgui.h \
+ C:/Users/Home/Desktop/CG/ClosedGL/lib/imgui/imconfig.h \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/float.h \
+ C:/TDM-GCC-64/x86_64-w64-mingw32/include/float.h \
+ C:/Users/Home/Desktop/CG/ClosedGL/lib/imgui/imgui_impl_glfw.h \
+ C:/Users/Home/Desktop/CG/ClosedGL/lib/imgui/imgui_impl_opengl3.h

@@ -84,11 +84,14 @@ void RenderScene(std::vector<Model3D> objects, Camera &camera, Properties proper
 void UpdateCameraValues(Camera &camera, Properties cameraProperties)
 {
     camera.Rotate(cameraProperties.rotationPitch, cameraProperties.rotationRoll, cameraProperties.rotationYaw);
+    camera.nearPlane = cameraProperties.nearPlane;
+    camera.farPlane = cameraProperties.farPlane;
+    camera.fieldOfView = cameraProperties.fieldOfView;
 }
 
 void ApplyFrameProperties(Properties frameProperties)
 {
-    SetRenderMode(frameProperties.renderMode);
+    SetRenderMode(RenderModes(frameProperties.renderMode));
     SetRenderUniformColor(frameProperties.modelColor);
 }
 

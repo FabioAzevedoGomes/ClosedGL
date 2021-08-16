@@ -15,10 +15,6 @@ void Camera::ResetPosition()
     this->v = V;
     this->n = N;
 
-    this->pitch = 0.0f;
-    this->roll = 0.0f;
-    this->yaw = 0.0f;
-
     this->position = ORIGIN;
     this->fieldOfView = M_PI / 3.0f;
 
@@ -64,8 +60,6 @@ void Camera::RotatePitch(float alpha)
     // Right hand coordinate system rotation
     glm::vec3 newV = v * (float)cos(alpha) + n * (float)sin(alpha);
     glm::vec3 newN = -v * (float)sin(alpha) + n * (float)cos(alpha);
-
-    std::cout << "New v: (" << newV.x << ", " << newV.y << ", " << newV.z << ")" << std::endl;
 
     this->v = newV;
     this->n = newN;

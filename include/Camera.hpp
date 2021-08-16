@@ -17,10 +17,6 @@ public:
     glm::vec3 v;
     glm::vec3 n;
 
-    float pitch;
-    float roll;
-    float yaw;
-
     glm::vec3 position;
     glm::vec3 lookAtPoint;
 
