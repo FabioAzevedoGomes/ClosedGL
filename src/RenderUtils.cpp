@@ -83,9 +83,7 @@ void RenderScene(std::vector<Model3D> objects, Camera &camera, Properties proper
 
 void UpdateCameraValues(Camera &camera, Properties cameraProperties)
 {
-    if (cameraProperties.keepLookingAtModel)
-        camera.LookAt();
-    else
+    if (!cameraProperties.keepLookingAtModel)
         camera.Rotate(cameraProperties.rotationPitch, cameraProperties.rotationRoll, cameraProperties.rotationYaw);
 
     camera.nearPlane = cameraProperties.nearPlane;
@@ -97,6 +95,7 @@ void ApplyFrameProperties(Properties frameProperties)
 {
     SetRenderMode(RenderModes(frameProperties.renderMode));
     SetRenderUniformColor(frameProperties.modelColor);
+    SetCullingMode(CullingModes(frameProperties.cullingMode));
 }
 
 void ApplyVertexProperties(Properties vertexProperties)
@@ -110,6 +109,9 @@ void SetRenderMode(RenderModes renderMode)
     case Wireframe:
         glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         break;
+    case Points:
+        glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
+        break;
     case Standard:
     default:
         glPolygonMode(GL_FRONT, GL_FILL);
@@ -120,4 +122,23 @@ void SetRenderMode(RenderModes renderMode)
 void SetRenderUniformColor(glm::vec3 color)
 {
     glUniform3fv(uniformColorId, 1, glm::value_ptr(color));
+}
+
+void SetCullingMode(CullingModes cullingMode)
+{
+    switch (cullingMode)
+    {
+    case BackfaceCulling:
+        glEnable(GL_CULL_FACE);
+        glCullFace(GL_BACK);
+        break;
+    case FrontFaceCulling:
+        glEnable(GL_CULL_FACE);
+        glCullFace(GL_FRONT);
+        break;
+    case NoCulling:
+        glDisable(GL_CULL_FACE);
+    default:
+        break;
+    }
 }

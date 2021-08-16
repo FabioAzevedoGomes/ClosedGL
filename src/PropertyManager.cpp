@@ -29,30 +29,48 @@ void PropertyManager::RenderWindow()
         ImGui::Text("  ");
         ImGui::SameLine();
         if (ImGui::Button("^"))
-            NOP; // TODO
+        {
+            properties.shouldMove = true;
+            properties.movementDirection = Forward;
+        }
         ImGui::SameLine();
         ImGui::Text("  ");
         ImGui::SameLine();
         if (ImGui::Button("Up"))
-            NOP;
+        {
+            properties.shouldMove = true;
+            properties.movementDirection = Up;
+        }
 
         if (ImGui::Button("<"))
-            NOP; // TODO
+        {
+            properties.shouldMove = true;
+            properties.movementDirection = Left;
+        }
         ImGui::SameLine();
         ImGui::Text("  ");
         ImGui::SameLine();
         if (ImGui::Button(">"))
-            NOP; // TODO
+        {
+            properties.shouldMove = true;
+            properties.movementDirection = Right;
+        }
 
         ImGui::Text("  ");
         ImGui::SameLine();
         if (ImGui::Button("v"))
-            NOP; // TODO
+        {
+            properties.shouldMove = true;
+            properties.movementDirection = Backwards;
+        }
         ImGui::SameLine();
         ImGui::Text("  ");
         ImGui::SameLine();
         if (ImGui::Button("Down"))
-            NOP;
+        {
+            properties.shouldMove = true;
+            properties.movementDirection = Down;
+        }
 
         ImGui::SliderFloat("Speed", (float *)&properties.speed, 0.1f, 100.0f);
         ImGui::Checkbox("Look at Model", &properties.keepLookingAtModel);
@@ -69,16 +87,6 @@ void PropertyManager::RenderWindow()
         ImGui::Text("Uniform Color");
         ImGui::ColorEdit3("##Uniform Color Edit", (float *)&properties.modelColor);
 
-        ImGui::Text("Rendering Mode");
-        ImGui::RadioButton("Filled", &properties.renderMode, 0);
-        ImGui::SameLine();
-        ImGui::RadioButton("Wireframe", &properties.renderMode, 1);
-
-        ImGui::Text("Normal Orientation");
-        ImGui::RadioButton("Clockwise", &properties.normalOrientation, 0);
-        ImGui::SameLine();
-        ImGui::RadioButton("Counter-Clockwise", &properties.normalOrientation, 1);
-
         ImGui::Text("Model source");
         if (ImGui::Button("Select..."))
             ImGui::OpenPopup("Open File");
@@ -89,6 +97,28 @@ void PropertyManager::RenderWindow()
         }
 
         ImGui::Spacing();
+    }
+
+    if (ImGui::CollapsingHeader("Rendering"))
+    {
+        ImGui::Text("Rendering Mode");
+        ImGui::RadioButton("Filled", &properties.renderMode, 0);
+        ImGui::SameLine();
+        ImGui::RadioButton("Wireframe", &properties.renderMode, 1);
+        ImGui::SameLine();
+        ImGui::RadioButton("Points", &properties.renderMode, 2);
+
+        ImGui::Text("Normal Orientation");
+        ImGui::RadioButton("Clockwise", &properties.normalOrientation, 0);
+        ImGui::SameLine();
+        ImGui::RadioButton("Counter-Clockwise", &properties.normalOrientation, 1);
+
+        ImGui::Text("Culling");
+        ImGui::RadioButton("None", &properties.cullingMode, 0);
+        ImGui::SameLine();
+        ImGui::RadioButton("Backface", &properties.cullingMode, 1);
+        ImGui::SameLine();
+        ImGui::RadioButton("Frontface", &properties.cullingMode, 2);
     }
 
     if (ImGui::CollapsingHeader("Projection"))

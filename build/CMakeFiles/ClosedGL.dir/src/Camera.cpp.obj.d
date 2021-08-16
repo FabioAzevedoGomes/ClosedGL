@@ -175,6 +175,46 @@ CMakeFiles/ClosedGL.dir/src/Camera.cpp.obj: \
  C:/Users/Home/Desktop/CG/ClosedGL/include/glm/detail/type_half.inl \
  C:/Users/Home/Desktop/CG/ClosedGL/include/glm/integer.hpp \
  C:/Users/Home/Desktop/CG/ClosedGL/include/glm/detail/func_integer.inl \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/gtx/euler_angles.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/gtx/euler_angles.inl \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/gtx/compatibility.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/gtc/quaternion.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/gtc/constants.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/scalar_constants.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/scalar_constants.inl \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/gtc/constants.inl \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/gtc/matrix_transform.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/matrix_projection.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/matrix_projection.inl \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/matrix_clip_space.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/matrix_clip_space.inl \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/matrix_transform.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/matrix_transform.inl \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/gtc/matrix_transform.inl \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_relational.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_relational.inl \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/detail/type_float.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/quaternion_common.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/quaternion_geometric.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/quaternion_geometric.inl \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/quaternion_common.inl \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/quaternion_float.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/detail/type_quat.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/quaternion_relational.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/quaternion_relational.inl \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/detail/type_quat.inl \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/quaternion_float_precision.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/quaternion_double.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/quaternion_double_precision.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/quaternion_trigonometric.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/quaternion_trigonometric.inl \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/quaternion_transform.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/quaternion_transform.inl \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/gtc/quaternion.inl \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/gtc/epsilon.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/detail/setup.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/gtc/epsilon.inl \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/gtx/compatibility.inl \
  C:/Users/Home/Desktop/CG/ClosedGL/include/Model3D.hpp \
  C:/Users/Home/Desktop/CG/ClosedGL/include/Triangle.hpp \
  C:/Users/Home/Desktop/CG/ClosedGL/include/Vertex.hpp \
@@ -281,4 +321,5 @@ CMakeFiles/ClosedGL.dir/src/Camera.cpp.obj: \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/basic_ios.tcc \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/ostream.tcc \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/istream \
- C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/istream.tcc
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/istream.tcc \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/Properties.hpp

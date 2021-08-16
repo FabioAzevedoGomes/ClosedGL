@@ -6,14 +6,18 @@
 
 Camera::Camera()
 {
-    this->ResetPosition();
+    this->Reset();
 }
 
-void Camera::ResetPosition()
+void Camera::Reset()
 {
     this->u = U;
     this->v = V;
     this->n = N;
+
+    this->pitch = 0.0f;
+    this->roll = 0.0f;
+    this->yaw = 0.0f;
 
     this->position = ORIGIN;
     this->fieldOfView = M_PI / 3.0f;
@@ -46,16 +50,51 @@ glm::vec3 Camera::GetAnglesToViewVector(glm::vec3 viewVector)
     return glm::vec3(pitch, roll, yaw);
 }
 
+void Camera::MoveTo(MovementOptions direction, float movementSpeed)
+{
+    glm::vec3 resultingPosition;
+    switch (direction)
+    {
+    case Forward:
+        resultingPosition = position + movementSpeed * n;
+        break;
+    case Backwards:
+        resultingPosition = position - movementSpeed * n;
+        break;
+    case Up:
+        resultingPosition = position + movementSpeed * v;
+        break;
+    case Down:
+        resultingPosition = position - movementSpeed * v;
+        break;
+    case Right:
+        resultingPosition = position + movementSpeed * u;
+        break;
+    case Left:
+        resultingPosition = position - movementSpeed * u;
+        break;
+    case NoMovement:
+    default:
+        resultingPosition = position;
+        break;
+    }
+
+    this->position = resultingPosition;
+    PrintDefinition();
+}
+
 void Camera::LookAt()
 {
     glm::vec3 newN = glm::normalize(lookAtPoint - this->position);
     glm::vec3 angles = GetAnglesToViewVector(newN);
 
-    //Rotate(angles.x, angles.y, angles.z);
+    // Maintain camera roll
     this->u = U;
     this->n = N;
     RotatePitch(angles.x);
     RotateYaw(angles.y);
+
+    PrintDefinition();
 }
 
 void Camera::Rotate(float pitch, float roll, float yaw)
@@ -63,9 +102,18 @@ void Camera::Rotate(float pitch, float roll, float yaw)
     this->u = U;
     this->v = V;
     this->n = N;
+    UpdateAngles(pitch, roll, yaw);
+
     RotatePitch(pitch);
     RotateRoll(roll);
     RotateYaw(yaw);
+}
+
+void Camera::UpdateAngles(float pitch, float roll, float yaw)
+{
+    this->pitch = pitch;
+    this->roll = roll;
+    this->yaw = yaw;
 }
 
 void Camera::RotateRoll(float alpha)

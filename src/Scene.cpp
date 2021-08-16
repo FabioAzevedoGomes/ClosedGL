@@ -17,7 +17,7 @@ Scene::Scene(GLFWwindow *window)
 
 void Scene::ResetCamera()
 {
-    camera.ResetPosition();
+    camera.Reset();
     camera.FrameObject(this->models[0]);
 
     this->scenePropertyManager->properties.rotationPitch = 0.0f;
@@ -50,6 +50,16 @@ void Scene::AdvanceFrame()
 
     if (scenePropertyManager->properties.resetCamera)
         ResetCamera();
+
+    if (scenePropertyManager->properties.shouldMove)
+    {
+        camera.MoveTo(scenePropertyManager->properties.movementDirection, scenePropertyManager->properties.speed);
+
+        if (scenePropertyManager->properties.keepLookingAtModel)
+            camera.LookAt();
+
+        scenePropertyManager->properties.shouldMove = false;
+    }
 
     RenderScene(models, camera, scenePropertyManager->properties);
     scenePropertyManager->AdvanceFrame();

@@ -9,13 +9,21 @@
 enum RenderModes
 {
     Standard = 0,
-    Wireframe = 1
+    Wireframe = 1,
+    Points = 2
 };
 
 enum NormalOrientation
 {
     Clockwise = 0,
     CounterClockwise = 1
+};
+
+enum CullingModes
+{
+    NoCulling,
+    BackfaceCulling,
+    FrontFaceCulling
 };
 
 enum LightingModes
@@ -26,12 +34,12 @@ enum LightingModes
 
 enum MovementOptions
 {
-    None = 0,
+    NoMovement = 0,
     Up = 1,
     Down = 2,
     Left = 3,
     Right = 4,
-    Forwards = 5,
+    Forward = 5,
     Backwards = 6
 };
 
@@ -39,6 +47,7 @@ typedef struct
 {
     int renderMode = Wireframe;
     int normalOrientation = Clockwise;
+    int cullingMode = BackfaceCulling;
 
     //LightingModes lightingMode = Gouraud;
 
@@ -46,15 +55,15 @@ typedef struct
     glm::vec3 backgroundColor = glm::vec3(0.0f);
 
     bool resetCamera = false;
+    bool keepLookingAtModel = false;
 
     float rotationPitch = 0.0f;
     float rotationYaw = 0.0f;
     float rotationRoll = 0.0f;
 
-    bool keepLookingAtModel = false;
     bool shouldMove = false;
     float speed = 0.1f;
-    int movementDirection = None;
+    MovementOptions movementDirection = NoMovement;
 
     float fieldOfView = M_PI / 2.0f;
     float nearPlane = 0.1f;

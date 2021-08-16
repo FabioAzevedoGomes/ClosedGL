@@ -493,6 +493,10 @@ CMakeFiles/ClosedGL.dir/src/RenderUtils.cpp.obj: \
  C:/Users/Home/Desktop/CG/ClosedGL/include/ShaderUtils.hpp \
  C:/Users/Home/Desktop/CG/ClosedGL/include/ModelViewProjectionUtils.hpp \
  C:/Users/Home/Desktop/CG/ClosedGL/include/Camera.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/gtx/euler_angles.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/gtx/euler_angles.inl \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/gtx/compatibility.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/glm/gtx/compatibility.inl \
  C:/Users/Home/Desktop/CG/ClosedGL/include/Properties.hpp \
  C:/Users/Home/Desktop/CG/ClosedGL/include/colors.hpp \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/vector \

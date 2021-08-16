@@ -54,6 +54,7 @@ void ApplyFrameProperties(Properties frameProperties);
 void ApplyVertexProperties(Properties vertexProperties);
 
 void SetRenderMode(RenderModes renderMode);
+void SetCullingMode(CullingModes cullingMode);
 void SetRenderUniformColor(glm::vec3 color);
 
 #endif

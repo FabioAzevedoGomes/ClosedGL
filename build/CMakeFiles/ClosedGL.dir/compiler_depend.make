@@ -1705,6 +1705,46 @@ CMakeFiles/ClosedGL.dir/src/Camera.cpp.obj: ../src/Camera.cpp \
   ../include/glm/detail/type_half.inl \
   ../include/glm/integer.hpp \
   ../include/glm/detail/func_integer.inl \
+  ../include/glm/gtx/euler_angles.hpp \
+  ../include/glm/gtx/euler_angles.inl \
+  ../include/glm/gtx/compatibility.hpp \
+  ../include/glm/gtc/quaternion.hpp \
+  ../include/glm/gtc/constants.hpp \
+  ../include/glm/ext/scalar_constants.hpp \
+  ../include/glm/ext/scalar_constants.inl \
+  ../include/glm/gtc/constants.inl \
+  ../include/glm/gtc/matrix_transform.hpp \
+  ../include/glm/ext/matrix_projection.hpp \
+  ../include/glm/ext/matrix_projection.inl \
+  ../include/glm/ext/matrix_clip_space.hpp \
+  ../include/glm/ext/matrix_clip_space.inl \
+  ../include/glm/ext/matrix_transform.hpp \
+  ../include/glm/ext/matrix_transform.inl \
+  ../include/glm/gtc/matrix_transform.inl \
+  ../include/glm/ext/vector_relational.hpp \
+  ../include/glm/ext/vector_relational.inl \
+  ../include/glm/detail/type_float.hpp \
+  ../include/glm/ext/quaternion_common.hpp \
+  ../include/glm/ext/quaternion_geometric.hpp \
+  ../include/glm/ext/quaternion_geometric.inl \
+  ../include/glm/ext/quaternion_common.inl \
+  ../include/glm/ext/quaternion_float.hpp \
+  ../include/glm/detail/type_quat.hpp \
+  ../include/glm/ext/quaternion_relational.hpp \
+  ../include/glm/ext/quaternion_relational.inl \
+  ../include/glm/detail/type_quat.inl \
+  ../include/glm/ext/quaternion_float_precision.hpp \
+  ../include/glm/ext/quaternion_double.hpp \
+  ../include/glm/ext/quaternion_double_precision.hpp \
+  ../include/glm/ext/quaternion_trigonometric.hpp \
+  ../include/glm/ext/quaternion_trigonometric.inl \
+  ../include/glm/ext/quaternion_transform.hpp \
+  ../include/glm/ext/quaternion_transform.inl \
+  ../include/glm/gtc/quaternion.inl \
+  ../include/glm/gtc/epsilon.hpp \
+  ../include/glm/detail/setup.hpp \
+  ../include/glm/gtc/epsilon.inl \
+  ../include/glm/gtx/compatibility.inl \
   ../include/Model3D.hpp \
   ../include/Triangle.hpp \
   ../include/Vertex.hpp \
@@ -1811,7 +1851,8 @@ CMakeFiles/ClosedGL.dir/src/Camera.cpp.obj: ../src/Camera.cpp \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/basic_ios.tcc \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/ostream.tcc \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/istream \
-  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/istream.tcc
+  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/istream.tcc \
+  ../include/Properties.hpp
 
 CMakeFiles/ClosedGL.dir/src/Model3D.cpp.obj: ../src/Model3D.cpp \
   ../include/Model3D.hpp \
@@ -2164,6 +2205,34 @@ CMakeFiles/ClosedGL.dir/src/ModelViewProjectionUtils.cpp.obj: ../src/ModelViewPr
   ../include/glm/ext/matrix_transform.inl \
   ../include/glm/gtc/matrix_transform.inl \
   ../include/Camera.hpp \
+  ../include/glm/gtx/euler_angles.hpp \
+  ../include/glm/gtx/euler_angles.inl \
+  ../include/glm/gtx/compatibility.hpp \
+  ../include/glm/gtc/quaternion.hpp \
+  ../include/glm/ext/vector_relational.hpp \
+  ../include/glm/ext/vector_relational.inl \
+  ../include/glm/detail/type_float.hpp \
+  ../include/glm/ext/quaternion_common.hpp \
+  ../include/glm/ext/quaternion_geometric.hpp \
+  ../include/glm/ext/quaternion_geometric.inl \
+  ../include/glm/ext/quaternion_common.inl \
+  ../include/glm/ext/quaternion_float.hpp \
+  ../include/glm/detail/type_quat.hpp \
+  ../include/glm/ext/quaternion_relational.hpp \
+  ../include/glm/ext/quaternion_relational.inl \
+  ../include/glm/detail/type_quat.inl \
+  ../include/glm/ext/quaternion_float_precision.hpp \
+  ../include/glm/ext/quaternion_double.hpp \
+  ../include/glm/ext/quaternion_double_precision.hpp \
+  ../include/glm/ext/quaternion_trigonometric.hpp \
+  ../include/glm/ext/quaternion_trigonometric.inl \
+  ../include/glm/ext/quaternion_transform.hpp \
+  ../include/glm/ext/quaternion_transform.inl \
+  ../include/glm/gtc/quaternion.inl \
+  ../include/glm/gtc/epsilon.hpp \
+  ../include/glm/detail/setup.hpp \
+  ../include/glm/gtc/epsilon.inl \
+  ../include/glm/gtx/compatibility.inl \
   ../include/Model3D.hpp \
   ../include/Triangle.hpp \
   ../include/Vertex.hpp \
@@ -2270,7 +2339,8 @@ CMakeFiles/ClosedGL.dir/src/ModelViewProjectionUtils.cpp.obj: ../src/ModelViewPr
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/basic_ios.tcc \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/ostream.tcc \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/istream \
-  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/istream.tcc
+  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/istream.tcc \
+  ../include/Properties.hpp
 
 CMakeFiles/ClosedGL.dir/src/PropertyManager.cpp.obj: ../src/PropertyManager.cpp \
   ../include/PropertyManager.hpp \
@@ -3098,6 +3168,10 @@ CMakeFiles/ClosedGL.dir/src/RenderUtils.cpp.obj: ../src/RenderUtils.cpp \
   ../include/ShaderUtils.hpp \
   ../include/ModelViewProjectionUtils.hpp \
   ../include/Camera.hpp \
+  ../include/glm/gtx/euler_angles.hpp \
+  ../include/glm/gtx/euler_angles.inl \
+  ../include/glm/gtx/compatibility.hpp \
+  ../include/glm/gtx/compatibility.inl \
   ../include/Properties.hpp \
   ../include/colors.hpp \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/vector \
@@ -3603,6 +3677,10 @@ CMakeFiles/ClosedGL.dir/src/Scene.cpp.obj: ../src/Scene.cpp \
   ../include/ShaderUtils.hpp \
   ../include/ModelViewProjectionUtils.hpp \
   ../include/Camera.hpp \
+  ../include/glm/gtx/euler_angles.hpp \
+  ../include/glm/gtx/euler_angles.inl \
+  ../include/glm/gtx/compatibility.hpp \
+  ../include/glm/gtx/compatibility.inl \
   ../include/colors.hpp \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/vector \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/stl_construct.h \
@@ -4113,6 +4191,10 @@ CMakeFiles/ClosedGL.dir/src/main.cpp.obj: ../src/main.cpp \
   ../include/ShaderUtils.hpp \
   ../include/ModelViewProjectionUtils.hpp \
   ../include/Camera.hpp \
+  ../include/glm/gtx/euler_angles.hpp \
+  ../include/glm/gtx/euler_angles.inl \
+  ../include/glm/gtx/compatibility.hpp \
+  ../include/glm/gtx/compatibility.inl \
   ../include/colors.hpp \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/vector \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/stl_construct.h \
@@ -5408,6 +5490,8 @@ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cstddef:
 
 ../include/glm/vec2.hpp:
 
+../include/glm/gtx/compatibility.inl:
+
 ../include/glm/detail/type_vec2.hpp:
 
 ../include/glm/detail/type_vec2.inl:
@@ -5526,21 +5610,13 @@ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cstddef:
 
 ../include/glm/detail/func_integer.inl:
 
-../include/Model3D.hpp:
+../include/glm/gtx/euler_angles.hpp:
 
-../include/Triangle.hpp:
+../include/glm/gtx/euler_angles.inl:
 
-../include/Vertex.hpp:
+../include/glm/gtx/compatibility.hpp:
 
-../include/Material.hpp:
-
-../src/ModelViewProjectionUtils.cpp:
-
-../include/ModelViewProjectionUtils.hpp:
-
-../include/glm/gtc/matrix_transform.hpp:
-
-../include/glm/ext/matrix_projection.hpp:
+../include/glm/gtc/quaternion.hpp:
 
 ../include/glm/ext/scalar_constants.hpp:
 
@@ -5550,23 +5626,15 @@ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cstddef:
 
 ../include/glm/gtc/constants.inl:
 
+../include/glm/gtc/matrix_transform.hpp:
+
+../include/glm/ext/matrix_projection.hpp:
+
 ../include/glm/ext/matrix_projection.inl:
 
 ../include/glm/ext/matrix_clip_space.inl:
 
 ../include/glm/ext/matrix_transform.inl:
-
-../include/PropertyManager.hpp:
-
-../include/Properties.hpp:
-
-../src/RenderUtils.cpp:
-
-../include/glm/ext/quaternion_relational.hpp:
-
-../include/RenderUtils.hpp:
-
-../include/glm/gtc/quaternion.hpp:
 
 ../include/glm/ext/vector_relational.hpp:
 
@@ -5581,6 +5649,10 @@ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cstddef:
 ../src/main.cpp:
 
 ../include/glm/ext/quaternion_float.hpp:
+
+../include/RenderUtils.hpp:
+
+../include/glm/ext/quaternion_relational.hpp:
 
 ../include/glm/ext/quaternion_relational.inl:
 
@@ -5599,6 +5671,24 @@ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cstddef:
 ../include/glm/gtc/epsilon.hpp:
 
 ../include/glm/gtc/epsilon.inl:
+
+../include/Model3D.hpp:
+
+../include/Triangle.hpp:
+
+../include/Vertex.hpp:
+
+../include/Material.hpp:
+
+../include/Properties.hpp:
+
+../src/ModelViewProjectionUtils.cpp:
+
+../include/ModelViewProjectionUtils.hpp:
+
+../include/PropertyManager.hpp:
+
+../src/RenderUtils.cpp:
 
 ../include/glm/gtc/vec1.hpp:
 
