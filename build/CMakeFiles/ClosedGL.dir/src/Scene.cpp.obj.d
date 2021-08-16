@@ -506,4 +506,5 @@ CMakeFiles/ClosedGL.dir/src/Scene.cpp.obj: \
  C:/Users/Home/Desktop/CG/ClosedGL/lib/imgui/imgui.h \
  C:/Users/Home/Desktop/CG/ClosedGL/lib/imgui/imconfig.h \
  C:/Users/Home/Desktop/CG/ClosedGL/lib/imgui/imgui_impl_glfw.h \
- C:/Users/Home/Desktop/CG/ClosedGL/lib/imgui/imgui_impl_opengl3.h
+ C:/Users/Home/Desktop/CG/ClosedGL/lib/imgui/imgui_impl_opengl3.h \
+ C:/Users/Home/Desktop/CG/ClosedGL/lib/FileBrowser/ImGuiFileBrowser.h

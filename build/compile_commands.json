@@ -80,6 +80,11 @@
   "file": "C:/Users/Home/Desktop/CG/ClosedGL/lib/imgui/imgui_impl_opengl3.cpp"
 },
 {
+  "directory": "C:/Users/Home/Desktop/CG/ClosedGL/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe  @CMakeFiles/ClosedGL.dir/includes_CXX.rsp  -DIMGUI_IMPL_OPENGL_LOADER_GL3W -DGLFW_EXPOSE_NATIVE_WGL -g -o CMakeFiles\\ClosedGL.dir\\lib\\FileBrowser\\ImGuiFileBrowser.cpp.obj -c C:\\Users\\Home\\Desktop\\CG\\ClosedGL\\lib\\FileBrowser\\ImGuiFileBrowser.cpp",
+  "file": "C:/Users/Home/Desktop/CG/ClosedGL/lib/FileBrowser/ImGuiFileBrowser.cpp"
+},
+{
   "directory": "C:/Users/Home/Desktop/CG/ClosedGL/build/lib/glfw/src",
   "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H @CMakeFiles/glfw.dir/includes_C.rsp -g -o CMakeFiles\\glfw.dir\\context.c.obj -c C:\\Users\\Home\\Desktop\\CG\\ClosedGL\\lib\\glfw\\src\\context.c",
   "file": "C:/Users/Home/Desktop/CG/ClosedGL/lib/glfw/src/context.c"

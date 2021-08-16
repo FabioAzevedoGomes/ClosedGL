@@ -50,7 +50,13 @@ void PropertyManager::RenderWindow()
             ImGui::RadioButton("Wireframe", &properties.renderMode, 1);
 
             ImGui::Text("Model source");
-            // TODO
+            if (ImGui::Button("Select..."))
+                ImGui::OpenPopup("Open File");
+            if (fileDialog.showFileDialog("Open File", imgui_addons::ImGuiFileBrowser::DialogMode::OPEN, ImVec2(700, 310), ".in"))
+            {
+                properties.reloadFile = true;
+                properties.modelFilePath = fileDialog.selected_path;
+            }
 
             ImGui::Text("Orientation");
             // TODO

@@ -322,4 +322,11 @@ CMakeFiles/ClosedGL.dir/src/PropertyManager.cpp.obj: \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/float.h \
  C:/TDM-GCC-64/x86_64-w64-mingw32/include/float.h \
  C:/Users/Home/Desktop/CG/ClosedGL/lib/imgui/imgui_impl_glfw.h \
- C:/Users/Home/Desktop/CG/ClosedGL/lib/imgui/imgui_impl_opengl3.h
+ C:/Users/Home/Desktop/CG/ClosedGL/lib/imgui/imgui_impl_opengl3.h \
+ C:/Users/Home/Desktop/CG/ClosedGL/lib/FileBrowser/ImGuiFileBrowser.h \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/vector \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/stl_construct.h \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/stl_uninitialized.h \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/stl_vector.h \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/stl_bvector.h \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/vector.tcc

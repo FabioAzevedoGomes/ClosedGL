@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/Home/Desktop/CG/ClosedGL/lib/gl3w.c" "CMakeFiles/ClosedGL.dir/lib/gl3w.c.obj" "gcc" "CMakeFiles/ClosedGL.dir/lib/gl3w.c.obj.d"
+  "C:/Users/Home/Desktop/CG/ClosedGL/lib/FileBrowser/ImGuiFileBrowser.cpp" "CMakeFiles/ClosedGL.dir/lib/FileBrowser/ImGuiFileBrowser.cpp.obj" "gcc" "CMakeFiles/ClosedGL.dir/lib/FileBrowser/ImGuiFileBrowser.cpp.obj.d"
   "C:/Users/Home/Desktop/CG/ClosedGL/lib/imgui/imgui.cpp" "CMakeFiles/ClosedGL.dir/lib/imgui/imgui.cpp.obj" "gcc" "CMakeFiles/ClosedGL.dir/lib/imgui/imgui.cpp.obj.d"
   "C:/Users/Home/Desktop/CG/ClosedGL/lib/imgui/imgui_demo.cpp" "CMakeFiles/ClosedGL.dir/lib/imgui/imgui_demo.cpp.obj" "gcc" "CMakeFiles/ClosedGL.dir/lib/imgui/imgui_demo.cpp.obj.d"
   "C:/Users/Home/Desktop/CG/ClosedGL/lib/imgui/imgui_draw.cpp" "CMakeFiles/ClosedGL.dir/lib/imgui/imgui_draw.cpp.obj" "gcc" "CMakeFiles/ClosedGL.dir/lib/imgui/imgui_draw.cpp.obj.d"

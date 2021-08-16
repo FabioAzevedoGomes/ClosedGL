@@ -20,7 +20,6 @@ enum LightingModes
 
 typedef struct
 {
-    bool changed = true;
     int renderMode = Wireframe;
 
     //LightingModes lightingMode = Gouraud;
@@ -35,6 +34,7 @@ typedef struct
     float nearPlane = 0.1f;
     float farPlane = 10000.0f;
 
+    bool reloadFile = false;
     std::string modelFilePath;
 
 } Properties;

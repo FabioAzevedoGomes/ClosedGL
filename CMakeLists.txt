@@ -48,6 +48,7 @@ add_executable(ClosedGL
   lib/imgui/imgui.cpp
   lib/imgui/imgui_impl_glfw.cpp
   lib/imgui/imgui_impl_opengl3.cpp
+  lib/FileBrowser/ImGuiFileBrowser.cpp
   vertexShader.vert 
   fragmentShader.frag
   )
@@ -63,6 +64,8 @@ ENDIF (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 include_directories( include )
 include_directories(lib/glfw/include)
 include_directories(lib/imgui/)
+include_directories(lib/FileBrowser)
+include_directories(lib/FileBrower/Dirent)
 
 target_link_libraries(ClosedGL imm32.lib)
 

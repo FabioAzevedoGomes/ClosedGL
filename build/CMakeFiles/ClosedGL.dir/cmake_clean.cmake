@@ -2,6 +2,8 @@ file(REMOVE_RECURSE
   "../bin/ClosedGL_d.exe"
   "../bin/ClosedGL_d.exe.manifest"
   "../bin/ClosedGL_d.pdb"
+  "CMakeFiles/ClosedGL.dir/lib/FileBrowser/ImGuiFileBrowser.cpp.obj"
+  "CMakeFiles/ClosedGL.dir/lib/FileBrowser/ImGuiFileBrowser.cpp.obj.d"
   "CMakeFiles/ClosedGL.dir/lib/gl3w.c.obj"
   "CMakeFiles/ClosedGL.dir/lib/gl3w.c.obj.d"
   "CMakeFiles/ClosedGL.dir/lib/imgui/imgui.cpp.obj"

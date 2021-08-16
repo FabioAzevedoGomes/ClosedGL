@@ -9,6 +9,7 @@
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
+#include "ImGuiFileBrowser.h"
 
 #include <iostream>
 
@@ -19,7 +20,11 @@ public:
     bool showWindow;
     Properties properties;
 
+    imgui_addons::ImGuiFileBrowser fileDialog;
+
     PropertyManager(GLFWwindow *window);
+
+    void CheckProperties();
     void RenderWindow();
     void AdvanceFrame();
 };

@@ -199,6 +199,30 @@ glfw/fast:
 	$(MAKE) $(MAKESILENT) -f lib\glfw\src\CMakeFiles\glfw.dir\build.make lib/glfw/src/CMakeFiles/glfw.dir/build
 .PHONY : glfw/fast
 
+lib/FileBrowser/ImGuiFileBrowser.obj: lib/FileBrowser/ImGuiFileBrowser.cpp.obj
+.PHONY : lib/FileBrowser/ImGuiFileBrowser.obj
+
+# target to build an object file
+lib/FileBrowser/ImGuiFileBrowser.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ClosedGL.dir\build.make CMakeFiles/ClosedGL.dir/lib/FileBrowser/ImGuiFileBrowser.cpp.obj
+.PHONY : lib/FileBrowser/ImGuiFileBrowser.cpp.obj
+
+lib/FileBrowser/ImGuiFileBrowser.i: lib/FileBrowser/ImGuiFileBrowser.cpp.i
+.PHONY : lib/FileBrowser/ImGuiFileBrowser.i
+
+# target to preprocess a source file
+lib/FileBrowser/ImGuiFileBrowser.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ClosedGL.dir\build.make CMakeFiles/ClosedGL.dir/lib/FileBrowser/ImGuiFileBrowser.cpp.i
+.PHONY : lib/FileBrowser/ImGuiFileBrowser.cpp.i
+
+lib/FileBrowser/ImGuiFileBrowser.s: lib/FileBrowser/ImGuiFileBrowser.cpp.s
+.PHONY : lib/FileBrowser/ImGuiFileBrowser.s
+
+# target to generate assembly for a file
+lib/FileBrowser/ImGuiFileBrowser.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ClosedGL.dir\build.make CMakeFiles/ClosedGL.dir/lib/FileBrowser/ImGuiFileBrowser.cpp.s
+.PHONY : lib/FileBrowser/ImGuiFileBrowser.cpp.s
+
 lib/gl3w.obj: lib/gl3w.c.obj
 .PHONY : lib/gl3w.obj
 
@@ -598,6 +622,9 @@ help:
 	@echo ... uninstall
 	@echo ... ClosedGL
 	@echo ... glfw
+	@echo ... lib/FileBrowser/ImGuiFileBrowser.obj
+	@echo ... lib/FileBrowser/ImGuiFileBrowser.i
+	@echo ... lib/FileBrowser/ImGuiFileBrowser.s
 	@echo ... lib/gl3w.obj
 	@echo ... lib/gl3w.i
 	@echo ... lib/gl3w.s
