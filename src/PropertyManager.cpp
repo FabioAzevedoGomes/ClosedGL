@@ -31,12 +31,8 @@ void PropertyManager::RenderWindow()
             ImGui::Text("Movement");
             // TODO
 
-            ImGui::Text("Field of View");
-            ImGui::SliderFloat("FoV", (float *)&properties.fieldOfView, 0, M_PI);
-
-            ImGui::Text("Planes");
-            ImGui::SliderFloat("Near", (float *)&properties.nearPlane, 0.1f, 10000.0f);
-            ImGui::SliderFloat("Far", (float *)&properties.farPlane, 0.1f, 10000.0f);
+            if (ImGui::Button("Reset"))
+                properties.resetCamera = true;
         }
 
         if (ImGui::CollapsingHeader("Model"))
@@ -61,6 +57,17 @@ void PropertyManager::RenderWindow()
             ImGui::Text("Orientation");
             // TODO
         }
+
+        if (ImGui::CollapsingHeader("Projection"))
+        {
+            ImGui::Text("Field of View");
+            ImGui::SliderFloat("FoV", (float *)&properties.fieldOfView, 0, M_PI);
+
+            ImGui::Text("Planes");
+            ImGui::SliderFloat("Near", (float *)&properties.nearPlane, 0.1f, 10000.0f);
+            ImGui::SliderFloat("Far", (float *)&properties.farPlane, 0.1f, 10000.0f);
+        }
+
         ImGui::End();
     }
 

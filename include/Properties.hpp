@@ -26,6 +26,8 @@ typedef struct
 
     glm::vec3 modelColor;
 
+    bool resetCamera = false;
+
     float rotationPitch = 0.0f;
     float rotationYaw = 0.0f;
     float rotationRoll = 0.0f;

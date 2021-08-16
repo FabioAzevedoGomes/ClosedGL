@@ -15,20 +15,27 @@ Scene::Scene(GLFWwindow *window)
     SetupShaders();
 }
 
+void Scene::ResetCamera()
+{
+    camera.ResetPosition();
+    camera.FrameObject(this->models[0]);
+
+    this->scenePropertyManager->properties.rotationPitch = 0.0f;
+    this->scenePropertyManager->properties.rotationRoll = 0.0f;
+    this->scenePropertyManager->properties.rotationYaw = 0.0f;
+
+    this->scenePropertyManager->properties.resetCamera = false;
+}
+
 void Scene::SwapModel(int position, Model3D newModel)
 {
     if (position < this->models.size())
     {
         this->models[position] = newModel;
 
-        camera.ResetPosition();
-        camera.FrameObject(this->models[0]);
-
-        this->scenePropertyManager->properties.modelColor = this->models[0].triangles[0].vertices->color;
         this->scenePropertyManager->properties.reloadFile = false;
-        this->scenePropertyManager->properties.rotationPitch = 0.0f;
-        this->scenePropertyManager->properties.rotationRoll = 0.0f;
-        this->scenePropertyManager->properties.rotationYaw = 0.0f;
+        this->scenePropertyManager->properties.modelColor = this->models[0].triangles[0].vertices->color;
+        ResetCamera();
 
         SetupVAOS(this->models);
         SetupVBOS(this->models);
@@ -40,6 +47,9 @@ void Scene::AdvanceFrame()
 {
     if (scenePropertyManager->properties.reloadFile)
         SwapModel(0, Model3D(scenePropertyManager->properties.modelFilePath));
+
+    if (scenePropertyManager->properties.resetCamera)
+        ResetCamera();
 
     RenderScene(models, camera, scenePropertyManager->properties);
     scenePropertyManager->AdvanceFrame();

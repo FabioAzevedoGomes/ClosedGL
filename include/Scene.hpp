@@ -24,6 +24,7 @@ public:
     PropertyManager *scenePropertyManager;
 
     Scene(GLFWwindow *window);
+    void ResetCamera();
     void SwapModel(int position, Model3D newModel);
     void AdvanceFrame();
 };
