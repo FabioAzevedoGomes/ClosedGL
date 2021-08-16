@@ -3,7 +3,6 @@
 PropertyManager::PropertyManager(GLFWwindow *window)
 {
     this->window = window;
-    this->showWindow = true;
 
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
@@ -17,59 +16,102 @@ PropertyManager::PropertyManager(GLFWwindow *window)
 
 void PropertyManager::RenderWindow()
 {
-    if (showWindow)
+    ImGui::Begin("Properties", NULL, ImGuiWindowFlags_AlwaysAutoResize);
+
+    if (ImGui::CollapsingHeader("Camera"))
     {
-        ImGui::Begin("Properties", &showWindow, ImGuiWindowFlags_MenuBar);
+        ImGui::Text("Rotation");
+        ImGui::SliderFloat("Pitch", (float *)&properties.rotationPitch, -2.0f * M_PI, 2.0f * M_PI);
+        ImGui::SliderFloat("Roll", (float *)&properties.rotationRoll, -2.0f * M_PI, 2.0f * M_PI);
+        ImGui::SliderFloat("Yaw", (float *)&properties.rotationYaw, -2.0f * M_PI, 2.0f * M_PI);
 
-        if (ImGui::CollapsingHeader("Camera"))
-        {
-            ImGui::Text("Rotation");
-            ImGui::SliderFloat("Pitch", (float *)&properties.rotationPitch, -2.0f * M_PI, 2.0f * M_PI);
-            ImGui::SliderFloat("Roll", (float *)&properties.rotationRoll, -2.0f * M_PI, 2.0f * M_PI);
-            ImGui::SliderFloat("Yaw", (float *)&properties.rotationYaw, -2.0f * M_PI, 2.0f * M_PI);
+        ImGui::Text("Movement");
+        ImGui::Text("  ");
+        ImGui::SameLine();
+        if (ImGui::Button("^"))
+            NOP; // TODO
+        ImGui::SameLine();
+        ImGui::Text("  ");
+        ImGui::SameLine();
+        if (ImGui::Button("Up"))
+            NOP;
 
-            ImGui::Text("Movement");
-            // TODO
+        if (ImGui::Button("<"))
+            NOP; // TODO
+        ImGui::SameLine();
+        ImGui::Text("  ");
+        ImGui::SameLine();
+        if (ImGui::Button(">"))
+            NOP; // TODO
 
-            if (ImGui::Button("Reset"))
-                properties.resetCamera = true;
-        }
+        ImGui::Text("  ");
+        ImGui::SameLine();
+        if (ImGui::Button("v"))
+            NOP; // TODO
+        ImGui::SameLine();
+        ImGui::Text("  ");
+        ImGui::SameLine();
+        if (ImGui::Button("Down"))
+            NOP;
 
-        if (ImGui::CollapsingHeader("Model"))
-        {
-            ImGui::Text("Uniform Color");
-            ImGui::ColorEdit3("", (float *)&properties.modelColor);
+        ImGui::SliderFloat("Speed", (float *)&properties.speed, 0.1f, 100.0f);
+        ImGui::Checkbox("Look at Model", &properties.keepLookingAtModel);
 
-            ImGui::Text("Rendering Mode");
-            ImGui::RadioButton("Filled", &properties.renderMode, 0);
-            ImGui::SameLine();
-            ImGui::RadioButton("Wireframe", &properties.renderMode, 1);
+        ImGui::Text("Reset Position");
+        if (ImGui::Button("Reset"))
+            properties.resetCamera = true;
 
-            ImGui::Text("Model source");
-            if (ImGui::Button("Select..."))
-                ImGui::OpenPopup("Open File");
-            if (fileDialog.showFileDialog("Open File", imgui_addons::ImGuiFileBrowser::DialogMode::OPEN, ImVec2(700, 310), ".in"))
-            {
-                properties.reloadFile = true;
-                properties.modelFilePath = fileDialog.selected_path;
-            }
-
-            ImGui::Text("Orientation");
-            // TODO
-        }
-
-        if (ImGui::CollapsingHeader("Projection"))
-        {
-            ImGui::Text("Field of View");
-            ImGui::SliderFloat("FoV", (float *)&properties.fieldOfView, 0, M_PI);
-
-            ImGui::Text("Planes");
-            ImGui::SliderFloat("Near", (float *)&properties.nearPlane, 0.1f, 10000.0f);
-            ImGui::SliderFloat("Far", (float *)&properties.farPlane, 0.1f, 10000.0f);
-        }
-
-        ImGui::End();
+        ImGui::Spacing();
     }
+
+    if (ImGui::CollapsingHeader("Model"))
+    {
+        ImGui::Text("Uniform Color");
+        ImGui::ColorEdit3("##Uniform Color Edit", (float *)&properties.modelColor);
+
+        ImGui::Text("Rendering Mode");
+        ImGui::RadioButton("Filled", &properties.renderMode, 0);
+        ImGui::SameLine();
+        ImGui::RadioButton("Wireframe", &properties.renderMode, 1);
+
+        ImGui::Text("Normal Orientation");
+        ImGui::RadioButton("Clockwise", &properties.normalOrientation, 0);
+        ImGui::SameLine();
+        ImGui::RadioButton("Counter-Clockwise", &properties.normalOrientation, 1);
+
+        ImGui::Text("Model source");
+        if (ImGui::Button("Select..."))
+            ImGui::OpenPopup("Open File");
+        if (fileDialog.showFileDialog("Open File", imgui_addons::ImGuiFileBrowser::DialogMode::OPEN, ImVec2(700, 310), ".in"))
+        {
+            properties.reloadFile = true;
+            properties.modelFilePath = fileDialog.selected_path;
+        }
+
+        ImGui::Spacing();
+    }
+
+    if (ImGui::CollapsingHeader("Projection"))
+    {
+        ImGui::Text("Field of View");
+        ImGui::SliderFloat("FoV", (float *)&properties.fieldOfView, 0, M_PI);
+
+        ImGui::Text("Planes");
+        ImGui::SliderFloat("Near", (float *)&properties.nearPlane, 0.1f, 10000.0f);
+        ImGui::SliderFloat("Far", (float *)&properties.farPlane, 0.1f, 10000.0f);
+
+        ImGui::Spacing();
+    }
+
+    if (ImGui::CollapsingHeader("Ambient"))
+    {
+        ImGui::Text("Background color");
+        ImGui::ColorEdit3("##Background Color Edit", (float *)&properties.backgroundColor);
+
+        ImGui::Spacing();
+    }
+
+    ImGui::End();
 
     ImGui::Render();
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());

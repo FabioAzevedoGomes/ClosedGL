@@ -36,6 +36,28 @@ void Camera::FrameObject(Model3D object)
     this->position = glm::vec3(px, py, pz);
 }
 
+glm::vec3 Camera::GetAnglesToViewVector(glm::vec3 viewVector)
+{
+    float pitch, roll, yaw;
+    pitch = asin(viewVector.x);
+    roll = acos(-viewVector.z);
+    yaw = asin(viewVector.y);
+
+    return glm::vec3(pitch, roll, yaw);
+}
+
+void Camera::LookAt()
+{
+    glm::vec3 newN = glm::normalize(lookAtPoint - this->position);
+    glm::vec3 angles = GetAnglesToViewVector(newN);
+
+    //Rotate(angles.x, angles.y, angles.z);
+    this->u = U;
+    this->n = N;
+    RotatePitch(angles.x);
+    RotateYaw(angles.y);
+}
+
 void Camera::Rotate(float pitch, float roll, float yaw)
 {
     this->u = U;

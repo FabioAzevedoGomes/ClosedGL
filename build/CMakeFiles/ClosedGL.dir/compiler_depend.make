@@ -1582,6 +1582,129 @@ CMakeFiles/ClosedGL.dir/src/Camera.cpp.obj: ../src/Camera.cpp \
   ../include/glm/ext/vector_uint3.hpp \
   ../include/glm/ext/vector_uint3_sized.hpp \
   ../include/glm/ext/scalar_uint_sized.hpp \
+  ../include/glm/glm.hpp \
+  ../include/glm/detail/_fixes.hpp \
+  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cmath \
+  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/cpp_type_traits.h \
+  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/ext/type_traits.h \
+  C:/TDM-GCC-64/x86_64-w64-mingw32/include/math.h \
+  ../include/glm/detail/setup.hpp \
+  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/climits \
+  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cfloat \
+  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/float.h \
+  C:/TDM-GCC-64/x86_64-w64-mingw32/include/float.h \
+  ../include/glm/fwd.hpp \
+  ../include/glm/vec2.hpp \
+  ../include/glm/ext/vector_bool2.hpp \
+  ../include/glm/detail/type_vec2.hpp \
+  ../include/glm/detail/type_vec2.inl \
+  ../include/glm/ext/vector_bool2_precision.hpp \
+  ../include/glm/ext/vector_float2.hpp \
+  ../include/glm/ext/vector_float2_precision.hpp \
+  ../include/glm/ext/vector_double2.hpp \
+  ../include/glm/ext/vector_double2_precision.hpp \
+  ../include/glm/ext/vector_int2.hpp \
+  ../include/glm/ext/vector_int2_sized.hpp \
+  ../include/glm/ext/vector_uint2.hpp \
+  ../include/glm/ext/vector_uint2_sized.hpp \
+  ../include/glm/vec4.hpp \
+  ../include/glm/ext/vector_bool4.hpp \
+  ../include/glm/detail/type_vec4.hpp \
+  ../include/glm/detail/type_vec4.inl \
+  ../include/glm/ext/vector_bool4_precision.hpp \
+  ../include/glm/ext/vector_float4.hpp \
+  ../include/glm/ext/vector_float4_precision.hpp \
+  ../include/glm/ext/vector_double4.hpp \
+  ../include/glm/ext/vector_double4_precision.hpp \
+  ../include/glm/ext/vector_int4.hpp \
+  ../include/glm/ext/vector_int4_sized.hpp \
+  ../include/glm/ext/vector_uint4.hpp \
+  ../include/glm/ext/vector_uint4_sized.hpp \
+  ../include/glm/mat2x2.hpp \
+  ../include/glm/ext/matrix_double2x2.hpp \
+  ../include/glm/detail/type_mat2x2.hpp \
+  ../include/glm/detail/type_mat2x2.inl \
+  ../include/glm/matrix.hpp \
+  ../include/glm/mat2x3.hpp \
+  ../include/glm/ext/matrix_double2x3.hpp \
+  ../include/glm/detail/type_mat2x3.hpp \
+  ../include/glm/detail/type_mat2x3.inl \
+  ../include/glm/ext/matrix_double2x3_precision.hpp \
+  ../include/glm/ext/matrix_float2x3.hpp \
+  ../include/glm/ext/matrix_float2x3_precision.hpp \
+  ../include/glm/mat2x4.hpp \
+  ../include/glm/ext/matrix_double2x4.hpp \
+  ../include/glm/detail/type_mat2x4.hpp \
+  ../include/glm/detail/type_mat2x4.inl \
+  ../include/glm/ext/matrix_double2x4_precision.hpp \
+  ../include/glm/ext/matrix_float2x4.hpp \
+  ../include/glm/ext/matrix_float2x4_precision.hpp \
+  ../include/glm/mat3x2.hpp \
+  ../include/glm/ext/matrix_double3x2.hpp \
+  ../include/glm/detail/type_mat3x2.hpp \
+  ../include/glm/detail/type_mat3x2.inl \
+  ../include/glm/ext/matrix_double3x2_precision.hpp \
+  ../include/glm/ext/matrix_float3x2.hpp \
+  ../include/glm/ext/matrix_float3x2_precision.hpp \
+  ../include/glm/mat3x3.hpp \
+  ../include/glm/ext/matrix_double3x3.hpp \
+  ../include/glm/detail/type_mat3x3.hpp \
+  ../include/glm/detail/type_mat3x3.inl \
+  ../include/glm/ext/matrix_double3x3_precision.hpp \
+  ../include/glm/ext/matrix_float3x3.hpp \
+  ../include/glm/ext/matrix_float3x3_precision.hpp \
+  ../include/glm/mat3x4.hpp \
+  ../include/glm/ext/matrix_double3x4.hpp \
+  ../include/glm/detail/type_mat3x4.hpp \
+  ../include/glm/detail/type_mat3x4.inl \
+  ../include/glm/ext/matrix_double3x4_precision.hpp \
+  ../include/glm/ext/matrix_float3x4.hpp \
+  ../include/glm/ext/matrix_float3x4_precision.hpp \
+  ../include/glm/mat4x2.hpp \
+  ../include/glm/ext/matrix_double4x2.hpp \
+  ../include/glm/detail/type_mat4x2.hpp \
+  ../include/glm/detail/type_mat4x2.inl \
+  ../include/glm/ext/matrix_double4x2_precision.hpp \
+  ../include/glm/ext/matrix_float4x2.hpp \
+  ../include/glm/ext/matrix_float4x2_precision.hpp \
+  ../include/glm/mat4x3.hpp \
+  ../include/glm/ext/matrix_double4x3.hpp \
+  ../include/glm/detail/type_mat4x3.hpp \
+  ../include/glm/detail/type_mat4x3.inl \
+  ../include/glm/ext/matrix_double4x3_precision.hpp \
+  ../include/glm/ext/matrix_float4x3.hpp \
+  ../include/glm/ext/matrix_float4x3_precision.hpp \
+  ../include/glm/mat4x4.hpp \
+  ../include/glm/ext/matrix_double4x4.hpp \
+  ../include/glm/detail/type_mat4x4.hpp \
+  ../include/glm/detail/type_mat4x4.inl \
+  ../include/glm/ext/matrix_double4x4_precision.hpp \
+  ../include/glm/ext/matrix_float4x4.hpp \
+  ../include/glm/ext/matrix_float4x4_precision.hpp \
+  ../include/glm/detail/func_matrix.inl \
+  ../include/glm/geometric.hpp \
+  ../include/glm/detail/func_geometric.inl \
+  ../include/glm/exponential.hpp \
+  ../include/glm/detail/type_vec1.hpp \
+  ../include/glm/detail/type_vec1.inl \
+  ../include/glm/detail/func_exponential.inl \
+  ../include/glm/vector_relational.hpp \
+  ../include/glm/detail/func_vector_relational.inl \
+  ../include/glm/detail/_vectorize.hpp \
+  ../include/glm/common.hpp \
+  ../include/glm/detail/func_common.inl \
+  ../include/glm/detail/compute_common.hpp \
+  ../include/glm/ext/matrix_double2x2_precision.hpp \
+  ../include/glm/ext/matrix_float2x2.hpp \
+  ../include/glm/ext/matrix_float2x2_precision.hpp \
+  ../include/glm/trigonometric.hpp \
+  ../include/glm/detail/func_trigonometric.inl \
+  ../include/glm/packing.hpp \
+  ../include/glm/detail/func_packing.inl \
+  ../include/glm/detail/type_half.hpp \
+  ../include/glm/detail/type_half.inl \
+  ../include/glm/integer.hpp \
+  ../include/glm/detail/func_integer.inl \
   ../include/Model3D.hpp \
   ../include/Triangle.hpp \
   ../include/Vertex.hpp \
@@ -1614,8 +1737,6 @@ CMakeFiles/ClosedGL.dir/src/Camera.cpp.obj: ../src/Camera.cpp \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/char_traits.h \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/stl_algobase.h \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/functexcept.h \
-  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/cpp_type_traits.h \
-  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/ext/type_traits.h \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/ext/numeric_traits.h \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/stl_pair.h \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/stl_iterator_base_types.h \
@@ -1690,9 +1811,7 @@ CMakeFiles/ClosedGL.dir/src/Camera.cpp.obj: ../src/Camera.cpp \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/basic_ios.tcc \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/ostream.tcc \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/istream \
-  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/istream.tcc \
-  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cmath \
-  C:/TDM-GCC-64/x86_64-w64-mingw32/include/math.h
+  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/istream.tcc
 
 CMakeFiles/ClosedGL.dir/src/Model3D.cpp.obj: ../src/Model3D.cpp \
   ../include/Model3D.hpp \
@@ -4503,8 +4622,6 @@ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/stl_pair.h:
 
 C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/postypes.h:
 
-../include/ModelViewProjectionUtils.hpp:
-
 C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/concept_check.h:
 
 C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/type_traits:
@@ -4526,10 +4643,6 @@ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/stl_iterator.h:
 C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/stl_iterator_base_funcs.h:
 
 C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/ptr_traits.h:
-
-../include/glm/trigonometric.hpp:
-
-../include/BoundingBox.hpp:
 
 C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/debug/debug.h:
 
@@ -4632,6 +4745,10 @@ C:/TDM-GCC-64/x86_64-w64-mingw32/include/interlockedapi.h:
 C:/TDM-GCC-64/x86_64-w64-mingw32/include/psdk_inc/_wsa_errnos.h:
 
 C:/TDM-GCC-64/x86_64-w64-mingw32/include/pthread.h:
+
+../include/glm/detail/func_common.inl:
+
+../include/glm/detail/func_matrix.inl:
 
 C:/TDM-GCC-64/x86_64-w64-mingw32/include/errno.h:
 
@@ -5109,11 +5226,11 @@ C:/TDM-GCC-64/x86_64-w64-mingw32/include/jobapi.h:
 
 C:/TDM-GCC-64/x86_64-w64-mingw32/include/libloaderapi.h:
 
-C:/TDM-GCC-64/x86_64-w64-mingw32/include/memoryapi.h:
+../lib/imgui/imgui.cpp:
 
 ../src/Model3D.cpp:
 
-../lib/imgui/imgui.cpp:
+C:/TDM-GCC-64/x86_64-w64-mingw32/include/memoryapi.h:
 
 C:/TDM-GCC-64/x86_64-w64-mingw32/include/namespaceapi.h:
 
@@ -5289,16 +5406,6 @@ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cstddef:
 
 ../include/glm/ext/scalar_uint_sized.hpp:
 
-../include/Model3D.hpp:
-
-../include/Triangle.hpp:
-
-../include/Vertex.hpp:
-
-../include/Material.hpp:
-
-../src/ModelViewProjectionUtils.cpp:
-
 ../include/glm/vec2.hpp:
 
 ../include/glm/detail/type_vec2.hpp:
@@ -5379,10 +5486,6 @@ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cstddef:
 
 ../include/glm/ext/matrix_float4x4_precision.hpp:
 
-../include/glm/detail/func_common.inl:
-
-../include/glm/detail/func_matrix.inl:
-
 ../include/glm/geometric.hpp:
 
 ../include/glm/detail/func_geometric.inl:
@@ -5407,6 +5510,10 @@ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cstddef:
 
 ../include/glm/ext/matrix_float2x2_precision.hpp:
 
+../include/BoundingBox.hpp:
+
+../include/glm/trigonometric.hpp:
+
 ../include/glm/packing.hpp:
 
 ../include/glm/detail/func_packing.inl:
@@ -5418,6 +5525,18 @@ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cstddef:
 ../include/glm/integer.hpp:
 
 ../include/glm/detail/func_integer.inl:
+
+../include/Model3D.hpp:
+
+../include/Triangle.hpp:
+
+../include/Vertex.hpp:
+
+../include/Material.hpp:
+
+../src/ModelViewProjectionUtils.cpp:
+
+../include/ModelViewProjectionUtils.hpp:
 
 ../include/glm/gtc/matrix_transform.hpp:
 

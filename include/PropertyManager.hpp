@@ -13,11 +13,12 @@
 
 #include <iostream>
 
+#define NOP ((void)0)
+
 class PropertyManager
 {
 public:
     GLFWwindow *window;
-    bool showWindow;
     Properties properties;
 
     imgui_addons::ImGuiFileBrowser fileDialog;

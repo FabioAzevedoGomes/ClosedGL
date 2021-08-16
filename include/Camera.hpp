@@ -2,6 +2,7 @@
 #define CAMERA_H
 
 #include <glm/vec3.hpp>
+#include <glm/glm.hpp>
 
 #include "Model3D.hpp"
 
@@ -26,12 +27,17 @@ public:
 
     Camera();
     void ResetPosition();
+
     void FrameObject(Model3D object);
+    void LookAt();
+    glm::vec3 GetAnglesToViewVector(glm::vec3 viewVector);
     void Rotate(float pitch, float roll, float yaw);
+    void PrintDefinition();
+
+private:
     void RotateRoll(float angle);
     void RotatePitch(float angle);
     void RotateYaw(float angle);
-    void PrintDefinition();
 };
 
 #endif

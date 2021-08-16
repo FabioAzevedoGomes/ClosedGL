@@ -68,7 +68,7 @@ void DrawObject(Model3D object, Properties vertexProperties)
 
 void RenderScene(std::vector<Model3D> objects, Camera &camera, Properties properties)
 {
-    glClearBufferfv(GL_COLOR, 0, BLACK);
+    glClearBufferfv(GL_COLOR, 0, glm::value_ptr(glm::vec4(properties.backgroundColor, 0.0f)));
 
     ApplyFrameProperties(properties);
     UpdateCameraValues(camera, properties);
@@ -83,7 +83,11 @@ void RenderScene(std::vector<Model3D> objects, Camera &camera, Properties proper
 
 void UpdateCameraValues(Camera &camera, Properties cameraProperties)
 {
-    camera.Rotate(cameraProperties.rotationPitch, cameraProperties.rotationRoll, cameraProperties.rotationYaw);
+    if (cameraProperties.keepLookingAtModel)
+        camera.LookAt();
+    else
+        camera.Rotate(cameraProperties.rotationPitch, cameraProperties.rotationRoll, cameraProperties.rotationYaw);
+
     camera.nearPlane = cameraProperties.nearPlane;
     camera.farPlane = cameraProperties.farPlane;
     camera.fieldOfView = cameraProperties.fieldOfView;
