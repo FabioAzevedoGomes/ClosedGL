@@ -1,3 +1,0 @@
-"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\ClosedGL.dir/objects.a
-C:\TDM-GCC-64\bin\ar.exe cr CMakeFiles\ClosedGL.dir/objects.a @CMakeFiles\ClosedGL.dir\objects1.rsp
-C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe  -DIMGUI_IMPL_OPENGL_LOADER_GL3W -DGLFW_EXPOSE_NATIVE_WGL -g -Wl,--whole-archive CMakeFiles\ClosedGL.dir/objects.a -Wl,--no-whole-archive -o ..\bin\ClosedGL_d.exe -Wl,--out-implib,lib\libClosedGL_d.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\ClosedGL.dir\linklibs.rsp
