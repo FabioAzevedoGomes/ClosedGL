@@ -1,7 +1,7 @@
 CMakeFiles/ClosedGL.dir/src/PropertyManager.cpp.obj: \
  C:\Users\Home\Desktop\CG\ClosedGL\src\PropertyManager.cpp \
  C:/Users/Home/Desktop/CG/ClosedGL/include/PropertyManager.hpp \
- C:/Users/Home/Desktop/CG/ClosedGL/include/GL3/gl3.h \
+ C:/Users/Home/Desktop/CG/ClosedGL/lib/GL3/gl3.h \
  C:/TDM-GCC-64/x86_64-w64-mingw32/include/windows.h \
  C:/TDM-GCC-64/x86_64-w64-mingw32/include/_mingw.h \
  C:/TDM-GCC-64/x86_64-w64-mingw32/include/_mingw_mac.h \
@@ -184,37 +184,37 @@ CMakeFiles/ClosedGL.dir/src/PropertyManager.cpp.obj: \
  C:/TDM-GCC-64/x86_64-w64-mingw32/include/stddef.h \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/stdint.h \
  C:/TDM-GCC-64/x86_64-w64-mingw32/include/stdint.h \
- C:/Users/Home/Desktop/CG/ClosedGL/include/GL3/gl3w.h \
- C:/Users/Home/Desktop/CG/ClosedGL/include/GL/glcorearb.h \
+ C:/Users/Home/Desktop/CG/ClosedGL/lib/GL3/gl3w.h \
+ C:/Users/Home/Desktop/CG/ClosedGL/lib/GL/glcorearb.h \
  C:/Users/Home/Desktop/CG/ClosedGL/lib/glfw/include/GLFW/glfw3.h \
  C:/TDM-GCC-64/x86_64-w64-mingw32/include/GL/gl.h \
  C:/Users/Home/Desktop/CG/ClosedGL/include/Properties.hpp \
- C:/Users/Home/Desktop/CG/ClosedGL/include/glm/vec3.hpp \
- C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_bool3.hpp \
- C:/Users/Home/Desktop/CG/ClosedGL/include/glm/detail/type_vec3.hpp \
- C:/Users/Home/Desktop/CG/ClosedGL/include/glm/detail/qualifier.hpp \
- C:/Users/Home/Desktop/CG/ClosedGL/include/glm/detail/setup.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/lib/glm/vec3.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/lib/glm/ext/vector_bool3.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/lib/glm/detail/type_vec3.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/lib/glm/detail/qualifier.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/lib/glm/detail/setup.hpp \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cassert \
  C:/TDM-GCC-64/x86_64-w64-mingw32/include/assert.h \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cstddef \
- C:/Users/Home/Desktop/CG/ClosedGL/include/glm/simd/platform.h \
+ C:/Users/Home/Desktop/CG/ClosedGL/lib/glm/simd/platform.h \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cstdint \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/type_traits \
- C:/Users/Home/Desktop/CG/ClosedGL/include/glm/detail/type_vec3.inl \
- C:/Users/Home/Desktop/CG/ClosedGL/include/glm/detail/compute_vector_relational.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/lib/glm/detail/type_vec3.inl \
+ C:/Users/Home/Desktop/CG/ClosedGL/lib/glm/detail/compute_vector_relational.hpp \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/limits \
- C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_bool3_precision.hpp \
- C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_float3.hpp \
- C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_float3_precision.hpp \
- C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_double3.hpp \
- C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_double3_precision.hpp \
- C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_int3.hpp \
- C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_int3_sized.hpp \
- C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/scalar_int_sized.hpp \
- C:/Users/Home/Desktop/CG/ClosedGL/include/glm/detail/setup.hpp \
- C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_uint3.hpp \
- C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/vector_uint3_sized.hpp \
- C:/Users/Home/Desktop/CG/ClosedGL/include/glm/ext/scalar_uint_sized.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/lib/glm/ext/vector_bool3_precision.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/lib/glm/ext/vector_float3.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/lib/glm/ext/vector_float3_precision.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/lib/glm/ext/vector_double3.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/lib/glm/ext/vector_double3_precision.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/lib/glm/ext/vector_int3.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/lib/glm/ext/vector_int3_sized.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/lib/glm/ext/scalar_int_sized.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/lib/glm/detail/setup.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/lib/glm/ext/vector_uint3.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/lib/glm/ext/vector_uint3_sized.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/lib/glm/ext/scalar_uint_sized.hpp \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cmath \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/cpp_type_traits.h \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/ext/type_traits.h \

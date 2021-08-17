@@ -1,7 +1,7 @@
 CMakeFiles/ClosedGL.dir/src/shaders/ShaderUtils.cpp.obj: \
  C:\Users\Home\Desktop\CG\ClosedGL\src\shaders\ShaderUtils.cpp \
- C:/Users/Home/Desktop/CG/ClosedGL/include/ShaderUtils.hpp \
- C:/Users/Home/Desktop/CG/ClosedGL/include/GL3/gl3.h \
+ C:/Users/Home/Desktop/CG/ClosedGL/include/shaders/ShaderUtils.hpp \
+ C:/Users/Home/Desktop/CG/ClosedGL/lib/GL3/gl3.h \
  C:/TDM-GCC-64/x86_64-w64-mingw32/include/windows.h \
  C:/TDM-GCC-64/x86_64-w64-mingw32/include/_mingw.h \
  C:/TDM-GCC-64/x86_64-w64-mingw32/include/_mingw_mac.h \
@@ -184,8 +184,8 @@ CMakeFiles/ClosedGL.dir/src/shaders/ShaderUtils.cpp.obj: \
  C:/TDM-GCC-64/x86_64-w64-mingw32/include/stddef.h \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/stdint.h \
  C:/TDM-GCC-64/x86_64-w64-mingw32/include/stdint.h \
- C:/Users/Home/Desktop/CG/ClosedGL/include/GL3/gl3w.h \
- C:/Users/Home/Desktop/CG/ClosedGL/include/GL/glcorearb.h \
+ C:/Users/Home/Desktop/CG/ClosedGL/lib/GL3/gl3w.h \
+ C:/Users/Home/Desktop/CG/ClosedGL/lib/GL/glcorearb.h \
  C:/Users/Home/Desktop/CG/ClosedGL/lib/glfw/include/GLFW/glfw3.h \
  C:/TDM-GCC-64/x86_64-w64-mingw32/include/GL/gl.h \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/iostream \

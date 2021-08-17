@@ -98,95 +98,95 @@ CMakeFiles/ClosedGL.dir/src/shaders/ShaderUtils.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ClosedGL.dir/src/shaders/ShaderUtils.cpp.s"
 	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Home\Desktop\CG\ClosedGL\src\shaders\ShaderUtils.cpp -o CMakeFiles\ClosedGL.dir\src\shaders\ShaderUtils.cpp.s
 
-CMakeFiles/ClosedGL.dir/src/Model3D.cpp.obj: CMakeFiles/ClosedGL.dir/flags.make
-CMakeFiles/ClosedGL.dir/src/Model3D.cpp.obj: CMakeFiles/ClosedGL.dir/includes_CXX.rsp
-CMakeFiles/ClosedGL.dir/src/Model3D.cpp.obj: ../src/Model3D.cpp
-CMakeFiles/ClosedGL.dir/src/Model3D.cpp.obj: CMakeFiles/ClosedGL.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Home\Desktop\CG\ClosedGL\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ClosedGL.dir/src/Model3D.cpp.obj"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ClosedGL.dir/src/Model3D.cpp.obj -MF CMakeFiles\ClosedGL.dir\src\Model3D.cpp.obj.d -o CMakeFiles\ClosedGL.dir\src\Model3D.cpp.obj -c C:\Users\Home\Desktop\CG\ClosedGL\src\Model3D.cpp
+CMakeFiles/ClosedGL.dir/src/3dScene/Model3D.cpp.obj: CMakeFiles/ClosedGL.dir/flags.make
+CMakeFiles/ClosedGL.dir/src/3dScene/Model3D.cpp.obj: CMakeFiles/ClosedGL.dir/includes_CXX.rsp
+CMakeFiles/ClosedGL.dir/src/3dScene/Model3D.cpp.obj: ../src/3dScene/Model3D.cpp
+CMakeFiles/ClosedGL.dir/src/3dScene/Model3D.cpp.obj: CMakeFiles/ClosedGL.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Home\Desktop\CG\ClosedGL\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ClosedGL.dir/src/3dScene/Model3D.cpp.obj"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ClosedGL.dir/src/3dScene/Model3D.cpp.obj -MF CMakeFiles\ClosedGL.dir\src\3dScene\Model3D.cpp.obj.d -o CMakeFiles\ClosedGL.dir\src\3dScene\Model3D.cpp.obj -c C:\Users\Home\Desktop\CG\ClosedGL\src\3dScene\Model3D.cpp
 
-CMakeFiles/ClosedGL.dir/src/Model3D.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ClosedGL.dir/src/Model3D.cpp.i"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Home\Desktop\CG\ClosedGL\src\Model3D.cpp > CMakeFiles\ClosedGL.dir\src\Model3D.cpp.i
+CMakeFiles/ClosedGL.dir/src/3dScene/Model3D.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ClosedGL.dir/src/3dScene/Model3D.cpp.i"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Home\Desktop\CG\ClosedGL\src\3dScene\Model3D.cpp > CMakeFiles\ClosedGL.dir\src\3dScene\Model3D.cpp.i
 
-CMakeFiles/ClosedGL.dir/src/Model3D.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ClosedGL.dir/src/Model3D.cpp.s"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Home\Desktop\CG\ClosedGL\src\Model3D.cpp -o CMakeFiles\ClosedGL.dir\src\Model3D.cpp.s
+CMakeFiles/ClosedGL.dir/src/3dScene/Model3D.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ClosedGL.dir/src/3dScene/Model3D.cpp.s"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Home\Desktop\CG\ClosedGL\src\3dScene\Model3D.cpp -o CMakeFiles\ClosedGL.dir\src\3dScene\Model3D.cpp.s
 
-CMakeFiles/ClosedGL.dir/src/Camera.cpp.obj: CMakeFiles/ClosedGL.dir/flags.make
-CMakeFiles/ClosedGL.dir/src/Camera.cpp.obj: CMakeFiles/ClosedGL.dir/includes_CXX.rsp
-CMakeFiles/ClosedGL.dir/src/Camera.cpp.obj: ../src/Camera.cpp
-CMakeFiles/ClosedGL.dir/src/Camera.cpp.obj: CMakeFiles/ClosedGL.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Home\Desktop\CG\ClosedGL\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ClosedGL.dir/src/Camera.cpp.obj"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ClosedGL.dir/src/Camera.cpp.obj -MF CMakeFiles\ClosedGL.dir\src\Camera.cpp.obj.d -o CMakeFiles\ClosedGL.dir\src\Camera.cpp.obj -c C:\Users\Home\Desktop\CG\ClosedGL\src\Camera.cpp
+CMakeFiles/ClosedGL.dir/src/3dScene/Camera.cpp.obj: CMakeFiles/ClosedGL.dir/flags.make
+CMakeFiles/ClosedGL.dir/src/3dScene/Camera.cpp.obj: CMakeFiles/ClosedGL.dir/includes_CXX.rsp
+CMakeFiles/ClosedGL.dir/src/3dScene/Camera.cpp.obj: ../src/3dScene/Camera.cpp
+CMakeFiles/ClosedGL.dir/src/3dScene/Camera.cpp.obj: CMakeFiles/ClosedGL.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Home\Desktop\CG\ClosedGL\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ClosedGL.dir/src/3dScene/Camera.cpp.obj"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ClosedGL.dir/src/3dScene/Camera.cpp.obj -MF CMakeFiles\ClosedGL.dir\src\3dScene\Camera.cpp.obj.d -o CMakeFiles\ClosedGL.dir\src\3dScene\Camera.cpp.obj -c C:\Users\Home\Desktop\CG\ClosedGL\src\3dScene\Camera.cpp
 
-CMakeFiles/ClosedGL.dir/src/Camera.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ClosedGL.dir/src/Camera.cpp.i"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Home\Desktop\CG\ClosedGL\src\Camera.cpp > CMakeFiles\ClosedGL.dir\src\Camera.cpp.i
+CMakeFiles/ClosedGL.dir/src/3dScene/Camera.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ClosedGL.dir/src/3dScene/Camera.cpp.i"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Home\Desktop\CG\ClosedGL\src\3dScene\Camera.cpp > CMakeFiles\ClosedGL.dir\src\3dScene\Camera.cpp.i
 
-CMakeFiles/ClosedGL.dir/src/Camera.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ClosedGL.dir/src/Camera.cpp.s"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Home\Desktop\CG\ClosedGL\src\Camera.cpp -o CMakeFiles\ClosedGL.dir\src\Camera.cpp.s
+CMakeFiles/ClosedGL.dir/src/3dScene/Camera.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ClosedGL.dir/src/3dScene/Camera.cpp.s"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Home\Desktop\CG\ClosedGL\src\3dScene\Camera.cpp -o CMakeFiles\ClosedGL.dir\src\3dScene\Camera.cpp.s
 
-CMakeFiles/ClosedGL.dir/src/ModelViewProjectionUtils.cpp.obj: CMakeFiles/ClosedGL.dir/flags.make
-CMakeFiles/ClosedGL.dir/src/ModelViewProjectionUtils.cpp.obj: CMakeFiles/ClosedGL.dir/includes_CXX.rsp
-CMakeFiles/ClosedGL.dir/src/ModelViewProjectionUtils.cpp.obj: ../src/ModelViewProjectionUtils.cpp
-CMakeFiles/ClosedGL.dir/src/ModelViewProjectionUtils.cpp.obj: CMakeFiles/ClosedGL.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Home\Desktop\CG\ClosedGL\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ClosedGL.dir/src/ModelViewProjectionUtils.cpp.obj"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ClosedGL.dir/src/ModelViewProjectionUtils.cpp.obj -MF CMakeFiles\ClosedGL.dir\src\ModelViewProjectionUtils.cpp.obj.d -o CMakeFiles\ClosedGL.dir\src\ModelViewProjectionUtils.cpp.obj -c C:\Users\Home\Desktop\CG\ClosedGL\src\ModelViewProjectionUtils.cpp
+CMakeFiles/ClosedGL.dir/src/rendering/ModelViewProjectionUtils.cpp.obj: CMakeFiles/ClosedGL.dir/flags.make
+CMakeFiles/ClosedGL.dir/src/rendering/ModelViewProjectionUtils.cpp.obj: CMakeFiles/ClosedGL.dir/includes_CXX.rsp
+CMakeFiles/ClosedGL.dir/src/rendering/ModelViewProjectionUtils.cpp.obj: ../src/rendering/ModelViewProjectionUtils.cpp
+CMakeFiles/ClosedGL.dir/src/rendering/ModelViewProjectionUtils.cpp.obj: CMakeFiles/ClosedGL.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Home\Desktop\CG\ClosedGL\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ClosedGL.dir/src/rendering/ModelViewProjectionUtils.cpp.obj"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ClosedGL.dir/src/rendering/ModelViewProjectionUtils.cpp.obj -MF CMakeFiles\ClosedGL.dir\src\rendering\ModelViewProjectionUtils.cpp.obj.d -o CMakeFiles\ClosedGL.dir\src\rendering\ModelViewProjectionUtils.cpp.obj -c C:\Users\Home\Desktop\CG\ClosedGL\src\rendering\ModelViewProjectionUtils.cpp
 
-CMakeFiles/ClosedGL.dir/src/ModelViewProjectionUtils.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ClosedGL.dir/src/ModelViewProjectionUtils.cpp.i"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Home\Desktop\CG\ClosedGL\src\ModelViewProjectionUtils.cpp > CMakeFiles\ClosedGL.dir\src\ModelViewProjectionUtils.cpp.i
+CMakeFiles/ClosedGL.dir/src/rendering/ModelViewProjectionUtils.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ClosedGL.dir/src/rendering/ModelViewProjectionUtils.cpp.i"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Home\Desktop\CG\ClosedGL\src\rendering\ModelViewProjectionUtils.cpp > CMakeFiles\ClosedGL.dir\src\rendering\ModelViewProjectionUtils.cpp.i
 
-CMakeFiles/ClosedGL.dir/src/ModelViewProjectionUtils.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ClosedGL.dir/src/ModelViewProjectionUtils.cpp.s"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Home\Desktop\CG\ClosedGL\src\ModelViewProjectionUtils.cpp -o CMakeFiles\ClosedGL.dir\src\ModelViewProjectionUtils.cpp.s
+CMakeFiles/ClosedGL.dir/src/rendering/ModelViewProjectionUtils.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ClosedGL.dir/src/rendering/ModelViewProjectionUtils.cpp.s"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Home\Desktop\CG\ClosedGL\src\rendering\ModelViewProjectionUtils.cpp -o CMakeFiles\ClosedGL.dir\src\rendering\ModelViewProjectionUtils.cpp.s
 
-CMakeFiles/ClosedGL.dir/src/Scene.cpp.obj: CMakeFiles/ClosedGL.dir/flags.make
-CMakeFiles/ClosedGL.dir/src/Scene.cpp.obj: CMakeFiles/ClosedGL.dir/includes_CXX.rsp
-CMakeFiles/ClosedGL.dir/src/Scene.cpp.obj: ../src/Scene.cpp
-CMakeFiles/ClosedGL.dir/src/Scene.cpp.obj: CMakeFiles/ClosedGL.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Home\Desktop\CG\ClosedGL\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/ClosedGL.dir/src/Scene.cpp.obj"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ClosedGL.dir/src/Scene.cpp.obj -MF CMakeFiles\ClosedGL.dir\src\Scene.cpp.obj.d -o CMakeFiles\ClosedGL.dir\src\Scene.cpp.obj -c C:\Users\Home\Desktop\CG\ClosedGL\src\Scene.cpp
+CMakeFiles/ClosedGL.dir/src/3dScene/Scene.cpp.obj: CMakeFiles/ClosedGL.dir/flags.make
+CMakeFiles/ClosedGL.dir/src/3dScene/Scene.cpp.obj: CMakeFiles/ClosedGL.dir/includes_CXX.rsp
+CMakeFiles/ClosedGL.dir/src/3dScene/Scene.cpp.obj: ../src/3dScene/Scene.cpp
+CMakeFiles/ClosedGL.dir/src/3dScene/Scene.cpp.obj: CMakeFiles/ClosedGL.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Home\Desktop\CG\ClosedGL\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/ClosedGL.dir/src/3dScene/Scene.cpp.obj"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ClosedGL.dir/src/3dScene/Scene.cpp.obj -MF CMakeFiles\ClosedGL.dir\src\3dScene\Scene.cpp.obj.d -o CMakeFiles\ClosedGL.dir\src\3dScene\Scene.cpp.obj -c C:\Users\Home\Desktop\CG\ClosedGL\src\3dScene\Scene.cpp
 
-CMakeFiles/ClosedGL.dir/src/Scene.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ClosedGL.dir/src/Scene.cpp.i"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Home\Desktop\CG\ClosedGL\src\Scene.cpp > CMakeFiles\ClosedGL.dir\src\Scene.cpp.i
+CMakeFiles/ClosedGL.dir/src/3dScene/Scene.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ClosedGL.dir/src/3dScene/Scene.cpp.i"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Home\Desktop\CG\ClosedGL\src\3dScene\Scene.cpp > CMakeFiles\ClosedGL.dir\src\3dScene\Scene.cpp.i
 
-CMakeFiles/ClosedGL.dir/src/Scene.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ClosedGL.dir/src/Scene.cpp.s"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Home\Desktop\CG\ClosedGL\src\Scene.cpp -o CMakeFiles\ClosedGL.dir\src\Scene.cpp.s
+CMakeFiles/ClosedGL.dir/src/3dScene/Scene.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ClosedGL.dir/src/3dScene/Scene.cpp.s"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Home\Desktop\CG\ClosedGL\src\3dScene\Scene.cpp -o CMakeFiles\ClosedGL.dir\src\3dScene\Scene.cpp.s
 
-CMakeFiles/ClosedGL.dir/src/RenderUtils.cpp.obj: CMakeFiles/ClosedGL.dir/flags.make
-CMakeFiles/ClosedGL.dir/src/RenderUtils.cpp.obj: CMakeFiles/ClosedGL.dir/includes_CXX.rsp
-CMakeFiles/ClosedGL.dir/src/RenderUtils.cpp.obj: ../src/RenderUtils.cpp
-CMakeFiles/ClosedGL.dir/src/RenderUtils.cpp.obj: CMakeFiles/ClosedGL.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Home\Desktop\CG\ClosedGL\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/ClosedGL.dir/src/RenderUtils.cpp.obj"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ClosedGL.dir/src/RenderUtils.cpp.obj -MF CMakeFiles\ClosedGL.dir\src\RenderUtils.cpp.obj.d -o CMakeFiles\ClosedGL.dir\src\RenderUtils.cpp.obj -c C:\Users\Home\Desktop\CG\ClosedGL\src\RenderUtils.cpp
+CMakeFiles/ClosedGL.dir/src/rendering/RenderUtils.cpp.obj: CMakeFiles/ClosedGL.dir/flags.make
+CMakeFiles/ClosedGL.dir/src/rendering/RenderUtils.cpp.obj: CMakeFiles/ClosedGL.dir/includes_CXX.rsp
+CMakeFiles/ClosedGL.dir/src/rendering/RenderUtils.cpp.obj: ../src/rendering/RenderUtils.cpp
+CMakeFiles/ClosedGL.dir/src/rendering/RenderUtils.cpp.obj: CMakeFiles/ClosedGL.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Home\Desktop\CG\ClosedGL\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/ClosedGL.dir/src/rendering/RenderUtils.cpp.obj"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ClosedGL.dir/src/rendering/RenderUtils.cpp.obj -MF CMakeFiles\ClosedGL.dir\src\rendering\RenderUtils.cpp.obj.d -o CMakeFiles\ClosedGL.dir\src\rendering\RenderUtils.cpp.obj -c C:\Users\Home\Desktop\CG\ClosedGL\src\rendering\RenderUtils.cpp
 
-CMakeFiles/ClosedGL.dir/src/RenderUtils.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ClosedGL.dir/src/RenderUtils.cpp.i"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Home\Desktop\CG\ClosedGL\src\RenderUtils.cpp > CMakeFiles\ClosedGL.dir\src\RenderUtils.cpp.i
+CMakeFiles/ClosedGL.dir/src/rendering/RenderUtils.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ClosedGL.dir/src/rendering/RenderUtils.cpp.i"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Home\Desktop\CG\ClosedGL\src\rendering\RenderUtils.cpp > CMakeFiles\ClosedGL.dir\src\rendering\RenderUtils.cpp.i
 
-CMakeFiles/ClosedGL.dir/src/RenderUtils.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ClosedGL.dir/src/RenderUtils.cpp.s"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Home\Desktop\CG\ClosedGL\src\RenderUtils.cpp -o CMakeFiles\ClosedGL.dir\src\RenderUtils.cpp.s
+CMakeFiles/ClosedGL.dir/src/rendering/RenderUtils.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ClosedGL.dir/src/rendering/RenderUtils.cpp.s"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Home\Desktop\CG\ClosedGL\src\rendering\RenderUtils.cpp -o CMakeFiles\ClosedGL.dir\src\rendering\RenderUtils.cpp.s
 
-CMakeFiles/ClosedGL.dir/src/PropertyManager.cpp.obj: CMakeFiles/ClosedGL.dir/flags.make
-CMakeFiles/ClosedGL.dir/src/PropertyManager.cpp.obj: CMakeFiles/ClosedGL.dir/includes_CXX.rsp
-CMakeFiles/ClosedGL.dir/src/PropertyManager.cpp.obj: ../src/PropertyManager.cpp
-CMakeFiles/ClosedGL.dir/src/PropertyManager.cpp.obj: CMakeFiles/ClosedGL.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Home\Desktop\CG\ClosedGL\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/ClosedGL.dir/src/PropertyManager.cpp.obj"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ClosedGL.dir/src/PropertyManager.cpp.obj -MF CMakeFiles\ClosedGL.dir\src\PropertyManager.cpp.obj.d -o CMakeFiles\ClosedGL.dir\src\PropertyManager.cpp.obj -c C:\Users\Home\Desktop\CG\ClosedGL\src\PropertyManager.cpp
+CMakeFiles/ClosedGL.dir/src/gui/PropertyManager.cpp.obj: CMakeFiles/ClosedGL.dir/flags.make
+CMakeFiles/ClosedGL.dir/src/gui/PropertyManager.cpp.obj: CMakeFiles/ClosedGL.dir/includes_CXX.rsp
+CMakeFiles/ClosedGL.dir/src/gui/PropertyManager.cpp.obj: ../src/gui/PropertyManager.cpp
+CMakeFiles/ClosedGL.dir/src/gui/PropertyManager.cpp.obj: CMakeFiles/ClosedGL.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Home\Desktop\CG\ClosedGL\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/ClosedGL.dir/src/gui/PropertyManager.cpp.obj"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ClosedGL.dir/src/gui/PropertyManager.cpp.obj -MF CMakeFiles\ClosedGL.dir\src\gui\PropertyManager.cpp.obj.d -o CMakeFiles\ClosedGL.dir\src\gui\PropertyManager.cpp.obj -c C:\Users\Home\Desktop\CG\ClosedGL\src\gui\PropertyManager.cpp
 
-CMakeFiles/ClosedGL.dir/src/PropertyManager.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ClosedGL.dir/src/PropertyManager.cpp.i"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Home\Desktop\CG\ClosedGL\src\PropertyManager.cpp > CMakeFiles\ClosedGL.dir\src\PropertyManager.cpp.i
+CMakeFiles/ClosedGL.dir/src/gui/PropertyManager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ClosedGL.dir/src/gui/PropertyManager.cpp.i"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Home\Desktop\CG\ClosedGL\src\gui\PropertyManager.cpp > CMakeFiles\ClosedGL.dir\src\gui\PropertyManager.cpp.i
 
-CMakeFiles/ClosedGL.dir/src/PropertyManager.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ClosedGL.dir/src/PropertyManager.cpp.s"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Home\Desktop\CG\ClosedGL\src\PropertyManager.cpp -o CMakeFiles\ClosedGL.dir\src\PropertyManager.cpp.s
+CMakeFiles/ClosedGL.dir/src/gui/PropertyManager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ClosedGL.dir/src/gui/PropertyManager.cpp.s"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Home\Desktop\CG\ClosedGL\src\gui\PropertyManager.cpp -o CMakeFiles\ClosedGL.dir\src\gui\PropertyManager.cpp.s
 
 CMakeFiles/ClosedGL.dir/lib/gl3w.c.obj: CMakeFiles/ClosedGL.dir/flags.make
 CMakeFiles/ClosedGL.dir/lib/gl3w.c.obj: CMakeFiles/ClosedGL.dir/includes_C.rsp
@@ -327,12 +327,12 @@ CMakeFiles/ClosedGL.dir/lib/FileBrowser/ImGuiFileBrowser.cpp.s: cmake_force
 ClosedGL_OBJECTS = \
 "CMakeFiles/ClosedGL.dir/src/main.cpp.obj" \
 "CMakeFiles/ClosedGL.dir/src/shaders/ShaderUtils.cpp.obj" \
-"CMakeFiles/ClosedGL.dir/src/Model3D.cpp.obj" \
-"CMakeFiles/ClosedGL.dir/src/Camera.cpp.obj" \
-"CMakeFiles/ClosedGL.dir/src/ModelViewProjectionUtils.cpp.obj" \
-"CMakeFiles/ClosedGL.dir/src/Scene.cpp.obj" \
-"CMakeFiles/ClosedGL.dir/src/RenderUtils.cpp.obj" \
-"CMakeFiles/ClosedGL.dir/src/PropertyManager.cpp.obj" \
+"CMakeFiles/ClosedGL.dir/src/3dScene/Model3D.cpp.obj" \
+"CMakeFiles/ClosedGL.dir/src/3dScene/Camera.cpp.obj" \
+"CMakeFiles/ClosedGL.dir/src/rendering/ModelViewProjectionUtils.cpp.obj" \
+"CMakeFiles/ClosedGL.dir/src/3dScene/Scene.cpp.obj" \
+"CMakeFiles/ClosedGL.dir/src/rendering/RenderUtils.cpp.obj" \
+"CMakeFiles/ClosedGL.dir/src/gui/PropertyManager.cpp.obj" \
 "CMakeFiles/ClosedGL.dir/lib/gl3w.c.obj" \
 "CMakeFiles/ClosedGL.dir/lib/imgui/imgui_demo.cpp.obj" \
 "CMakeFiles/ClosedGL.dir/lib/imgui/imgui_draw.cpp.obj" \
@@ -348,12 +348,12 @@ ClosedGL_EXTERNAL_OBJECTS =
 
 ../bin/ClosedGL_d.exe: CMakeFiles/ClosedGL.dir/src/main.cpp.obj
 ../bin/ClosedGL_d.exe: CMakeFiles/ClosedGL.dir/src/shaders/ShaderUtils.cpp.obj
-../bin/ClosedGL_d.exe: CMakeFiles/ClosedGL.dir/src/Model3D.cpp.obj
-../bin/ClosedGL_d.exe: CMakeFiles/ClosedGL.dir/src/Camera.cpp.obj
-../bin/ClosedGL_d.exe: CMakeFiles/ClosedGL.dir/src/ModelViewProjectionUtils.cpp.obj
-../bin/ClosedGL_d.exe: CMakeFiles/ClosedGL.dir/src/Scene.cpp.obj
-../bin/ClosedGL_d.exe: CMakeFiles/ClosedGL.dir/src/RenderUtils.cpp.obj
-../bin/ClosedGL_d.exe: CMakeFiles/ClosedGL.dir/src/PropertyManager.cpp.obj
+../bin/ClosedGL_d.exe: CMakeFiles/ClosedGL.dir/src/3dScene/Model3D.cpp.obj
+../bin/ClosedGL_d.exe: CMakeFiles/ClosedGL.dir/src/3dScene/Camera.cpp.obj
+../bin/ClosedGL_d.exe: CMakeFiles/ClosedGL.dir/src/rendering/ModelViewProjectionUtils.cpp.obj
+../bin/ClosedGL_d.exe: CMakeFiles/ClosedGL.dir/src/3dScene/Scene.cpp.obj
+../bin/ClosedGL_d.exe: CMakeFiles/ClosedGL.dir/src/rendering/RenderUtils.cpp.obj
+../bin/ClosedGL_d.exe: CMakeFiles/ClosedGL.dir/src/gui/PropertyManager.cpp.obj
 ../bin/ClosedGL_d.exe: CMakeFiles/ClosedGL.dir/lib/gl3w.c.obj
 ../bin/ClosedGL_d.exe: CMakeFiles/ClosedGL.dir/lib/imgui/imgui_demo.cpp.obj
 ../bin/ClosedGL_d.exe: CMakeFiles/ClosedGL.dir/lib/imgui/imgui_draw.cpp.obj

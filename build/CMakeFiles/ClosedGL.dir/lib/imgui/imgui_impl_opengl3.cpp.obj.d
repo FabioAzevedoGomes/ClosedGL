@@ -40,7 +40,7 @@ CMakeFiles/ClosedGL.dir/lib/imgui/imgui_impl_opengl3.cpp.obj: \
  C:/TDM-GCC-64/x86_64-w64-mingw32/include/sec_api/stdio_s.h \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/stdint.h \
  C:/TDM-GCC-64/x86_64-w64-mingw32/include/stdint.h \
- C:/Users/Home/Desktop/CG/ClosedGL/include/GL3/gl3.h \
+ C:/Users/Home/Desktop/CG/ClosedGL/lib/GL3/gl3.h \
  C:/TDM-GCC-64/x86_64-w64-mingw32/include/windows.h \
  C:/TDM-GCC-64/x86_64-w64-mingw32/include/sdkddkver.h \
  C:/TDM-GCC-64/x86_64-w64-mingw32/include/excpt.h \
@@ -192,5 +192,5 @@ CMakeFiles/ClosedGL.dir/lib/imgui/imgui_impl_opengl3.cpp.obj: \
  C:/TDM-GCC-64/x86_64-w64-mingw32/include/winsvc.h \
  C:/TDM-GCC-64/x86_64-w64-mingw32/include/mcx.h \
  C:/TDM-GCC-64/x86_64-w64-mingw32/include/imm.h \
- C:/Users/Home/Desktop/CG/ClosedGL/include/GL3/gl3w.h \
- C:/Users/Home/Desktop/CG/ClosedGL/include/GL/glcorearb.h
+ C:/Users/Home/Desktop/CG/ClosedGL/lib/GL3/gl3w.h \
+ C:/Users/Home/Desktop/CG/ClosedGL/lib/GL/glcorearb.h

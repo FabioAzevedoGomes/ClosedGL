@@ -34,12 +34,12 @@ set(RUN_DIR ${PROJECT_SOURCE_DIR}/bin)
 add_executable(ClosedGL 
   src/main.cpp 
   src/shaders/ShaderUtils.cpp
-  src/Model3D.cpp
-  src/Camera.cpp
-  src/ModelViewProjectionUtils.cpp
-  src/Scene.cpp
-  src/RenderUtils.cpp
-  src/PropertyManager.cpp
+  src/3dScene/Model3D.cpp
+  src/3dScene/Camera.cpp
+  src/rendering/ModelViewProjectionUtils.cpp
+  src/3dScene/Scene.cpp
+  src/rendering/RenderUtils.cpp
+  src/gui/PropertyManager.cpp
   lib/gl3w.c
   lib/imgui/imgui_demo.cpp
   lib/imgui/imgui_draw.cpp
@@ -49,8 +49,8 @@ add_executable(ClosedGL
   lib/imgui/imgui_impl_glfw.cpp
   lib/imgui/imgui_impl_opengl3.cpp
   lib/FileBrowser/ImGuiFileBrowser.cpp
-  vertexShader.vert 
-  fragmentShader.frag
+  src/shaders/vertexShader.vert 
+  src/shaders/fragmentShader.frag
   )
 set_property(TARGET ClosedGL PROPERTY DEBUG_POSTFIX _d)
 target_link_libraries(ClosedGL ${COMMON_LIBS})
@@ -62,10 +62,16 @@ IF (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 ENDIF (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
 include_directories( include )
-include_directories(lib/glfw/include)
+include_directories(include/data)
+include_directories(include/gui/)
+include_directories(include/3dScene)
+include_directories(include/shaders)
+include_directories(include/rendering)
+include_directories(lib)
 include_directories(lib/imgui/)
 include_directories(lib/FileBrowser)
 include_directories(lib/FileBrower/Dirent)
+include_directories(lib/glfw/include)
 
 target_link_libraries(ClosedGL imm32.lib)
 

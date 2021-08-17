@@ -415,149 +415,101 @@ lib/imgui/imgui_widgets.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ClosedGL.dir\build.make CMakeFiles/ClosedGL.dir/lib/imgui/imgui_widgets.cpp.s
 .PHONY : lib/imgui/imgui_widgets.cpp.s
 
-src/Camera.obj: src/Camera.cpp.obj
-.PHONY : src/Camera.obj
+src/3dScene/Camera.obj: src/3dScene/Camera.cpp.obj
+.PHONY : src/3dScene/Camera.obj
 
 # target to build an object file
-src/Camera.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ClosedGL.dir\build.make CMakeFiles/ClosedGL.dir/src/Camera.cpp.obj
-.PHONY : src/Camera.cpp.obj
+src/3dScene/Camera.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ClosedGL.dir\build.make CMakeFiles/ClosedGL.dir/src/3dScene/Camera.cpp.obj
+.PHONY : src/3dScene/Camera.cpp.obj
 
-src/Camera.i: src/Camera.cpp.i
-.PHONY : src/Camera.i
+src/3dScene/Camera.i: src/3dScene/Camera.cpp.i
+.PHONY : src/3dScene/Camera.i
 
 # target to preprocess a source file
-src/Camera.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ClosedGL.dir\build.make CMakeFiles/ClosedGL.dir/src/Camera.cpp.i
-.PHONY : src/Camera.cpp.i
+src/3dScene/Camera.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ClosedGL.dir\build.make CMakeFiles/ClosedGL.dir/src/3dScene/Camera.cpp.i
+.PHONY : src/3dScene/Camera.cpp.i
 
-src/Camera.s: src/Camera.cpp.s
-.PHONY : src/Camera.s
+src/3dScene/Camera.s: src/3dScene/Camera.cpp.s
+.PHONY : src/3dScene/Camera.s
 
 # target to generate assembly for a file
-src/Camera.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ClosedGL.dir\build.make CMakeFiles/ClosedGL.dir/src/Camera.cpp.s
-.PHONY : src/Camera.cpp.s
+src/3dScene/Camera.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ClosedGL.dir\build.make CMakeFiles/ClosedGL.dir/src/3dScene/Camera.cpp.s
+.PHONY : src/3dScene/Camera.cpp.s
 
-src/Model3D.obj: src/Model3D.cpp.obj
-.PHONY : src/Model3D.obj
+src/3dScene/Model3D.obj: src/3dScene/Model3D.cpp.obj
+.PHONY : src/3dScene/Model3D.obj
 
 # target to build an object file
-src/Model3D.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ClosedGL.dir\build.make CMakeFiles/ClosedGL.dir/src/Model3D.cpp.obj
-.PHONY : src/Model3D.cpp.obj
+src/3dScene/Model3D.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ClosedGL.dir\build.make CMakeFiles/ClosedGL.dir/src/3dScene/Model3D.cpp.obj
+.PHONY : src/3dScene/Model3D.cpp.obj
 
-src/Model3D.i: src/Model3D.cpp.i
-.PHONY : src/Model3D.i
+src/3dScene/Model3D.i: src/3dScene/Model3D.cpp.i
+.PHONY : src/3dScene/Model3D.i
 
 # target to preprocess a source file
-src/Model3D.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ClosedGL.dir\build.make CMakeFiles/ClosedGL.dir/src/Model3D.cpp.i
-.PHONY : src/Model3D.cpp.i
+src/3dScene/Model3D.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ClosedGL.dir\build.make CMakeFiles/ClosedGL.dir/src/3dScene/Model3D.cpp.i
+.PHONY : src/3dScene/Model3D.cpp.i
 
-src/Model3D.s: src/Model3D.cpp.s
-.PHONY : src/Model3D.s
+src/3dScene/Model3D.s: src/3dScene/Model3D.cpp.s
+.PHONY : src/3dScene/Model3D.s
 
 # target to generate assembly for a file
-src/Model3D.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ClosedGL.dir\build.make CMakeFiles/ClosedGL.dir/src/Model3D.cpp.s
-.PHONY : src/Model3D.cpp.s
+src/3dScene/Model3D.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ClosedGL.dir\build.make CMakeFiles/ClosedGL.dir/src/3dScene/Model3D.cpp.s
+.PHONY : src/3dScene/Model3D.cpp.s
 
-src/ModelViewProjectionUtils.obj: src/ModelViewProjectionUtils.cpp.obj
-.PHONY : src/ModelViewProjectionUtils.obj
+src/3dScene/Scene.obj: src/3dScene/Scene.cpp.obj
+.PHONY : src/3dScene/Scene.obj
 
 # target to build an object file
-src/ModelViewProjectionUtils.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ClosedGL.dir\build.make CMakeFiles/ClosedGL.dir/src/ModelViewProjectionUtils.cpp.obj
-.PHONY : src/ModelViewProjectionUtils.cpp.obj
+src/3dScene/Scene.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ClosedGL.dir\build.make CMakeFiles/ClosedGL.dir/src/3dScene/Scene.cpp.obj
+.PHONY : src/3dScene/Scene.cpp.obj
 
-src/ModelViewProjectionUtils.i: src/ModelViewProjectionUtils.cpp.i
-.PHONY : src/ModelViewProjectionUtils.i
+src/3dScene/Scene.i: src/3dScene/Scene.cpp.i
+.PHONY : src/3dScene/Scene.i
 
 # target to preprocess a source file
-src/ModelViewProjectionUtils.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ClosedGL.dir\build.make CMakeFiles/ClosedGL.dir/src/ModelViewProjectionUtils.cpp.i
-.PHONY : src/ModelViewProjectionUtils.cpp.i
+src/3dScene/Scene.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ClosedGL.dir\build.make CMakeFiles/ClosedGL.dir/src/3dScene/Scene.cpp.i
+.PHONY : src/3dScene/Scene.cpp.i
 
-src/ModelViewProjectionUtils.s: src/ModelViewProjectionUtils.cpp.s
-.PHONY : src/ModelViewProjectionUtils.s
+src/3dScene/Scene.s: src/3dScene/Scene.cpp.s
+.PHONY : src/3dScene/Scene.s
 
 # target to generate assembly for a file
-src/ModelViewProjectionUtils.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ClosedGL.dir\build.make CMakeFiles/ClosedGL.dir/src/ModelViewProjectionUtils.cpp.s
-.PHONY : src/ModelViewProjectionUtils.cpp.s
+src/3dScene/Scene.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ClosedGL.dir\build.make CMakeFiles/ClosedGL.dir/src/3dScene/Scene.cpp.s
+.PHONY : src/3dScene/Scene.cpp.s
 
-src/PropertyManager.obj: src/PropertyManager.cpp.obj
-.PHONY : src/PropertyManager.obj
+src/gui/PropertyManager.obj: src/gui/PropertyManager.cpp.obj
+.PHONY : src/gui/PropertyManager.obj
 
 # target to build an object file
-src/PropertyManager.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ClosedGL.dir\build.make CMakeFiles/ClosedGL.dir/src/PropertyManager.cpp.obj
-.PHONY : src/PropertyManager.cpp.obj
+src/gui/PropertyManager.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ClosedGL.dir\build.make CMakeFiles/ClosedGL.dir/src/gui/PropertyManager.cpp.obj
+.PHONY : src/gui/PropertyManager.cpp.obj
 
-src/PropertyManager.i: src/PropertyManager.cpp.i
-.PHONY : src/PropertyManager.i
-
-# target to preprocess a source file
-src/PropertyManager.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ClosedGL.dir\build.make CMakeFiles/ClosedGL.dir/src/PropertyManager.cpp.i
-.PHONY : src/PropertyManager.cpp.i
-
-src/PropertyManager.s: src/PropertyManager.cpp.s
-.PHONY : src/PropertyManager.s
-
-# target to generate assembly for a file
-src/PropertyManager.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ClosedGL.dir\build.make CMakeFiles/ClosedGL.dir/src/PropertyManager.cpp.s
-.PHONY : src/PropertyManager.cpp.s
-
-src/RenderUtils.obj: src/RenderUtils.cpp.obj
-.PHONY : src/RenderUtils.obj
-
-# target to build an object file
-src/RenderUtils.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ClosedGL.dir\build.make CMakeFiles/ClosedGL.dir/src/RenderUtils.cpp.obj
-.PHONY : src/RenderUtils.cpp.obj
-
-src/RenderUtils.i: src/RenderUtils.cpp.i
-.PHONY : src/RenderUtils.i
+src/gui/PropertyManager.i: src/gui/PropertyManager.cpp.i
+.PHONY : src/gui/PropertyManager.i
 
 # target to preprocess a source file
-src/RenderUtils.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ClosedGL.dir\build.make CMakeFiles/ClosedGL.dir/src/RenderUtils.cpp.i
-.PHONY : src/RenderUtils.cpp.i
+src/gui/PropertyManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ClosedGL.dir\build.make CMakeFiles/ClosedGL.dir/src/gui/PropertyManager.cpp.i
+.PHONY : src/gui/PropertyManager.cpp.i
 
-src/RenderUtils.s: src/RenderUtils.cpp.s
-.PHONY : src/RenderUtils.s
-
-# target to generate assembly for a file
-src/RenderUtils.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ClosedGL.dir\build.make CMakeFiles/ClosedGL.dir/src/RenderUtils.cpp.s
-.PHONY : src/RenderUtils.cpp.s
-
-src/Scene.obj: src/Scene.cpp.obj
-.PHONY : src/Scene.obj
-
-# target to build an object file
-src/Scene.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ClosedGL.dir\build.make CMakeFiles/ClosedGL.dir/src/Scene.cpp.obj
-.PHONY : src/Scene.cpp.obj
-
-src/Scene.i: src/Scene.cpp.i
-.PHONY : src/Scene.i
-
-# target to preprocess a source file
-src/Scene.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ClosedGL.dir\build.make CMakeFiles/ClosedGL.dir/src/Scene.cpp.i
-.PHONY : src/Scene.cpp.i
-
-src/Scene.s: src/Scene.cpp.s
-.PHONY : src/Scene.s
+src/gui/PropertyManager.s: src/gui/PropertyManager.cpp.s
+.PHONY : src/gui/PropertyManager.s
 
 # target to generate assembly for a file
-src/Scene.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ClosedGL.dir\build.make CMakeFiles/ClosedGL.dir/src/Scene.cpp.s
-.PHONY : src/Scene.cpp.s
+src/gui/PropertyManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ClosedGL.dir\build.make CMakeFiles/ClosedGL.dir/src/gui/PropertyManager.cpp.s
+.PHONY : src/gui/PropertyManager.cpp.s
 
 src/main.obj: src/main.cpp.obj
 .PHONY : src/main.obj
@@ -582,6 +534,54 @@ src/main.s: src/main.cpp.s
 src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ClosedGL.dir\build.make CMakeFiles/ClosedGL.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
+
+src/rendering/ModelViewProjectionUtils.obj: src/rendering/ModelViewProjectionUtils.cpp.obj
+.PHONY : src/rendering/ModelViewProjectionUtils.obj
+
+# target to build an object file
+src/rendering/ModelViewProjectionUtils.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ClosedGL.dir\build.make CMakeFiles/ClosedGL.dir/src/rendering/ModelViewProjectionUtils.cpp.obj
+.PHONY : src/rendering/ModelViewProjectionUtils.cpp.obj
+
+src/rendering/ModelViewProjectionUtils.i: src/rendering/ModelViewProjectionUtils.cpp.i
+.PHONY : src/rendering/ModelViewProjectionUtils.i
+
+# target to preprocess a source file
+src/rendering/ModelViewProjectionUtils.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ClosedGL.dir\build.make CMakeFiles/ClosedGL.dir/src/rendering/ModelViewProjectionUtils.cpp.i
+.PHONY : src/rendering/ModelViewProjectionUtils.cpp.i
+
+src/rendering/ModelViewProjectionUtils.s: src/rendering/ModelViewProjectionUtils.cpp.s
+.PHONY : src/rendering/ModelViewProjectionUtils.s
+
+# target to generate assembly for a file
+src/rendering/ModelViewProjectionUtils.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ClosedGL.dir\build.make CMakeFiles/ClosedGL.dir/src/rendering/ModelViewProjectionUtils.cpp.s
+.PHONY : src/rendering/ModelViewProjectionUtils.cpp.s
+
+src/rendering/RenderUtils.obj: src/rendering/RenderUtils.cpp.obj
+.PHONY : src/rendering/RenderUtils.obj
+
+# target to build an object file
+src/rendering/RenderUtils.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ClosedGL.dir\build.make CMakeFiles/ClosedGL.dir/src/rendering/RenderUtils.cpp.obj
+.PHONY : src/rendering/RenderUtils.cpp.obj
+
+src/rendering/RenderUtils.i: src/rendering/RenderUtils.cpp.i
+.PHONY : src/rendering/RenderUtils.i
+
+# target to preprocess a source file
+src/rendering/RenderUtils.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ClosedGL.dir\build.make CMakeFiles/ClosedGL.dir/src/rendering/RenderUtils.cpp.i
+.PHONY : src/rendering/RenderUtils.cpp.i
+
+src/rendering/RenderUtils.s: src/rendering/RenderUtils.cpp.s
+.PHONY : src/rendering/RenderUtils.s
+
+# target to generate assembly for a file
+src/rendering/RenderUtils.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ClosedGL.dir\build.make CMakeFiles/ClosedGL.dir/src/rendering/RenderUtils.cpp.s
+.PHONY : src/rendering/RenderUtils.cpp.s
 
 src/shaders/ShaderUtils.obj: src/shaders/ShaderUtils.cpp.obj
 .PHONY : src/shaders/ShaderUtils.obj
@@ -649,27 +649,27 @@ help:
 	@echo ... lib/imgui/imgui_widgets.obj
 	@echo ... lib/imgui/imgui_widgets.i
 	@echo ... lib/imgui/imgui_widgets.s
-	@echo ... src/Camera.obj
-	@echo ... src/Camera.i
-	@echo ... src/Camera.s
-	@echo ... src/Model3D.obj
-	@echo ... src/Model3D.i
-	@echo ... src/Model3D.s
-	@echo ... src/ModelViewProjectionUtils.obj
-	@echo ... src/ModelViewProjectionUtils.i
-	@echo ... src/ModelViewProjectionUtils.s
-	@echo ... src/PropertyManager.obj
-	@echo ... src/PropertyManager.i
-	@echo ... src/PropertyManager.s
-	@echo ... src/RenderUtils.obj
-	@echo ... src/RenderUtils.i
-	@echo ... src/RenderUtils.s
-	@echo ... src/Scene.obj
-	@echo ... src/Scene.i
-	@echo ... src/Scene.s
+	@echo ... src/3dScene/Camera.obj
+	@echo ... src/3dScene/Camera.i
+	@echo ... src/3dScene/Camera.s
+	@echo ... src/3dScene/Model3D.obj
+	@echo ... src/3dScene/Model3D.i
+	@echo ... src/3dScene/Model3D.s
+	@echo ... src/3dScene/Scene.obj
+	@echo ... src/3dScene/Scene.i
+	@echo ... src/3dScene/Scene.s
+	@echo ... src/gui/PropertyManager.obj
+	@echo ... src/gui/PropertyManager.i
+	@echo ... src/gui/PropertyManager.s
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s
+	@echo ... src/rendering/ModelViewProjectionUtils.obj
+	@echo ... src/rendering/ModelViewProjectionUtils.i
+	@echo ... src/rendering/ModelViewProjectionUtils.s
+	@echo ... src/rendering/RenderUtils.obj
+	@echo ... src/rendering/RenderUtils.i
+	@echo ... src/rendering/RenderUtils.s
 	@echo ... src/shaders/ShaderUtils.obj
 	@echo ... src/shaders/ShaderUtils.i
 	@echo ... src/shaders/ShaderUtils.s

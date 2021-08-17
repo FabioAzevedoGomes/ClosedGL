@@ -11,33 +11,33 @@
 },
 {
   "directory": "C:/Users/Home/Desktop/CG/ClosedGL/build",
-  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe  @CMakeFiles/ClosedGL.dir/includes_CXX.rsp  -DIMGUI_IMPL_OPENGL_LOADER_GL3W -DGLFW_EXPOSE_NATIVE_WGL -g -o CMakeFiles\\ClosedGL.dir\\src\\Model3D.cpp.obj -c C:\\Users\\Home\\Desktop\\CG\\ClosedGL\\src\\Model3D.cpp",
-  "file": "C:/Users/Home/Desktop/CG/ClosedGL/src/Model3D.cpp"
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe  @CMakeFiles/ClosedGL.dir/includes_CXX.rsp  -DIMGUI_IMPL_OPENGL_LOADER_GL3W -DGLFW_EXPOSE_NATIVE_WGL -g -o CMakeFiles\\ClosedGL.dir\\src\\3dScene\\Model3D.cpp.obj -c C:\\Users\\Home\\Desktop\\CG\\ClosedGL\\src\\3dScene\\Model3D.cpp",
+  "file": "C:/Users/Home/Desktop/CG/ClosedGL/src/3dScene/Model3D.cpp"
 },
 {
   "directory": "C:/Users/Home/Desktop/CG/ClosedGL/build",
-  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe  @CMakeFiles/ClosedGL.dir/includes_CXX.rsp  -DIMGUI_IMPL_OPENGL_LOADER_GL3W -DGLFW_EXPOSE_NATIVE_WGL -g -o CMakeFiles\\ClosedGL.dir\\src\\Camera.cpp.obj -c C:\\Users\\Home\\Desktop\\CG\\ClosedGL\\src\\Camera.cpp",
-  "file": "C:/Users/Home/Desktop/CG/ClosedGL/src/Camera.cpp"
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe  @CMakeFiles/ClosedGL.dir/includes_CXX.rsp  -DIMGUI_IMPL_OPENGL_LOADER_GL3W -DGLFW_EXPOSE_NATIVE_WGL -g -o CMakeFiles\\ClosedGL.dir\\src\\3dScene\\Camera.cpp.obj -c C:\\Users\\Home\\Desktop\\CG\\ClosedGL\\src\\3dScene\\Camera.cpp",
+  "file": "C:/Users/Home/Desktop/CG/ClosedGL/src/3dScene/Camera.cpp"
 },
 {
   "directory": "C:/Users/Home/Desktop/CG/ClosedGL/build",
-  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe  @CMakeFiles/ClosedGL.dir/includes_CXX.rsp  -DIMGUI_IMPL_OPENGL_LOADER_GL3W -DGLFW_EXPOSE_NATIVE_WGL -g -o CMakeFiles\\ClosedGL.dir\\src\\ModelViewProjectionUtils.cpp.obj -c C:\\Users\\Home\\Desktop\\CG\\ClosedGL\\src\\ModelViewProjectionUtils.cpp",
-  "file": "C:/Users/Home/Desktop/CG/ClosedGL/src/ModelViewProjectionUtils.cpp"
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe  @CMakeFiles/ClosedGL.dir/includes_CXX.rsp  -DIMGUI_IMPL_OPENGL_LOADER_GL3W -DGLFW_EXPOSE_NATIVE_WGL -g -o CMakeFiles\\ClosedGL.dir\\src\\rendering\\ModelViewProjectionUtils.cpp.obj -c C:\\Users\\Home\\Desktop\\CG\\ClosedGL\\src\\rendering\\ModelViewProjectionUtils.cpp",
+  "file": "C:/Users/Home/Desktop/CG/ClosedGL/src/rendering/ModelViewProjectionUtils.cpp"
 },
 {
   "directory": "C:/Users/Home/Desktop/CG/ClosedGL/build",
-  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe  @CMakeFiles/ClosedGL.dir/includes_CXX.rsp  -DIMGUI_IMPL_OPENGL_LOADER_GL3W -DGLFW_EXPOSE_NATIVE_WGL -g -o CMakeFiles\\ClosedGL.dir\\src\\Scene.cpp.obj -c C:\\Users\\Home\\Desktop\\CG\\ClosedGL\\src\\Scene.cpp",
-  "file": "C:/Users/Home/Desktop/CG/ClosedGL/src/Scene.cpp"
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe  @CMakeFiles/ClosedGL.dir/includes_CXX.rsp  -DIMGUI_IMPL_OPENGL_LOADER_GL3W -DGLFW_EXPOSE_NATIVE_WGL -g -o CMakeFiles\\ClosedGL.dir\\src\\3dScene\\Scene.cpp.obj -c C:\\Users\\Home\\Desktop\\CG\\ClosedGL\\src\\3dScene\\Scene.cpp",
+  "file": "C:/Users/Home/Desktop/CG/ClosedGL/src/3dScene/Scene.cpp"
 },
 {
   "directory": "C:/Users/Home/Desktop/CG/ClosedGL/build",
-  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe  @CMakeFiles/ClosedGL.dir/includes_CXX.rsp  -DIMGUI_IMPL_OPENGL_LOADER_GL3W -DGLFW_EXPOSE_NATIVE_WGL -g -o CMakeFiles\\ClosedGL.dir\\src\\RenderUtils.cpp.obj -c C:\\Users\\Home\\Desktop\\CG\\ClosedGL\\src\\RenderUtils.cpp",
-  "file": "C:/Users/Home/Desktop/CG/ClosedGL/src/RenderUtils.cpp"
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe  @CMakeFiles/ClosedGL.dir/includes_CXX.rsp  -DIMGUI_IMPL_OPENGL_LOADER_GL3W -DGLFW_EXPOSE_NATIVE_WGL -g -o CMakeFiles\\ClosedGL.dir\\src\\rendering\\RenderUtils.cpp.obj -c C:\\Users\\Home\\Desktop\\CG\\ClosedGL\\src\\rendering\\RenderUtils.cpp",
+  "file": "C:/Users/Home/Desktop/CG/ClosedGL/src/rendering/RenderUtils.cpp"
 },
 {
   "directory": "C:/Users/Home/Desktop/CG/ClosedGL/build",
-  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe  @CMakeFiles/ClosedGL.dir/includes_CXX.rsp  -DIMGUI_IMPL_OPENGL_LOADER_GL3W -DGLFW_EXPOSE_NATIVE_WGL -g -o CMakeFiles\\ClosedGL.dir\\src\\PropertyManager.cpp.obj -c C:\\Users\\Home\\Desktop\\CG\\ClosedGL\\src\\PropertyManager.cpp",
-  "file": "C:/Users/Home/Desktop/CG/ClosedGL/src/PropertyManager.cpp"
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe  @CMakeFiles/ClosedGL.dir/includes_CXX.rsp  -DIMGUI_IMPL_OPENGL_LOADER_GL3W -DGLFW_EXPOSE_NATIVE_WGL -g -o CMakeFiles\\ClosedGL.dir\\src\\gui\\PropertyManager.cpp.obj -c C:\\Users\\Home\\Desktop\\CG\\ClosedGL\\src\\gui\\PropertyManager.cpp",
+  "file": "C:/Users/Home/Desktop/CG/ClosedGL/src/gui/PropertyManager.cpp"
 },
 {
   "directory": "C:/Users/Home/Desktop/CG/ClosedGL/build",

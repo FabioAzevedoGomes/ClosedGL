@@ -1,7 +1,7 @@
 CMakeFiles/ClosedGL.dir/lib/gl3w.c.obj: \
  C:\Users\Home\Desktop\CG\ClosedGL\lib\gl3w.c \
- C:/Users/Home/Desktop/CG/ClosedGL/include/GL3/gl3w.h \
- C:/Users/Home/Desktop/CG/ClosedGL/include/GL/glcorearb.h \
+ C:/Users/Home/Desktop/CG/ClosedGL/lib/GL3/gl3w.h \
+ C:/Users/Home/Desktop/CG/ClosedGL/lib/GL/glcorearb.h \
  C:/TDM-GCC-64/x86_64-w64-mingw32/include/windows.h \
  C:/TDM-GCC-64/x86_64-w64-mingw32/include/_mingw.h \
  C:/TDM-GCC-64/x86_64-w64-mingw32/include/_mingw_mac.h \
