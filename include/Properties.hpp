@@ -13,7 +13,7 @@ enum RenderModes
     Points = 2
 };
 
-enum NormalOrientation
+enum PolygonOrientation
 {
     Clockwise = 0,
     CounterClockwise = 1
@@ -45,8 +45,8 @@ enum MovementOptions
 
 typedef struct
 {
-    int renderMode = Wireframe;
-    int normalOrientation = Clockwise;
+    int renderMode = Standard;
+    int orientation = Clockwise;
     int cullingMode = BackfaceCulling;
 
     //LightingModes lightingMode = Gouraud;

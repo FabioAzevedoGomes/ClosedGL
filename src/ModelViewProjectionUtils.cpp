@@ -58,16 +58,4 @@ glm::mat4x4 ModelViewProjectionUtils::GetViewMatrix(Camera camera)
     glm::vec4 lookAtPoint = glm::vec4(camera.position, 1.0f) + glm::vec4(camera.n, 0.0f);
 
     return glm::lookAt(camera.position, glm::vec3(lookAtPoint), camera.v);
-
-    /*
-    glm::vec4 u = glm::normalize(glm::vec4(camera.u, 0.0f));
-    glm::vec4 v = glm::normalize(glm::vec4(camera.v, 0.0f));
-    glm::vec4 n = glm::normalize(glm::vec4(camera.n, 0.0f));
-
-    return glm::mat4x4(
-        u.x, u.y, u.z, -dotProductBetween(u, camera.position - ORIGIN),
-        v.x, v.y, v.z, -dotProductBetween(v, camera.position - ORIGIN),
-        n.x, n.y, n.z, -dotProductBetween(n, camera.position - ORIGIN),
-        0.0f, 0.0f, 0.0f, 1.0f);
-    */
 }

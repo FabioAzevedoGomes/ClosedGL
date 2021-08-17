@@ -37,7 +37,6 @@ public:
     void FrameObject(Model3D object);
     void MoveTo(MovementOptions direction, float movementSpeed);
     void LookAt();
-    glm::vec3 GetAnglesToViewVector(glm::vec3 viewVector);
     void Rotate(float pitch, float roll, float yaw);
     void PrintDefinition();
 

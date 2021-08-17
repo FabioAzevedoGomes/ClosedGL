@@ -72,7 +72,7 @@ void PropertyManager::RenderWindow()
             properties.movementDirection = Down;
         }
 
-        ImGui::SliderFloat("Speed", (float *)&properties.speed, 0.1f, 100.0f);
+        ImGui::SliderFloat("Speed", (float *)&properties.speed, 0.1f, 1000.0f);
         ImGui::Checkbox("Look at Model", &properties.keepLookingAtModel);
 
         ImGui::Text("Reset Position");
@@ -109,9 +109,9 @@ void PropertyManager::RenderWindow()
         ImGui::RadioButton("Points", &properties.renderMode, 2);
 
         ImGui::Text("Normal Orientation");
-        ImGui::RadioButton("Clockwise", &properties.normalOrientation, 0);
+        ImGui::RadioButton("Clockwise", &properties.orientation, 0);
         ImGui::SameLine();
-        ImGui::RadioButton("Counter-Clockwise", &properties.normalOrientation, 1);
+        ImGui::RadioButton("Counter-Clockwise", &properties.orientation, 1);
 
         ImGui::Text("Culling");
         ImGui::RadioButton("None", &properties.cullingMode, 0);
@@ -119,6 +119,8 @@ void PropertyManager::RenderWindow()
         ImGui::RadioButton("Backface", &properties.cullingMode, 1);
         ImGui::SameLine();
         ImGui::RadioButton("Frontface", &properties.cullingMode, 2);
+
+        ImGui::Spacing();
     }
 
     if (ImGui::CollapsingHeader("Projection"))

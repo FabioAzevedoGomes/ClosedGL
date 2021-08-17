@@ -34,7 +34,6 @@ enum Attrib_IDs
     vertexColor = 1,
     vertexNormals = 2
 };
-
 enum VAO_IDss
 {
     ModelObject,
@@ -46,6 +45,8 @@ void SetupVBOS(std::vector<Model3D> objects);
 void SetupShaders();
 void BindObjectBuffers(Model3D object);
 
+void CalculateViewProjectionMatrix(Camera camera);
+
 void DrawObject(Model3D object, Properties vertexProperties);
 void RenderScene(std::vector<Model3D> objects, Camera &camera, Properties renderProperties);
 
@@ -56,5 +57,6 @@ void ApplyVertexProperties(Properties vertexProperties);
 void SetRenderMode(RenderModes renderMode);
 void SetCullingMode(CullingModes cullingMode);
 void SetRenderUniformColor(glm::vec3 color);
+void SetPolygonOrientation(PolygonOrientation orientation);
 
 #endif

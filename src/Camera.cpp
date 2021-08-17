@@ -40,61 +40,47 @@ void Camera::FrameObject(Model3D object)
     this->position = glm::vec3(px, py, pz);
 }
 
-glm::vec3 Camera::GetAnglesToViewVector(glm::vec3 viewVector)
-{
-    float pitch, roll, yaw;
-    pitch = asin(viewVector.x);
-    roll = acos(-viewVector.z);
-    yaw = asin(viewVector.y);
-
-    return glm::vec3(pitch, roll, yaw);
-}
-
 void Camera::MoveTo(MovementOptions direction, float movementSpeed)
 {
-    glm::vec3 resultingPosition;
+    glm::vec3 movement;
     switch (direction)
     {
     case Forward:
-        resultingPosition = position + movementSpeed * n;
+        movement = movementSpeed * n;
         break;
     case Backwards:
-        resultingPosition = position - movementSpeed * n;
+        movement = -movementSpeed * n;
         break;
     case Up:
-        resultingPosition = position + movementSpeed * v;
+        movement = movementSpeed * v;
         break;
     case Down:
-        resultingPosition = position - movementSpeed * v;
+        movement = -movementSpeed * v;
         break;
     case Right:
-        resultingPosition = position + movementSpeed * u;
+        movement = movementSpeed * u;
         break;
     case Left:
-        resultingPosition = position - movementSpeed * u;
+        movement = -movementSpeed * u;
         break;
     case NoMovement:
     default:
-        resultingPosition = position;
+        movement = glm::vec3(0.0f);
         break;
     }
 
-    this->position = resultingPosition;
-    PrintDefinition();
+    this->position = this->position + movement;
 }
 
 void Camera::LookAt()
 {
     glm::vec3 newN = glm::normalize(lookAtPoint - this->position);
-    glm::vec3 angles = GetAnglesToViewVector(newN);
+    glm::vec3 newU = glm::normalize(glm::cross(newN, v));
+    glm::vec3 newV = glm::normalize(glm::cross(newU, newN));
 
-    // Maintain camera roll
-    this->u = U;
-    this->n = N;
-    RotatePitch(angles.x);
-    RotateYaw(angles.y);
-
-    PrintDefinition();
+    this->n = newN;
+    this->u = newU;
+    this->v = newV;
 }
 
 void Camera::Rotate(float pitch, float roll, float yaw)
