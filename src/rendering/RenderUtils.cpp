@@ -55,9 +55,10 @@ void BindObjectBuffers(Model3D object)
 
 void CalculateViewProjectionMatrix(Camera camera)
 {
-    glm::mat4 view = ModelViewProjectionUtils::GetViewMatrix(camera);
-    glm::mat4 projection = ModelViewProjectionUtils::GetPerspectiveProjectionMatrix(camera, ASPECT_RATIO);
+    glm::vec4 lookAtPoint = glm::vec4(camera.position, 1.0f) + glm::vec4(camera.n, 0.0f);
 
+    glm::mat4 view = glm::lookAt(camera.position, glm::vec3(lookAtPoint), camera.v);
+    glm::mat4 projection = glm::perspective(camera.fieldOfView, ASPECT_RATIO, camera.nearPlane, camera.farPlane);
     projectionView = projection * view;
 }
 

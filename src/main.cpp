@@ -4,22 +4,21 @@
 
 #include "Scene.hpp"
 
-GLFWwindow *mainWindow = nullptr;
-Scene *mainScene = nullptr;
-
-void initializeOpenGLContext()
+GLFWwindow *initializeOpenGLContext()
 {
     glfwInit();
-    mainWindow = glfwCreateWindow(MAIN_WINDOW_WIDTH, MAIN_WINDOW_HEIGHT, "ClosedGL", NULL, NULL);
-    glfwMakeContextCurrent(mainWindow);
+    GLFWwindow *window = glfwCreateWindow(MAIN_WINDOW_WIDTH, MAIN_WINDOW_HEIGHT, "ClosedGL", NULL, NULL);
+    glfwMakeContextCurrent(window);
     gl3wInit();
+
+    return window;
 }
 
 int main(int argc, char **argv)
 {
-    initializeOpenGLContext();
+    GLFWwindow *mainWindow = initializeOpenGLContext();
+    Scene *mainScene = new Scene(mainWindow);
 
-    mainScene = new Scene(mainWindow);
     while (!glfwWindowShouldClose(mainWindow))
         mainScene->AdvanceFrame();
 

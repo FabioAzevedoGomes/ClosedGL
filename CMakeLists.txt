@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 2.6)
+cmake_minimum_required (VERSION 2.8.12)
 
 project (ClosedGL)
 
@@ -36,7 +36,6 @@ add_executable(ClosedGL
   src/shaders/ShaderUtils.cpp
   src/3dScene/Model3D.cpp
   src/3dScene/Camera.cpp
-  src/rendering/ModelViewProjectionUtils.cpp
   src/3dScene/Scene.cpp
   src/rendering/RenderUtils.cpp
   src/gui/PropertyManager.cpp

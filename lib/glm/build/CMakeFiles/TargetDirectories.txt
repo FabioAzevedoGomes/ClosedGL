@@ -1,2 +1,0 @@
-C:/Users/Home/Desktop/CG/ClosedGL/lib/glm/glm/build/CMakeFiles/edit_cache.dir
-C:/Users/Home/Desktop/CG/ClosedGL/lib/glm/glm/build/CMakeFiles/rebuild_cache.dir

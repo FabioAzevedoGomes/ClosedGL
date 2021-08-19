@@ -127,7 +127,7 @@ void PropertyManager::RenderWindow()
     if (ImGui::CollapsingHeader("Projection"))
     {
         ImGui::Text("Field of View");
-        ImGui::SliderFloat("FoV", (float *)&properties.fieldOfView, 0, M_PI);
+        ImGui::SliderFloat("FoV", (float *)&properties.fieldOfView, -M_PI, M_PI);
 
         ImGui::Text("Planes");
         ImGui::SliderFloat("Near", (float *)&properties.nearPlane, 0.1f, 10000.0f);

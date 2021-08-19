@@ -6,17 +6,18 @@
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 #include "Model3D.hpp"
 #include "ShaderUtils.hpp"
-#include "ModelViewProjectionUtils.hpp"
+#include "Camera.hpp"
 #include "Properties.hpp"
 #include "colors.hpp"
 
 #include <vector>
 
-#define MAIN_WINDOW_WIDTH 800
-#define MAIN_WINDOW_HEIGHT 700
+#define MAIN_WINDOW_WIDTH 800.0f
+#define MAIN_WINDOW_HEIGHT 700.0f
 #define ASPECT_RATIO MAIN_WINDOW_WIDTH / MAIN_WINDOW_HEIGHT
 
 #define BUFFER_OFFSET(a) ((void *)(a))

@@ -20,7 +20,7 @@ void Camera::Reset()
     this->yaw = 0.0f;
 
     this->position = ORIGIN;
-    this->fieldOfView = M_PI / 3.0f;
+    this->fieldOfView = M_PI / 2.0f;
 
     this->nearPlane = 0.1f;
     this->farPlane = 10000.0f;
@@ -30,12 +30,16 @@ void Camera::FrameObject(Model3D object)
 {
     lookAtPoint = object.boundingBox.getMiddlePoint();
 
-    float boundingBoxSideLength = fabs(object.boundingBox.top.x - object.boundingBox.bottom.x);
+    float bboxFrontLength = fabs(object.boundingBox.top.x - object.boundingBox.bottom.x);
+    float bboxFrontHeight = fabs(object.boundingBox.top.y - object.boundingBox.bottom.y);
+    float bboxSideLength = fabs(object.boundingBox.top.z - object.boundingBox.bottom.z);
+    float theta = fieldOfView / 2.0f;
+    float distanceToFront = (std::max(bboxFrontLength, bboxFrontHeight) / 2.0f) / tan(theta);
 
     float px, py, pz;
     px = lookAtPoint.x;
     py = lookAtPoint.y;
-    pz = sqrt(pow(boundingBoxSideLength, 2) - pow(object.boundingBox.bottom.x, 2));
+    pz = lookAtPoint.z + distanceToFront + fabs(bboxSideLength / 2.0f);
 
     this->position = glm::vec3(px, py, pz);
 }
