@@ -3,10 +3,11 @@
 
 #include <glm/vec3.hpp>
 #include <limits>
+#include <iostream>
 
 typedef struct
 {
-    glm::vec3 top = glm::vec3(std::numeric_limits<float>::min(), std::numeric_limits<float>::min(), std::numeric_limits<float>::min());
+    glm::vec3 top = glm::vec3(-std::numeric_limits<float>::max(), -std::numeric_limits<float>::max(), -std::numeric_limits<float>::max());
     glm::vec3 bottom = glm::vec3(std::numeric_limits<float>::max(), std::numeric_limits<float>::max(), std::numeric_limits<float>::max());
 
     void update(glm::vec3 vertexPosition)
