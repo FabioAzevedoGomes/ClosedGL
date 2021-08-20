@@ -4,10 +4,12 @@ GLuint Buffers[NumBuffers];
 GLuint VAOs[NumVAOs];
 
 GLuint program;
-GLuint uniformMvpId;
-GLuint uniformColorId;
+GLuint uniformDiffuseColorId;
+GLuint uniformOrientationId;
 
-glm::mat4 projectionView;
+GLuint uniformViewId;
+GLuint uniformProjectionId;
+GLuint uniformModelId;
 
 void SetupVAOS(std::vector<Model3D> objects)
 {
@@ -26,8 +28,12 @@ void SetupVBOS(std::vector<Model3D> objects)
 void SetupShaders()
 {
     program = InitializeShaders();
-    uniformMvpId = glGetUniformLocation(program, "modelViewProjection");
-    uniformColorId = glGetUniformLocation(program, "uniformColor");
+    uniformDiffuseColorId = glGetUniformLocation(program, "uniformDiffuseColor");
+    uniformOrientationId = glGetUniformLocation(program, "orientation");
+
+    uniformModelId = glGetUniformLocation(program, "model");
+    uniformProjectionId = glGetUniformLocation(program, "projection");
+    uniformViewId = glGetUniformLocation(program, "view");
 
     glEnable(GL_DEPTH_TEST);
 }
@@ -56,18 +62,20 @@ void BindObjectBuffers(Model3D object)
 void CalculateViewProjectionMatrix(Camera camera)
 {
     glm::vec4 lookAtPoint = glm::vec4(camera.position, 1.0f) + glm::vec4(camera.n, 0.0f);
-
     glm::mat4 view = glm::lookAt(camera.position, glm::vec3(lookAtPoint), camera.v);
+
     glm::mat4 projection = glm::perspective(camera.fieldOfView, ASPECT_RATIO, camera.nearPlane, camera.farPlane);
-    projectionView = projection * view;
+
+    glUniformMatrix4fv(uniformProjectionId, 1, GL_FALSE, glm::value_ptr(projection));
+    glUniformMatrix4fv(uniformViewId, 1, GL_FALSE, glm::value_ptr(view));
 }
 
 void DrawObject(Model3D object, Properties vertexProperties)
 {
+    // No model manipulation for now
     glm::mat4 model = glm::mat4(1.0f);
-    glm::mat4 modelViewProjection = projectionView * model;
 
-    glUniformMatrix4fv(uniformMvpId, 1, GL_FALSE, glm::value_ptr(modelViewProjection));
+    glUniformMatrix4fv(uniformModelId, 1, GL_FALSE, glm::value_ptr(glm::mat4(1.0f)));
     glBindVertexArray(VAOs[ModelObject]);
     glDrawArrays(GL_TRIANGLES, 0, 3 * object.triangleCount);
     glBindVertexArray(0);
@@ -125,7 +133,7 @@ void SetRenderMode(RenderModes renderMode)
 
 void SetRenderUniformColor(glm::vec3 color)
 {
-    glUniform3fv(uniformColorId, 1, glm::value_ptr(color));
+    glUniform3fv(uniformDiffuseColorId, 1, glm::value_ptr(color));
 }
 
 void SetCullingMode(CullingModes cullingMode)
@@ -152,10 +160,12 @@ void SetPolygonOrientation(PolygonOrientation orientation)
     switch (orientation)
     {
     case CounterClockwise:
+        glUniform1i(uniformOrientationId, 1);
         glFrontFace(GL_CCW);
         break;
     case Clockwise:
     default:
+        glUniform1i(uniformOrientationId, -1);
         glFrontFace(GL_CW);
         break;
     }
