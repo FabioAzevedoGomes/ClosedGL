@@ -10,11 +10,13 @@
 #include <cstdlib>
 #include <iostream>
 
+#define MAX_NAME_LENGTH 100
+
 class Model3D
 {
 public:
     std::string fileName;
-    char *modelName;
+    char modelName[MAX_NAME_LENGTH];
 
     Triangle *triangles;
     int triangleCount;

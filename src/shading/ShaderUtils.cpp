@@ -1,18 +1,17 @@
 #include "ShaderUtils.hpp"
 
-GLuint InitializeShaders()
+static GLuint program;
+
+void InitializeShaders()
 {
     ShaderInfo shaders[] =
         {
             {GL_VERTEX_SHADER, VERTEX_SHADER_PATH},
             {GL_FRAGMENT_SHADER, FRAGMENT_SHADER_PATH},
-            {GL_NONE, NULL}
-        };
+            {GL_NONE, NULL}};
 
-    GLuint program = LoadShaders(shaders);
+    program = LoadShaders(shaders);
     glUseProgram(program);
-
-    return program;
 }
 
 static const GLchar *ReadShader(const char *filename)
@@ -116,4 +115,22 @@ GLuint LoadShaders(ShaderInfo *shaders)
     }
 
     return program;
+}
+
+GLuint GetShaderUniformVariableId(const char *uniformVariable)
+{
+    return glGetUniformLocation(program, uniformVariable);
+}
+
+void SetActiveVertexShaderSubroutine(const char *uniformFunction, const char *implementation)
+{
+    GLuint uniformLocation = glGetSubroutineUniformLocation(program, GL_VERTEX_SHADER, uniformFunction);
+    GLuint index = glGetSubroutineIndex(program, GL_VERTEX_SHADER, implementation);
+
+    GLsizei n;
+    glGetProgramStageiv(program, GL_VERTEX_SHADER, GL_ACTIVE_SUBROUTINE_UNIFORM_LOCATIONS, &n);
+    GLuint *indices = new GLuint[n];
+    indices[uniformLocation] = index;
+    glUniformSubroutinesuiv(GL_VERTEX_SHADER, n, indices);
+    delete[] indices;
 }

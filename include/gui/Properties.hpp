@@ -28,7 +28,9 @@ enum CullingModes
 
 enum LightingModes
 {
-    Gouraud,
+    Flat,
+    Gouraud_AD,
+    Gouraud_ADS,
     Phong
 };
 
@@ -43,15 +45,26 @@ enum MovementOptions
     Backwards = 6
 };
 
+enum Engines
+{
+    OpenGL,
+    Close2GL
+};
+
 typedef struct
 {
     int renderMode = Standard;
     int orientation = Clockwise;
     int cullingMode = BackfaceCulling;
+    int engine = OpenGL;
+    int lightingMode = Flat;
 
-    //LightingModes lightingMode = Gouraud;
+    bool lightOn = true;
 
-    glm::vec3 modelColor;
+    glm::vec3 modelDiffuseColor;
+    glm::vec3 modelAmbientColor;
+    glm::vec3 modelSpecularColor;
+    float modelShineCoefficient;
     glm::vec3 backgroundColor = glm::vec3(0.0f);
 
     bool resetCamera = false;
@@ -71,6 +84,10 @@ typedef struct
 
     bool reloadFile = false;
     std::string modelFilePath;
+
+    // Debug
+    bool shouldPrintCameraDefinition = false;
+    bool shouldPrintModelDefinition = false;
 
 } Properties;
 

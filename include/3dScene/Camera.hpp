@@ -12,6 +12,9 @@
 #include <cmath>
 
 #define ORIGIN glm::vec3(0.0f, 0.0f, 0.0f)
+#define MAIN_WINDOW_WIDTH 800.0f
+#define MAIN_WINDOW_HEIGHT 700.0f
+#define ASPECT_RATIO MAIN_WINDOW_WIDTH / MAIN_WINDOW_HEIGHT
 
 class Camera
 {
@@ -19,10 +22,6 @@ public:
     glm::vec3 u;
     glm::vec3 v;
     glm::vec3 n;
-
-    float pitch;
-    float roll;
-    float yaw;
 
     glm::vec3 position;
     glm::vec3 lookAtPoint;
@@ -33,15 +32,18 @@ public:
 
     Camera();
     void Reset();
-
     void FrameObject(Model3D object);
+
     void MoveTo(MovementOptions direction, float movementSpeed);
-    void LookAt();
     void Rotate(float pitch, float roll, float yaw);
+    void LookAt();
+
+    glm::mat4 GetProjectionMatrix();
+    glm::mat4 GetViewMatrix();
+
     void PrintDefinition();
 
 private:
-    void UpdateAngles(float pitch, float roll, float yaw);
     void RotateRoll(float angle);
     void RotatePitch(float angle);
     void RotateYaw(float angle);

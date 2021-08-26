@@ -15,10 +15,6 @@ void Camera::Reset()
     this->v = V;
     this->n = N;
 
-    this->pitch = 0.0f;
-    this->roll = 0.0f;
-    this->yaw = 0.0f;
-
     this->position = ORIGIN;
     this->fieldOfView = M_PI / 2.0f;
 
@@ -76,6 +72,16 @@ void Camera::MoveTo(MovementOptions direction, float movementSpeed)
     this->position = this->position + movement;
 }
 
+void Camera::Rotate(float pitch, float roll, float yaw)
+{
+    this->u = U;
+    this->v = V;
+    this->n = N;
+    RotatePitch(pitch);
+    RotateRoll(roll);
+    RotateYaw(yaw);
+}
+
 void Camera::LookAt()
 {
     glm::vec3 newN = glm::normalize(lookAtPoint - this->position);
@@ -87,23 +93,15 @@ void Camera::LookAt()
     this->v = newV;
 }
 
-void Camera::Rotate(float pitch, float roll, float yaw)
+glm::mat4 Camera::GetProjectionMatrix()
 {
-    this->u = U;
-    this->v = V;
-    this->n = N;
-    UpdateAngles(pitch, roll, yaw);
-
-    RotatePitch(pitch);
-    RotateRoll(roll);
-    RotateYaw(yaw);
+    return glm::perspective(fieldOfView, ASPECT_RATIO, nearPlane, farPlane);
 }
 
-void Camera::UpdateAngles(float pitch, float roll, float yaw)
+glm::mat4 Camera::GetViewMatrix()
 {
-    this->pitch = pitch;
-    this->roll = roll;
-    this->yaw = yaw;
+    glm::vec4 lookAtPoint = glm::vec4(position, 1.0f) + glm::vec4(n, 0.0f);
+    return glm::lookAt(position, glm::vec3(lookAtPoint), v);
 }
 
 void Camera::RotateRoll(float alpha)
@@ -117,9 +115,9 @@ void Camera::RotateRoll(float alpha)
 
 void Camera::RotatePitch(float alpha)
 {
-    // Right hand coordinate system rotation
-    glm::vec3 newV = v * (float)cos(alpha) + n * (float)sin(alpha);
-    glm::vec3 newN = -v * (float)sin(alpha) + n * (float)cos(alpha);
+    // Left hand coordinate system rotation
+    glm::vec3 newV = v * (float)cos(alpha) - n * (float)sin(alpha);
+    glm::vec3 newN = v * (float)sin(alpha) + n * (float)cos(alpha);
 
     this->v = newV;
     this->n = newN;
@@ -127,9 +125,9 @@ void Camera::RotatePitch(float alpha)
 
 void Camera::RotateYaw(float alpha)
 {
-    // Right hand coordinate system rotation
-    glm::vec3 newU = u * (float)cos(alpha) + n * (float)sin(alpha);
-    glm::vec3 newN = -u * (float)sin(alpha) + n * (float)cos(alpha);
+    // Left hand coordinate system rotation
+    glm::vec3 newU = u * (float)cos(alpha) - n * (float)sin(alpha);
+    glm::vec3 newN = u * (float)sin(alpha) + n * (float)cos(alpha);
 
     this->u = newU;
     this->n = newN;
@@ -143,4 +141,5 @@ void Camera::PrintDefinition()
               << " - W vector: (" << n.x << ", " << n.y << ", " << n.z << ")" << std::endl
               << " - Position: (" << position.x << ", " << position.y << ", " << position.z << ")" << std::endl
               << " - LookAt: (" << lookAtPoint.x << ", " << lookAtPoint.y << ", " << lookAtPoint.z << ")" << std::endl;
+    std::cout << std::endl;
 }

@@ -19,6 +19,11 @@ void PropertyManager::RenderWindow()
 {
     ImGui::Begin("Properties", NULL, ImGuiWindowFlags_AlwaysAutoResize);
 
+    ImGui::RadioButton("OpenGL", &properties.engine, 0);
+    ImGui::SameLine();
+    ImGui::RadioButton("Close2GL", &properties.engine, 1);
+    ImGui::Spacing();
+
     if (ImGui::CollapsingHeader("Camera"))
     {
         ImGui::Text("Rotation");
@@ -85,8 +90,20 @@ void PropertyManager::RenderWindow()
 
     if (ImGui::CollapsingHeader("Model"))
     {
-        ImGui::Text("Uniform Color");
-        ImGui::ColorEdit3("##Uniform Color Edit", (float *)&properties.modelColor);
+        ImGui::Text("Diffuse Color");
+        ImGui::ColorEdit3("##Diffuse Color Edit", (float *)&properties.modelDiffuseColor);
+        ImGui::Spacing();
+
+        ImGui::Text("Ambient Color");
+        ImGui::ColorEdit3("##Ambient Color Edit", (float *)&properties.modelAmbientColor);
+        ImGui::Spacing();
+
+        ImGui::Text("Specular Color");
+        ImGui::ColorEdit3("##Specular Color Edit", (float *)&properties.modelSpecularColor);
+        ImGui::Spacing();
+
+        ImGui::Text("Shine Coefficient");
+        ImGui::SliderFloat("##Shine Coefficient", (float *)&properties.modelShineCoefficient, 0.0, 100.0);
 
         ImGui::Text("Model source");
         if (ImGui::Button("Select..."))
@@ -136,11 +153,27 @@ void PropertyManager::RenderWindow()
         ImGui::Spacing();
     }
 
+    if (ImGui::CollapsingHeader("Lighting"))
+    {
+        ImGui::Checkbox("Enable light", &properties.lightOn);
+        ImGui::Spacing();
+
+        ImGui::Text("Lighting Mode");
+        ImGui::RadioButton("Flat", &properties.lightingMode, 0);
+        ImGui::SameLine();
+        ImGui::RadioButton("Gouraud AD", &properties.lightingMode, 1);
+        ImGui::SameLine();
+        ImGui::RadioButton("Gouraud ADS", &properties.lightingMode, 2);
+        ImGui::SameLine();
+        ImGui::RadioButton("Phong", &properties.lightingMode, 3);
+
+        ImGui::Spacing();
+    }
+
     if (ImGui::CollapsingHeader("Ambient"))
     {
         ImGui::Text("Background color");
         ImGui::ColorEdit3("##Background Color Edit", (float *)&properties.backgroundColor);
-
         ImGui::Spacing();
     }
 
@@ -171,6 +204,4 @@ void PropertyManager::AdvanceFrame()
     }
     ImGui::Render();
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-    glfwSwapBuffers(window);
-    glfwPollEvents();
 }

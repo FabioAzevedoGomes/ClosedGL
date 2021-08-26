@@ -16,10 +16,17 @@ Model3D::Model3D(std::string filename)
         exit(1);
     }
 
-    // Skip name
+    // Read name
+    memset(this->modelName, '\0', MAX_NAME_LENGTH);
     char ch = ' ';
-    while (ch != '\n')
-        fscanf(file, "%c", &ch);
+    fscanf(file, "Object name =%c", &ch);
+    int i = 0;
+    do
+    {
+        fscanf(file, "%c", &this->modelName[i]);
+        i++;
+    } while (this->modelName[i - 1] != '\n');
+    this->modelName[i - 1] = '\0';
 
     fscanf(file, "# triangles = %d\n", &this->triangleCount);
     this->triangles = new Triangle[this->triangleCount];
@@ -41,6 +48,7 @@ Model3D::Model3D(std::string filename)
     }
 
     fclose(file);
+    std::cout << "Loaded model \"" << this->modelName << "\" from " << this->fileName << std::endl;
 }
 
 float *Model3D::GetVertexPositionData()
@@ -97,6 +105,8 @@ float *Model3D::GetVertexColorData()
 void Model3D::PrintInformation()
 {
     std::cout << "Model information" << std::endl
+              << "\tname: " << this->modelName << std::endl
+              << "\tfileName: " << this->fileName << std::endl
               << "\t# of triangles: " << this->triangleCount << std::endl
               << "\t# of materials: " << this->materialCount << std::endl;
 
@@ -109,7 +119,7 @@ void Model3D::PrintInformation()
                   << "\t\t - Specular color: (" << this->materials[i].specularColor.x << ", " << this->materials[i].specularColor.y << ", " << this->materials[i].specularColor.z << ")" << std::endl
                   << "\t\t - Shine coefficient: " << this->materials[i].shineCoefficient << std::endl;
     }
-
+    /*
     for (int i = 0; i < this->triangleCount; i++)
     {
         std::cout << "\t\tTriangle " << i << std::endl;
@@ -119,7 +129,7 @@ void Model3D::PrintInformation()
                       << " | (" << this->triangles[i].vertices[j].normal.x << ", " << this->triangles[i].vertices[j].normal.y << ", " << this->triangles[i].vertices[j].normal.z << ")"
                       << " | (" << this->triangles[i].vertices[j].color.x << ", " << this->triangles[i].vertices[j].color.y << ", " << this->triangles[i].vertices[j].color.z << ")" << std::endl;
     }
-
+    */
     std::cout << std::endl;
 }
 
@@ -157,7 +167,11 @@ void Model3D::ReadTriangle(FILE *file, int index)
     {
         fscanf(file, "v%d %f %f %f %f %f %f %d\n", &vertexNumber, &vx, &vy, &vz, &nx, &ny, &nz, &colorIndex);
         this->triangles[index].vertices[vertexNumber].position = glm::vec3(vx, vy, vz);
-        this->triangles[index].vertices[vertexNumber].normal = glm::vec3(nx, ny, nz);
+
+        if (!strcmp(this->modelName, "COW")) // Cow normals z component flipped?
+            this->triangles[index].vertices[vertexNumber].normal = glm::vec3(nx, ny, -nz);
+        else
+            this->triangles[index].vertices[vertexNumber].normal = glm::vec3(nx, ny, nz);
 
         cx = this->materials[colorIndex].diffuseColor.x;
         cy = this->materials[colorIndex].diffuseColor.y;
