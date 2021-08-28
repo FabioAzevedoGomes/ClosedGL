@@ -16,6 +16,8 @@ public:
     void SetupBuffers(Scene);
     void RenderScene(Scene);
 
+    std::string GetActiveEngineName();
+
     void SelectEngine(Engines, Scene);
     void SelectLightingAlgorithm(LightingModes);
     void SelectRenderMode(RenderModes);

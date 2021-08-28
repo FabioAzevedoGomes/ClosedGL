@@ -1,6 +1,6 @@
 #include "ProgramManager.hpp"
 
-ProgramManager::ProgramManager()
+ProgramManager::ProgramManager(const char *inputFile)
 {
     glfwInit();
     window = glfwCreateWindow(MAIN_WINDOW_WIDTH, MAIN_WINDOW_HEIGHT, "ClosedGL", NULL, NULL);
@@ -13,6 +13,18 @@ ProgramManager::ProgramManager()
     mainScene = new Scene();
     lastTime = glfwGetTime();
     currentTime = glfwGetTime();
+
+    if (inputFile != nullptr)
+    {
+        // Load input model
+        mainScene->SwapModel(0, Model3D(inputFile));
+        propertyManager->properties.modelDiffuseColor = mainScene->models[0].materials->diffuseColor;
+        propertyManager->properties.modelAmbientColor = mainScene->models[0].materials->ambientColor;
+        propertyManager->properties.modelSpecularColor = mainScene->models[0].materials->specularColor;
+        propertyManager->properties.modelShineCoefficient = mainScene->models[0].materials->shineCoefficient;
+        renderingManager.SetupBuffers(*mainScene);
+        propertyManager->modelLoaded = true;
+    }
 }
 
 ProgramManager::~ProgramManager()
@@ -25,14 +37,14 @@ ProgramManager::~ProgramManager()
     glfwTerminate();
 }
 
-void ProgramManager::UpdateFramerate()
+void ProgramManager::UpdateTitle()
 {
     frames++;
     currentTime = glfwGetTime();
     if (currentTime - lastTime > 1.0f)
     {
         std::stringstream title;
-        title << "ClosedGL | FPS: " << frames;
+        title << "ClosedGL | Using \"" << renderingManager.GetActiveEngineName() << "\" Renderer | FPS: " << frames;
         glfwSetWindowTitle(window, title.str().c_str());
         lastTime = currentTime;
         frames = 0.0f;
@@ -50,7 +62,7 @@ void ProgramManager::Run()
         glfwSwapBuffers(window);
         glfwPollEvents();
 
-        UpdateFramerate();
+        UpdateTitle();
     }
 }
 

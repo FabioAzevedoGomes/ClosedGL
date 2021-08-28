@@ -20,6 +20,11 @@ void RenderingManager::RenderScene(Scene scene)
     selectedRenderingEngine->RenderScene(scene);
 }
 
+std::string RenderingManager::GetActiveEngineName()
+{
+    return selectedRenderingEngine->engineName;
+}
+
 void RenderingManager::SelectEngine(Engines renderingEngine, Scene scene)
 {
     Renderer *previous = &(*selectedRenderingEngine);

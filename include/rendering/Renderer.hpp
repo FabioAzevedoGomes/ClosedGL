@@ -34,6 +34,7 @@ private:
 public:
     glm::vec3 backgroundColor;
     Engines engineId;
+    std::string engineName;
 
     virtual void RenderScene(Scene){};
     virtual void BindObjectBuffers(Model3D){};

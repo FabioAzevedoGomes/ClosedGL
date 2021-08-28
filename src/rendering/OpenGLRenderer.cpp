@@ -3,6 +3,7 @@
 OpenGLRenderer::OpenGLRenderer()
 {
     this->engineId = OpenGL;
+    this->engineName = "OpenGL";
 }
 
 void OpenGLRenderer::DrawObject(Model3D object)

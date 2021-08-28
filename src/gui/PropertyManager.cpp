@@ -170,12 +170,8 @@ void PropertyManager::RenderWindow()
         ImGui::RadioButton("Gouraud ADS", &properties.lightingMode, 2);
         ImGui::SameLine();
         ImGui::RadioButton("Phong", &properties.lightingMode, 3);
-
         ImGui::Spacing();
-    }
 
-    if (ImGui::CollapsingHeader("Ambient"))
-    {
         ImGui::Text("Background color");
         ImGui::ColorEdit3("##Background Color Edit", (float *)&properties.backgroundColor);
         ImGui::Spacing();

@@ -26,10 +26,10 @@ private:
     void ApplyPropertiesToScene(Properties &properties, Scene *scene);
     void ApplyCameraProperties(Properties &properties, Scene *scene);
     void ApplyRenderingProperties(Properties properties);
-    void UpdateFramerate();
+    void UpdateTitle();
 
 public:
-    ProgramManager();
+    ProgramManager(const char *inputModel);
     ~ProgramManager();
     void Run();
 };

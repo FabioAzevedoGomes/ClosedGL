@@ -101,17 +101,14 @@ glm::mat4 Camera::GetProjectionMatrix()
     float r = nearPlane * tanf(horizontalFieldOfView / 2.0f);
     float l = -r;
 
-    glm::mat4 mine = glm::mat4(2 * nearPlane / (r - l), 0.0f, (r + l) / (r - l), 0.0f,
-                               0.0f, 2 * nearPlane / (t - b), (t + b) / (t - b), 0.0f,
-                               0.0f, 0.0f, -(farPlane + nearPlane) / (farPlane - nearPlane), -1,
-                               0.0f, 0.0f, -2 * (farPlane * nearPlane) / (farPlane - nearPlane), 0.0f);
+    glm::mat4 close2GLProjection = glm::mat4(2 * nearPlane / (r - l), 0.0f, (r + l) / (r - l), 0.0f,
+                                             0.0f, 2 * nearPlane / (t - b), (t + b) / (t - b), 0.0f,
+                                             0.0f, 0.0f, -(farPlane + nearPlane) / (farPlane - nearPlane), -1,
+                                             0.0f, 0.0f, -2 * (farPlane * nearPlane) / (farPlane - nearPlane), 0.0f);
 
-    glm::mat4 openGL = glm::perspective(horizontalFieldOfView, ASPECT_RATIO, nearPlane, farPlane);
+    glm::mat4 openGLProjection = glm::perspective(horizontalFieldOfView, ASPECT_RATIO, nearPlane, farPlane);
 
-    std::cout << "Mine:   " << glm::to_string(mine) << std::endl;
-    std::cout << "OpenGL: " << glm::to_string(openGL) << std::endl;
-
-    return mine;
+    return close2GLProjection;
 }
 
 void Close2GLViewMatrix()
