@@ -10,7 +10,7 @@ ProgramManager::ProgramManager()
 
     InitializeShaders();
     propertyManager = new PropertyManager(window);
-
+    mainScene = new Scene();
     lastTime = glfwGetTime();
     currentTime = glfwGetTime();
 }
@@ -41,8 +41,6 @@ void ProgramManager::UpdateFramerate()
 
 void ProgramManager::Run()
 {
-    Scene *mainScene = new Scene();
-    bool test = true;
     while (!glfwWindowShouldClose(window))
     {
         renderingManager.RenderScene(*mainScene);
@@ -58,7 +56,7 @@ void ProgramManager::Run()
 
 void ProgramManager::ApplyRenderingProperties(Properties properties)
 {
-    renderingManager.SelectEngine(Engines(properties.engine));
+    renderingManager.SelectEngine(Engines(properties.engine), *mainScene);
     renderingManager.SelectLightingAlgorithm(LightingModes(properties.lightingMode));
     renderingManager.SelectRenderMode(RenderModes(properties.renderMode));
     renderingManager.SelectPolygonOrientation(PolygonOrientation(properties.orientation));
@@ -100,7 +98,8 @@ void ProgramManager::ApplyCameraProperties(Properties &properties, Scene *scene)
 
     scene->camera.nearPlane = properties.nearPlane;
     scene->camera.farPlane = properties.farPlane;
-    scene->camera.fieldOfView = properties.fieldOfView;
+    scene->camera.horizontalFieldOfView = properties.horizontalFieldOfView;
+    scene->camera.verticalFieldOfView = properties.verticalFieldOfView;
 }
 
 void ProgramManager::ApplyPropertiesToScene(Properties &properties, Scene *scene)

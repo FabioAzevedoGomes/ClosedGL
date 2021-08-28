@@ -78,7 +78,8 @@ typedef struct
     float speed = 0.1f;
     MovementOptions movementDirection = NoMovement;
 
-    float fieldOfView = M_PI / 2.0f;
+    float horizontalFieldOfView = M_PI / 2.0f;
+    float verticalFieldOfView = M_PI / 2.0f;
     float nearPlane = 0.1f;
     float farPlane = 10000.0f;
 

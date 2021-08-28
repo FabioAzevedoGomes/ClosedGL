@@ -16,7 +16,8 @@ void Camera::Reset()
     this->n = N;
 
     this->position = ORIGIN;
-    this->fieldOfView = M_PI / 2.0f;
+    this->horizontalFieldOfView = M_PI / 2.0f;
+    this->verticalFieldOfView = M_PI / 2.0f;
 
     this->nearPlane = 0.1f;
     this->farPlane = 10000.0f;
@@ -29,7 +30,7 @@ void Camera::FrameObject(Model3D object)
     float bboxFrontLength = fabs(object.boundingBox.top.x - object.boundingBox.bottom.x);
     float bboxFrontHeight = fabs(object.boundingBox.top.y - object.boundingBox.bottom.y);
     float bboxSideLength = fabs(object.boundingBox.top.z - object.boundingBox.bottom.z);
-    float theta = fieldOfView / 2.0f;
+    float theta = horizontalFieldOfView / 2.0f;
     float distanceToFront = (std::max(bboxFrontLength, bboxFrontHeight) / 2.0f) / tan(theta);
 
     float px, py, pz;
@@ -95,13 +96,52 @@ void Camera::LookAt()
 
 glm::mat4 Camera::GetProjectionMatrix()
 {
-    return glm::perspective(fieldOfView, ASPECT_RATIO, nearPlane, farPlane);
+    float t = nearPlane * tanf(verticalFieldOfView / 2.0f);
+    float b = -t;
+    float r = nearPlane * tanf(horizontalFieldOfView / 2.0f);
+    float l = -r;
+
+    glm::mat4 mine = glm::mat4(2 * nearPlane / (r - l), 0.0f, (r + l) / (r - l), 0.0f,
+                               0.0f, 2 * nearPlane / (t - b), (t + b) / (t - b), 0.0f,
+                               0.0f, 0.0f, -(farPlane + nearPlane) / (farPlane - nearPlane), -1,
+                               0.0f, 0.0f, -2 * (farPlane * nearPlane) / (farPlane - nearPlane), 0.0f);
+
+    glm::mat4 openGL = glm::perspective(horizontalFieldOfView, ASPECT_RATIO, nearPlane, farPlane);
+
+    std::cout << "Mine:   " << glm::to_string(mine) << std::endl;
+    std::cout << "OpenGL: " << glm::to_string(openGL) << std::endl;
+
+    return mine;
+}
+
+void Close2GLViewMatrix()
+{
+    /*
+            || -camera.position.x ||     ||ux,uy,uz,  ||
+        T = || -camera.position.y || B = ||vx,vy,vz,  ||
+            || -camera.position.z ||     ||nx,ny,nz,  ||
+                                         ||  ,  ,  , 1||
+        View = BT
+        View= || ux uy uz -C*u ||
+              || vx vy vz -C*v ||
+              || nx ny nz -C*n ||
+              ||  0  0  0  1   ||
+        Where C = camera position
+    */
 }
 
 glm::mat4 Camera::GetViewMatrix()
 {
-    glm::vec4 lookAtPoint = glm::vec4(position, 1.0f) + glm::vec4(n, 0.0f);
-    return glm::lookAt(position, glm::vec3(lookAtPoint), v);
+    glm::vec3 lookAtPoint = position + n;
+    return glm::lookAt(position, lookAtPoint, v);
+}
+
+glm::mat4 Camera::GetViewPortMatrix()
+{
+    return glm::mat4(MAIN_WINDOW_WIDTH / 2.0f, 0.0f, 0.0f, MAIN_WINDOW_WIDTH / 2.0f,
+                     0.0f, MAIN_WINDOW_HEIGHT / 2.0f, 0.0f, MAIN_WINDOW_HEIGHT / 2.0f,
+                     0.0f, 0.0f, (farPlane - nearPlane) / 2.0f, (nearPlane + farPlane) / 2.0f,
+                     0.0f, 0.0f, 0.0f, 1.0f);
 }
 
 void Camera::RotateRoll(float alpha)

@@ -18,6 +18,7 @@ private:
     RenderingManager renderingManager;
     PropertyManager *propertyManager;
     GLFWwindow *window;
+    Scene *mainScene;
 
     double lastTime, currentTime;
     int frames;

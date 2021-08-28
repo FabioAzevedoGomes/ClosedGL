@@ -2,6 +2,7 @@
 
 OpenGLRenderer::OpenGLRenderer()
 {
+    this->engineId = OpenGL;
 }
 
 void OpenGLRenderer::DrawObject(Model3D object)
@@ -10,13 +11,14 @@ void OpenGLRenderer::DrawObject(Model3D object)
     glm::mat4 model = glm::mat4(1.0f);
 
     glUniformMatrix4fv(GetShaderUniformVariableId(UNIFORM_MODEL_ID), 1, GL_FALSE, glm::value_ptr(glm::mat4(1.0f)));
-    glBindVertexArray(VAOs[ModelObject]);
+    glBindVertexArray(VAOs[ModelObject_OpenGL]);
     glDrawArrays(GL_TRIANGLES, 0, 3 * object.triangleCount);
     glBindVertexArray(0);
 }
 
 void OpenGLRenderer::RenderScene(Scene scene)
 {
+    glBindVertexArray(VAOs[ModelObject_OpenGL]);
     glUniformMatrix4fv(GetShaderUniformVariableId(UNIFORM_PROJECTION_ID), 1, GL_FALSE, glm::value_ptr(scene.camera.GetProjectionMatrix()));
     glUniformMatrix4fv(GetShaderUniformVariableId(UNIFORM_VIEW_ID), 1, GL_FALSE, glm::value_ptr(scene.camera.GetViewMatrix()));
 
@@ -27,33 +29,33 @@ void OpenGLRenderer::RenderScene(Scene scene)
 void OpenGLRenderer::BindObjectBuffers(Model3D object)
 {
     // Position
-    glBindBuffer(GL_ARRAY_BUFFER, Buffers[VertexPositionBuffer]);
+    glBindBuffer(GL_ARRAY_BUFFER, Buffers[OpenGL_VertexPositionBuffer]);
     glBufferStorage(GL_ARRAY_BUFFER, object.triangleCount * 9 * sizeof(float), object.GetVertexPositionData(), GL_DYNAMIC_STORAGE_BIT);
     glVertexAttribPointer(openGLvertexPosition, 3, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0));
     glEnableVertexAttribArray(openGLvertexPosition);
 
     // Colors
-    glBindBuffer(GL_ARRAY_BUFFER, Buffers[VertexColorBuffer]);
+    glBindBuffer(GL_ARRAY_BUFFER, Buffers[OpenGL_VertexColorBuffer]);
     glBufferStorage(GL_ARRAY_BUFFER, object.triangleCount * 9 * sizeof(float), object.GetVertexColorData(), GL_DYNAMIC_STORAGE_BIT);
     glVertexAttribPointer(openGLvertexColor, 3, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0));
     glEnableVertexAttribArray(openGLvertexColor);
 
     // Normals
-    glBindBuffer(GL_ARRAY_BUFFER, Buffers[VertexNormalBuffer]);
+    glBindBuffer(GL_ARRAY_BUFFER, Buffers[OpenGL_VertexNormalBuffer]);
     glBufferStorage(GL_ARRAY_BUFFER, object.triangleCount * 9 * sizeof(float), object.GetVertexNormalData(), GL_DYNAMIC_STORAGE_BIT);
     glVertexAttribPointer(openGLvertexNormals, 3, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0));
     glEnableVertexAttribArray(openGLvertexNormals);
 }
 
-void OpenGLRenderer::SetupVAOS(std::vector<Model3D> objects)
+void OpenGLRenderer::SetupVAOS()
 {
-    glGenVertexArrays(NumVAOs, VAOs);
-    glBindVertexArray(VAOs[ModelObject]);
+    glGenVertexArrays(NumVAOs_OpenGL, VAOs);
+    glBindVertexArray(VAOs[ModelObject_OpenGL]);
 }
 
 void OpenGLRenderer::SetupVBOS(std::vector<Model3D> objects)
 {
-    glCreateBuffers(NumBuffers, Buffers);
+    glCreateBuffers(OpenGL_NumBuffers, Buffers);
 
     for (auto objectIterator = objects.begin(); objectIterator != objects.end(); objectIterator++)
         BindObjectBuffers(*objectIterator);

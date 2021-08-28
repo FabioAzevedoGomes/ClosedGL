@@ -90,21 +90,6 @@ void PropertyManager::RenderWindow()
 
     if (ImGui::CollapsingHeader("Model"))
     {
-        ImGui::Text("Diffuse Color");
-        ImGui::ColorEdit3("##Diffuse Color Edit", (float *)&properties.modelDiffuseColor);
-        ImGui::Spacing();
-
-        ImGui::Text("Ambient Color");
-        ImGui::ColorEdit3("##Ambient Color Edit", (float *)&properties.modelAmbientColor);
-        ImGui::Spacing();
-
-        ImGui::Text("Specular Color");
-        ImGui::ColorEdit3("##Specular Color Edit", (float *)&properties.modelSpecularColor);
-        ImGui::Spacing();
-
-        ImGui::Text("Shine Coefficient");
-        ImGui::SliderFloat("##Shine Coefficient", (float *)&properties.modelShineCoefficient, 0.0, 100.0);
-
         ImGui::Text("Model source");
         if (ImGui::Button("Select..."))
             ImGui::OpenPopup("Open File");
@@ -143,8 +128,12 @@ void PropertyManager::RenderWindow()
 
     if (ImGui::CollapsingHeader("Projection"))
     {
-        ImGui::Text("Field of View");
-        ImGui::SliderFloat("FoV", (float *)&properties.fieldOfView, -M_PI, M_PI);
+        ImGui::Text("Horizontal Field of View");
+        ImGui::SliderFloat("HFoV", (float *)&properties.horizontalFieldOfView, -M_PI, M_PI);
+        ImGui::Spacing();
+        ImGui::Text("Vertical Field of View");
+        ImGui::SliderFloat("VFoV", (float *)&properties.verticalFieldOfView, -M_PI, M_PI);
+        ImGui::Spacing();
 
         ImGui::Text("Planes");
         ImGui::SliderFloat("Near", (float *)&properties.nearPlane, 0.1f, 10000.0f);
@@ -157,6 +146,21 @@ void PropertyManager::RenderWindow()
     {
         ImGui::Checkbox("Enable light", &properties.lightOn);
         ImGui::Spacing();
+
+        ImGui::Text("Diffuse Color");
+        ImGui::ColorEdit3("##Diffuse Color Edit", (float *)&properties.modelDiffuseColor);
+        ImGui::Spacing();
+
+        ImGui::Text("Ambient Color");
+        ImGui::ColorEdit3("##Ambient Color Edit", (float *)&properties.modelAmbientColor);
+        ImGui::Spacing();
+
+        ImGui::Text("Specular Color");
+        ImGui::ColorEdit3("##Specular Color Edit", (float *)&properties.modelSpecularColor);
+        ImGui::Spacing();
+
+        ImGui::Text("Shine Coefficient");
+        ImGui::SliderFloat("##Shine Coefficient", (float *)&properties.modelShineCoefficient, 0.0, 100.0);
 
         ImGui::Text("Lighting Mode");
         ImGui::RadioButton("Flat", &properties.lightingMode, 0);

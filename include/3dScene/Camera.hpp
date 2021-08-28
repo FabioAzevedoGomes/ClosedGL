@@ -4,6 +4,7 @@
 #include <glm/vec3.hpp>
 #include <glm/glm.hpp>
 #include <glm/gtx/euler_angles.hpp>
+#include <glm/gtx/string_cast.hpp>
 
 #include "Model3D.hpp"
 #include "Properties.hpp"
@@ -28,7 +29,8 @@ public:
 
     float nearPlane;
     float farPlane;
-    float fieldOfView;
+    float horizontalFieldOfView;
+    float verticalFieldOfView;
 
     Camera();
     void Reset();
@@ -40,6 +42,7 @@ public:
 
     glm::mat4 GetProjectionMatrix();
     glm::mat4 GetViewMatrix();
+    glm::mat4 GetViewPortMatrix();
 
     void PrintDefinition();
 

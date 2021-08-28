@@ -4,6 +4,10 @@
 #include <GL3/gl3w.h>
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
+#include <glm/vec3.hpp>
+#include <glm/glm.hpp>
+#include <glm/gtx/euler_angles.hpp>
+#include <glm/gtx/string_cast.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
 #include "Scene.hpp"
@@ -24,11 +28,15 @@ enum Attrib_IDs
 
 class Renderer
 {
+private:
+    virtual void DrawObject(Model3D){};
+
 public:
     glm::vec3 backgroundColor;
+    Engines engineId;
 
     virtual void RenderScene(Scene){};
     virtual void BindObjectBuffers(Model3D){};
     virtual void SetupVBOS(std::vector<Model3D>){};
-    virtual void SetupVAOS(std::vector<Model3D>){};
+    virtual void SetupVAOS(){};
 };

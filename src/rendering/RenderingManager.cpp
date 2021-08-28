@@ -7,7 +7,7 @@ RenderingManager::RenderingManager()
 
 void RenderingManager::SetupBuffers(Scene scene)
 {
-    selectedRenderingEngine->SetupVAOS(scene.models);
+    selectedRenderingEngine->SetupVAOS();
     selectedRenderingEngine->SetupVBOS(scene.models);
 }
 
@@ -20,8 +20,9 @@ void RenderingManager::RenderScene(Scene scene)
     selectedRenderingEngine->RenderScene(scene);
 }
 
-void RenderingManager::SelectEngine(Engines renderingEngine)
+void RenderingManager::SelectEngine(Engines renderingEngine, Scene scene)
 {
+    Renderer *previous = &(*selectedRenderingEngine);
     switch (renderingEngine)
     {
     case OpenGL:
@@ -33,24 +34,31 @@ void RenderingManager::SelectEngine(Engines renderingEngine)
         SetActiveVertexShaderSubroutine(UNIFORM_POSITION_FUNCTION_ID, POSITION_FUNCTION_CLOSE2GL);
         break;
     }
+
+    if (previous != selectedRenderingEngine)
+        SetupBuffers(scene);
 }
 
 void RenderingManager::SelectLightingAlgorithm(LightingModes lightingMode)
 {
-    switch (lightingMode)
-    {
-    case Flat:
+    // Override lighting for now when using Close2GL
+    if (selectedRenderingEngine->engineId == Close2GL)
         SetActiveVertexShaderSubroutine(UNIFORM_LIGHTING_FUNCTION_ID, LIGHTING_FUNCTION_FLAT);
-        break;
-    case Gouraud_AD:
-        SetActiveVertexShaderSubroutine(UNIFORM_LIGHTING_FUNCTION_ID, LIGHTING_FUNCTION_GOURAUD_AD);
-        break;
-    case Gouraud_ADS:
-        SetActiveVertexShaderSubroutine(UNIFORM_LIGHTING_FUNCTION_ID, LIGHTING_FUNCTION_GOURAUD_ADS);
-        break;
-    default:
-        break;
-    }
+    else
+        switch (lightingMode)
+        {
+        case Flat:
+            SetActiveVertexShaderSubroutine(UNIFORM_LIGHTING_FUNCTION_ID, LIGHTING_FUNCTION_FLAT);
+            break;
+        case Gouraud_AD:
+            SetActiveVertexShaderSubroutine(UNIFORM_LIGHTING_FUNCTION_ID, LIGHTING_FUNCTION_GOURAUD_AD);
+            break;
+        case Gouraud_ADS:
+            SetActiveVertexShaderSubroutine(UNIFORM_LIGHTING_FUNCTION_ID, LIGHTING_FUNCTION_GOURAUD_ADS);
+            break;
+        default:
+            break;
+        }
 }
 
 void RenderingManager::SelectRenderMode(RenderModes renderMode)
@@ -87,21 +95,24 @@ void RenderingManager::SelectRenderUniformColor(glm::vec3 diffuseColor, glm::vec
 
 void RenderingManager::SelectCullingMode(CullingModes cullingMode)
 {
-    switch (cullingMode)
-    {
-    case BackfaceCulling:
-        glEnable(GL_CULL_FACE);
-        glCullFace(GL_BACK);
-        break;
-    case FrontFaceCulling:
-        glEnable(GL_CULL_FACE);
-        glCullFace(GL_FRONT);
-        break;
-    case NoCulling:
+    if (selectedRenderingEngine->engineId == Close2GL)
         glDisable(GL_CULL_FACE);
-    default:
-        break;
-    }
+    else
+        switch (cullingMode)
+        {
+        case BackfaceCulling:
+            glEnable(GL_CULL_FACE);
+            glCullFace(GL_BACK);
+            break;
+        case FrontFaceCulling:
+            glEnable(GL_CULL_FACE);
+            glCullFace(GL_FRONT);
+            break;
+        case NoCulling:
+            glDisable(GL_CULL_FACE);
+        default:
+            break;
+        }
 }
 
 void RenderingManager::SelectPolygonOrientation(PolygonOrientation orientation)

@@ -4,7 +4,7 @@ layout(location=0)in vec3 openGLvPosition;
 layout(location=1)in vec3 openGLvColor;
 layout(location=2)in vec3 openGLvNormal;
 
-layout(location=3)in vec2 close2GLvPosition;
+layout(location=3)in vec4 close2GLvPosition;
 layout(location=4)in vec3 close2GLvColor;
 
 uniform vec3 uniformDiffuseColor;
@@ -66,7 +66,7 @@ subroutine (PositionFunction) void OpenGL_VetexCoords() {
 }
 
 subroutine (PositionFunction) void Close2GL_VertexCoords() {
-    gl_Position = vec4(close2GLvPosition, 1.0, 1.0);
+    gl_Position = close2GLvPosition;
 }
 
 subroutine uniform LightingFunction lightingShader;

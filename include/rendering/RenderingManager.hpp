@@ -16,7 +16,7 @@ public:
     void SetupBuffers(Scene);
     void RenderScene(Scene);
 
-    void SelectEngine(Engines);
+    void SelectEngine(Engines, Scene);
     void SelectLightingAlgorithm(LightingModes);
     void SelectRenderMode(RenderModes);
     void SelectCullingMode(CullingModes);
