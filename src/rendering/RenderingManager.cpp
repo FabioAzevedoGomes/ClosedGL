@@ -100,6 +100,7 @@ void RenderingManager::SelectRenderUniformColor(glm::vec3 diffuseColor, glm::vec
 
 void RenderingManager::SelectCullingMode(CullingModes cullingMode)
 {
+    // Disable for close2GL because we do the clipping ourselves
     if (selectedRenderingEngine->engineId == Close2GL)
         glDisable(GL_CULL_FACE);
     else

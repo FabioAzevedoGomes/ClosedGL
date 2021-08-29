@@ -1,6 +1,6 @@
 #include "Close2GLRenderer.hpp"
 
-#define DEBUG true
+#define DEBUG false
 
 Close2GLRenderer::Close2GLRenderer()
 {
@@ -15,9 +15,9 @@ void Close2GLRenderer::DrawObject(Model3D object)
 
     int visibleVertexCount = 0;
 
-    glm::vec4 triangleVertices[3];
     bool clipped = false;
-    BoundingBox bboxTest;
+    glm::vec4 triangleVertices[3];
+
     for (int triangle = 0; triangle < object.triangleCount; triangle++)
     {
         for (int vertex = 0; vertex < 3 && !clipped; vertex++)
@@ -34,28 +34,11 @@ void Close2GLRenderer::DrawObject(Model3D object)
         {
             triangleVertices[vertex] = triangleVertices[vertex] / triangleVertices[vertex].w;
 
-            vertexBuffer[(6 * triangle) + (2 * vertex) + 0] = triangleVertices[vertex].x;
-            vertexBuffer[(6 * triangle) + (2 * vertex) + 1] = triangleVertices[vertex].y;
+            vertexBuffer[(2 * visibleVertexCount) + 0] = triangleVertices[vertex].x;
+            vertexBuffer[(2 * visibleVertexCount) + 1] = triangleVertices[vertex].y;
             visibleVertexCount++;
-
-            bboxTest.update(triangleVertices[vertex]);
         }
         clipped = false;
-    }
-
-    if (DEBUG)
-    {
-        if (visibleVertexCount > 0)
-        {
-            std::cout << "MAX: " << glm::to_string(bboxTest.top) << std::endl;
-            std::cout << "MIN: " << glm::to_string(bboxTest.bottom) << std::endl;
-        }
-        else
-        {
-            std::cout << "No visible vertices" << std::endl;
-        }
-        std::cout << "Visible triangles: " << visibleVertexCount / 3 << std::endl;
-        std::cout << "Last triangle coords: " << glm::to_string(triangleVertices[2]) << std::endl;
     }
 
     glBindVertexArray(VAOs[ModelObject_Close2GL]);
