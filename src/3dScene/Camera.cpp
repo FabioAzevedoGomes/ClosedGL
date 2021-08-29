@@ -111,26 +111,17 @@ glm::mat4 Camera::GetProjectionMatrix()
     return close2GLProjection;
 }
 
-void Close2GLViewMatrix()
-{
-    /*
-            || -camera.position.x ||     ||ux,uy,uz,  ||
-        T = || -camera.position.y || B = ||vx,vy,vz,  ||
-            || -camera.position.z ||     ||nx,ny,nz,  ||
-                                         ||  ,  ,  , 1||
-        View = BT
-        View= || ux uy uz -C*u ||
-              || vx vy vz -C*v ||
-              || nx ny nz -C*n ||
-              ||  0  0  0  1   ||
-        Where C = camera position
-    */
-}
-
 glm::mat4 Camera::GetViewMatrix()
 {
+    glm::mat4 close2GLView = glm::mat4(u.x, v.x, -n.x, 0.0f,
+                                       u.y, v.y, -n.y, 0.0f,
+                                       u.z, v.z, -n.z, 0.0f,
+                                       glm::dot(-position, u), glm::dot(-position, v), glm::dot(position, n), 1.0f);
+
     glm::vec3 lookAtPoint = position + n;
-    return glm::lookAt(position, lookAtPoint, v);
+    glm::mat4 openGLView = glm::lookAt(position, lookAtPoint, v);
+
+    return close2GLView;
 }
 
 glm::mat4 Camera::GetViewPortMatrix()

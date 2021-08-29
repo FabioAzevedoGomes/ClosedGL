@@ -32,4 +32,6 @@ public:
     ProgramManager(const char *inputModel);
     ~ProgramManager();
     void Run();
+
+    void HandleWindowResize(GLFWwindow *window, int width, int height);
 };

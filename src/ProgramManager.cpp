@@ -14,6 +14,13 @@ ProgramManager::ProgramManager(const char *inputFile)
     lastTime = glfwGetTime();
     currentTime = glfwGetTime();
 
+    auto resizeCallbackFunction = [](GLFWwindow *window, int width, int height)
+    {
+        static_cast<ProgramManager *>(glfwGetWindowUserPointer(window))->HandleWindowResize(window, width, height);
+    };
+
+    glfwSetWindowSizeCallback(window, resizeCallbackFunction);
+
     if (inputFile != nullptr)
     {
         // Load input model
@@ -35,6 +42,12 @@ ProgramManager::~ProgramManager()
 
     glfwDestroyWindow(window);
     glfwTerminate();
+}
+
+void ProgramManager::HandleWindowResize(GLFWwindow *window, int width, int height)
+{
+    glViewport(0, 0, width, height);
+    float aspectRatio = width / height;
 }
 
 void ProgramManager::UpdateTitle()
