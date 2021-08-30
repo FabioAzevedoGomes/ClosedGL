@@ -8,38 +8,44 @@ Close2GLRenderer::Close2GLRenderer()
     this->engineName = "Close2GL";
 }
 
-void Close2GLRenderer::DrawObject(Model3D object)
+int Close2GLRenderer::PopulateVertexBuffer(Model3D object, float *vertexBuffer)
 {
-    float *vertexBuffer = (float *)malloc(sizeof(float) * object.triangleCount * 6);
     glm::mat4 modelViewProjection = projection * view * model;
-
     int visibleVertexCount = 0;
-
-    bool clipped = false;
-    glm::vec4 triangleVertices[3];
 
     for (int triangle = 0; triangle < object.triangleCount; triangle++)
     {
-        for (int vertex = 0; vertex < 3 && !clipped; vertex++)
+        for (int vertex = 0; vertex < 3; vertex++)
         {
+            // Get projected vertex position
             glm::vec4 vertexPosition = glm::vec4(object.triangles[triangle].vertices[vertex].position, 1.0f);
             glm::vec4 projectedPosition = modelViewProjection * vertexPosition;
+
+            // If final position is outside of frustum
             if (projectedPosition.w <= 0)
-                clipped = true;
+            {
+                // Remove the triangle this vertex belongs to, and skip to the next
+                visibleVertexCount -= vertex;
+                vertex = 4;
+            }
             else
-                triangleVertices[vertex] = projectedPosition;
+            {
+                projectedPosition /= projectedPosition.w;
+                vertexBuffer[(2 * visibleVertexCount) + 0] = projectedPosition.x;
+                vertexBuffer[(2 * visibleVertexCount) + 1] = projectedPosition.y;
+                visibleVertexCount++;
+            }
         }
-
-        for (int vertex = 0; vertex < 3 && !clipped; vertex++)
-        {
-            triangleVertices[vertex] = triangleVertices[vertex] / triangleVertices[vertex].w;
-
-            vertexBuffer[(2 * visibleVertexCount) + 0] = triangleVertices[vertex].x;
-            vertexBuffer[(2 * visibleVertexCount) + 1] = triangleVertices[vertex].y;
-            visibleVertexCount++;
-        }
-        clipped = false;
     }
+
+    return visibleVertexCount;
+}
+
+void Close2GLRenderer::DrawObject(Model3D object)
+{
+    float *vertexBuffer = (float *)malloc(sizeof(float) * object.triangleCount * 6);
+
+    int visibleVertexCount = PopulateVertexBuffer(object, vertexBuffer);
 
     glBindVertexArray(VAOs[ModelObject_Close2GL]);
     glBufferSubData(GL_ARRAY_BUFFER, 0, visibleVertexCount * 2 * sizeof(float), vertexBuffer);

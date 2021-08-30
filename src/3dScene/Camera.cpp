@@ -126,10 +126,10 @@ glm::mat4 Camera::GetViewMatrix()
 
 glm::mat4 Camera::GetViewPortMatrix()
 {
-    return glm::mat4(MAIN_WINDOW_WIDTH / 2.0f, 0.0f, 0.0f, MAIN_WINDOW_WIDTH / 2.0f,
-                     0.0f, MAIN_WINDOW_HEIGHT / 2.0f, 0.0f, MAIN_WINDOW_HEIGHT / 2.0f,
-                     0.0f, 0.0f, (farPlane - nearPlane) / 2.0f, (nearPlane + farPlane) / 2.0f,
-                     0.0f, 0.0f, 0.0f, 1.0f);
+    return glm::mat4(MAIN_WINDOW_WIDTH / 2.0f, 0.0f, 0.0f, 0.0f,
+                     0.0f, MAIN_WINDOW_HEIGHT / 2.0f, 0.0f, 0.0f,
+                     0.0f, 0.0f, (farPlane - nearPlane) / 2.0f, 0.0f,
+                     MAIN_WINDOW_WIDTH / 2.0f, MAIN_WINDOW_HEIGHT / 2.0f, (nearPlane + farPlane) / 2.0f, 1.0f);
 }
 
 void Camera::RotateRoll(float alpha)
@@ -168,6 +168,8 @@ void Camera::PrintDefinition()
               << " - V vector: (" << v.x << ", " << v.y << ", " << v.z << ")" << std::endl
               << " - W vector: (" << n.x << ", " << n.y << ", " << n.z << ")" << std::endl
               << " - Position: (" << position.x << ", " << position.y << ", " << position.z << ")" << std::endl
-              << " - LookAt: (" << lookAtPoint.x << ", " << lookAtPoint.y << ", " << lookAtPoint.z << ")" << std::endl;
+              << " - LookAt: (" << lookAtPoint.x << ", " << lookAtPoint.y << ", " << lookAtPoint.z << ")" << std::endl
+              << " - hFoV: " << horizontalFieldOfView << std::endl
+              << " - vFov: " << verticalFieldOfView << std::endl;
     std::cout << std::endl;
 }

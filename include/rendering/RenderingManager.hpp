@@ -22,7 +22,7 @@ public:
     void SelectLightingAlgorithm(LightingModes);
     void SelectRenderMode(RenderModes);
     void SelectCullingMode(CullingModes);
-    void SelectRenderUniformColor(glm::vec3, glm::vec3, glm::vec3, float);
+    void SelectRenderUniformColor(glm::vec3, float, glm::vec3, float, glm::vec3, float, float);
     void SelectBackgroundColor(glm::vec3);
     void SelectPolygonOrientation(PolygonOrientation);
 };

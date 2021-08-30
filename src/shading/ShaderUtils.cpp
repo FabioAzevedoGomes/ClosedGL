@@ -134,3 +134,16 @@ void SetActiveVertexShaderSubroutine(const char *uniformFunction, const char *im
     glUniformSubroutinesuiv(GL_VERTEX_SHADER, n, indices);
     delete[] indices;
 }
+
+void SetActiveFragmentShaderSubroutine(const char *uniformFunction, const char *implementation)
+{
+    GLuint uniformLocation = glGetSubroutineUniformLocation(program, GL_FRAGMENT_SHADER, uniformFunction);
+    GLuint index = glGetSubroutineIndex(program, GL_FRAGMENT_SHADER, implementation);
+
+    GLsizei n;
+    glGetProgramStageiv(program, GL_FRAGMENT_SHADER, GL_ACTIVE_SUBROUTINE_UNIFORM_LOCATIONS, &n);
+    GLuint *indices = new GLuint[n];
+    indices[uniformLocation] = index;
+    glUniformSubroutinesuiv(GL_FRAGMENT_SHADER, n, indices);
+    delete[] indices;
+}

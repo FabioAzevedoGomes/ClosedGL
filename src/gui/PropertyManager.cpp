@@ -149,14 +149,20 @@ void PropertyManager::RenderWindow()
 
         ImGui::Text("Diffuse Color");
         ImGui::ColorEdit3("##Diffuse Color Edit", (float *)&properties.modelDiffuseColor);
+        ImGui::SameLine();
+        ImGui::SliderFloat("Intensity ##DIFFUSE", (float *)&properties.diffuseIntensity, 0.0f, 1.0f);
         ImGui::Spacing();
 
         ImGui::Text("Ambient Color");
         ImGui::ColorEdit3("##Ambient Color Edit", (float *)&properties.modelAmbientColor);
+        ImGui::SameLine();
+        ImGui::SliderFloat("Intensity ##AMBIENT", (float *)&properties.ambientIntensity, 0.0f, 1.0f);
         ImGui::Spacing();
 
         ImGui::Text("Specular Color");
         ImGui::ColorEdit3("##Specular Color Edit", (float *)&properties.modelSpecularColor);
+        ImGui::SameLine();
+        ImGui::SliderFloat("Intensity ##SPECULAR", (float *)&properties.specularIntensity, 0.0f, 1.0f);
         ImGui::Spacing();
 
         ImGui::Text("Shine Coefficient");

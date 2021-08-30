@@ -8,8 +8,11 @@ layout(location=3)in vec4 close2GLvPosition;
 layout(location=4)in vec3 close2GLvColor;
 
 uniform vec3 uniformDiffuseColor;
+uniform float uniformDiffuseIntensity;
 uniform vec3 uniformAmbientColor;
+uniform float uniformAmbientIntensity;
 uniform vec3 uniformSpecularColor;
+uniform float uniformSpecularIntensity;
 uniform float uniformShineCoefficient;
 
 uniform mat4 view;
@@ -17,16 +20,18 @@ uniform mat4 projection;
 uniform mat4 model;
 
 out vec4 vertexColor;
+out vec4 normal;
+out vec4 position;
 
-subroutine vec4 LightingFunction();
-subroutine void PositionFunction();
+subroutine vec4 VertexLightingFunction();
+subroutine void VertexPositionFunction();
 
 // Lighting options
-subroutine (LightingFunction) vec4 OpenGL_FlatShader() {
-    return vec4(uniformDiffuseColor,1.);
+subroutine (VertexLightingFunction) vec4 OpenGL_FlatShader() {
+    return vec4(uniformDiffuseColor,1.) * uniformDiffuseIntensity;
 }
 
-subroutine (LightingFunction) vec4 OpenGL_AD_GouraudShader() {
+subroutine (VertexLightingFunction) vec4 OpenGL_AD_GouraudShader() {
     vec4 cameraPosition=inverse(view)[3];
     
     // Light is assumed to be at the camera
@@ -34,14 +39,14 @@ subroutine (LightingFunction) vec4 OpenGL_AD_GouraudShader() {
     vec4 n=normalize(inverse(transpose(model))*vec4(openGLvNormal,0.));
     
     // Calculate lambert's diffuse term as Kd*I*dot(normal, light)
-    vec3 diffuseTerm = uniformDiffuseColor * vec3(1.0, 1.0, 1.0) * max(0.2,dot(n,l)); // @TODO Intensity
-    vec3 ambientTerm = uniformAmbientColor * vec3(0.1, 0.1, 0.1); // @TODO Intensity
+    vec3 diffuseTerm = uniformDiffuseColor * uniformDiffuseIntensity * max(0.2,dot(n,l)); // @TODO Intensity
+    vec3 ambientTerm = uniformAmbientColor * vec3(uniformAmbientIntensity);
 
     // Final color
     return vec4(diffuseTerm + ambientTerm, 1.0);
 }
 
-subroutine (LightingFunction) vec4 OpenGL_ADS_GouraudShader() {
+subroutine (VertexLightingFunction) vec4 OpenGL_ADS_GouraudShader() {
     vec4 cameraPosition=inverse(view)[3];
     
     // Light is assumed to be at the camera
@@ -49,30 +54,36 @@ subroutine (LightingFunction) vec4 OpenGL_ADS_GouraudShader() {
     vec4 n=normalize(inverse(transpose(model))*vec4(openGLvNormal,0.));
     
     // Calculate lambert's diffuse term as Kd*I*dot(normal, light)
-    vec3 diffuseTerm = uniformDiffuseColor * vec3(1.0, 1.0, 1.0) * max(0.0,dot(n,l)); // @TODO Intensity
-    vec3 ambientTerm = uniformAmbientColor * vec3(0.1, 0.1, 0.1); // @TODO Intensity
+    vec3 diffuseTerm = uniformDiffuseColor * uniformDiffuseIntensity * max(0.0,dot(n,l));
+    vec3 ambientTerm = uniformAmbientColor * vec3(uniformAmbientIntensity);
 
-    // Calculate blinn-phong specular term as Ks*I*pow( max(0,dot(normal, intensity)), q)
+    // Calculate blinn-phong specular term
     vec4 h = normalize(2 * l);
-    vec4 specularTerm = vec4(uniformSpecularColor, 1.0) * vec4(1.0,1.0,1.0,1.0) * pow(max(0, dot(n, h)), uniformShineCoefficient); // @TODO Intensity
+    vec4 specularTerm = vec4(uniformSpecularColor, 1.0) * vec4(vec3(uniformSpecularIntensity),1.0) * pow(max(0, dot(n, h)), uniformShineCoefficient); 
 
     // Final color
     return vec4(diffuseTerm + ambientTerm, 0.0) + specularTerm;
 }
 
+subroutine (VertexLightingFunction) vec4 OpenGL_PhongShader() {
+    position = vec4(openGLvPosition,1.0);
+    normal = vec4(openGLvNormal,0.0);
+    return vec4(uniformDiffuseColor,1.);
+}
+
 // Vertex position options
-subroutine (PositionFunction) void OpenGL_VetexCoords() {
+subroutine (VertexPositionFunction) void OpenGL_VetexCoords() {
     gl_Position = projection * view * model * vec4(openGLvPosition, 1.0);
 }
 
-subroutine (PositionFunction) void Close2GL_VertexCoords() {
+subroutine (VertexPositionFunction) void Close2GL_VertexCoords() {
     gl_Position = close2GLvPosition;
 }
 
-subroutine uniform LightingFunction lightingShader;
-subroutine uniform PositionFunction positionShader;
+subroutine uniform VertexLightingFunction vertexLightingShader;
+subroutine uniform VertexPositionFunction vertexPositionShader;
 
 void main() {
-    vertexColor = lightingShader();
-    positionShader();
+    vertexColor = vertexLightingShader();
+    vertexPositionShader();
 }

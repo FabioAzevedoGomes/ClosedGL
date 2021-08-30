@@ -21,6 +21,7 @@ private:
     GLuint VAOs[NumVAOs_Close2GL];
 
     virtual void DrawObject(Model3D);
+    int PopulateVertexBuffer(Model3D, float *);
 
 public:
     Close2GLRenderer();

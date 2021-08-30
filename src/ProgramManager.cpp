@@ -16,9 +16,11 @@ ProgramManager::ProgramManager(const char *inputFile)
 
     auto resizeCallbackFunction = [](GLFWwindow *window, int width, int height)
     {
-        static_cast<ProgramManager *>(glfwGetWindowUserPointer(window))->HandleWindowResize(window, width, height);
+        ProgramManager *programManager = reinterpret_cast<ProgramManager *>(glfwGetWindowUserPointer(window));
+        programManager->HandleWindowResize(window, width, height);
     };
 
+    glfwSetWindowUserPointer(window, reinterpret_cast<void *>(this));
     glfwSetWindowSizeCallback(window, resizeCallbackFunction);
 
     if (inputFile != nullptr)
@@ -47,7 +49,10 @@ ProgramManager::~ProgramManager()
 void ProgramManager::HandleWindowResize(GLFWwindow *window, int width, int height)
 {
     glViewport(0, 0, width, height);
-    float aspectRatio = width / height;
+    //float aspectRatio = (float)width / (float)height;
+    //mainScene->camera.horizontalFieldOfView = mainScene->camera.verticalFieldOfView * aspectRatio;
+    //propertyManager->properties.verticalFieldOfView = mainScene->camera.verticalFieldOfView;
+    //propertyManager->properties.horizontalFieldOfView = mainScene->camera.horizontalFieldOfView;
 }
 
 void ProgramManager::UpdateTitle()
@@ -88,8 +93,11 @@ void ProgramManager::ApplyRenderingProperties(Properties properties)
     renderingManager.SelectCullingMode(CullingModes(properties.cullingMode));
     renderingManager.SelectBackgroundColor(properties.backgroundColor);
     renderingManager.SelectRenderUniformColor(properties.modelDiffuseColor,
+                                              properties.diffuseIntensity,
                                               properties.modelAmbientColor,
+                                              properties.ambientIntensity,
                                               properties.modelSpecularColor,
+                                              properties.specularIntensity,
                                               properties.modelShineCoefficient);
 }
 

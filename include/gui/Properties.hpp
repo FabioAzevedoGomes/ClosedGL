@@ -62,8 +62,11 @@ typedef struct
     bool lightOn = true;
 
     glm::vec3 modelDiffuseColor;
+    float diffuseIntensity = 1.0f;
     glm::vec3 modelAmbientColor;
+    float ambientIntensity = 0.2f;
     glm::vec3 modelSpecularColor;
+    float specularIntensity = 0.2f;
     float modelShineCoefficient;
     glm::vec3 backgroundColor = glm::vec3(0.0f);
 
