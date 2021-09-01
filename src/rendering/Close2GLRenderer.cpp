@@ -8,6 +8,24 @@ Close2GLRenderer::Close2GLRenderer()
     this->engineName = "Close2GL";
 }
 
+bool Close2GLRenderer::ShouldCull(std::vector<glm::vec4> triangleVertices)
+{
+    if (cullingMode == NoCulling)
+        return false;
+
+    float sum = 0.0f;
+    for (int i = 0; i < triangleVertices.size(); i++)
+    {
+        float firstTerm = triangleVertices[i].x * triangleVertices[(i + 1) % triangleVertices.size()].y;
+        float secondTerm = triangleVertices[(i + 1) % triangleVertices.size()].x * triangleVertices[i].y;
+
+        sum += firstTerm - secondTerm;
+    }
+
+    float area = 0.5f * sum;
+    return area * polygonOrientation * cullingMode > 0;
+}
+
 int Close2GLRenderer::PopulateVertexBuffer(Model3D object, float *vertexBuffer)
 {
     glm::mat4 modelViewProjection = projection * view * model;
@@ -15,24 +33,33 @@ int Close2GLRenderer::PopulateVertexBuffer(Model3D object, float *vertexBuffer)
 
     for (int triangle = 0; triangle < object.triangleCount; triangle++)
     {
+        bool clipped = true;
+
+        Triangle modelTriangle = object.triangles[triangle];
+        std::vector<glm::vec4> triangleVertices;
         for (int vertex = 0; vertex < 3; vertex++)
         {
-            // Get projected vertex position
-            glm::vec4 vertexPosition = glm::vec4(object.triangles[triangle].vertices[vertex].position, 1.0f);
+            glm::vec4 vertexPosition = glm::vec4(modelTriangle.vertices[vertex].position, 1.0f);
             glm::vec4 projectedPosition = modelViewProjection * vertexPosition;
 
-            // If final position is outside of frustum
+            // Clip triangle when w <= 0
             if (projectedPosition.w <= 0)
             {
-                // Remove the triangle this vertex belongs to, and skip to the next
-                visibleVertexCount -= vertex;
-                vertex = 4;
+                triangleVertices.clear();
+                break;
             }
-            else
+
+            // Perspective division
+            projectedPosition /= projectedPosition.w;
+            triangleVertices.push_back(projectedPosition);
+        }
+
+        if (!ShouldCull(triangleVertices))
+        {
+            for (auto vertex = triangleVertices.begin(); vertex != triangleVertices.end(); vertex++)
             {
-                projectedPosition /= projectedPosition.w;
-                vertexBuffer[(2 * visibleVertexCount) + 0] = projectedPosition.x;
-                vertexBuffer[(2 * visibleVertexCount) + 1] = projectedPosition.y;
+                vertexBuffer[(2 * visibleVertexCount) + 0] = (*vertex).x;
+                vertexBuffer[(2 * visibleVertexCount) + 1] = (*vertex).y;
                 visibleVertexCount++;
             }
         }
@@ -57,7 +84,6 @@ void Close2GLRenderer::RenderScene(Scene scene)
 {
     view = scene.camera.GetViewMatrix();
     projection = scene.camera.GetProjectionMatrix();
-    viewport = scene.camera.GetViewPortMatrix();
 
     for (auto object = scene.models.begin(); object != scene.models.end(); object++)
     {
@@ -87,4 +113,15 @@ void Close2GLRenderer::SetupVBOS(std::vector<Model3D> objects)
 
     for (auto objectIterator = objects.begin(); objectIterator != objects.end(); objectIterator++)
         BindObjectBuffers(*objectIterator);
+}
+
+void Close2GLRenderer::SetCullingMode(CullingModes cullingMode)
+{
+    glDisable(GL_CULL_FACE);
+    this->cullingMode = cullingMode;
+}
+
+void Close2GLRenderer::SetPolygonOrientation(PolygonOrientation orientation)
+{
+    this->polygonOrientation = orientation;
 }

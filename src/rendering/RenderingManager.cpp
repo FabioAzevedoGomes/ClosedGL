@@ -116,37 +116,10 @@ void RenderingManager::SelectRenderUniformColor(glm::vec3 diffuseColor, float di
 
 void RenderingManager::SelectCullingMode(CullingModes cullingMode)
 {
-    // Disable for close2GL because we do the clipping ourselves
-    if (selectedRenderingEngine->engineId == Close2GL)
-        glDisable(GL_CULL_FACE);
-    else
-        switch (cullingMode)
-        {
-        case BackfaceCulling:
-            glEnable(GL_CULL_FACE);
-            glCullFace(GL_BACK);
-            break;
-        case FrontFaceCulling:
-            glEnable(GL_CULL_FACE);
-            glCullFace(GL_FRONT);
-            break;
-        case NoCulling:
-            glDisable(GL_CULL_FACE);
-        default:
-            break;
-        }
+    selectedRenderingEngine->SetCullingMode(cullingMode);
 }
 
 void RenderingManager::SelectPolygonOrientation(PolygonOrientation orientation)
 {
-    switch (orientation)
-    {
-    case CounterClockwise:
-        glFrontFace(GL_CCW);
-        break;
-    case Clockwise:
-    default:
-        glFrontFace(GL_CW);
-        break;
-    }
+    selectedRenderingEngine->SetPolygonOrientation(orientation);
 }

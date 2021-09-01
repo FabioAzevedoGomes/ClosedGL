@@ -16,11 +16,16 @@ enum Close2GL_VAO_IDs
 class Close2GLRenderer : public Renderer
 {
 private:
-    glm::mat4 model, view, projection, viewport;
+    glm::mat4 model, view, projection;
+
+    CullingModes cullingMode;
+    PolygonOrientation polygonOrientation;
+
     GLuint Buffers[Close2GL_NumBuffers];
     GLuint VAOs[NumVAOs_Close2GL];
 
     virtual void DrawObject(Model3D);
+    bool ShouldCull(std::vector<glm::vec4>);
     int PopulateVertexBuffer(Model3D, float *);
 
 public:
@@ -29,4 +34,7 @@ public:
     virtual void BindObjectBuffers(Model3D);
     virtual void SetupVBOS(std::vector<Model3D>);
     virtual void SetupVAOS();
+
+    virtual void SetCullingMode(CullingModes);
+    virtual void SetPolygonOrientation(PolygonOrientation);
 };

@@ -40,4 +40,7 @@ public:
     virtual void BindObjectBuffers(Model3D){};
     virtual void SetupVBOS(std::vector<Model3D>){};
     virtual void SetupVAOS(){};
+
+    virtual void SetCullingMode(CullingModes){};
+    virtual void SetPolygonOrientation(PolygonOrientation){};
 };

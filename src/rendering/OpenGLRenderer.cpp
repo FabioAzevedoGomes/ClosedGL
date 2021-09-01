@@ -61,3 +61,36 @@ void OpenGLRenderer::SetupVBOS(std::vector<Model3D> objects)
     for (auto objectIterator = objects.begin(); objectIterator != objects.end(); objectIterator++)
         BindObjectBuffers(*objectIterator);
 }
+
+void OpenGLRenderer::SetCullingMode(CullingModes cullingMode)
+{
+    switch (cullingMode)
+    {
+    case BackfaceCulling:
+        glEnable(GL_CULL_FACE);
+        glCullFace(GL_BACK);
+        break;
+    case FrontFaceCulling:
+        glEnable(GL_CULL_FACE);
+        glCullFace(GL_FRONT);
+        break;
+    case NoCulling:
+        glDisable(GL_CULL_FACE);
+    default:
+        break;
+    }
+}
+
+void OpenGLRenderer::SetPolygonOrientation(PolygonOrientation orientation)
+{
+    switch (orientation)
+    {
+    case CounterClockwise:
+        glFrontFace(GL_CCW);
+        break;
+    case Clockwise:
+    default:
+        glFrontFace(GL_CW);
+        break;
+    }
+}

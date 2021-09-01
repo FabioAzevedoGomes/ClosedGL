@@ -15,15 +15,15 @@ enum RenderModes
 
 enum PolygonOrientation
 {
-    Clockwise = 0,
+    Clockwise = -1,
     CounterClockwise = 1
 };
 
 enum CullingModes
 {
-    NoCulling,
-    BackfaceCulling,
-    FrontFaceCulling
+    NoCulling = 0,
+    BackfaceCulling = -1,
+    FrontFaceCulling = 1
 };
 
 enum LightingModes

@@ -49,10 +49,6 @@ ProgramManager::~ProgramManager()
 void ProgramManager::HandleWindowResize(GLFWwindow *window, int width, int height)
 {
     glViewport(0, 0, width, height);
-    //float aspectRatio = (float)width / (float)height;
-    //mainScene->camera.horizontalFieldOfView = mainScene->camera.verticalFieldOfView * aspectRatio;
-    //propertyManager->properties.verticalFieldOfView = mainScene->camera.verticalFieldOfView;
-    //propertyManager->properties.horizontalFieldOfView = mainScene->camera.horizontalFieldOfView;
 }
 
 void ProgramManager::UpdateTitle()

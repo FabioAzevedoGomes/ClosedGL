@@ -112,16 +112,16 @@ void PropertyManager::RenderWindow()
         ImGui::RadioButton("Points", &properties.renderMode, 2);
 
         ImGui::Text("Normal Orientation");
-        ImGui::RadioButton("Clockwise", &properties.orientation, 0);
+        ImGui::RadioButton("Clockwise", &properties.orientation, -1);
         ImGui::SameLine();
         ImGui::RadioButton("Counter-Clockwise", &properties.orientation, 1);
 
         ImGui::Text("Culling");
         ImGui::RadioButton("None", &properties.cullingMode, 0);
         ImGui::SameLine();
-        ImGui::RadioButton("Backface", &properties.cullingMode, 1);
+        ImGui::RadioButton("Backface", &properties.cullingMode, -1);
         ImGui::SameLine();
-        ImGui::RadioButton("Frontface", &properties.cullingMode, 2);
+        ImGui::RadioButton("Frontface", &properties.cullingMode, 1);
 
         ImGui::Spacing();
     }

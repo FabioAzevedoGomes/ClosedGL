@@ -101,10 +101,19 @@ glm::mat4 Camera::GetProjectionMatrix()
     float r = nearPlane * tanf(horizontalFieldOfView / 2.0f);
     float l = -r;
 
-    glm::mat4 close2GLProjection = glm::mat4(2 * nearPlane / (r - l), 0.0f, (r + l) / (r - l), 0.0f,
-                                             0.0f, 2 * nearPlane / (t - b), (t + b) / (t - b), 0.0f,
-                                             0.0f, 0.0f, -(farPlane + nearPlane) / (farPlane - nearPlane), -1,
-                                             0.0f, 0.0f, -2 * (farPlane * nearPlane) / (farPlane - nearPlane), 0.0f);
+    float scaleX = 2 * nearPlane / (r - l);
+    float scaleY = 2 * nearPlane / (t - b);
+
+    float shearX = (r + l) / (r - l);
+    float shearY = (t + b) / (t - b);
+
+    float normScaling = -(farPlane + nearPlane) / (farPlane - nearPlane);
+    float normTranslation = -2.0f * (farPlane * nearPlane) / (farPlane - nearPlane);
+
+    glm::mat4 close2GLProjection = glm::mat4(scaleX, 0.0f, 0.0f, 0.0f,
+                                             0.0f, scaleY, 0.0f, 0.0f,
+                                             shearX, shearY, normScaling, -1.0f,
+                                             0.0f, 0.0f, normTranslation, 0.0f);
 
     glm::mat4 openGLProjection = glm::perspective(horizontalFieldOfView, ASPECT_RATIO, nearPlane, farPlane);
 
@@ -116,20 +125,12 @@ glm::mat4 Camera::GetViewMatrix()
     glm::mat4 close2GLView = glm::mat4(u.x, v.x, -n.x, 0.0f,
                                        u.y, v.y, -n.y, 0.0f,
                                        u.z, v.z, -n.z, 0.0f,
-                                       glm::dot(-position, u), glm::dot(-position, v), glm::dot(position, n), 1.0f);
+                                       -glm::dot(position, u), -glm::dot(position, v), glm::dot(position, n), 1.0f);
 
     glm::vec3 lookAtPoint = position + n;
     glm::mat4 openGLView = glm::lookAt(position, lookAtPoint, v);
 
     return close2GLView;
-}
-
-glm::mat4 Camera::GetViewPortMatrix()
-{
-    return glm::mat4(MAIN_WINDOW_WIDTH / 2.0f, 0.0f, 0.0f, 0.0f,
-                     0.0f, MAIN_WINDOW_HEIGHT / 2.0f, 0.0f, 0.0f,
-                     0.0f, 0.0f, (farPlane - nearPlane) / 2.0f, 0.0f,
-                     MAIN_WINDOW_WIDTH / 2.0f, MAIN_WINDOW_HEIGHT / 2.0f, (nearPlane + farPlane) / 2.0f, 1.0f);
 }
 
 void Camera::RotateRoll(float alpha)
