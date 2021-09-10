@@ -13,9 +13,6 @@
 #include <cmath>
 
 #define ORIGIN glm::vec3(0.0f, 0.0f, 0.0f)
-#define MAIN_WINDOW_WIDTH 800.0f
-#define MAIN_WINDOW_HEIGHT 700.0f
-#define ASPECT_RATIO MAIN_WINDOW_WIDTH / MAIN_WINDOW_HEIGHT
 
 class Camera
 {

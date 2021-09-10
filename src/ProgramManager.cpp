@@ -2,148 +2,52 @@
 
 ProgramManager::ProgramManager(const char *inputFile)
 {
-    glfwInit();
-    window = glfwCreateWindow(MAIN_WINDOW_WIDTH, MAIN_WINDOW_HEIGHT, "ClosedGL", NULL, NULL);
-    glfwMakeContextCurrent(window);
-    glfwSwapInterval(0); // Remove swap interval in GLFW to avoid framerate cap
-    gl3wInit();
+    window = new Window("ClosedGL");
 
-    InitializeShaders();
-    propertyManager = new PropertyManager(window);
+    InitializeShaders(); // TODO: Move to rendering manager
+
+    renderingManager = new RenderingManager();
     mainScene = new Scene();
+    propertyManager = new PropertyManager(window->window, mainScene, renderingManager);
+
     lastTime = glfwGetTime();
     currentTime = glfwGetTime();
 
-    auto resizeCallbackFunction = [](GLFWwindow *window, int width, int height)
-    {
-        ProgramManager *programManager = reinterpret_cast<ProgramManager *>(glfwGetWindowUserPointer(window));
-        programManager->HandleWindowResize(window, width, height);
-    };
-
-    glfwSetWindowUserPointer(window, reinterpret_cast<void *>(this));
-    glfwSetWindowSizeCallback(window, resizeCallbackFunction);
-
     if (inputFile != nullptr)
-    {
-        // Load input model
-        mainScene->SwapModel(0, Model3D(inputFile));
-        propertyManager->properties.modelDiffuseColor = mainScene->models[0].materials->diffuseColor;
-        propertyManager->properties.modelAmbientColor = mainScene->models[0].materials->ambientColor;
-        propertyManager->properties.modelSpecularColor = mainScene->models[0].materials->specularColor;
-        propertyManager->properties.modelShineCoefficient = mainScene->models[0].materials->shineCoefficient;
-        renderingManager.SetupBuffers(*mainScene);
-        propertyManager->modelLoaded = true;
-    }
+        propertyManager->LoadInputFile(inputFile);
 }
 
 ProgramManager::~ProgramManager()
 {
-    ImGui_ImplOpenGL3_Shutdown();
-    ImGui_ImplGlfw_Shutdown();
-    ImGui::DestroyContext();
-
-    glfwDestroyWindow(window);
-    glfwTerminate();
+    delete propertyManager;
+    delete renderingManager;
+    delete mainScene;
+    delete window;
 }
 
-void ProgramManager::HandleWindowResize(GLFWwindow *window, int width, int height)
-{
-    glViewport(0, 0, width, height);
-}
-
-void ProgramManager::UpdateTitle()
+void ProgramManager::UpdateFramerate()
 {
     frames++;
     currentTime = glfwGetTime();
     if (currentTime - lastTime > 1.0f)
     {
-        std::stringstream title;
-        title << "ClosedGL | Using \"" << renderingManager.GetActiveEngineName() << "\" Renderer | FPS: " << frames;
-        glfwSetWindowTitle(window, title.str().c_str());
         lastTime = currentTime;
+        framerate = frames;
         frames = 0.0f;
     }
 }
 
 void ProgramManager::Run()
 {
-    while (!glfwWindowShouldClose(window))
+    while (!window->ShouldClose())
     {
-        renderingManager.RenderScene(*mainScene);
-        propertyManager->AdvanceFrame();
-        ApplyPropertiesToScene(propertyManager->properties, mainScene);
+        UpdateFramerate();
+        window->UpdateTitle(renderingManager->GetActiveEngineName(), framerate);
 
-        glfwSwapBuffers(window);
+        renderingManager->RenderScene(*mainScene);
+        propertyManager->ApplyProperties();
+
+        glfwSwapBuffers(window->window);
         glfwPollEvents();
-
-        UpdateTitle();
     }
-}
-
-void ProgramManager::ApplyRenderingProperties(Properties properties)
-{
-    renderingManager.SelectEngine(Engines(properties.engine), *mainScene);
-    renderingManager.SelectLightingAlgorithm(LightingModes(properties.lightingMode));
-    renderingManager.SelectRenderMode(RenderModes(properties.renderMode));
-    renderingManager.SelectPolygonOrientation(PolygonOrientation(properties.orientation));
-    renderingManager.SelectCullingMode(CullingModes(properties.cullingMode));
-    renderingManager.SelectBackgroundColor(properties.backgroundColor);
-    renderingManager.SelectRenderUniformColor(properties.modelDiffuseColor,
-                                              properties.diffuseIntensity,
-                                              properties.modelAmbientColor,
-                                              properties.ambientIntensity,
-                                              properties.modelSpecularColor,
-                                              properties.specularIntensity,
-                                              properties.modelShineCoefficient);
-}
-
-void ProgramManager::ApplyCameraProperties(Properties &properties, Scene *scene)
-{
-    if (properties.shouldMove)
-    {
-        scene->camera.MoveTo(properties.movementDirection, properties.speed);
-
-        if (properties.keepLookingAtModel)
-            scene->camera.LookAtFramedObject();
-
-        properties.shouldMove = false;
-    }
-
-    if (properties.resetCamera)
-    {
-        scene->ResetCamera();
-
-        properties.rotationPitch = 0.0f;
-        properties.rotationRoll = 0.0f;
-        properties.rotationYaw = 0.0f;
-
-        properties.resetCamera = false;
-    }
-
-    if (!properties.keepLookingAtModel)
-        scene->camera.Rotate(properties.rotationPitch, properties.rotationRoll, properties.rotationYaw);
-    else
-        scene->camera.LookAtFramedObject();
-
-    scene->camera.nearPlane = properties.nearPlane;
-    scene->camera.farPlane = properties.farPlane;
-    scene->camera.horizontalFieldOfView = properties.horizontalFieldOfView;
-    scene->camera.verticalFieldOfView = properties.verticalFieldOfView;
-}
-
-void ProgramManager::ApplyPropertiesToScene(Properties &properties, Scene *scene)
-{
-    if (properties.reloadFile)
-    {
-        scene->SwapModel(0, Model3D(properties.modelFilePath));
-        properties.modelDiffuseColor = scene->models[0].materials->diffuseColor;
-        properties.modelAmbientColor = scene->models[0].materials->ambientColor;
-        properties.modelSpecularColor = scene->models[0].materials->specularColor;
-        properties.modelShineCoefficient = scene->models[0].materials->shineCoefficient;
-        renderingManager.SetupBuffers(*scene);
-        properties.reloadFile = false;
-    }
-
-    ApplyRenderingProperties(properties);
-    ApplyCameraProperties(properties, scene);
 }

@@ -115,7 +115,7 @@ glm::mat4 Camera::GetProjectionMatrix()
                                              shearX, shearY, normScaling, -1.0f,
                                              0.0f, 0.0f, normTranslation, 0.0f);
 
-    glm::mat4 openGLProjection = glm::perspective(horizontalFieldOfView, ASPECT_RATIO, nearPlane, farPlane);
+    //glm::mat4 openGLProjection = glm::perspective(horizontalFieldOfView, ASPECT_RATIO, nearPlane, farPlane);
 
     return close2GLProjection;
 }

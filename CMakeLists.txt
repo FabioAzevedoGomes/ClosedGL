@@ -32,16 +32,19 @@ set(COMMON_LIBS ${COMMON_LIBS} ${EXTRA_LIBS})
 set(RUN_DIR ${PROJECT_SOURCE_DIR}/bin)
 
 add_executable(ClosedGL 
-  src/main.cpp 
-  src/shading/ShaderUtils.cpp
-  src/3dScene/Model3D.cpp
-  src/3dScene/Camera.cpp
-  src/3dScene/Scene.cpp
+  src/main.cpp
+  src/ProgramManager.cpp
+  src/data/3dScene/Model3D.cpp
+  src/data/3dScene/Camera.cpp
+  src/data/3dScene/Scene.cpp
+  src/ui/PropertyManager.cpp
+  src/ui/Window.cpp
   src/rendering/RenderingManager.cpp
   src/rendering/OpenGLRenderer.cpp
   src/rendering/Close2GLRenderer.cpp
-  src/gui/PropertyManager.cpp
-  src/ProgramManager.cpp
+  src/rendering/shading/ShaderUtils.cpp
+  src/rendering/shading/vertexShader.vert 
+  src/rendering/shading/fragmentShader.frag
   lib/gl3w.c
   lib/imgui/imgui_demo.cpp
   lib/imgui/imgui_draw.cpp
@@ -51,8 +54,6 @@ add_executable(ClosedGL
   lib/imgui/imgui_impl_glfw.cpp
   lib/imgui/imgui_impl_opengl3.cpp
   lib/FileBrowser/ImGuiFileBrowser.cpp
-  src/shading/vertexShader.vert 
-  src/shading/fragmentShader.frag
   )
 set_property(TARGET ClosedGL PROPERTY DEBUG_POSTFIX _d)
 target_link_libraries(ClosedGL ${COMMON_LIBS})
@@ -63,13 +64,20 @@ IF (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D_LINUX -")
 ENDIF (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
-include_directories( include )
-include_directories(include/gui/)
-include_directories(include/3dScene/data)
-include_directories(include/3dScene)
-include_directories(include/shading)
-include_directories(include/rendering)
-include_directories(include/actions)
+MACRO(HEADER_DIRECTORIES return_list)
+    FILE(GLOB_RECURSE new_list *.hpp)
+    SET(dir_list "")
+    FOREACH(file_path ${new_list})
+        GET_FILENAME_COMPONENT(dir_path ${file_path} PATH)
+        SET(dir_list ${dir_list} ${dir_path})
+    ENDFOREACH()
+    LIST(REMOVE_DUPLICATES dir_list)
+    SET(${return_list} ${dir_list})
+ENDMACRO()
+
+HEADER_DIRECTORIES( header_dir_list )
+include_directories( ${header_dir_list} )
+
 include_directories(lib)
 include_directories(lib/imgui/)
 include_directories(lib/FileBrowser)

@@ -1,9 +1,11 @@
 #include "PropertyManager.hpp"
 
-PropertyManager::PropertyManager(GLFWwindow *window)
+PropertyManager::PropertyManager(GLFWwindow *window, Scene *scene, RenderingManager *renderingManager)
 {
-    this->window = window;
     this->modelLoaded = false;
+
+    this->managedRenderer = renderingManager;
+    this->managedScene = scene;
 
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
@@ -15,7 +17,24 @@ PropertyManager::PropertyManager(GLFWwindow *window)
     ImGui_ImplOpenGL3_Init("#version 400");
 }
 
-void PropertyManager::RenderWindow()
+PropertyManager::~PropertyManager()
+{
+    ImGui_ImplOpenGL3_Shutdown();
+    ImGui_ImplGlfw_Shutdown();
+    ImGui::DestroyContext();
+}
+
+void PropertyManager::RenderWelcomeWindow()
+{
+    ImGui::Begin("Welcome", NULL, ImGuiWindowFlags_AlwaysAutoResize);
+    if (ImGui::Button("Select Model ..."))
+        ImGui::OpenPopup("Open File");
+    if (fileDialog.showFileDialog("Open File", imgui_addons::ImGuiFileBrowser::DialogMode::OPEN, ImVec2(700, 310), ".in"))
+        LoadInputFile(fileDialog.selected_path.c_str());
+    ImGui::End();
+}
+
+void PropertyManager::RenderPropertyWindow()
 {
     ImGui::Begin("Properties", NULL, ImGuiWindowFlags_AlwaysAutoResize);
 
@@ -94,10 +113,7 @@ void PropertyManager::RenderWindow()
         if (ImGui::Button("Select..."))
             ImGui::OpenPopup("Open File");
         if (fileDialog.showFileDialog("Open File", imgui_addons::ImGuiFileBrowser::DialogMode::OPEN, ImVec2(700, 310), ".in"))
-        {
-            properties.reloadFile = true;
-            properties.modelFilePath = fileDialog.selected_path;
-        }
+            LoadInputFile(fileDialog.selected_path.c_str());
 
         ImGui::Spacing();
     }
@@ -129,15 +145,15 @@ void PropertyManager::RenderWindow()
     if (ImGui::CollapsingHeader("Projection"))
     {
         ImGui::Text("Horizontal Field of View");
-        ImGui::SliderFloat("HFoV", (float *)&properties.horizontalFieldOfView, -M_PI, M_PI);
+        ImGui::SliderFloat("HFoV", (float *)&(managedScene->camera).horizontalFieldOfView, -M_PI, M_PI);
         ImGui::Spacing();
         ImGui::Text("Vertical Field of View");
-        ImGui::SliderFloat("VFoV", (float *)&properties.verticalFieldOfView, -M_PI, M_PI);
+        ImGui::SliderFloat("VFoV", (float *)&(managedScene->camera).verticalFieldOfView, -M_PI, M_PI);
         ImGui::Spacing();
 
         ImGui::Text("Planes");
-        ImGui::SliderFloat("Near", (float *)&properties.nearPlane, 0.1f, 10000.0f);
-        ImGui::SliderFloat("Far", (float *)&properties.farPlane, 0.1f, 10000.0f);
+        ImGui::SliderFloat("Near", (float *)&(managedScene->camera).nearPlane, 0.1f, 10000.0f);
+        ImGui::SliderFloat("Far", (float *)&(managedScene->camera).farPlane, 0.1f, 10000.0f);
 
         ImGui::Spacing();
     }
@@ -186,28 +202,83 @@ void PropertyManager::RenderWindow()
     ImGui::End();
 }
 
-void PropertyManager::AdvanceFrame()
+void PropertyManager::RenderWindow()
 {
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
     ImGui_ImplOpenGL3_NewFrame();
     ImGui_ImplGlfw_NewFrame();
     ImGui::NewFrame();
-    if (modelLoaded)
-        RenderWindow();
+
+    if (!modelLoaded)
+        RenderWelcomeWindow();
     else
-    {
-        ImGui::Begin("Welcome", NULL, ImGuiWindowFlags_AlwaysAutoResize);
-        if (ImGui::Button("Select Model ..."))
-            ImGui::OpenPopup("Open File");
-        if (fileDialog.showFileDialog("Open File", imgui_addons::ImGuiFileBrowser::DialogMode::OPEN, ImVec2(700, 310), ".in"))
-        {
-            properties.reloadFile = true;
-            modelLoaded = true;
-            properties.modelFilePath = fileDialog.selected_path;
-        }
-        ImGui::End();
-    }
+        RenderPropertyWindow();
+
     ImGui::Render();
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+}
+
+void PropertyManager::ApplyPropertiesToScene()
+{
+    if (properties.shouldMove)
+    {
+        managedScene->camera.MoveTo(properties.movementDirection, properties.speed);
+
+        if (properties.keepLookingAtModel)
+            managedScene->camera.LookAtFramedObject();
+
+        properties.shouldMove = false;
+    }
+
+    if (properties.resetCamera)
+    {
+        managedScene->ResetCamera();
+
+        properties.rotationPitch = 0.0f;
+        properties.rotationRoll = 0.0f;
+        properties.rotationYaw = 0.0f;
+
+        properties.resetCamera = false;
+    }
+
+    if (!properties.keepLookingAtModel)
+        managedScene->camera.Rotate(properties.rotationPitch, properties.rotationRoll, properties.rotationYaw);
+    else
+        managedScene->camera.LookAtFramedObject();
+}
+
+void PropertyManager::ApplyPropertiesToRenderingEngine()
+{
+    managedRenderer->SelectEngine(Engines(properties.engine), *managedScene);
+    managedRenderer->SelectLightingAlgorithm(LightingModes(properties.lightingMode));
+    managedRenderer->SelectRenderMode(RenderModes(properties.renderMode));
+    managedRenderer->SelectPolygonOrientation(PolygonOrientation(properties.orientation));
+    managedRenderer->SelectCullingMode(CullingModes(properties.cullingMode));
+    managedRenderer->SelectBackgroundColor(properties.backgroundColor);
+    managedRenderer->SelectRenderUniformColor(properties.modelDiffuseColor,
+                                              properties.diffuseIntensity,
+                                              properties.modelAmbientColor,
+                                              properties.ambientIntensity,
+                                              properties.modelSpecularColor,
+                                              properties.specularIntensity,
+                                              properties.modelShineCoefficient);
+}
+
+void PropertyManager::LoadInputFile(const char *fileName)
+{
+    managedScene->SwapModel(0, Model3D(fileName));
+    properties.modelDiffuseColor = managedScene->models[0].materials->diffuseColor;
+    properties.modelAmbientColor = managedScene->models[0].materials->ambientColor;
+    properties.modelSpecularColor = managedScene->models[0].materials->specularColor;
+    properties.modelShineCoefficient = managedScene->models[0].materials->shineCoefficient;
+    managedRenderer->SetupBuffers(*managedScene);
+    modelLoaded = true;
+}
+
+void PropertyManager::ApplyProperties()
+{
+    RenderWindow();
+    ApplyPropertiesToScene();
+    ApplyPropertiesToRenderingEngine();
 }
