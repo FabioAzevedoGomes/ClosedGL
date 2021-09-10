@@ -17,7 +17,7 @@ void OpenGLRenderer::DrawObject(Model3D object)
     glBindVertexArray(0);
 }
 
-void OpenGLRenderer::RenderScene(Scene scene)
+void OpenGLRenderer::RenderSceneToWindow(Scene scene, Window *_)
 {
     glBindVertexArray(VAOs[ModelObject_OpenGL]);
     glUniformMatrix4fv(GetShaderUniformVariableId(UNIFORM_PROJECTION_ID), 1, GL_FALSE, glm::value_ptr(scene.camera.GetProjectionMatrix()));

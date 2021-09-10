@@ -3,9 +3,7 @@
 ProgramManager::ProgramManager(const char *inputFile)
 {
     window = new Window("ClosedGL");
-
-    InitializeShaders(); // TODO: Move to rendering manager
-
+    InitializeShaders();
     renderingManager = new RenderingManager();
     mainScene = new Scene();
     propertyManager = new PropertyManager(window->window, mainScene, renderingManager);
@@ -42,12 +40,11 @@ void ProgramManager::Run()
     while (!window->ShouldClose())
     {
         UpdateFramerate();
-        window->UpdateTitle(renderingManager->GetActiveEngineName(), framerate);
+        window->SetTitle(renderingManager->GetActiveEngineName(), framerate);
 
-        renderingManager->RenderScene(*mainScene);
+        renderingManager->RenderSceneToWindow(*mainScene, window);
         propertyManager->ApplyProperties();
 
-        glfwSwapBuffers(window->window);
-        glfwPollEvents();
+        window->Update();
     }
 }

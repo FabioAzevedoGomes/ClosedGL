@@ -11,13 +11,13 @@ void RenderingManager::SetupBuffers(Scene scene)
     selectedRenderingEngine->SetupVBOS(scene.models);
 }
 
-void RenderingManager::RenderScene(Scene scene)
+void RenderingManager::RenderSceneToWindow(Scene scene, Window *window)
 {
     glEnable(GL_DEPTH_TEST);
     glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
     glClearBufferfv(GL_COLOR, 0, glm::value_ptr(glm::vec4(selectedRenderingEngine->backgroundColor, 0.0f)));
 
-    selectedRenderingEngine->RenderScene(scene);
+    selectedRenderingEngine->RenderSceneToWindow(scene, window);
 }
 
 std::string RenderingManager::GetActiveEngineName()

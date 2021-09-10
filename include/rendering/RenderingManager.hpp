@@ -14,7 +14,7 @@ public:
     RenderingManager();
 
     void SetupBuffers(Scene);
-    void RenderScene(Scene);
+    void RenderSceneToWindow(Scene, Window *);
 
     std::string GetActiveEngineName();
 

@@ -89,10 +89,25 @@ void Close2GLRenderer::DrawObject(Model3D object)
     glBindVertexArray(0);
 }
 
-void Close2GLRenderer::RenderScene(Scene scene)
+void Close2GLRenderer::CalculateRenderingMatrices(Scene scene, Window *window)
 {
     view = scene.camera.GetViewMatrix();
     projection = scene.camera.GetProjectionMatrix();
+
+    float n = scene.camera.nearPlane;
+    float f = scene.camera.farPlane;
+    float w = window->GetWidth();
+    float h = window->GetHeight();
+
+    viewport = glm::mat4(w / 2.0f, 0.0f, 0.0f, 0.0f,
+                         0.0f, h / 2.0f, 0.0f, 0.0f,
+                         0.0f, 0.0f, (f - n) / 2.0f, 0.0f,
+                         w / 2.0f, h / 2.0f, (n + f) / 2.0f, 1.0f);
+}
+
+void Close2GLRenderer::RenderSceneToWindow(Scene scene, Window *window)
+{
+    CalculateRenderingMatrices(scene, window);
 
     for (auto object = scene.models.begin(); object != scene.models.end(); object++)
     {

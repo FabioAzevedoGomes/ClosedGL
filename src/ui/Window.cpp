@@ -32,7 +32,7 @@ void Window::Resize(float width, float height)
     glViewport(0, 0, width, height);
 }
 
-void Window::UpdateTitle(std::string renderingEngine, float framerate)
+void Window::SetTitle(std::string renderingEngine, float framerate)
 {
     std::stringstream title;
     title << "ClosedGL | Using \"" << renderingEngine << "\" Renderer | FPS: " << framerate;
@@ -42,6 +42,12 @@ void Window::UpdateTitle(std::string renderingEngine, float framerate)
 bool Window::ShouldClose()
 {
     return glfwWindowShouldClose(window);
+}
+
+void Window::Update()
+{
+    glfwSwapBuffers(window);
+    glfwPollEvents();
 }
 
 float Window::GetHeight()

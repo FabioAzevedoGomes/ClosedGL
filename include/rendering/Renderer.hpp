@@ -12,6 +12,7 @@
 
 #include "Scene.hpp"
 #include "ShaderUtils.hpp"
+#include "Window.hpp"
 
 #include <stdio.h>
 #include <vector>
@@ -36,7 +37,7 @@ public:
     Engines engineId;
     std::string engineName;
 
-    virtual void RenderScene(Scene){};
+    virtual void RenderSceneToWindow(Scene, Window *){};
     virtual void BindObjectBuffers(Model3D){};
     virtual void SetupVBOS(std::vector<Model3D>){};
     virtual void SetupVAOS(){};

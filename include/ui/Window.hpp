@@ -22,7 +22,9 @@ public:
     ~Window();
 
     void Resize(float width, float height);
-    void UpdateTitle(std::string renderingEngine, float framerate);
+    void SetTitle(std::string renderingEngine, float framerate);
+    void Update();
+
     bool ShouldClose();
     float GetWidth();
     float GetHeight();

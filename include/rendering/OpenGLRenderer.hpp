@@ -25,7 +25,7 @@ private:
 
 public:
     OpenGLRenderer();
-    virtual void RenderScene(Scene);
+    virtual void RenderSceneToWindow(Scene, Window *);
     virtual void BindObjectBuffers(Model3D);
     virtual void SetupVBOS(std::vector<Model3D>);
     virtual void SetupVAOS();
