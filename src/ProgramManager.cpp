@@ -104,7 +104,7 @@ void ProgramManager::ApplyCameraProperties(Properties &properties, Scene *scene)
         scene->camera.MoveTo(properties.movementDirection, properties.speed);
 
         if (properties.keepLookingAtModel)
-            scene->camera.LookAt();
+            scene->camera.LookAtFramedObject();
 
         properties.shouldMove = false;
     }
@@ -123,7 +123,7 @@ void ProgramManager::ApplyCameraProperties(Properties &properties, Scene *scene)
     if (!properties.keepLookingAtModel)
         scene->camera.Rotate(properties.rotationPitch, properties.rotationRoll, properties.rotationYaw);
     else
-        scene->camera.LookAt();
+        scene->camera.LookAtFramedObject();
 
     scene->camera.nearPlane = properties.nearPlane;
     scene->camera.farPlane = properties.farPlane;

@@ -9,7 +9,7 @@ void Scene::MoveCamera(MovementOptions direction, float speed, bool keepLookingA
     camera.MoveTo(direction, speed);
 
     if (keepLookingAtObject)
-        camera.LookAt();
+        camera.LookAtFramedObject();
 }
 
 void Scene::ResetCamera()

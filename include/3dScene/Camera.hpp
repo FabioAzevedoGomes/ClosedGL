@@ -32,13 +32,15 @@ public:
     float horizontalFieldOfView;
     float verticalFieldOfView;
 
+    float viewWidth, viewHeight;
+
     Camera();
     void Reset();
     void FrameObject(Model3D object);
 
     void MoveTo(MovementOptions direction, float movementSpeed);
     void Rotate(float pitch, float roll, float yaw);
-    void LookAt();
+    void LookAtFramedObject();
 
     glm::mat4 GetProjectionMatrix();
     glm::mat4 GetViewMatrix();

@@ -1,7 +1,5 @@
 #include "Close2GLRenderer.hpp"
 
-#define DEBUG false
-
 Close2GLRenderer::Close2GLRenderer()
 {
     this->engineId = Close2GL;
@@ -33,7 +31,7 @@ int Close2GLRenderer::PopulateVertexBuffer(Model3D object, float *vertexBuffer)
 
     for (int triangle = 0; triangle < object.triangleCount; triangle++)
     {
-        bool clipped = true;
+        bool insideFrustum = false;
 
         Triangle modelTriangle = object.triangles[triangle];
         std::vector<glm::vec4> triangleVertices;
@@ -51,10 +49,21 @@ int Close2GLRenderer::PopulateVertexBuffer(Model3D object, float *vertexBuffer)
 
             // Perspective division
             projectedPosition /= projectedPosition.w;
+
+            // Clip triangle before/after Near/Far planes
+            if (projectedPosition.z < -1 || projectedPosition.z > 1)
+            {
+                triangleVertices.clear();
+                break;
+            }
+
+            if (projectedPosition.x > -1 && projectedPosition.x < 1 && projectedPosition.y > -1 && projectedPosition.y < 1)
+                insideFrustum = true;
+
             triangleVertices.push_back(projectedPosition);
         }
 
-        if (!ShouldCull(triangleVertices))
+        if (insideFrustum && !ShouldCull(triangleVertices))
         {
             for (auto vertex = triangleVertices.begin(); vertex != triangleVertices.end(); vertex++)
             {

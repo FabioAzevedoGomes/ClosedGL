@@ -83,7 +83,7 @@ void Camera::Rotate(float pitch, float roll, float yaw)
     RotateYaw(yaw);
 }
 
-void Camera::LookAt()
+void Camera::LookAtFramedObject()
 {
     glm::vec3 newN = glm::normalize(lookAtPoint - this->position);
     glm::vec3 newU = glm::normalize(glm::cross(newN, v));
@@ -169,7 +169,7 @@ void Camera::PrintDefinition()
               << " - V vector: (" << v.x << ", " << v.y << ", " << v.z << ")" << std::endl
               << " - W vector: (" << n.x << ", " << n.y << ", " << n.z << ")" << std::endl
               << " - Position: (" << position.x << ", " << position.y << ", " << position.z << ")" << std::endl
-              << " - LookAt: (" << lookAtPoint.x << ", " << lookAtPoint.y << ", " << lookAtPoint.z << ")" << std::endl
+              << " - LookAtFramedObject: (" << lookAtPoint.x << ", " << lookAtPoint.y << ", " << lookAtPoint.z << ")" << std::endl
               << " - hFoV: " << horizontalFieldOfView << std::endl
               << " - vFov: " << verticalFieldOfView << std::endl;
     std::cout << std::endl;
