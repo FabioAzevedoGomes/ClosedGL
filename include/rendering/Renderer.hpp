@@ -24,7 +24,8 @@ enum Attrib_IDs
     openGLvertexPosition = 0,
     openGLvertexColor = 1,
     openGLvertexNormals = 2,
-    close2GLvertexPosition = 3
+    close2GLvertexPosition = 3,
+    close2GLtextureCoordinates = 4
 };
 
 class Renderer

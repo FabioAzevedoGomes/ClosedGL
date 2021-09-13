@@ -5,7 +5,7 @@ layout(location=1)in vec3 openGLvColor;
 layout(location=2)in vec3 openGLvNormal;
 
 layout(location=3)in vec4 close2GLvPosition;
-layout(location=4)in vec3 close2GLvColor;
+layout(location=4)in vec2 close2GLvTextureCoordinate;
 
 uniform vec3 uniformDiffuseColor;
 uniform float uniformDiffuseIntensity;
@@ -22,6 +22,7 @@ uniform mat4 model;
 out vec4 vertexColor;
 out vec4 normal;
 out vec4 position;
+out vec2 textureCoordinate;
 
 subroutine vec4 VertexLightingFunction();
 subroutine void VertexPositionFunction();
@@ -69,6 +70,11 @@ subroutine (VertexLightingFunction) vec4 OpenGL_PhongShader() {
     position = vec4(openGLvPosition,1.0);
     normal = vec4(openGLvNormal,0.0);
     return vec4(uniformDiffuseColor,1.);
+}
+
+subroutine (VertexLightingFunction) vec4 Close2GL_TextureShader() {
+    textureCoordinate = close2GLvTextureCoordinate;
+    return vec4(0.0);
 }
 
 // Vertex position options

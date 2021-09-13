@@ -12,6 +12,11 @@ enum Close2GL_VAO_IDs
     ModelObject_Close2GL,
     NumVAOs_Close2GL
 };
+enum Close2GL_Texture_IDs
+{
+    ModelTexture_Close2GL,
+    Close2GL_NumTextures
+};
 
 class Close2GLRenderer : public Renderer
 {
@@ -21,17 +26,24 @@ private:
     CullingModes cullingMode;
     PolygonOrientation polygonOrientation;
 
+    float ***colorBuffer;
+    float **depthBuffer;
+
     GLuint Buffers[Close2GL_NumBuffers];
     GLuint VAOs[NumVAOs_Close2GL];
+    GLuint Textures[Close2GL_NumTextures];
 
     virtual void DrawObject(Model3D);
 
     bool ShouldCull(std::vector<glm::vec4>);
     int PopulateVertexBuffer(Model3D, float *);
     void CalculateRenderingMatrices(Scene, Window *);
+    void ClearAndResizeBuffersForWindow(Window *);
 
 public:
     Close2GLRenderer();
+    ~Close2GLRenderer();
+
     virtual void RenderSceneToWindow(Scene, Window *);
     virtual void BindObjectBuffers(Model3D);
     virtual void SetupVBOS(std::vector<Model3D>);

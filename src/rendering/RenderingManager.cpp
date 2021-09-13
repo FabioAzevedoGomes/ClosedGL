@@ -49,8 +49,8 @@ void RenderingManager::SelectLightingAlgorithm(LightingModes lightingMode)
     // Override lighting for now when using Close2GL
     if (selectedRenderingEngine->engineId == Close2GL)
     {
-        SetActiveVertexShaderSubroutine(UNIFORM_VSHADER_LIGHTING_FUNCTION_ID, VSHADER_LIGHTING_FUNCTION_FLAT);
-        SetActiveFragmentShaderSubroutine(UNIFORM_FSHADER_LIGHTING_FUNCTION_ID, FSHADER_LIGHTING_FUNCTION_PASS_THROUGH);
+        SetActiveVertexShaderSubroutine(UNIFORM_VSHADER_LIGHTING_FUNCTION_ID, VSHADER_LIGHTING_FUNCTION_TEXTURE);
+        SetActiveFragmentShaderSubroutine(UNIFORM_FSHADER_LIGHTING_FUNCTION_ID, FSHADER_LIGHTING_FUNCTION_TEXTURE);
     }
     else
     {

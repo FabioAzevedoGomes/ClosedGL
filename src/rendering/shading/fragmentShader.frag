@@ -3,6 +3,9 @@
 in vec4 vertexColor;
 in vec4 normal;
 in vec4 position;
+in vec2 textureCoordinate;
+
+uniform sampler2D canvasSampler;
 
 uniform mat4 view;
 uniform mat4 projection;
@@ -41,6 +44,10 @@ subroutine (FragmentLightingFunction) vec4 OpenGL_PhongShader() {
 
     // Final color
     return vec4(diffuseTerm + ambientTerm, 0.0) + specularTerm;
+}
+
+subroutine (FragmentLightingFunction) vec4 Close2GL_TextureShader() {
+    return texture(canvasSampler, textureCoordinate);
 }
 
 subroutine uniform FragmentLightingFunction fragmentLightingShader;

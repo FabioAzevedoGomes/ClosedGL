@@ -4,6 +4,15 @@ Close2GLRenderer::Close2GLRenderer()
 {
     this->engineId = Close2GL;
     this->engineName = "Close2GL";
+
+    colorBuffer = nullptr;
+    depthBuffer = nullptr;
+}
+
+Close2GLRenderer::~Close2GLRenderer()
+{
+    free(colorBuffer);
+    free(depthBuffer);
 }
 
 bool Close2GLRenderer::ShouldCull(std::vector<glm::vec4> triangleVertices)
@@ -82,11 +91,6 @@ void Close2GLRenderer::DrawObject(Model3D object)
     float *vertexBuffer = (float *)malloc(sizeof(float) * object.triangleCount * 6);
 
     int visibleVertexCount = PopulateVertexBuffer(object, vertexBuffer);
-
-    glBindVertexArray(VAOs[ModelObject_Close2GL]);
-    glBufferSubData(GL_ARRAY_BUFFER, 0, visibleVertexCount * 2 * sizeof(float), vertexBuffer);
-    glDrawArrays(GL_TRIANGLES, 0, visibleVertexCount);
-    glBindVertexArray(0);
 }
 
 void Close2GLRenderer::CalculateRenderingMatrices(Scene scene, Window *window)
@@ -105,15 +109,43 @@ void Close2GLRenderer::CalculateRenderingMatrices(Scene scene, Window *window)
                          w / 2.0f, h / 2.0f, (n + f) / 2.0f, 1.0f);
 }
 
+void Close2GLRenderer::ClearAndResizeBuffersForWindow(Window *window)
+{
+    free(colorBuffer);
+    colorBuffer = (float ***)malloc(sizeof(float) * window->GetHeight() * window->GetWidth() * 4);
+    memset(colorBuffer, 255, sizeof(float) * window->GetHeight() * window->GetWidth() * 4);
+
+    free(depthBuffer);
+    depthBuffer = (float **)malloc(sizeof(float) * window->GetHeight() * window->GetWidth());
+    memset(depthBuffer, 0, sizeof(float) * window->GetHeight() * window->GetWidth());
+
+    glDeleteTextures(1, Textures);
+    glGenTextures(1, Textures);
+    glBindTexture(GL_TEXTURE_2D, Textures[ModelTexture_Close2GL]);
+    glTexStorage2D(GL_TEXTURE_2D, 1, GL_RGBA, window->GetWidth(), window->GetHeight());
+}
+
 void Close2GLRenderer::RenderSceneToWindow(Scene scene, Window *window)
 {
     CalculateRenderingMatrices(scene, window);
+    ClearAndResizeBuffersForWindow(window);
 
     for (auto object = scene.models.begin(); object != scene.models.end(); object++)
     {
         model = glm::mat4(1.0f);
         DrawObject(*object);
     }
+
+    glActiveTexture(GL_TEXTURE1);
+
+    glBindTexture(GL_TEXTURE_2D, Textures[ModelTexture_Close2GL]);
+    glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, window->GetWidth(),
+                    window->GetHeight(), GL_RGBA, GL_FLOAT,
+                    colorBuffer);
+
+    glBindVertexArray(VAOs[ModelObject_Close2GL]);
+    glDrawArrays(GL_TRIANGLES, 0, 6);
+    glBindVertexArray(0);
 }
 
 void Close2GLRenderer::BindObjectBuffers(Model3D object)
@@ -135,8 +167,29 @@ void Close2GLRenderer::SetupVBOS(std::vector<Model3D> objects)
 {
     glCreateBuffers(Close2GL_NumBuffers, Buffers);
 
-    for (auto objectIterator = objects.begin(); objectIterator != objects.end(); objectIterator++)
-        BindObjectBuffers(*objectIterator);
+    float vertexData[] = {-1.0f, -1.0f, 1.0f, -1.0f, 1.0f, 1.0f,
+                          1.0f, 1.0f, -1.0f, 1.0f, -1.0f, -1.0f};
+    float textureCoordinateData[] = {0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f,
+                                     1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f};
+
+    // Position
+    glBindBuffer(GL_ARRAY_BUFFER, Buffers[Close2GL_VertexPositionBuffer]);
+    glBufferStorage(GL_ARRAY_BUFFER, 2 * 6 * sizeof(float), vertexData, GL_DYNAMIC_STORAGE_BIT);
+    glVertexAttribPointer(close2GLvertexPosition, 2, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0));
+    glEnableVertexAttribArray(close2GLvertexPosition);
+
+    // Colors
+    glBindBuffer(GL_ARRAY_BUFFER, Buffers[Close2GL_VertexPositionBuffer]);
+    glBufferStorage(GL_ARRAY_BUFFER, 2 * 6 * sizeof(float), textureCoordinateData, GL_DYNAMIC_STORAGE_BIT);
+    glVertexAttribPointer(close2GLtextureCoordinates, 2, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0));
+    glEnableVertexAttribArray(close2GLtextureCoordinates);
+
+    // Textures
+    glEnable(GL_TEXTURE_2D);
+    glActiveTexture(GL_TEXTURE1);
+    glGenTextures(1, Textures);
+    glBindTexture(GL_TEXTURE_2D, Textures[ModelTexture_Close2GL]);
+    glTexStorage2D(GL_TEXTURE_2D, 1, GL_RGBA, 0, 0);
 }
 
 void Close2GLRenderer::SetCullingMode(CullingModes cullingMode)
