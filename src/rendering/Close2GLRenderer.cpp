@@ -7,16 +7,23 @@ Close2GLRenderer::Close2GLRenderer()
 
     colorBuffer = nullptr;
     depthBuffer = nullptr;
+
+    rasterizationStrategies.insert({Wireframe, new WireframeRasterizationStrategy()});
+    rasterizationStrategies.insert({Standard, new FilledRasterizationStrategy()});
 }
 
 Close2GLRenderer::~Close2GLRenderer()
 {
     free(colorBuffer);
     free(depthBuffer);
+    rasterizationStrategies.clear();
 }
 
 bool Close2GLRenderer::ShouldCull(std::vector<glm::vec4> triangleVertices)
 {
+    if (triangleVertices.size() != 3)
+        return true;
+
     if (cullingMode == NoCulling)
         return false;
 
@@ -33,64 +40,20 @@ bool Close2GLRenderer::ShouldCull(std::vector<glm::vec4> triangleVertices)
     return area * polygonOrientation * cullingMode > 0;
 }
 
-int Close2GLRenderer::PopulateVertexBuffer(Model3D object, float *vertexBuffer)
+void Close2GLRenderer::DrawObject(Model3D object)
 {
     glm::mat4 modelViewProjection = projection * view * model;
-    int visibleVertexCount = 0;
 
     for (int triangle = 0; triangle < object.triangleCount; triangle++)
     {
-        bool insideFrustum = false;
+        std::vector<glm::vec4> triangleVertices = projectTriangleToNDC(object.triangles[triangle], modelViewProjection);
 
-        Triangle modelTriangle = object.triangles[triangle];
-        std::vector<glm::vec4> triangleVertices;
-        for (int vertex = 0; vertex < 3; vertex++)
+        if (!ShouldCull(triangleVertices))
         {
-            glm::vec4 vertexPosition = glm::vec4(modelTriangle.vertices[vertex].position, 1.0f);
-            glm::vec4 projectedPosition = modelViewProjection * vertexPosition;
-
-            // Clip triangle when w <= 0
-            if (projectedPosition.w <= 0)
-            {
-                triangleVertices.clear();
-                break;
-            }
-
-            // Perspective division
-            projectedPosition /= projectedPosition.w;
-
-            // Clip triangle before/after Near/Far planes
-            if (projectedPosition.z < -1 || projectedPosition.z > 1)
-            {
-                triangleVertices.clear();
-                break;
-            }
-
-            if (projectedPosition.x > -1 && projectedPosition.x < 1 && projectedPosition.y > -1 && projectedPosition.y < 1)
-                insideFrustum = true;
-
-            triangleVertices.push_back(projectedPosition);
-        }
-
-        if (insideFrustum && !ShouldCull(triangleVertices))
-        {
-            for (auto vertex = triangleVertices.begin(); vertex != triangleVertices.end(); vertex++)
-            {
-                vertexBuffer[(2 * visibleVertexCount) + 0] = (*vertex).x;
-                vertexBuffer[(2 * visibleVertexCount) + 1] = (*vertex).y;
-                visibleVertexCount++;
-            }
+            std::vector<glm::vec4> screenCoordinateVertices = projectVerticesToViewport(triangleVertices, viewport);
+            rasterizationStrategies[renderMode]->DrawTriangleToBuffer(triangleVertices, colorBuffer, depthBuffer);
         }
     }
-
-    return visibleVertexCount;
-}
-
-void Close2GLRenderer::DrawObject(Model3D object)
-{
-    float *vertexBuffer = (float *)malloc(sizeof(float) * object.triangleCount * 6);
-
-    int visibleVertexCount = PopulateVertexBuffer(object, vertexBuffer);
 }
 
 void Close2GLRenderer::CalculateRenderingMatrices(Scene scene, Window *window)
@@ -148,15 +111,6 @@ void Close2GLRenderer::RenderSceneToWindow(Scene scene, Window *window)
     glBindVertexArray(0);
 }
 
-void Close2GLRenderer::BindObjectBuffers(Model3D object)
-{
-    // Position
-    glBindBuffer(GL_ARRAY_BUFFER, Buffers[Close2GL_VertexPositionBuffer]);
-    glBufferStorage(GL_ARRAY_BUFFER, object.triangleCount * 6 * sizeof(float), object.GetVertexPositionData(), GL_DYNAMIC_STORAGE_BIT);
-    glVertexAttribPointer(close2GLvertexPosition, 2, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0));
-    glEnableVertexAttribArray(close2GLvertexPosition);
-}
-
 void Close2GLRenderer::SetupVAOS()
 {
     glGenVertexArrays(NumVAOs_Close2GL, VAOs);
@@ -192,6 +146,8 @@ void Close2GLRenderer::SetupVBOS(std::vector<Model3D> objects)
     glTexStorage2D(GL_TEXTURE_2D, 1, GL_RGBA, 0, 0);
 }
 
+// State setters
+
 void Close2GLRenderer::SetCullingMode(CullingModes cullingMode)
 {
     glDisable(GL_CULL_FACE);
@@ -201,4 +157,10 @@ void Close2GLRenderer::SetCullingMode(CullingModes cullingMode)
 void Close2GLRenderer::SetPolygonOrientation(PolygonOrientation orientation)
 {
     this->polygonOrientation = orientation;
+}
+
+void Close2GLRenderer::SetRenderMode(RenderModes renderMode)
+{
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    this->renderMode = renderMode;
 }

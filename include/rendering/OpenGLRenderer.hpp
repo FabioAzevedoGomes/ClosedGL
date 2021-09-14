@@ -18,18 +18,19 @@ enum OpenGL_VAO_IDs
 class OpenGLRenderer : public Renderer
 {
 private:
-    void DrawObject(Model3D object);
-
     GLuint Buffers[OpenGL_NumBuffers];
     GLuint VAOs[NumVAOs_OpenGL];
+
+    void BindObjectBuffers(Model3D);
+    void DrawObject(Model3D object);
 
 public:
     OpenGLRenderer();
     virtual void RenderSceneToWindow(Scene, Window *);
-    virtual void BindObjectBuffers(Model3D);
     virtual void SetupVBOS(std::vector<Model3D>);
     virtual void SetupVAOS();
 
     virtual void SetCullingMode(CullingModes);
     virtual void SetPolygonOrientation(PolygonOrientation);
+    virtual void SetRenderMode(RenderModes);
 };

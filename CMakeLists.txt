@@ -42,9 +42,12 @@ add_executable(ClosedGL
   src/rendering/RenderingManager.cpp
   src/rendering/OpenGLRenderer.cpp
   src/rendering/Close2GLRenderer.cpp
+  src/rendering/Close2GLRenderingUtils.cpp
   src/rendering/shading/ShaderUtils.cpp
   src/rendering/shading/vertexShader.vert 
   src/rendering/shading/fragmentShader.frag
+  src/rendering/rasterization/WireframeRasterizationStrategy.cpp
+  src/rendering/rasterization/FilledRasterizationStrategy.cpp  
   lib/gl3w.c
   lib/imgui/imgui_demo.cpp
   lib/imgui/imgui_draw.cpp

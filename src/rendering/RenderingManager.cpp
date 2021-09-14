@@ -80,19 +80,7 @@ void RenderingManager::SelectLightingAlgorithm(LightingModes lightingMode)
 
 void RenderingManager::SelectRenderMode(RenderModes renderMode)
 {
-    switch (renderMode)
-    {
-    case Wireframe:
-        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-        break;
-    case Points:
-        glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
-        break;
-    case Standard:
-    default:
-        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-        break;
-    }
+    selectedRenderingEngine->SetRenderMode(renderMode);
 }
 
 void RenderingManager::SelectBackgroundColor(glm::vec3 color)

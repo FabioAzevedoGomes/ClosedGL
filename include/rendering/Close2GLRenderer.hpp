@@ -1,6 +1,11 @@
 #pragma once
 
+#include <map>
+
 #include "Renderer.hpp"
+#include "Close2GLRenderingUtils.hpp"
+#include "WireframeRasterizationStrategy.hpp"
+#include "FilledRasterizationStrategy.hpp"
 
 enum Close2GL_Buffer_IDs
 {
@@ -23,8 +28,11 @@ class Close2GLRenderer : public Renderer
 private:
     glm::mat4 model, view, projection, viewport;
 
+    std::map<RenderModes, RasterizationStrategy *> rasterizationStrategies;
+
     CullingModes cullingMode;
     PolygonOrientation polygonOrientation;
+    RenderModes renderMode;
 
     float ***colorBuffer;
     float **depthBuffer;
@@ -36,7 +44,6 @@ private:
     virtual void DrawObject(Model3D);
 
     bool ShouldCull(std::vector<glm::vec4>);
-    int PopulateVertexBuffer(Model3D, float *);
     void CalculateRenderingMatrices(Scene, Window *);
     void ClearAndResizeBuffersForWindow(Window *);
 
@@ -45,10 +52,10 @@ public:
     ~Close2GLRenderer();
 
     virtual void RenderSceneToWindow(Scene, Window *);
-    virtual void BindObjectBuffers(Model3D);
     virtual void SetupVBOS(std::vector<Model3D>);
     virtual void SetupVAOS();
 
     virtual void SetCullingMode(CullingModes);
     virtual void SetPolygonOrientation(PolygonOrientation);
+    virtual void SetRenderMode(RenderModes);
 };
