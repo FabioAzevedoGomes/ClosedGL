@@ -19,19 +19,19 @@ Close2GLRenderer::~Close2GLRenderer()
     rasterizationStrategies.clear();
 }
 
-bool Close2GLRenderer::ShouldCull(std::vector<glm::vec4> triangleVertices)
+bool Close2GLRenderer::ShouldCull(Triangle triangle)
 {
-    if (triangleVertices.size() != 3)
+    if (triangle.clipped)
         return true;
 
     if (cullingMode == NoCulling)
         return false;
 
     float sum = 0.0f;
-    for (int i = 0; i < triangleVertices.size(); i++)
+    for (int i = 0; i < 3; i++)
     {
-        float firstTerm = triangleVertices[i].x * triangleVertices[(i + 1) % triangleVertices.size()].y;
-        float secondTerm = triangleVertices[(i + 1) % triangleVertices.size()].x * triangleVertices[i].y;
+        float firstTerm = triangle.vertices[i].position.x * triangle.vertices[(i + 1) % 3].position.y;
+        float secondTerm = triangle.vertices[(i + 1) % 3].position.x * triangle.vertices[i].position.y;
 
         sum += firstTerm - secondTerm;
     }
@@ -44,14 +44,15 @@ void Close2GLRenderer::DrawObject(Model3D object)
 {
     glm::mat4 modelViewProjection = projection * view * model;
 
-    for (int triangle = 0; triangle < object.triangleCount; triangle++)
+    for (int triangleIndex = 0; triangleIndex < object.triangleCount; triangleIndex++)
     {
-        std::vector<glm::vec4> triangleVertices = projectTriangleToNDC(object.triangles[triangle], modelViewProjection);
+        Triangle triangle = object.triangles[triangleIndex];
+        projectTriangleToNDC(triangle, modelViewProjection);
 
-        if (!ShouldCull(triangleVertices))
+        if (!ShouldCull(triangle))
         {
-            std::vector<glm::vec4> screenCoordinateVertices = projectVerticesToViewport(triangleVertices, viewport);
-            rasterizationStrategies[renderMode]->DrawTriangleToBuffer(triangleVertices, colorBuffer, depthBuffer);
+            projectTriangleToViewport(triangle, viewport);
+            rasterizationStrategies[renderMode]->DrawTriangleToBuffer(triangle, colorBuffer, depthBuffer);
         }
     }
 }

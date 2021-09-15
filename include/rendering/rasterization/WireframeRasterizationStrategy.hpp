@@ -5,5 +5,5 @@
 class WireframeRasterizationStrategy : public RasterizationStrategy
 {
 public:
-    virtual void DrawTriangleToBuffer(std::vector<glm::vec4> triangle, float ***colorBuffer, float **depthBuffer);
+    virtual void DrawTriangleToBuffer(Triangle triangle, float ***colorBuffer, float **depthBuffer);
 };

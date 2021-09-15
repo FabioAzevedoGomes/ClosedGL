@@ -166,7 +166,7 @@ void Model3D::ReadTriangle(FILE *file, int index)
     for (int i = 0; i < 3; i++)
     {
         fscanf(file, "v%d %f %f %f %f %f %f %d\n", &vertexNumber, &vx, &vy, &vz, &nx, &ny, &nz, &colorIndex);
-        this->triangles[index].vertices[vertexNumber].position = glm::vec3(vx, vy, vz);
+        this->triangles[index].vertices[vertexNumber].position = glm::vec4(vx, vy, vz, 1.0f);
 
         if (!strcmp(this->modelName, "COW")) // Cow normals z component flipped?
             this->triangles[index].vertices[vertexNumber].normal = glm::vec3(nx, ny, -nz);
@@ -184,4 +184,5 @@ void Model3D::ReadTriangle(FILE *file, int index)
 
     fscanf(file, "face normal %f %f %f\n", &nx, &ny, &nz);
     this->triangles[index].faceNormal = glm::vec3(nx, ny, nz);
+    this->triangles[index].clipped = false;
 }

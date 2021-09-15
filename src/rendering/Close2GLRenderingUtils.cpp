@@ -1,55 +1,54 @@
 #include "Close2GLRenderingUtils.hpp"
 
-bool isInsideNDCFrustum(glm::vec3 vertex)
+bool isInsideNDCFrustum(Triangle triangle)
 {
-    return vertex.x > -1 && vertex.x < 1 && vertex.y > -1 && vertex.y < 1 && vertex.z > -1 && vertex.z < 1;
+    for (int i = 0; i < 3; i++)
+        if (triangle.vertices[i].position.x > -1 && triangle.vertices[i].position.x < 1
+         && triangle.vertices[i].position.y > -1 && triangle.vertices[i].position.y < 1
+         && triangle.vertices[i].position.z > -1 && triangle.vertices[i].position.z < 1)
+            return true;
+    
+    return false;
 }
 
-std::vector<glm::vec4> projectTriangleToNDC(Triangle triangle, glm::mat4 modelViewProj)
+void perspectiveDivideVertex(Vertex &vertex)
 {
-    std::vector<glm::vec4> projectedVertices;
+    float wp = vertex.position.w;
+    vertex.position = vertex.position / wp;
+    vertex.normal = vertex.position / wp;
+    vertex.color = vertex.position / wp;
+    vertex.wp = wp;
+}
 
-    bool insideFrustum = false;
+void projectTriangleToNDC(Triangle &triangle, glm::mat4 modelViewProj)
+{
     for (int vertex = 0; vertex < 3; vertex++)
     {
-        glm::vec4 vertexPosition = glm::vec4(triangle.vertices[vertex].position, 1.0f);
-        glm::vec4 projectedPosition = modelViewProj * vertexPosition;
+        triangle.vertices[vertex].position = modelViewProj * triangle.vertices[vertex].position;
 
         // Clip triangle when w <= 0
-        if (projectedPosition.w <= 0)
+        if (triangle.vertices[vertex].position.w <= 0)
         {
-            projectedVertices.clear();
+            triangle.clipped = true;
             break;
         }
 
-        // Perspective division
-        projectedPosition /= projectedPosition.w;
+        perspectiveDivideVertex(triangle.vertices[vertex]);
 
         // Clip triangle before/after Near/Far planes
-        if (projectedPosition.z < -1 || projectedPosition.z > 1)
+        if (triangle.vertices[vertex].position.z < -1 || triangle.vertices[vertex].position.z > 1)
         {
-            projectedVertices.clear();
+            triangle.clipped = true;
             break;
         }
-
-        if (isInsideNDCFrustum(projectedPosition))
-            insideFrustum = true;
-
-        projectedVertices.push_back(projectedPosition);
     }
 
-    if (!insideFrustum)
-        projectedVertices.clear();
-
-    return projectedVertices;
+    if (!triangle.clipped && !isInsideNDCFrustum(triangle))
+        triangle.clipped = true;
 }
 
-std::vector<glm::vec4> projectVerticesToViewport(std::vector<glm::vec4> triangleVertices, glm::mat4 viewport)
+void projectTriangleToViewport(Triangle &triangle, glm::mat4 viewport)
 {
-    std::vector<glm::vec4> projectedVertices;
-
     for (int vertex = 0; vertex < 3; vertex++)
-        projectedVertices.push_back(viewport * triangleVertices[vertex]);
-
-    return projectedVertices;
+        triangle.vertices[vertex].position = viewport * triangle.vertices[vertex].position;
 }

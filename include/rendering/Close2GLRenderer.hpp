@@ -43,7 +43,7 @@ private:
 
     virtual void DrawObject(Model3D);
 
-    bool ShouldCull(std::vector<glm::vec4>);
+    bool ShouldCull(Triangle);
     void CalculateRenderingMatrices(Scene, Window *);
     void ClearAndResizeBuffersForWindow(Window *);
 

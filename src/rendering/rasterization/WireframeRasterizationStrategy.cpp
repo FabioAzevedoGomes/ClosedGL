@@ -1,5 +1,5 @@
 #include "WireframeRasterizationStrategy.hpp"
 
-void WireframeRasterizationStrategy::DrawTriangleToBuffer(std::vector<glm::vec4> triangle, float ***colorBuffer, float **depthBuffer)
+void WireframeRasterizationStrategy::DrawTriangleToBuffer(Triangle triangle, float ***colorBuffer, float **depthBuffer)
 {
 }
