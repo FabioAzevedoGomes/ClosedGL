@@ -46,7 +46,7 @@ void Close2GLRenderer::DrawObject(Model3D object)
 {
     glm::mat4 modelViewProjection = projection * view * model;
 
-    for (int triangleIndex = 10; triangleIndex < object.triangleCount; triangleIndex++)
+    for (int triangleIndex = 0; triangleIndex < object.triangleCount; triangleIndex++)
     {
         Triangle triangle = object.triangles[triangleIndex];
         projectTriangleToNDC(triangle, modelViewProjection);
@@ -57,7 +57,6 @@ void Close2GLRenderer::DrawObject(Model3D object)
             rasterizationStrategies[renderMode]->DrawTriangleToBuffer(triangle, buffers);
         }
     }
-    std::cout << "===================" << std::endl;
 }
 
 void Close2GLRenderer::CalculateRenderingMatrices(Scene scene, Window *window)
