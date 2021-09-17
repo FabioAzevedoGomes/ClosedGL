@@ -53,7 +53,6 @@ typedef struct t_buffer
 
     void draw(glm::vec4 position, glm::vec4 color)
     {
-        //std::cout << glm::to_string(position) << std::endl;
 
         if (position.x >= 0 && position.x < width && position.y >= 0 && position.y < height && position.z > *(depthBuffer + (int)std::floor(position.y) * width + (int)std::floor(position.x)))
         {

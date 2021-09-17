@@ -3,11 +3,9 @@
 bool isInsideNDCFrustum(Triangle triangle)
 {
     for (int i = 0; i < 3; i++)
-        if (triangle.vertices[i].position.x > -1 && triangle.vertices[i].position.x < 1
-         && triangle.vertices[i].position.y > -1 && triangle.vertices[i].position.y < 1
-         && triangle.vertices[i].position.z > -1 && triangle.vertices[i].position.z < 1)
+        if (triangle.vertices[i].position.x > -1 && triangle.vertices[i].position.x < 1 && triangle.vertices[i].position.y > -1 && triangle.vertices[i].position.y < 1 && triangle.vertices[i].position.z > -1 && triangle.vertices[i].position.z < 1)
             return true;
-    
+
     return false;
 }
 
@@ -29,6 +27,8 @@ void projectTriangleToNDC(Triangle &triangle, glm::mat4 modelViewProj)
         // Clip triangle when w <= 0
         if (triangle.vertices[vertex].position.w <= 0)
         {
+            std::cout << "Clipped triangle for w <= 0" << std::endl;
+            triangle.print();
             triangle.clipped = true;
             break;
         }
@@ -38,13 +38,20 @@ void projectTriangleToNDC(Triangle &triangle, glm::mat4 modelViewProj)
         // Clip triangle before/after Near/Far planes
         if (triangle.vertices[vertex].position.z < -1 || triangle.vertices[vertex].position.z > 1)
         {
+            std::cout << "Clipped triangle for being before/after near/far plane" << std::endl;
+            triangle.print();
             triangle.clipped = true;
             break;
         }
     }
 
     if (!triangle.clipped && !isInsideNDCFrustum(triangle))
+    {
+        std::cout << "Clipped triangle for being outside NDC frustum" << std::endl;
+        triangle.print();
+
         triangle.clipped = true;
+    }
 }
 
 void projectTriangleToViewport(Triangle &triangle, glm::mat4 viewport)
