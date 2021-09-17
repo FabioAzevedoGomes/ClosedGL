@@ -6,8 +6,11 @@ Window::Window(const char *title, float width, float height)
     glfwInit();
     window = glfwCreateWindow(width, height, title, NULL, NULL);
     glfwMakeContextCurrent(window);
-    glfwSwapInterval(0); // Remove swap interval in GLFW to avoid framerate cap
+    //glfwSwapInterval(0);
     gl3wInit();
+
+    this->width = width;
+    this->height = height;
 
     auto resizeCallbackFunction = [](GLFWwindow *window, int width, int height)
     {

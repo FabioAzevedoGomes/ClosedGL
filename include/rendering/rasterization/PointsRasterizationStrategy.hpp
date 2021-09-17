@@ -2,7 +2,7 @@
 
 #include "RasterizationStrategy.hpp"
 
-class WireframeRasterizationStrategy : public RasterizationStrategy
+class PointsRasterizationStrategy : public RasterizationStrategy
 {
 public:
     virtual void DrawTriangleToBuffer(Triangle triangle, Buffer *buffer);

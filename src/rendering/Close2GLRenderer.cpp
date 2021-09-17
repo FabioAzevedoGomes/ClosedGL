@@ -1,21 +1,23 @@
 #include "Close2GLRenderer.hpp"
 
+#include <fstream>
+bool once = true;
+
 Close2GLRenderer::Close2GLRenderer()
 {
     this->engineId = Close2GL;
     this->engineName = "Close2GL";
 
-    colorBuffer = nullptr;
-    depthBuffer = nullptr;
+    buffers = new Buffer(0, 0);
 
     rasterizationStrategies.insert({Wireframe, new WireframeRasterizationStrategy()});
     rasterizationStrategies.insert({Standard, new FilledRasterizationStrategy()});
+    rasterizationStrategies.insert({Points, new PointsRasterizationStrategy()});
 }
 
 Close2GLRenderer::~Close2GLRenderer()
 {
-    free(colorBuffer);
-    free(depthBuffer);
+    delete buffers;
     rasterizationStrategies.clear();
 }
 
@@ -44,7 +46,7 @@ void Close2GLRenderer::DrawObject(Model3D object)
 {
     glm::mat4 modelViewProjection = projection * view * model;
 
-    for (int triangleIndex = 0; triangleIndex < object.triangleCount; triangleIndex++)
+    for (int triangleIndex = 10; triangleIndex < 11 /*object.triangleCount*/; triangleIndex++)
     {
         Triangle triangle = object.triangles[triangleIndex];
         projectTriangleToNDC(triangle, modelViewProjection);
@@ -52,7 +54,7 @@ void Close2GLRenderer::DrawObject(Model3D object)
         if (!ShouldCull(triangle))
         {
             projectTriangleToViewport(triangle, viewport);
-            rasterizationStrategies[renderMode]->DrawTriangleToBuffer(triangle, colorBuffer, depthBuffer);
+            rasterizationStrategies[renderMode]->DrawTriangleToBuffer(triangle, buffers);
         }
     }
 }
@@ -68,20 +70,14 @@ void Close2GLRenderer::CalculateRenderingMatrices(Scene scene, Window *window)
     float h = window->GetHeight();
 
     viewport = glm::mat4(w / 2.0f, 0.0f, 0.0f, 0.0f,
-                         0.0f, h / 2.0f, 0.0f, 0.0f,
-                         0.0f, 0.0f, (f - n) / 2.0f, 0.0f,
-                         w / 2.0f, h / 2.0f, (n + f) / 2.0f, 1.0f);
+                         0.0f, -h / 2.0f, 0.0f, 0.0f,
+                         0.0f, 0.0f, 1.0f, 0.0f,
+                         w / 2.0f, h / 2.0f, 0.0f, 1.0f);
 }
 
 void Close2GLRenderer::ClearAndResizeBuffersForWindow(Window *window)
 {
-    free(colorBuffer);
-    colorBuffer = (float ***)malloc(sizeof(float) * window->GetHeight() * window->GetWidth() * 4);
-    memset(colorBuffer, 255, sizeof(float) * window->GetHeight() * window->GetWidth() * 4);
-
-    free(depthBuffer);
-    depthBuffer = (float **)malloc(sizeof(float) * window->GetHeight() * window->GetWidth());
-    memset(depthBuffer, 0, sizeof(float) * window->GetHeight() * window->GetWidth());
+    buffers->resize(window->GetWidth(), window->GetHeight());
 
     glDeleteTextures(1, Textures);
     glGenTextures(1, Textures);
@@ -100,12 +96,36 @@ void Close2GLRenderer::RenderSceneToWindow(Scene scene, Window *window)
         DrawObject(*object);
     }
 
+    if (once)
+    {
+        once = false;
+        std::ofstream file;
+        file.open("image.txt");
+        for (int j = 0; j < window->GetHeight(); j++)
+        {
+            for (int i = 0; i < window->GetWidth(); i++)
+            {
+                if (*(buffers->colorBuffer + (int)std::floor(j) * (int)window->GetWidth() * 4 + (int)std::floor(i) * 4) == 0.0f)
+                {
+                    file << " ";
+                }
+                else
+                {
+                    file << *(buffers->colorBuffer + (int)std::floor(j) * (int)window->GetWidth() * 4 + (int)std::floor(i) * 4);
+                }
+                file << " ";
+            }
+            file << std::endl;
+        }
+        file.close();
+    }
+
     glActiveTexture(GL_TEXTURE1);
 
     glBindTexture(GL_TEXTURE_2D, Textures[ModelTexture_Close2GL]);
-    glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, window->GetWidth(),
-                    window->GetHeight(), GL_RGBA, GL_FLOAT,
-                    colorBuffer);
+    //glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, window->GetWidth(),
+    //                window->GetHeight(), GL_RGBA, GL_FLOAT,
+    //                colorBuffer);
 
     glBindVertexArray(VAOs[ModelObject_Close2GL]);
     glDrawArrays(GL_TRIANGLES, 0, 6);
@@ -116,6 +136,7 @@ void Close2GLRenderer::SetupVAOS()
 {
     glGenVertexArrays(NumVAOs_Close2GL, VAOs);
     glBindVertexArray(VAOs[ModelObject_Close2GL]);
+    once = true;
 }
 
 void Close2GLRenderer::SetupVBOS(std::vector<Model3D> objects)

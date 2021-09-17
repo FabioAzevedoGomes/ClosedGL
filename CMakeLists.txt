@@ -47,7 +47,8 @@ add_executable(ClosedGL
   src/rendering/shading/vertexShader.vert 
   src/rendering/shading/fragmentShader.frag
   src/rendering/rasterization/WireframeRasterizationStrategy.cpp
-  src/rendering/rasterization/FilledRasterizationStrategy.cpp  
+  src/rendering/rasterization/FilledRasterizationStrategy.cpp
+  src/rendering/rasterization/PointsRasterizationStrategy.cpp
   lib/gl3w.c
   lib/imgui/imgui_demo.cpp
   lib/imgui/imgui_draw.cpp
@@ -61,7 +62,7 @@ add_executable(ClosedGL
 set_property(TARGET ClosedGL PROPERTY DEBUG_POSTFIX _d)
 target_link_libraries(ClosedGL ${COMMON_LIBS})
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DIMGUI_IMPL_OPENGL_LOADER_GL3W -DGLFW_EXPOSE_NATIVE_WGL")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -DIMGUI_IMPL_OPENGL_LOADER_GL3W -DGLFW_EXPOSE_NATIVE_WGL")
 
 IF (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D_LINUX -")

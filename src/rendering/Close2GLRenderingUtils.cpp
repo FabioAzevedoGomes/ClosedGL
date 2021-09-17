@@ -15,9 +15,9 @@ void perspectiveDivideVertex(Vertex &vertex)
 {
     float wp = vertex.position.w;
     vertex.position = vertex.position / wp;
-    vertex.normal = vertex.position / wp;
-    vertex.color = vertex.position / wp;
-    vertex.wp = wp;
+    vertex.normal = vertex.normal / wp;
+    vertex.color = vertex.color / wp;
+    vertex.wp = 1 / wp;
 }
 
 void projectTriangleToNDC(Triangle &triangle, glm::mat4 modelViewProj)

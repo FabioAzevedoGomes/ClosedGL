@@ -5,5 +5,5 @@
 class FilledRasterizationStrategy : public RasterizationStrategy
 {
 public:
-    virtual void DrawTriangleToBuffer(Triangle triangle, float ***colorBuffer, float **depthBuffer);
+    virtual void DrawTriangleToBuffer(Triangle triangle, Buffer *buffer);
 };

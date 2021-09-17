@@ -2,10 +2,12 @@
 
 #include <map>
 
+#include "Buffer.hpp"
 #include "Renderer.hpp"
 #include "Close2GLRenderingUtils.hpp"
 #include "WireframeRasterizationStrategy.hpp"
 #include "FilledRasterizationStrategy.hpp"
+#include "PointsRasterizationStrategy.hpp"
 
 enum Close2GL_Buffer_IDs
 {
@@ -34,8 +36,7 @@ private:
     PolygonOrientation polygonOrientation;
     RenderModes renderMode;
 
-    float ***colorBuffer;
-    float **depthBuffer;
+    Buffer *buffers;
 
     GLuint Buffers[Close2GL_NumBuffers];
     GLuint VAOs[NumVAOs_Close2GL];
