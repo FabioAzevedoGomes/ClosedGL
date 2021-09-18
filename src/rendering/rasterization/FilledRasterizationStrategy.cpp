@@ -2,14 +2,8 @@
 
 void FilledRasterizationStrategy::DrawAlongScanline()
 {
-    for (int activeEdge = 0; activeEdge < 2; activeEdge++)
-    {
-        if (activeEdges[activeEdge].IsHorizontal())
-        {
-            DrawHorizontalEdge(activeEdge);
-            return;
-        }
-    }
+    DrawAlongScanlineForEdge(0);
+    DrawAlongScanlineForEdge(1);
 
     Vertex left, right, point;
     if (activeEdges[0].currentX < activeEdges[1].currentX)
@@ -31,27 +25,10 @@ void FilledRasterizationStrategy::DrawAlongScanline()
     Edge scanlineEdge(left, right, -1);
 
     for (float currentX = left.position.x, currentZ = left.position.z;
-         currentX <= right.position.x;
+         currentX <= std::floor(right.position.x);
          currentX++, currentZ += scanlineEdge.dz / scanlineEdge.dx)
     {
         interpolateLinearlyOverEdge(scanlineEdge, point, currentX, currentY, currentZ);
-        drawInterpolatedVertexToBuffer(point);
-    }
-}
-
-void FilledRasterizationStrategy::DrawHorizontalEdge(int index)
-{
-    Vertex point;
-    float minX = activeEdges[index].GetMinXAfterIncrement();
-    float minZ = activeEdges[index].GetMinZAfterIncrement();
-    float maxX = activeEdges[index].GetMaxXAfterIncrement();
-    float maxZ = activeEdges[index].GetMaxZAfterIncrement();
-
-    for (float currentX = minX, currentZ = minZ;
-         currentX <= maxX;
-         currentX++, currentZ += activeEdges[index].dz / activeEdges[index].dx)
-    {
-        interpolateLinearlyOverEdge(activeEdges[index], point, currentX, currentY, currentZ);
         drawInterpolatedVertexToBuffer(point);
     }
 }

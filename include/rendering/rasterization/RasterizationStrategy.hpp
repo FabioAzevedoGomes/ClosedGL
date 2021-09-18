@@ -26,6 +26,7 @@ protected:
 
     void SetupForRasterization(Triangle &triangle);
     void SwapActiveEdge(Triangle &triangle, int edgeNumber);
+    void DrawAlongScanlineForEdge(int index);
 
     void drawInterpolatedVertexToBuffer(Vertex &vertex);
     float distanceBetween(glm::vec4 pos1, glm::vec4 pos2);

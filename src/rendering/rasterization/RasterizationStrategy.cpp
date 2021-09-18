@@ -46,6 +46,23 @@ void RasterizationStrategy::SwapActiveEdge(Triangle &triangle, int edgeNumber)
     activeEdges[edgeNumber] = Edge(triangle.vertices[1], triangle.vertices[2], 1);
 }
 
+void RasterizationStrategy::DrawAlongScanlineForEdge(int index)
+{
+    Vertex point;
+    float minX = activeEdges[index].GetMinXAfterIncrement();
+    float minZ = activeEdges[index].GetMinZAfterIncrement();
+    float maxX = activeEdges[index].GetMaxXAfterIncrement();
+    float maxZ = activeEdges[index].GetMaxZAfterIncrement();
+
+    for (float currentX = minX, currentZ = minZ;
+         currentX <= maxX;
+         currentX++, currentZ += activeEdges[index].dz / activeEdges[index].dx)
+    {
+        interpolateLinearlyOverEdge(activeEdges[index], point, currentX, currentY, currentZ);
+        drawInterpolatedVertexToBuffer(point);
+    }
+}
+
 void RasterizationStrategy::drawInterpolatedVertexToBuffer(Vertex &vertex)
 {
     vertex.position.z *= vertex.wp;
