@@ -23,4 +23,6 @@ public:
     float GetMaxXAfterIncrement();
     float GetMinZAfterIncrement();
     float GetMaxZAfterIncrement();
+
+    bool IsHorizontal();
 };

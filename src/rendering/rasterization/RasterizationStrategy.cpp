@@ -59,8 +59,9 @@ float RasterizationStrategy::distanceBetween(glm::vec4 pos1, glm::vec4 pos2)
 
 void RasterizationStrategy::interpolateLinearlyOverEdge(Edge edge, Vertex &interpolated, float currentX, float currentY, float currentZ)
 {
-    float alpha = distanceBetween(edge.start.position, glm::vec4(currentX, currentY, currentZ, 1.0f)) /
-                  distanceBetween(edge.start.position, edge.end.position);
+    float edgeDistance = distanceBetween(edge.start.position, edge.end.position);
+    float pointDistance = distanceBetween(edge.start.position, glm::vec4(currentX, currentY, currentZ, 1.0f));
+    float alpha = pointDistance / edgeDistance;
 
     interpolated.position = edge.start.position + alpha * (edge.end.position - edge.start.position);
     interpolated.normal = edge.start.normal + alpha * (edge.end.normal - edge.start.normal);

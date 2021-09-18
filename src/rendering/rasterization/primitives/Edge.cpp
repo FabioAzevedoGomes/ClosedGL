@@ -57,3 +57,8 @@ float Edge::GetMaxZAfterIncrement()
 {
     return dy == 0.0f ? -1 : std::max(currentZ + incZ, currentZ);
 }
+
+bool Edge::IsHorizontal()
+{
+    return start.position.y == end.position.y;
+}
