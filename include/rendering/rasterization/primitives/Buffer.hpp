@@ -57,11 +57,22 @@ typedef struct t_buffer
         if (position.x >= 0 && position.x < width && position.y >= 0 && position.y < height && position.z > *(depthBuffer + (int)std::floor(position.y) * width + (int)std::floor(position.x)))
         {
             *(depthBuffer + (int)std::floor(position.y) * width + (int)std::floor(position.x)) = position.z;
-            *(colorBuffer + (int)std::floor(position.y) * width * 4 + (int)std::floor(position.x) * 4 + 0) += 1;
-            *(colorBuffer + (int)std::floor(position.y) * width * 4 + (int)std::floor(position.x) * 4 + 1) += 1;
-            *(colorBuffer + (int)std::floor(position.y) * width * 4 + (int)std::floor(position.x) * 4 + 2) += 1;
-            *(colorBuffer + (int)std::floor(position.y) * width * 4 + (int)std::floor(position.x) * 4 + 3) += 1;
+            *(colorBuffer + (int)std::floor(position.y) * width * 4 + (int)std::floor(position.x) * 4 + 0) = 1.0f;
+            *(colorBuffer + (int)std::floor(position.y) * width * 4 + (int)std::floor(position.x) * 4 + 1) = 1.0f;
+            *(colorBuffer + (int)std::floor(position.y) * width * 4 + (int)std::floor(position.x) * 4 + 2) = 1.0f;
+            *(colorBuffer + (int)std::floor(position.y) * width * 4 + (int)std::floor(position.x) * 4 + 3) = 1.0f;
         }
+    }
+
+    unsigned char *getColorBuffer()
+    {
+        unsigned char *buffer = (unsigned char *)malloc(sizeof(unsigned char) * width * height * COLOR_CHANNELS);
+        for (int i = 0; i < width; i++)
+            for (int j = 0; j < height; j++)
+                for (int k = 0; k < 4; k++)
+                    *(buffer + (height - j - 1) * width * COLOR_CHANNELS + i * COLOR_CHANNELS + k) = (int)(*(colorBuffer + j * width * COLOR_CHANNELS + i * COLOR_CHANNELS + k) * 255);
+
+        return buffer;
     }
 
 } Buffer;

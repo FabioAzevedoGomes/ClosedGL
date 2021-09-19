@@ -12,6 +12,7 @@
 enum Close2GL_Buffer_IDs
 {
     Close2GL_VertexPositionBuffer,
+    Close2GL_VertexTextureCoordinateBuffer,
     Close2GL_NumBuffers
 };
 enum Close2GL_VAO_IDs

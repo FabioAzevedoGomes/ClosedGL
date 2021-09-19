@@ -1,7 +1,6 @@
 #include "Close2GLRenderer.hpp"
 
 #include <fstream>
-bool once = true;
 
 Close2GLRenderer::Close2GLRenderer()
 {
@@ -79,10 +78,16 @@ void Close2GLRenderer::ClearAndResizeBuffersForWindow(Window *window)
 {
     buffers->resize(window->GetWidth(), window->GetHeight());
 
+    // Delete previous texture
     glDeleteTextures(1, Textures);
+
+    // Generate texture info
     glGenTextures(1, Textures);
     glBindTexture(GL_TEXTURE_2D, Textures[ModelTexture_Close2GL]);
-    glTexStorage2D(GL_TEXTURE_2D, 1, GL_RGBA, window->GetWidth(), window->GetHeight());
+
+    // Set parameters
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
 }
 
 void Close2GLRenderer::RenderSceneToWindow(Scene scene, Window *window)
@@ -96,47 +101,24 @@ void Close2GLRenderer::RenderSceneToWindow(Scene scene, Window *window)
         DrawObject(*object);
     }
 
-    if (once)
-    {
-        once = false;
-        std::ofstream file;
-        file.open("image.txt");
-        for (int j = 0; j < window->GetHeight(); j++)
-        {
-            for (int i = 0; i < window->GetWidth(); i++)
-            {
-                if (*(buffers->colorBuffer + (int)std::floor(j) * (int)window->GetWidth() * 4 + (int)std::floor(i) * 4) == 0.0f)
-                {
-                    file << " ";
-                }
-                else
-                {
-                    file << *(buffers->colorBuffer + (int)std::floor(j) * (int)window->GetWidth() * 4 + (int)std::floor(i) * 4);
-                }
-                file << " ";
-            }
-            file << std::endl;
-        }
-        file.close();
-    }
-
-    glActiveTexture(GL_TEXTURE1);
-
-    glBindTexture(GL_TEXTURE_2D, Textures[ModelTexture_Close2GL]);
-    //glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, window->GetWidth(),
-    //                window->GetHeight(), GL_RGBA, GL_FLOAT,
-    //                colorBuffer);
+    unsigned char *colorBuffer = buffers->getColorBuffer();
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, buffers->width, buffers->height, 0, GL_RGBA, GL_UNSIGNED_BYTE, colorBuffer);
+    glGenerateMipmap(GL_TEXTURE_2D);
 
     glBindVertexArray(VAOs[ModelObject_Close2GL]);
     glDrawArrays(GL_TRIANGLES, 0, 6);
     glBindVertexArray(0);
+
+    // Clear texture info
+    glActiveTexture(0);
+    glBindTexture(GL_TEXTURE_2D, 0);
+    free(colorBuffer);
 }
 
 void Close2GLRenderer::SetupVAOS()
 {
     glGenVertexArrays(NumVAOs_Close2GL, VAOs);
     glBindVertexArray(VAOs[ModelObject_Close2GL]);
-    once = true;
 }
 
 void Close2GLRenderer::SetupVBOS(std::vector<Model3D> objects)
@@ -154,18 +136,16 @@ void Close2GLRenderer::SetupVBOS(std::vector<Model3D> objects)
     glVertexAttribPointer(close2GLvertexPosition, 2, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0));
     glEnableVertexAttribArray(close2GLvertexPosition);
 
-    // Colors
-    glBindBuffer(GL_ARRAY_BUFFER, Buffers[Close2GL_VertexPositionBuffer]);
+    // Texture coordinates
+    glBindBuffer(GL_ARRAY_BUFFER, Buffers[Close2GL_VertexTextureCoordinateBuffer]);
     glBufferStorage(GL_ARRAY_BUFFER, 2 * 6 * sizeof(float), textureCoordinateData, GL_DYNAMIC_STORAGE_BIT);
     glVertexAttribPointer(close2GLtextureCoordinates, 2, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0));
     glEnableVertexAttribArray(close2GLtextureCoordinates);
 
     // Textures
-    glEnable(GL_TEXTURE_2D);
-    glActiveTexture(GL_TEXTURE1);
     glGenTextures(1, Textures);
-    glBindTexture(GL_TEXTURE_2D, Textures[ModelTexture_Close2GL]);
-    glTexStorage2D(GL_TEXTURE_2D, 1, GL_RGBA, 0, 0);
+    glActiveTexture(0);
+    glBindTexture(GL_TEXTURE_2D, 0);
 }
 
 // State setters
@@ -178,6 +158,7 @@ void Close2GLRenderer::SetCullingMode(CullingModes cullingMode)
 
 void Close2GLRenderer::SetPolygonOrientation(PolygonOrientation orientation)
 {
+    glFrontFace(GL_CCW);
     this->polygonOrientation = orientation;
 }
 

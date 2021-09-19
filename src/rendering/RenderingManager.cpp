@@ -27,7 +27,7 @@ std::string RenderingManager::GetActiveEngineName()
 
 void RenderingManager::SelectEngine(Engines renderingEngine, Scene scene)
 {
-    Renderer *previous = &(*selectedRenderingEngine);
+    Engines previous = selectedRenderingEngine->engineId;
     switch (renderingEngine)
     {
     case OpenGL:
@@ -40,7 +40,7 @@ void RenderingManager::SelectEngine(Engines renderingEngine, Scene scene)
         break;
     }
 
-    if (previous != selectedRenderingEngine)
+    if (previous != renderingEngine)
         SetupBuffers(scene);
 }
 
