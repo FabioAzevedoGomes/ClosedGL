@@ -12,6 +12,7 @@ Close2GLRenderer::Close2GLRenderer()
     rasterizationStrategies.insert({Points, new PointsRasterizationStrategy()});
 
     lightingStrategies.insert({Flat, new FlatLightingStrategy()});
+    lightingStrategies.insert({Gouraud_AD, new GouraudADLightingStrategy()});
 }
 
 Close2GLRenderer::~Close2GLRenderer()

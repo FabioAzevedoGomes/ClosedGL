@@ -33,10 +33,11 @@ subroutine (VertexLightingFunction) vec4 OpenGL_FlatShader() {
 }
 
 subroutine (VertexLightingFunction) vec4 OpenGL_AD_GouraudShader() {
+    vec4 lightPos = inverse(view) * vec4(2.0,2.0,2.0,1.0);
     vec4 cameraPosition=inverse(view)[3];
     
     // Light is assumed to be at the camera
-    vec4 l=normalize(cameraPosition-(model*vec4(openGLvPosition,1.)));
+    vec4 l=normalize(lightPos-(model*vec4(openGLvPosition,1.)));
     vec4 n=normalize(inverse(transpose(model))*vec4(openGLvNormal,0.));
     
     // Calculate lambert's diffuse term as Kd*I*dot(normal, light)
@@ -48,10 +49,11 @@ subroutine (VertexLightingFunction) vec4 OpenGL_AD_GouraudShader() {
 }
 
 subroutine (VertexLightingFunction) vec4 OpenGL_ADS_GouraudShader() {
+    vec4 lightPos = inverse(view) * vec4(2.0,2.0,2.0,1.0);
     vec4 cameraPosition=inverse(view)[3];
     
     // Light is assumed to be at the camera
-    vec4 l=normalize(cameraPosition-(model*vec4(openGLvPosition,1.)));
+    vec4 l=normalize(lightPos-(model*vec4(openGLvPosition,1.)));
     vec4 n=normalize(inverse(transpose(model))*vec4(openGLvNormal,0.));
     
     // Calculate lambert's diffuse term as Kd*I*dot(normal, light)

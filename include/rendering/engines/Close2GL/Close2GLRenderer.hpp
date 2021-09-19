@@ -10,6 +10,7 @@
 #include "PointsRasterizationStrategy.hpp"
 #include "LightingStrategy.hpp"
 #include "FlatLightingStrategy.hpp"
+#include "GouraudADLightingStrategy.hpp"
 
 enum Close2GL_Buffer_IDs
 {
