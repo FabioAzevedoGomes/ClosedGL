@@ -10,11 +10,12 @@
 #include <glm/gtx/string_cast.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include <limits>
 #include <cmath>
 #include <iostream>
 
 #define COLOR_CHANNELS 4
-#define DEFALUT_VALUE 0.0f
+#define DEFALUT_DEPTH_BUFFER_VALUE std::numeric_limits<float>::max()
 
 typedef struct t_buffer
 {
@@ -25,8 +26,11 @@ typedef struct t_buffer
     {
         colorBuffer = new float[newWidth * newHeight * COLOR_CHANNELS];
         memset(colorBuffer, 0.0f, sizeof(float) * newWidth * newHeight * COLOR_CHANNELS);
+
         depthBuffer = new float[newWidth * newHeight];
-        memset(depthBuffer, 0.0f, sizeof(float) * newWidth * newHeight);
+        for (int i = 0; i < newWidth; i++)
+            for (int j = 0; j < newHeight; j++)
+                *(depthBuffer + j * width + i) = DEFALUT_DEPTH_BUFFER_VALUE;
 
         width = newWidth;
         height = newHeight;
@@ -41,11 +45,14 @@ typedef struct t_buffer
     void resize(int newWidth, int newHeight)
     {
         delete[] colorBuffer;
-        delete[] depthBuffer;
         colorBuffer = new float[newWidth * newHeight * COLOR_CHANNELS];
-        memset(colorBuffer, 0.0f, sizeof(float) * newWidth * newHeight * COLOR_CHANNELS);
+        memset(colorBuffer, 0, sizeof(float) * newWidth * newHeight * COLOR_CHANNELS);
+
+        delete[] depthBuffer;
         depthBuffer = new float[newWidth * newHeight];
-        memset(depthBuffer, 0.0f, sizeof(float) * newWidth * newHeight);
+        for (int i = 0; i < newWidth; i++)
+            for (int j = 0; j < newHeight; j++)
+                *(depthBuffer + j * width + i) = DEFALUT_DEPTH_BUFFER_VALUE;
 
         width = newWidth;
         height = newHeight;
@@ -68,7 +75,7 @@ typedef struct t_buffer
     void draw(glm::vec4 position, glm::vec4 color)
     {
 
-        if (position.x >= 0 && position.x < width && position.y >= 0 && position.y < height && position.z > *(depthBuffer + (int)std::floor(position.y) * width + (int)std::floor(position.x)))
+        if (position.x >= 0 && position.x < width && position.y >= 0 && position.y < height && position.z < *(depthBuffer + (int)std::floor(position.y) * width + (int)std::floor(position.x)))
         {
             *(depthBuffer + (int)std::floor(position.y) * width + (int)std::floor(position.x)) = position.z;
             *(colorBuffer + (int)std::floor(position.y) * width * 4 + (int)std::floor(position.x) * 4 + 0) = color.x;
