@@ -43,6 +43,13 @@ void PropertyManager::RenderPropertyWindow()
     ImGui::RadioButton("Close2GL", &properties.engine, 1);
     ImGui::Spacing();
 
+    if (ImGui::Button("Select Model..."))
+        ImGui::OpenPopup("Open File");
+    if (fileDialog.showFileDialog("Open File", imgui_addons::ImGuiFileBrowser::DialogMode::OPEN, ImVec2(700, 310), ".in"))
+        LoadInputFile(fileDialog.selected_path.c_str());
+
+    ImGui::Spacing();
+
     if (ImGui::CollapsingHeader("Camera"))
     {
         ImGui::Text("Rotation");
@@ -103,17 +110,6 @@ void PropertyManager::RenderPropertyWindow()
         ImGui::Text("Reset Position");
         if (ImGui::Button("Reset"))
             properties.resetCamera = true;
-
-        ImGui::Spacing();
-    }
-
-    if (ImGui::CollapsingHeader("Model"))
-    {
-        ImGui::Text("Model source");
-        if (ImGui::Button("Select..."))
-            ImGui::OpenPopup("Open File");
-        if (fileDialog.showFileDialog("Open File", imgui_addons::ImGuiFileBrowser::DialogMode::OPEN, ImVec2(700, 310), ".in"))
-            LoadInputFile(fileDialog.selected_path.c_str());
 
         ImGui::Spacing();
     }
@@ -251,18 +247,19 @@ void PropertyManager::ApplyPropertiesToScene()
 void PropertyManager::ApplyPropertiesToRenderingEngine()
 {
     managedRenderer->SelectEngine(Engines(properties.engine), *managedScene);
-    managedRenderer->SelectLightingAlgorithm(LightingModes(properties.lightingMode));
-    managedRenderer->SelectRenderMode(RenderModes(properties.renderMode));
-    managedRenderer->SelectPolygonOrientation(PolygonOrientation(properties.orientation));
-    managedRenderer->SelectCullingMode(CullingModes(properties.cullingMode));
-    managedRenderer->SelectBackgroundColor(properties.backgroundColor);
-    managedRenderer->SelectRenderUniformColor(properties.modelDiffuseColor,
-                                              properties.diffuseIntensity,
-                                              properties.modelAmbientColor,
-                                              properties.ambientIntensity,
-                                              properties.modelSpecularColor,
-                                              properties.specularIntensity,
-                                              properties.modelShineCoefficient);
+    managedRenderer->SetEngineState(
+        {.lightingMode = LightingModes(properties.lightingMode),
+         .renderMode = RenderModes(properties.renderMode),
+         .cullingMode = CullingModes(properties.cullingMode),
+         .uniformMaterial = {.ambientColor = properties.modelAmbientColor,
+                             .ambientIntensity = properties.ambientIntensity,
+                             .diffuseColor = properties.modelDiffuseColor,
+                             .diffuseIntensity = properties.diffuseIntensity,
+                             .specularColor = properties.modelSpecularColor,
+                             .specularIntensity = properties.specularIntensity,
+                             .shineCoefficient = properties.modelShineCoefficient},
+         .polygonOrientation = PolygonOrientation(properties.orientation),
+         .backgrounColor = properties.backgroundColor});
 }
 
 void PropertyManager::LoadInputFile(const char *fileName)

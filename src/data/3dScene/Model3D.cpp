@@ -148,12 +148,15 @@ void Model3D::ReadMaterial(FILE *file, int index)
 
     fscanf(file, "ambient color %f %f %f\n", &x, &y, &z);
     this->materials[index].ambientColor = glm::vec3(x, y, z);
+    this->materials[index].ambientIntensity = 0.2f;
 
     fscanf(file, "diffuse color %f %f %f\n", &x, &y, &z);
     this->materials[index].diffuseColor = glm::vec3(x, y, z);
+    this->materials[index].diffuseIntensity = 1.0f;
 
     fscanf(file, "specular color %f %f %f\n", &x, &y, &z);
     this->materials[index].specularColor = glm::vec3(x, y, z);
+    this->materials[index].specularIntensity = 0.2f;
 
     fscanf(file, "material shine %f\n", &this->materials[index].shineCoefficient);
 }

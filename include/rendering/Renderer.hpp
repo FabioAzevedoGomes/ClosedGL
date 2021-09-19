@@ -13,6 +13,7 @@
 #include "Scene.hpp"
 #include "ShaderUtils.hpp"
 #include "Window.hpp"
+#include "State.hpp"
 
 #include <stdio.h>
 #include <vector>
@@ -34,7 +35,7 @@ private:
     virtual void DrawObject(Model3D){};
 
 public:
-    glm::vec3 backgroundColor;
+    State state;
     Engines engineId;
     std::string engineName;
 
@@ -42,8 +43,5 @@ public:
     virtual void SetupVBOS(std::vector<Model3D>){};
     virtual void SetupVAOS(){};
 
-    virtual void SetCullingMode(CullingModes){};
-    virtual void SetPolygonOrientation(PolygonOrientation){};
-    virtual void SetRenderMode(RenderModes){};
-    virtual void SetBackgroundColor(glm::vec3){};
+    virtual void SetState(State){};
 };

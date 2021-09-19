@@ -15,11 +15,13 @@ enum Close2GL_Buffer_IDs
     Close2GL_VertexTextureCoordinateBuffer,
     Close2GL_NumBuffers
 };
+
 enum Close2GL_VAO_IDs
 {
     ModelObject_Close2GL,
     NumVAOs_Close2GL
 };
+
 enum Close2GL_Texture_IDs
 {
     ModelTexture_Close2GL,
@@ -30,13 +32,7 @@ class Close2GLRenderer : public Renderer
 {
 private:
     glm::mat4 model, view, projection, viewport;
-
     std::map<RenderModes, RasterizationStrategy *> rasterizationStrategies;
-
-    CullingModes cullingMode;
-    PolygonOrientation polygonOrientation;
-    RenderModes renderMode;
-
     Buffer *buffers;
 
     GLuint Buffers[Close2GL_NumBuffers];
@@ -57,8 +53,5 @@ public:
     virtual void SetupVBOS(std::vector<Model3D>);
     virtual void SetupVAOS();
 
-    virtual void SetCullingMode(CullingModes);
-    virtual void SetPolygonOrientation(PolygonOrientation);
-    virtual void SetRenderMode(RenderModes);
-    virtual void SetBackgroundColor(glm::vec3);
+    virtual void SetState(State);
 };

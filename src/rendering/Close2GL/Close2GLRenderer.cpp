@@ -25,7 +25,7 @@ bool Close2GLRenderer::ShouldCull(Triangle triangle)
     if (triangle.clipped)
         return true;
 
-    if (cullingMode == NoCulling)
+    if (state.cullingMode == NoCulling)
         return false;
 
     float sum = 0.0f;
@@ -38,7 +38,7 @@ bool Close2GLRenderer::ShouldCull(Triangle triangle)
     }
 
     float area = 0.5f * sum;
-    return area * polygonOrientation * cullingMode > 0;
+    return area * state.polygonOrientation * state.cullingMode > 0;
 }
 
 void Close2GLRenderer::DrawObject(Model3D object)
@@ -53,7 +53,7 @@ void Close2GLRenderer::DrawObject(Model3D object)
         if (!ShouldCull(triangle))
         {
             projectTriangleToViewport(triangle, viewport);
-            rasterizationStrategies[renderMode]->DrawTriangleToBuffer(triangle, buffers);
+            rasterizationStrategies[state.renderMode]->DrawTriangleToBuffer(triangle, buffers);
         }
     }
 }
@@ -77,7 +77,7 @@ void Close2GLRenderer::CalculateRenderingMatrices(Scene scene, Window *window)
 void Close2GLRenderer::ClearAndResizeBuffersForWindow(Window *window)
 {
     buffers->resize(window->GetWidth(), window->GetHeight());
-    buffers->setClearColor(backgroundColor);
+    buffers->setClearColor(state.backgrounColor);
 
     // Delete previous texture
     glDeleteTextures(1, Textures);
@@ -149,27 +149,13 @@ void Close2GLRenderer::SetupVBOS(std::vector<Model3D> objects)
     glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-// State setters
-
-void Close2GLRenderer::SetCullingMode(CullingModes cullingMode)
+void Close2GLRenderer::SetState(State state)
 {
+    this->state = state;
+
     glDisable(GL_CULL_FACE);
-    this->cullingMode = cullingMode;
-}
-
-void Close2GLRenderer::SetPolygonOrientation(PolygonOrientation orientation)
-{
     glFrontFace(GL_CCW);
-    this->polygonOrientation = orientation;
-}
-
-void Close2GLRenderer::SetRenderMode(RenderModes renderMode)
-{
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-    this->renderMode = renderMode;
-}
-
-void Close2GLRenderer::SetBackgroundColor(glm::vec3 color)
-{
-    this->backgroundColor = color;
+    SetActiveVertexShaderSubroutine(UNIFORM_VSHADER_LIGHTING_FUNCTION_ID, VSHADER_LIGHTING_FUNCTION_TEXTURE);
+    SetActiveFragmentShaderSubroutine(UNIFORM_FSHADER_LIGHTING_FUNCTION_ID, FSHADER_LIGHTING_FUNCTION_TEXTURE);
 }

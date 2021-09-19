@@ -62,6 +62,19 @@ void OpenGLRenderer::SetupVBOS(std::vector<Model3D> objects)
         BindObjectBuffers(*objectIterator);
 }
 
+// State setters
+
+void OpenGLRenderer::SetState(State state)
+{
+    this->state = state;
+
+    SetCullingMode(state.cullingMode);
+    SetPolygonOrientation(state.polygonOrientation);
+    SetRenderMode(state.renderMode);
+    SetLightingAlgorithm(state.lightingMode);
+    SetRenderUniformMaterial(state.uniformMaterial);
+}
+
 void OpenGLRenderer::SetCullingMode(CullingModes cullingMode)
 {
     switch (cullingMode)
@@ -112,7 +125,38 @@ void OpenGLRenderer::SetRenderMode(RenderModes renderMode)
     }
 }
 
-void OpenGLRenderer::SetBackgroundColor(glm::vec3 color)
+void OpenGLRenderer::SetLightingAlgorithm(LightingModes lightingMode)
 {
-    this->backgroundColor = color;
+    switch (lightingMode)
+    {
+    case Flat:
+        SetActiveVertexShaderSubroutine(UNIFORM_VSHADER_LIGHTING_FUNCTION_ID, VSHADER_LIGHTING_FUNCTION_FLAT);
+        SetActiveFragmentShaderSubroutine(UNIFORM_FSHADER_LIGHTING_FUNCTION_ID, FSHADER_LIGHTING_FUNCTION_PASS_THROUGH);
+        break;
+    case Gouraud_AD:
+        SetActiveVertexShaderSubroutine(UNIFORM_VSHADER_LIGHTING_FUNCTION_ID, VSHADER_LIGHTING_FUNCTION_GOURAUD_AD);
+        SetActiveFragmentShaderSubroutine(UNIFORM_FSHADER_LIGHTING_FUNCTION_ID, FSHADER_LIGHTING_FUNCTION_PASS_THROUGH);
+        break;
+    case Gouraud_ADS:
+        SetActiveVertexShaderSubroutine(UNIFORM_VSHADER_LIGHTING_FUNCTION_ID, VSHADER_LIGHTING_FUNCTION_GOURAUD_ADS);
+        SetActiveFragmentShaderSubroutine(UNIFORM_FSHADER_LIGHTING_FUNCTION_ID, FSHADER_LIGHTING_FUNCTION_PASS_THROUGH);
+        break;
+    case Phong:
+        SetActiveVertexShaderSubroutine(UNIFORM_VSHADER_LIGHTING_FUNCTION_ID, VSHADER_LIGHTING_FUNCTION_PHONG);
+        SetActiveFragmentShaderSubroutine(UNIFORM_FSHADER_LIGHTING_FUNCTION_ID, FSHADER_LIGHTING_FUNCTION_PHONG);
+        break;
+    default:
+        break;
+    }
+}
+
+void OpenGLRenderer::SetRenderUniformMaterial(Material material)
+{
+    glUniform3fv(GetShaderUniformVariableId(UNIFORM_DIFFUSE_COLOR_ID), 1, glm::value_ptr(material.diffuseColor));
+    glUniform1f(GetShaderUniformVariableId(UNIFORM_DIFFUSE_INTENSITY_ID), material.diffuseIntensity);
+    glUniform3fv(GetShaderUniformVariableId(UNIFORM_AMBIENT_COLOR_ID), 1, glm::value_ptr(material.ambientColor));
+    glUniform1f(GetShaderUniformVariableId(UNIFORM_AMBIENT_INTENSITY_ID), material.ambientIntensity);
+    glUniform3fv(GetShaderUniformVariableId(UNIFORM_SPECULAR_COLOR_ID), 1, glm::value_ptr(material.specularColor));
+    glUniform1f(GetShaderUniformVariableId(UNIFORM_SPECULAR_INTENSITY_ID), material.specularIntensity);
+    glUniform1f(GetShaderUniformVariableId(UNIFORM_SHINE_COEFFICIENT_ID), material.shineCoefficient);
 }

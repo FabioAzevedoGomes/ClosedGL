@@ -9,6 +9,7 @@ enum OpenGL_Buffer_IDs
     OpenGL_VertexColorBuffer,
     OpenGL_NumBuffers
 };
+
 enum OpenGL_VAO_IDs
 {
     ModelObject_OpenGL,
@@ -24,14 +25,17 @@ private:
     void BindObjectBuffers(Model3D);
     void DrawObject(Model3D object);
 
+    void SetCullingMode(CullingModes);
+    void SetPolygonOrientation(PolygonOrientation);
+    void SetRenderMode(RenderModes);
+    void SetLightingAlgorithm(LightingModes);
+    void SetRenderUniformMaterial(Material);
+
 public:
     OpenGLRenderer();
     virtual void RenderSceneToWindow(Scene, Window *);
     virtual void SetupVBOS(std::vector<Model3D>);
     virtual void SetupVAOS();
 
-    virtual void SetCullingMode(CullingModes);
-    virtual void SetPolygonOrientation(PolygonOrientation);
-    virtual void SetRenderMode(RenderModes);
-    virtual void SetBackgroundColor(glm::vec3);
+    virtual void SetState(State);
 };

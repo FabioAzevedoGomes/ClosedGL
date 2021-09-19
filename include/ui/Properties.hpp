@@ -89,10 +89,6 @@ typedef struct
     bool reloadFile = false;
     std::string modelFilePath;
 
-    // Debug
-    bool shouldPrintCameraDefinition = false;
-    bool shouldPrintModelDefinition = false;
-
 } Properties;
 
 #endif

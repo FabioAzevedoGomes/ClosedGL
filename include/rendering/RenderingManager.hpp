@@ -19,10 +19,5 @@ public:
     std::string GetActiveEngineName();
 
     void SelectEngine(Engines, Scene);
-    void SelectLightingAlgorithm(LightingModes);
-    void SelectRenderMode(RenderModes);
-    void SelectCullingMode(CullingModes);
-    void SelectRenderUniformColor(glm::vec3, float, glm::vec3, float, glm::vec3, float, float);
-    void SelectBackgroundColor(glm::vec3);
-    void SelectPolygonOrientation(PolygonOrientation);
+    void SetEngineState(State);
 };

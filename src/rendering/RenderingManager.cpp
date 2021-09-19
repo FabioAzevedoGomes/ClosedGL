@@ -15,7 +15,7 @@ void RenderingManager::RenderSceneToWindow(Scene scene, Window *window)
 {
     glEnable(GL_DEPTH_TEST);
     glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
-    glClearBufferfv(GL_COLOR, 0, glm::value_ptr(glm::vec4(selectedRenderingEngine->backgroundColor, 0.0f)));
+    glClearBufferfv(GL_COLOR, 0, glm::value_ptr(glm::vec4(selectedRenderingEngine->state.backgrounColor, 0.0f)));
 
     selectedRenderingEngine->RenderSceneToWindow(scene, window);
 }
@@ -44,70 +44,7 @@ void RenderingManager::SelectEngine(Engines renderingEngine, Scene scene)
         SetupBuffers(scene);
 }
 
-void RenderingManager::SelectLightingAlgorithm(LightingModes lightingMode)
+void RenderingManager::SetEngineState(State state)
 {
-    // Override lighting for now when using Close2GL
-    if (selectedRenderingEngine->engineId == Close2GL)
-    {
-        SetActiveVertexShaderSubroutine(UNIFORM_VSHADER_LIGHTING_FUNCTION_ID, VSHADER_LIGHTING_FUNCTION_TEXTURE);
-        SetActiveFragmentShaderSubroutine(UNIFORM_FSHADER_LIGHTING_FUNCTION_ID, FSHADER_LIGHTING_FUNCTION_TEXTURE);
-    }
-    else
-    {
-        switch (lightingMode)
-        {
-        case Flat:
-            SetActiveVertexShaderSubroutine(UNIFORM_VSHADER_LIGHTING_FUNCTION_ID, VSHADER_LIGHTING_FUNCTION_FLAT);
-            SetActiveFragmentShaderSubroutine(UNIFORM_FSHADER_LIGHTING_FUNCTION_ID, FSHADER_LIGHTING_FUNCTION_PASS_THROUGH);
-            break;
-        case Gouraud_AD:
-            SetActiveVertexShaderSubroutine(UNIFORM_VSHADER_LIGHTING_FUNCTION_ID, VSHADER_LIGHTING_FUNCTION_GOURAUD_AD);
-            SetActiveFragmentShaderSubroutine(UNIFORM_FSHADER_LIGHTING_FUNCTION_ID, FSHADER_LIGHTING_FUNCTION_PASS_THROUGH);
-            break;
-        case Gouraud_ADS:
-            SetActiveVertexShaderSubroutine(UNIFORM_VSHADER_LIGHTING_FUNCTION_ID, VSHADER_LIGHTING_FUNCTION_GOURAUD_ADS);
-            SetActiveFragmentShaderSubroutine(UNIFORM_FSHADER_LIGHTING_FUNCTION_ID, FSHADER_LIGHTING_FUNCTION_PASS_THROUGH);
-            break;
-        case Phong:
-            SetActiveVertexShaderSubroutine(UNIFORM_VSHADER_LIGHTING_FUNCTION_ID, VSHADER_LIGHTING_FUNCTION_PHONG);
-            SetActiveFragmentShaderSubroutine(UNIFORM_FSHADER_LIGHTING_FUNCTION_ID, FSHADER_LIGHTING_FUNCTION_PHONG);
-            break;
-        default:
-            break;
-        }
-    }
-}
-
-void RenderingManager::SelectRenderMode(RenderModes renderMode)
-{
-    selectedRenderingEngine->SetRenderMode(renderMode);
-}
-
-void RenderingManager::SelectBackgroundColor(glm::vec3 color)
-{
-    // Change for both
-    openGLRenderer.SetBackgroundColor(color);
-    close2GLRenderer.SetBackgroundColor(color);
-}
-
-void RenderingManager::SelectRenderUniformColor(glm::vec3 diffuseColor, float diffuseIntensity, glm::vec3 ambientColor, float ambientIntensity, glm::vec3 specularColor, float specularIntensity, float shineCoefficient)
-{
-    glUniform3fv(GetShaderUniformVariableId(UNIFORM_DIFFUSE_COLOR_ID), 1, glm::value_ptr(diffuseColor));
-    glUniform1f(GetShaderUniformVariableId(UNIFORM_DIFFUSE_INTENSITY_ID), diffuseIntensity);
-    glUniform3fv(GetShaderUniformVariableId(UNIFORM_AMBIENT_COLOR_ID), 1, glm::value_ptr(ambientColor));
-    glUniform1f(GetShaderUniformVariableId(UNIFORM_AMBIENT_INTENSITY_ID), ambientIntensity);
-    glUniform3fv(GetShaderUniformVariableId(UNIFORM_SPECULAR_COLOR_ID), 1, glm::value_ptr(specularColor));
-    glUniform1f(GetShaderUniformVariableId(UNIFORM_SPECULAR_INTENSITY_ID), specularIntensity);
-
-    glUniform1f(GetShaderUniformVariableId(UNIFORM_SHINE_COEFFICIENT_ID), shineCoefficient);
-}
-
-void RenderingManager::SelectCullingMode(CullingModes cullingMode)
-{
-    selectedRenderingEngine->SetCullingMode(cullingMode);
-}
-
-void RenderingManager::SelectPolygonOrientation(PolygonOrientation orientation)
-{
-    selectedRenderingEngine->SetPolygonOrientation(orientation);
+    selectedRenderingEngine->SetState(state);
 }
