@@ -28,7 +28,7 @@ protected:
     void SwapActiveEdge(Triangle &triangle, int edgeNumber);
     void DrawAlongScanlineForEdge(int index);
 
-    void drawInterpolatedVertexToBuffer(Vertex &vertex);
+    void drawInterpolatedVertexToBuffer(Vertex vertex);
     float distanceBetween(glm::vec4 pos1, glm::vec4 pos2);
     void interpolateLinearlyOverEdge(Edge edge, Vertex &interpolated, float currentX, float currentY, float currentZ);
 

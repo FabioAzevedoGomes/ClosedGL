@@ -63,25 +63,29 @@ void RasterizationStrategy::DrawAlongScanlineForEdge(int index)
     }
 }
 
-void RasterizationStrategy::drawInterpolatedVertexToBuffer(Vertex &vertex)
+void RasterizationStrategy::drawInterpolatedVertexToBuffer(Vertex vertex)
 {
-    vertex.position.z *= vertex.wp;
-    buffers->draw(vertex.position, glm::vec4(1.0f));
+    vertex.color /= vertex.wp;
+    buffers->draw(vertex.position, glm::vec4(vertex.color, 1.0f));
 }
 
 float RasterizationStrategy::distanceBetween(glm::vec4 pos1, glm::vec4 pos2)
 {
-    return std::sqrt(std::pow(pos1.x - pos2.x, 2) + std::pow(pos1.y - pos2.y, 2) + std::pow(pos1.z - pos2.z, 2));
+    return std::sqrt(std::pow(pos1.x - pos2.x, 2) + std::pow(pos1.y - pos2.y, 2));
 }
 
 void RasterizationStrategy::interpolateLinearlyOverEdge(Edge edge, Vertex &interpolated, float currentX, float currentY, float currentZ)
 {
-    float edgeDistance = distanceBetween(edge.start.position, edge.end.position);
-    float pointDistance = distanceBetween(edge.start.position, glm::vec4(currentX, currentY, currentZ, 1.0f));
-    float alpha = pointDistance / edgeDistance;
+    float alpha = glm::dot(glm::vec4(currentX, currentY, currentZ, 1.0f) - edge.start.position, edge.end.position - edge.start.position) /
+                  std::pow(distanceBetween(edge.start.position, edge.end.position), 2);
+
+    float wa = edge.start.wp;
+    float wb = edge.end.wp;
+    float interpolationDenominator = ((1 - alpha) / wa) + (alpha / wb);
 
     interpolated.position = edge.start.position + alpha * (edge.end.position - edge.start.position);
-    interpolated.normal = edge.start.normal + alpha * (edge.end.normal - edge.start.normal);
-    interpolated.color = edge.start.color + alpha * (edge.end.color - edge.start.color);
-    interpolated.wp = edge.start.wp + alpha * (edge.end.wp - edge.start.wp);
+    interpolated.position.z = edge.start.position.z + alpha * (edge.end.position.z - edge.start.position.z);
+    interpolated.normal = ((edge.start.normal / wa) + alpha * ((edge.end.normal / wb) - (edge.start.normal / wa))) / interpolationDenominator;
+    interpolated.color = ((edge.start.color / wa) + alpha * ((edge.end.color / wb) - (edge.start.color / wa))) / interpolationDenominator;
+    interpolated.wp = 1.0f / interpolationDenominator;
 }
