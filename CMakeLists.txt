@@ -34,23 +34,23 @@ set(RUN_DIR ${PROJECT_SOURCE_DIR}/bin)
 add_executable(ClosedGL 
   src/main.cpp
   src/ProgramManager.cpp
-  src/data/3dScene/Model3D.cpp
-  src/data/3dScene/Camera.cpp
-  src/data/3dScene/Scene.cpp
+  src/3dScene/Model3D.cpp
+  src/3dScene/Camera.cpp
+  src/3dScene/Scene.cpp
   src/ui/PropertyManager.cpp
   src/ui/Window.cpp
   src/rendering/RenderingManager.cpp
-  src/rendering/shading/ShaderUtils.cpp
-  src/rendering/shading/vertexShader.vert 
-  src/rendering/shading/fragmentShader.frag
-  src/rendering/OpenGL/OpenGLRenderer.cpp
-  src/rendering/Close2GL/Close2GLRenderer.cpp
-  src/rendering/Close2GL/Close2GLRenderingUtils.cpp
-  src/rendering/Close2GL/rasterization/RasterizationStrategy.cpp
-  src/rendering/Close2GL/rasterization/WireframeRasterizationStrategy.cpp
-  src/rendering/Close2GL/rasterization/FilledRasterizationStrategy.cpp
-  src/rendering/Close2GL/rasterization/PointsRasterizationStrategy.cpp
-  src/rendering/Close2GL/rasterization/primitives/Edge.cpp
+  src/rendering/shaders/ShaderUtils.cpp
+  src/rendering/shaders/vertexShader.vert 
+  src/rendering/shaders/fragmentShader.frag
+  src/rendering/engines/OpenGL/OpenGLRenderer.cpp
+  src/rendering/engines/Close2GL/Close2GLRenderer.cpp
+  src/rendering/engines/Close2GL/Close2GLRenderingUtils.cpp
+  src/rendering/engines/Close2GL/rasterization/RasterizationStrategy.cpp
+  src/rendering/engines/Close2GL/rasterization/WireframeRasterizationStrategy.cpp
+  src/rendering/engines/Close2GL/rasterization/FilledRasterizationStrategy.cpp
+  src/rendering/engines/Close2GL/rasterization/PointsRasterizationStrategy.cpp
+  src/rendering/engines/Close2GL/rasterization/primitives/Edge.cpp
   lib/gl3w.c
   lib/imgui/imgui_demo.cpp
   lib/imgui/imgui_draw.cpp

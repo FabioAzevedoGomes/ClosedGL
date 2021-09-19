@@ -7,8 +7,8 @@
 #include <cstdlib>
 #include <iostream>
 
-#define VERTEX_SHADER_PATH "../src/rendering/shading/vertexShader.vert"
-#define FRAGMENT_SHADER_PATH "../src/rendering/shading/fragmentShader.frag"
+#define VERTEX_SHADER_PATH "../src/rendering/shaders/vertexShader.vert"
+#define FRAGMENT_SHADER_PATH "../src/rendering/shaders/fragmentShader.frag"
 
 #define UNIFORM_DIFFUSE_COLOR_ID "uniformDiffuseColor"
 #define UNIFORM_DIFFUSE_INTENSITY_ID "uniformDiffuseIntensity"
