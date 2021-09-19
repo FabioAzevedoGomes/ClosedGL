@@ -45,4 +45,5 @@ public:
     virtual void SetCullingMode(CullingModes){};
     virtual void SetPolygonOrientation(PolygonOrientation){};
     virtual void SetRenderMode(RenderModes){};
+    virtual void SetBackgroundColor(glm::vec3){};
 };

@@ -77,6 +77,7 @@ void Close2GLRenderer::CalculateRenderingMatrices(Scene scene, Window *window)
 void Close2GLRenderer::ClearAndResizeBuffersForWindow(Window *window)
 {
     buffers->resize(window->GetWidth(), window->GetHeight());
+    buffers->setClearColor(backgroundColor);
 
     // Delete previous texture
     glDeleteTextures(1, Textures);
@@ -166,4 +167,9 @@ void Close2GLRenderer::SetRenderMode(RenderModes renderMode)
 {
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     this->renderMode = renderMode;
+}
+
+void Close2GLRenderer::SetBackgroundColor(glm::vec3 color)
+{
+    this->backgroundColor = color;
 }

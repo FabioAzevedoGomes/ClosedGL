@@ -51,6 +51,20 @@ typedef struct t_buffer
         height = newHeight;
     }
 
+    void setClearColor(glm::vec3 color)
+    {
+        for (int i = 0; i < width; i++)
+        {
+            for (int j = 0; j < height; j++)
+            {
+                *(colorBuffer + j * width * COLOR_CHANNELS + i * COLOR_CHANNELS + 0) = color.x;
+                *(colorBuffer + j * width * COLOR_CHANNELS + i * COLOR_CHANNELS + 1) = color.y;
+                *(colorBuffer + j * width * COLOR_CHANNELS + i * COLOR_CHANNELS + 2) = color.z;
+                *(colorBuffer + j * width * COLOR_CHANNELS + i * COLOR_CHANNELS + 3) = 1.0f;
+            }
+        }
+    }
+
     void draw(glm::vec4 position, glm::vec4 color)
     {
 

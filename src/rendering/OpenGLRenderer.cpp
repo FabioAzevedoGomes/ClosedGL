@@ -111,3 +111,8 @@ void OpenGLRenderer::SetRenderMode(RenderModes renderMode)
         break;
     }
 }
+
+void OpenGLRenderer::SetBackgroundColor(glm::vec3 color)
+{
+    this->backgroundColor = color;
+}

@@ -86,8 +86,8 @@ void RenderingManager::SelectRenderMode(RenderModes renderMode)
 void RenderingManager::SelectBackgroundColor(glm::vec3 color)
 {
     // Change for both
-    openGLRenderer.backgroundColor = color;
-    close2GLRenderer.backgroundColor = color;
+    openGLRenderer.SetBackgroundColor(color);
+    close2GLRenderer.SetBackgroundColor(color);
 }
 
 void RenderingManager::SelectRenderUniformColor(glm::vec3 diffuseColor, float diffuseIntensity, glm::vec3 ambientColor, float ambientIntensity, glm::vec3 specularColor, float specularIntensity, float shineCoefficient)
