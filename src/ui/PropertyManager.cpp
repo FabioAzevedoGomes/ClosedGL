@@ -259,7 +259,7 @@ void PropertyManager::ApplyPropertiesToRenderingEngine()
                              .specularIntensity = properties.specularIntensity,
                              .shineCoefficient = properties.modelShineCoefficient},
          .polygonOrientation = PolygonOrientation(properties.orientation),
-         .backgrounColor = properties.backgroundColor});
+         .backgroundColor = properties.backgroundColor});
 }
 
 void PropertyManager::LoadInputFile(const char *fileName)

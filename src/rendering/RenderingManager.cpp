@@ -15,7 +15,7 @@ void RenderingManager::RenderSceneToWindow(Scene scene, Window *window)
 {
     glEnable(GL_DEPTH_TEST);
     glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
-    glClearBufferfv(GL_COLOR, 0, glm::value_ptr(glm::vec4(selectedRenderingEngine->state.backgrounColor, 0.0f)));
+    glClearBufferfv(GL_COLOR, 0, glm::value_ptr(glm::vec4(selectedRenderingEngine->state.backgroundColor, 0.0f)));
 
     selectedRenderingEngine->RenderSceneToWindow(scene, window);
 }

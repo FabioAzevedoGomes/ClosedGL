@@ -11,5 +11,5 @@ typedef struct t_state
     CullingModes cullingMode;
     Material uniformMaterial;
     PolygonOrientation polygonOrientation;
-    glm::vec3 backgrounColor;
+    glm::vec3 backgroundColor;
 } State;

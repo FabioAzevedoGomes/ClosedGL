@@ -40,7 +40,7 @@ subroutine (VertexLightingFunction) vec4 OpenGL_AD_GouraudShader() {
     vec4 n=normalize(inverse(transpose(model))*vec4(openGLvNormal,0.));
     
     // Calculate lambert's diffuse term as Kd*I*dot(normal, light)
-    vec3 diffuseTerm = uniformDiffuseColor * uniformDiffuseIntensity * max(0.2,dot(n,l)); // @TODO Intensity
+    vec3 diffuseTerm = uniformDiffuseColor * uniformDiffuseIntensity * max(0.2,dot(n,l));
     vec3 ambientTerm = uniformAmbientColor * vec3(uniformAmbientIntensity);
 
     // Final color

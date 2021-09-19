@@ -1,7 +1,5 @@
 #include "Close2GLRenderer.hpp"
 
-#include <fstream>
-
 Close2GLRenderer::Close2GLRenderer()
 {
     this->engineId = Close2GL;
@@ -77,7 +75,7 @@ void Close2GLRenderer::CalculateRenderingMatrices(Scene scene, Window *window)
 void Close2GLRenderer::ClearAndResizeBuffersForWindow(Window *window)
 {
     buffers->resize(window->GetWidth(), window->GetHeight());
-    buffers->setClearColor(state.backgrounColor);
+    buffers->setClearColor(state.backgroundColor);
 
     // Delete previous texture
     glDeleteTextures(1, Textures);

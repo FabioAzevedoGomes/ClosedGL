@@ -10,6 +10,7 @@
 #include <glm/gtc/type_ptr.hpp>
 
 #include "Triangle.hpp"
+
 bool isInsideNDCFrustum(Triangle);
 void perspectiveDivideVertex(Vertex &);
 void projectTriangleToNDC(Triangle &, glm::mat4);

@@ -2,7 +2,6 @@
 
 #include <map>
 
-#include "Buffer.hpp"
 #include "Renderer.hpp"
 #include "Close2GLRenderingUtils.hpp"
 #include "WireframeRasterizationStrategy.hpp"
