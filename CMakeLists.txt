@@ -40,17 +40,17 @@ add_executable(ClosedGL
   src/ui/PropertyManager.cpp
   src/ui/Window.cpp
   src/rendering/RenderingManager.cpp
-  src/rendering/OpenGLRenderer.cpp
-  src/rendering/Close2GLRenderer.cpp
-  src/rendering/Close2GLRenderingUtils.cpp
   src/rendering/shading/ShaderUtils.cpp
   src/rendering/shading/vertexShader.vert 
   src/rendering/shading/fragmentShader.frag
-  src/rendering/rasterization/RasterizationStrategy.cpp
-  src/rendering/rasterization/WireframeRasterizationStrategy.cpp
-  src/rendering/rasterization/FilledRasterizationStrategy.cpp
-  src/rendering/rasterization/PointsRasterizationStrategy.cpp
-  src/rendering/rasterization/primitives/Edge.cpp
+  src/rendering/OpenGL/OpenGLRenderer.cpp
+  src/rendering/Close2GL/Close2GLRenderer.cpp
+  src/rendering/Close2GL/Close2GLRenderingUtils.cpp
+  src/rendering/Close2GL/rasterization/RasterizationStrategy.cpp
+  src/rendering/Close2GL/rasterization/WireframeRasterizationStrategy.cpp
+  src/rendering/Close2GL/rasterization/FilledRasterizationStrategy.cpp
+  src/rendering/Close2GL/rasterization/PointsRasterizationStrategy.cpp
+  src/rendering/Close2GL/rasterization/primitives/Edge.cpp
   lib/gl3w.c
   lib/imgui/imgui_demo.cpp
   lib/imgui/imgui_draw.cpp
