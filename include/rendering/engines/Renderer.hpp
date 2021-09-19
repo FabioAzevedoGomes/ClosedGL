@@ -31,9 +31,6 @@ enum Attrib_IDs
 
 class Renderer
 {
-private:
-    virtual void DrawObject(Model3D){};
-
 public:
     State state;
     Engines engineId;

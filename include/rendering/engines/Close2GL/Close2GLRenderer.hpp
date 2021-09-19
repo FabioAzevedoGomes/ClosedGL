@@ -4,9 +4,12 @@
 
 #include "Renderer.hpp"
 #include "Close2GLRenderingUtils.hpp"
+
 #include "WireframeRasterizationStrategy.hpp"
 #include "FilledRasterizationStrategy.hpp"
 #include "PointsRasterizationStrategy.hpp"
+#include "LightingStrategy.hpp"
+#include "FlatLightingStrategy.hpp"
 
 enum Close2GL_Buffer_IDs
 {
@@ -32,13 +35,14 @@ class Close2GLRenderer : public Renderer
 private:
     glm::mat4 model, view, projection, viewport;
     std::map<RenderModes, RasterizationStrategy *> rasterizationStrategies;
+    std::map<LightingModes, LightingStrategy *> lightingStrategies;
     Buffer *buffers;
 
     GLuint Buffers[Close2GL_NumBuffers];
     GLuint VAOs[NumVAOs_Close2GL];
     GLuint Textures[Close2GL_NumTextures];
 
-    virtual void DrawObject(Model3D);
+    void DrawObjectAsSeenByCamera(Model3D, Camera &);
 
     bool ShouldCull(Triangle);
     void CalculateRenderingMatrices(Scene, Window *);

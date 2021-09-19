@@ -10,6 +10,8 @@ Close2GLRenderer::Close2GLRenderer()
     rasterizationStrategies.insert({Wireframe, new WireframeRasterizationStrategy()});
     rasterizationStrategies.insert({Standard, new FilledRasterizationStrategy()});
     rasterizationStrategies.insert({Points, new PointsRasterizationStrategy()});
+
+    lightingStrategies.insert({Flat, new FlatLightingStrategy()});
 }
 
 Close2GLRenderer::~Close2GLRenderer()
@@ -39,13 +41,15 @@ bool Close2GLRenderer::ShouldCull(Triangle triangle)
     return area * state.polygonOrientation * state.cullingMode > 0;
 }
 
-void Close2GLRenderer::DrawObject(Model3D object)
+void Close2GLRenderer::DrawObjectAsSeenByCamera(Model3D object, Camera &camera)
 {
     glm::mat4 modelViewProjection = projection * view * model;
 
     for (int triangleIndex = 0; triangleIndex < object.triangleCount; triangleIndex++)
     {
         Triangle triangle = object.triangles[triangleIndex];
+
+        lightingStrategies[state.lightingMode]->ShadeTriangleRelativeToCamera(triangle, camera);
         projectTriangleToNDC(triangle, modelViewProjection);
 
         if (!ShouldCull(triangle))
@@ -97,7 +101,7 @@ void Close2GLRenderer::RenderSceneToWindow(Scene scene, Window *window)
     for (auto object = scene.models.begin(); object != scene.models.end(); object++)
     {
         model = glm::mat4(1.0f);
-        DrawObject(*object);
+        DrawObjectAsSeenByCamera(*object, scene.camera);
     }
 
     unsigned char *colorBuffer = buffers->getColorBuffer();
@@ -150,6 +154,8 @@ void Close2GLRenderer::SetupVBOS(std::vector<Model3D> objects)
 void Close2GLRenderer::SetState(State state)
 {
     this->state = state;
+
+    lightingStrategies[state.lightingMode]->SetUniformMaterial(state.uniformMaterial);
 
     glDisable(GL_CULL_FACE);
     glFrontFace(GL_CCW);
