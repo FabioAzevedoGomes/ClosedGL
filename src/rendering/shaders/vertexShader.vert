@@ -52,7 +52,7 @@ subroutine (VertexLightingFunction) vec4 OpenGL_ADS_GouraudShader() {
     vec4 lightPos = inverse(view) * vec4(2.0,2.0,2.0,1.0);
     vec4 cameraPosition=inverse(view)[3];
     
-    // Light is assumed to be at the camera
+    vec4 v=normalize(cameraPosition - vec4(openGLvPosition,1.));
     vec4 l=normalize(lightPos-(model*vec4(openGLvPosition,1.)));
     vec4 n=normalize(inverse(transpose(model))*vec4(openGLvNormal,0.));
     
@@ -61,7 +61,7 @@ subroutine (VertexLightingFunction) vec4 OpenGL_ADS_GouraudShader() {
     vec3 ambientTerm = uniformAmbientColor * vec3(uniformAmbientIntensity);
 
     // Calculate blinn-phong specular term
-    vec4 h = normalize(2 * l);
+    vec4 h = normalize(l + v);
     vec4 specularTerm = vec4(uniformSpecularColor, 1.0) * vec4(vec3(uniformSpecularIntensity),1.0) * pow(max(0, dot(n, h)), uniformShineCoefficient); 
 
     // Final color

@@ -13,6 +13,8 @@ Close2GLRenderer::Close2GLRenderer()
 
     lightingStrategies.insert({Flat, new FlatLightingStrategy()});
     lightingStrategies.insert({Gouraud_AD, new GouraudADLightingStrategy()});
+    lightingStrategies.insert({Gouraud_ADS, new GouraudADSLightingStrategy()});
+    lightingStrategies.insert({Phong, new PhongLightingStrategyVertex()});
 }
 
 Close2GLRenderer::~Close2GLRenderer()

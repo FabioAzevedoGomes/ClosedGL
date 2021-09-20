@@ -8,9 +8,11 @@
 #include "WireframeRasterizationStrategy.hpp"
 #include "FilledRasterizationStrategy.hpp"
 #include "PointsRasterizationStrategy.hpp"
-#include "LightingStrategy.hpp"
+#include "VertexLightingStrategy.hpp"
 #include "FlatLightingStrategy.hpp"
 #include "GouraudADLightingStrategy.hpp"
+#include "GouraudADSLightingStrategy.hpp"
+#include "PhongLightingStrategyVertex.hpp"
 
 enum Close2GL_Buffer_IDs
 {
@@ -36,7 +38,7 @@ class Close2GLRenderer : public Renderer
 private:
     glm::mat4 model, view, projection, viewport;
     std::map<RenderModes, RasterizationStrategy *> rasterizationStrategies;
-    std::map<LightingModes, LightingStrategy *> lightingStrategies;
+    std::map<LightingModes, VertexLightingStrategy *> lightingStrategies;
     Buffer *buffers;
 
     GLuint Buffers[Close2GL_NumBuffers];

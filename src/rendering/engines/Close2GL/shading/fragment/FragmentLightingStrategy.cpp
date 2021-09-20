@@ -1,0 +1,2 @@
+#include "FragmentLightingStrategy.hpp"
+

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "LightingStrategy.hpp"
+#include "VertexLightingStrategy.hpp"
 
-class GouraudADLightingStrategy : public LightingStrategy
+class FlatLightingStrategy : public VertexLightingStrategy
 {
 public:
     virtual void ShadeTriangleRelativeToCamera(Triangle &, Camera &);
