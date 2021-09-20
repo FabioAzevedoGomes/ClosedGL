@@ -19,17 +19,20 @@ void FilledRasterizationStrategy::DrawAlongScanline()
 
     right.position.y = std::floor(currentY);
     left.position.y = std::floor(currentY);
-    drawInterpolatedVertexToBuffer(left);
-    drawInterpolatedVertexToBuffer(right);
-
-    Edge scanlineEdge(left, right, -1);
-
-    for (float currentX = left.position.x, currentZ = left.position.z;
-         currentX <= std::floor(right.position.x);
-         currentX++, currentZ += scanlineEdge.dz / scanlineEdge.dx)
+    if (left.position.x != right.position.x)
     {
-        interpolateLinearlyOverEdge(scanlineEdge, point, currentX, currentY, currentZ);
-        drawInterpolatedVertexToBuffer(point);
+        drawInterpolatedVertexToBuffer(left);
+        drawInterpolatedVertexToBuffer(right);
+
+        Edge scanlineEdge(left, right, -1);
+
+        for (float currentX = left.position.x, currentZ = left.position.z;
+             currentX <= std::floor(right.position.x);
+             currentX++, currentZ += scanlineEdge.dz / scanlineEdge.dx)
+        {
+            interpolateLinearlyOverEdge(scanlineEdge, point, currentX, currentY, currentZ);
+            drawInterpolatedVertexToBuffer(point);
+        }
     }
 }
 
