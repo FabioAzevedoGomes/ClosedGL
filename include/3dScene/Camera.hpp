@@ -29,8 +29,6 @@ public:
     float horizontalFieldOfView;
     float verticalFieldOfView;
 
-    float viewWidth, viewHeight;
-
     Camera();
     void Reset();
     void FrameObject(Model3D object);

@@ -119,27 +119,7 @@ void Model3D::PrintInformation()
                   << "\t\t - Specular color: (" << this->materials[i].specularColor.x << ", " << this->materials[i].specularColor.y << ", " << this->materials[i].specularColor.z << ")" << std::endl
                   << "\t\t - Shine coefficient: " << this->materials[i].shineCoefficient << std::endl;
     }
-    /*
-    for (int i = 0; i < this->triangleCount; i++)
-    {
-        std::cout << "\t\tTriangle " << i << std::endl;
-        for (int j = 0; j < 3; j++)
-            std::cout << "\t\t v" << j
-                      << " | (" << this->triangles[i].vertices[j].position.x << ", " << this->triangles[i].vertices[j].position.y << ", " << this->triangles[i].vertices[j].position.z << ")"
-                      << " | (" << this->triangles[i].vertices[j].normal.x << ", " << this->triangles[i].vertices[j].normal.y << ", " << this->triangles[i].vertices[j].normal.z << ")"
-                      << " | (" << this->triangles[i].vertices[j].color.x << ", " << this->triangles[i].vertices[j].color.y << ", " << this->triangles[i].vertices[j].color.z << ")" << std::endl;
-    }
-    */
     std::cout << std::endl;
-}
-
-void Model3D::SetMaterialDiffuseColor(int material, glm::vec3 color)
-{
-    this->materials[material].diffuseColor = color;
-
-    for (int i = 0; i < this->triangleCount; i++)
-        for (int j = 0; j < 3; j++)
-            this->triangles[i].vertices[j].color = this->materials[this->triangles[i].vertices[j].colorIndex].diffuseColor;
 }
 
 void Model3D::ReadMaterial(FILE *file, int index)

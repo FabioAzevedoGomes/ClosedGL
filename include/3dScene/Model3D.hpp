@@ -32,7 +32,6 @@ public:
     float *GetVertexNormalData();
     float *GetVertexColorData();
     void PrintInformation();
-    void SetMaterialDiffuseColor(int material, glm::vec3 color);
 
 private:
     void ReadMaterial(FILE *file, int index);
