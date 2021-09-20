@@ -78,10 +78,10 @@ typedef struct t_buffer
         if (position.x >= 0 && position.x < width && position.y >= 0 && position.y < height && position.z < *(depthBuffer + (int)std::floor(position.y) * width + (int)std::floor(position.x)))
         {
             *(depthBuffer + (int)std::floor(position.y) * width + (int)std::floor(position.x)) = position.z;
-            *(colorBuffer + (int)std::floor(position.y) * width * 4 + (int)std::floor(position.x) * 4 + 0) = color.x;
-            *(colorBuffer + (int)std::floor(position.y) * width * 4 + (int)std::floor(position.x) * 4 + 1) = color.y;
-            *(colorBuffer + (int)std::floor(position.y) * width * 4 + (int)std::floor(position.x) * 4 + 2) = color.z;
-            *(colorBuffer + (int)std::floor(position.y) * width * 4 + (int)std::floor(position.x) * 4 + 3) = color.w;
+            *(colorBuffer + (int)std::floor(position.y) * width * 4 + (int)std::floor(position.x) * 4 + 0) = std::min(1.0f, std::max(color.x, 0.0f));
+            *(colorBuffer + (int)std::floor(position.y) * width * 4 + (int)std::floor(position.x) * 4 + 1) = std::min(1.0f, std::max(color.y, 0.0f));
+            *(colorBuffer + (int)std::floor(position.y) * width * 4 + (int)std::floor(position.x) * 4 + 2) = std::min(1.0f, std::max(color.z, 0.0f));
+            *(colorBuffer + (int)std::floor(position.y) * width * 4 + (int)std::floor(position.x) * 4 + 3) = std::min(1.0f, std::max(color.w, 0.0f));
         }
     }
 
