@@ -13,6 +13,8 @@
 #include "GouraudADLightingStrategy.hpp"
 #include "GouraudADSLightingStrategy.hpp"
 #include "PhongLightingStrategyVertex.hpp"
+#include "PhongLightingStrategyFragment.hpp"
+#include "PassThroughLightingStrategy.hpp"
 
 enum Close2GL_Buffer_IDs
 {
@@ -38,7 +40,8 @@ class Close2GLRenderer : public Renderer
 private:
     glm::mat4 model, view, projection, viewport;
     std::map<RenderModes, RasterizationStrategy *> rasterizationStrategies;
-    std::map<LightingModes, VertexLightingStrategy *> lightingStrategies;
+    std::map<LightingModes, VertexLightingStrategy *> vertexLightingStrategies;
+    std::map<LightingModes, FragmentLightingStrategy *> fragmentLightingStrategies;
     Buffer *buffers;
 
     GLuint Buffers[Close2GL_NumBuffers];
@@ -50,6 +53,7 @@ private:
     bool ShouldCull(Triangle);
     void CalculateRenderingMatrices(Scene, Window *);
     void ClearAndResizeBuffersForWindow(Window *);
+    void SetRasterState(Scene, Window *);
 
 public:
     Close2GLRenderer();

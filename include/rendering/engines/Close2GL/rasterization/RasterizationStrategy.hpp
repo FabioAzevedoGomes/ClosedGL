@@ -12,6 +12,8 @@
 
 #include "Triangle.hpp"
 #include "Buffer.hpp"
+#include "Camera.hpp"
+#include "FragmentLightingStrategy.hpp"
 
 class RasterizationStrategy
 {
@@ -33,5 +35,8 @@ protected:
     void interpolateLinearlyOverEdge(Edge edge, Vertex &interpolated, float currentX, float currentY, float currentZ);
 
 public:
+    Camera *camera;
+    FragmentLightingStrategy *fragmentLightingStrategy;
+
     virtual void DrawTriangleToBuffer(Triangle triangle, Buffer *buffer){};
 };

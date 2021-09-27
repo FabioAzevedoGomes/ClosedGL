@@ -65,7 +65,7 @@ void RasterizationStrategy::DrawAlongScanlineForEdge(int index)
 
 void RasterizationStrategy::drawInterpolatedVertexToBuffer(Vertex vertex)
 {
-    vertex.color /= vertex.wp;
+    fragmentLightingStrategy->ShadeFragmentRelativeToCamera(vertex, *camera);
     buffers->draw(vertex.position, glm::vec4(vertex.color, 1.0f));
 }
 

@@ -11,16 +11,23 @@ Close2GLRenderer::Close2GLRenderer()
     rasterizationStrategies.insert({Standard, new FilledRasterizationStrategy()});
     rasterizationStrategies.insert({Points, new PointsRasterizationStrategy()});
 
-    lightingStrategies.insert({Flat, new FlatLightingStrategy()});
-    lightingStrategies.insert({Gouraud_AD, new GouraudADLightingStrategy()});
-    lightingStrategies.insert({Gouraud_ADS, new GouraudADSLightingStrategy()});
-    lightingStrategies.insert({Phong, new PhongLightingStrategyVertex()});
+    vertexLightingStrategies.insert({Flat, new FlatLightingStrategy()});
+    vertexLightingStrategies.insert({Gouraud_AD, new GouraudADLightingStrategy()});
+    vertexLightingStrategies.insert({Gouraud_ADS, new GouraudADSLightingStrategy()});
+    vertexLightingStrategies.insert({Phong, new PhongLightingStrategyVertex()});
+
+    fragmentLightingStrategies.insert({Flat, new PassThroughLightingStrategy()});
+    fragmentLightingStrategies.insert({Gouraud_AD, new PassThroughLightingStrategy()});
+    fragmentLightingStrategies.insert({Gouraud_ADS, new PassThroughLightingStrategy()});
+    fragmentLightingStrategies.insert({Phong, new PhongLightingStrategyFragment()});
 }
 
 Close2GLRenderer::~Close2GLRenderer()
 {
     delete buffers;
     rasterizationStrategies.clear();
+    vertexLightingStrategies.clear();
+    fragmentLightingStrategies.clear();
 }
 
 bool Close2GLRenderer::ShouldCull(Triangle triangle)
@@ -52,7 +59,7 @@ void Close2GLRenderer::DrawObjectAsSeenByCamera(Model3D object, Camera &camera)
     {
         Triangle triangle = object.triangles[triangleIndex];
 
-        lightingStrategies[state.lightingMode]->ShadeTriangleRelativeToCamera(triangle, camera);
+        vertexLightingStrategies[state.lightingMode]->ShadeTriangleRelativeToCamera(triangle, camera);
         projectTriangleToNDC(triangle, modelViewProjection);
 
         if (!ShouldCull(triangle))
@@ -96,10 +103,19 @@ void Close2GLRenderer::ClearAndResizeBuffersForWindow(Window *window)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
 }
 
+void Close2GLRenderer::SetRasterState(Scene scene, Window *window)
+{
+    rasterizationStrategies[state.renderMode]->camera = &scene.camera;
+    rasterizationStrategies[state.renderMode]->fragmentLightingStrategy = fragmentLightingStrategies[state.lightingMode];
+    fragmentLightingStrategies[state.lightingMode]->SetUniformMaterial(state.uniformMaterial);
+    fragmentLightingStrategies[state.lightingMode]->SetScreenWidthHeight(window->GetWidth(), window->GetHeight());
+}
+
 void Close2GLRenderer::RenderSceneToWindow(Scene scene, Window *window)
 {
     CalculateRenderingMatrices(scene, window);
     ClearAndResizeBuffersForWindow(window);
+    SetRasterState(scene, window);
 
     for (auto object = scene.models.begin(); object != scene.models.end(); object++)
     {
@@ -158,7 +174,7 @@ void Close2GLRenderer::SetState(State state)
 {
     this->state = state;
 
-    lightingStrategies[state.lightingMode]->SetUniformMaterial(state.uniformMaterial);
+    vertexLightingStrategies[state.lightingMode]->SetUniformMaterial(state.uniformMaterial);
 
     glDisable(GL_CULL_FACE);
     glFrontFace(GL_CCW);

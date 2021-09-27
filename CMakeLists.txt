@@ -51,7 +51,9 @@ add_executable(ClosedGL
   src/rendering/engines/Close2GL/shading/vertex/GouraudADLightingStrategy.cpp
   src/rendering/engines/Close2GL/shading/vertex/GouraudADSLightingStrategy.cpp
   src/rendering/engines/Close2GL/shading/vertex/PhongLightingStrategyVertex.cpp
+  src/rendering/engines/Close2GL/shading/fragment/FragmentLightingStrategy.cpp
   src/rendering/engines/Close2GL/shading/fragment/PhongLightingStrategyFragment.cpp
+  src/rendering/engines/Close2GL/shading/fragment/PassThroughLightingStrategy.cpp
   src/rendering/engines/Close2GL/rasterization/RasterizationStrategy.cpp
   src/rendering/engines/Close2GL/rasterization/WireframeRasterizationStrategy.cpp
   src/rendering/engines/Close2GL/rasterization/FilledRasterizationStrategy.cpp
