@@ -1,10 +1,7 @@
 #include "PhongLightingStrategyFragment.hpp"
 
 void PhongLightingStrategyFragment::ShadeFragmentRelativeToCamera(Vertex &fragment, Camera &camera)
-{
-    glm::mat4 inverseViewportProj = glm::inverse(
-        glm::mat4(camera.nearPlane*width)/-width
-    );
+{   
     fragment.normal /= fragment.wp;
     fragment.color /= fragment.wp;
 
