@@ -26,6 +26,8 @@ public:
 
     BoundingBox boundingBox;
 
+    bool textured;
+
     Model3D();
     Model3D(std::string filename);
     float *GetVertexPositionData();

@@ -37,12 +37,14 @@ Model3D::Model3D(std::string filename)
     for (int i = 0; i < this->materialCount; i++)
         ReadMaterial(file, i);
 
-    char textured = 'z';
+    char isTextured = 'z';
     ch = 'z';
-    fscanf(file, "Texture = %c", &textured);
+    fscanf(file, "Texture = %c", &isTextured);
     do
         fscanf(file, "%c", &ch);
     while (ch != '\n');
+
+    this->textured = isTextured == 'Y';
 
     // Skip documentation
     fscanf(file, "%c", &ch);
@@ -115,7 +117,8 @@ void Model3D::PrintInformation()
               << "\tname: " << this->modelName << std::endl
               << "\tfileName: " << this->fileName << std::endl
               << "\t# of triangles: " << this->triangleCount << std::endl
-              << "\t# of materials: " << this->materialCount << std::endl;
+              << "\t# of materials: " << this->materialCount << std::endl
+              << "\tTextured? " << this->textured << std::endl;
 
     std::cout << "\tMaterials: " << std::endl;
     for (int i = 0; i < this->materialCount; i++)
@@ -155,7 +158,7 @@ void Model3D::ReadTriangle(FILE *file, int index)
 
     for (int i = 0; i < 3; i++)
     {
-        fscanf(file, "v%d %f %f %f %f %f %f %d\n", &vertexNumber, &vx, &vy, &vz, &nx, &ny, &nz, &colorIndex);
+        fscanf(file, "v%d %f %f %f %f %f %f %d", &vertexNumber, &vx, &vy, &vz, &nx, &ny, &nz, &colorIndex);
         this->triangles[index].vertices[vertexNumber].position = glm::vec4(vx, vy, vz, 1.0f);
 
         if (!strcmp(this->modelName, "COW")) // Cow normals z component flipped?
@@ -170,6 +173,13 @@ void Model3D::ReadTriangle(FILE *file, int index)
         this->triangles[index].vertices[vertexNumber].color = glm::vec3(cx, cy, cz);
 
         boundingBox.update(this->triangles[index].vertices[vertexNumber].position);
+
+        if (this->textured) {
+            fscanf(file, "\n%d %d\n", &this->triangles[index].vertices[vertexNumber].texture_coords.x,
+                &this->triangles[index].vertices[vertexNumber].texture_coords.y);
+        } else {
+            fscanf(file, "\n", nullptr);
+        }
     }
 
     fscanf(file, "face normal %f %f %f\n", &nx, &ny, &nz);
