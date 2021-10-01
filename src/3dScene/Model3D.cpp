@@ -37,6 +37,13 @@ Model3D::Model3D(std::string filename)
     for (int i = 0; i < this->materialCount; i++)
         ReadMaterial(file, i);
 
+    char textured = 'z';
+    ch = 'z';
+    fscanf(file, "Texture = %c", &textured);
+    do
+        fscanf(file, "%c", &ch);
+    while (ch != '\n');
+
     // Skip documentation
     fscanf(file, "%c", &ch);
     while (ch != '\n')
