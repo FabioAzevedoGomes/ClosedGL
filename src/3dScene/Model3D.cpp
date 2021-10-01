@@ -2,11 +2,17 @@
 
 Model3D::Model3D()
 {
-    // nil
+    this->texture = nullptr;
+    this->triangles = nullptr;
+    this->materials = nullptr;
 }
 
 Model3D::Model3D(std::string filename)
 {
+    this->texture = nullptr;
+    this->triangles = nullptr;
+    this->materials = nullptr;
+
     this->fileName = filename;
     FILE *file = fopen(filename.c_str(), "r");
 

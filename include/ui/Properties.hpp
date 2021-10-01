@@ -68,7 +68,7 @@ typedef struct
     int resamplingMode = NearestNeighbor;
 
     bool lightOn = true;
-    bool textureOn = true;
+    bool textureOn = false;
 
     glm::vec3 modelDiffuseColor;
     float diffuseIntensity = 1.0f;

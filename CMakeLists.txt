@@ -37,6 +37,7 @@ add_executable(ClosedGL
   src/3dScene/Model3D.cpp
   src/3dScene/Camera.cpp
   src/3dScene/Scene.cpp
+  src/3dScene/primitives/Texture.cpp
   src/ui/PropertyManager.cpp
   src/ui/Window.cpp
   src/rendering/RenderingManager.cpp

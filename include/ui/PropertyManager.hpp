@@ -10,6 +10,7 @@
 #include "imgui_impl_opengl3.h"
 #include "ImGuiFileBrowser.h"
 
+#include "Texture.hpp"
 #include "Properties.hpp"
 #include "Scene.hpp"
 #include "RenderingManager.hpp"

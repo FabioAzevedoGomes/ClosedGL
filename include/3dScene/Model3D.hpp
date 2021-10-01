@@ -6,6 +6,7 @@
 #include "Triangle.hpp"
 #include "Material.hpp"
 #include "BoundingBox.hpp"
+#include "Texture.hpp"
 
 #include <cstdlib>
 #include <iostream>
@@ -26,6 +27,7 @@ public:
 
     BoundingBox boundingBox;
 
+    Texture *texture;
     bool textured;
 
     Model3D();

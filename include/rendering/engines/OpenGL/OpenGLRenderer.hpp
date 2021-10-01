@@ -16,11 +16,18 @@ enum OpenGL_VAO_IDs
     NumVAOs_OpenGL
 };
 
+enum OpenGL_Texture_IDs
+{
+    ModelTexture_OpenGL,
+    NumTextures_OpenGL
+};
+
 class OpenGLRenderer : public Renderer
 {
 private:
     GLuint Buffers[OpenGL_NumBuffers];
     GLuint VAOs[NumVAOs_OpenGL];
+    GLuint Textures[NumTextures_OpenGL];
 
     void BindObjectBuffers(Model3D);
     void DrawObject(Model3D object);

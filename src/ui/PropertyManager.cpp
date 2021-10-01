@@ -197,22 +197,25 @@ void PropertyManager::RenderPropertyWindow()
 
     if (managedScene->models[0].textured && ImGui::CollapsingHeader("Texture"))
     {
-        if (ImGui::Button("Select Texture..."))
-            ImGui::OpenPopup("Select Texture");
-        if (fileDialog.showFileDialog("Select Texture", imgui_addons::ImGuiFileBrowser::DialogMode::OPEN, ImVec2(700, 310), ".jpg"))
-            LoadTextureFile(fileDialog.selected_path.c_str());
-        ImGui::Spacing();
-
         ImGui::Checkbox("Enable Textures", &properties.textureOn);
         ImGui::Spacing();
 
-        ImGui::Text("Resampling mode");
-        ImGui::RadioButton("Nearest Neighbor", &properties.resamplingMode, 0);
-        ImGui::SameLine();
-        ImGui::RadioButton("Bilinear", &properties.resamplingMode, 1);
-        ImGui::SameLine();
-        ImGui::RadioButton("Trilinear", &properties.resamplingMode, 2);
-        ImGui::Spacing();
+        if (properties.textureOn)
+        {
+            if (ImGui::Button("Select Texture..."))
+                ImGui::OpenPopup("Select Texture");
+            if (fileDialog.showFileDialog("Select Texture", imgui_addons::ImGuiFileBrowser::DialogMode::OPEN, ImVec2(700, 310), ".jpg"))
+                LoadTextureFile(fileDialog.selected_path.c_str());
+            ImGui::Spacing();
+
+            ImGui::Text("Resampling mode");
+            ImGui::RadioButton("Nearest Neighbor", &properties.resamplingMode, 0);
+            ImGui::SameLine();
+            ImGui::RadioButton("Bilinear", &properties.resamplingMode, 1);
+            ImGui::SameLine();
+            ImGui::RadioButton("Trilinear", &properties.resamplingMode, 2);
+            ImGui::Spacing();
+        }
     }
 
     ImGui::Spacing();
@@ -280,7 +283,8 @@ void PropertyManager::ApplyPropertiesToRenderingEngine()
                              .specularIntensity = properties.specularIntensity,
                              .shineCoefficient = properties.modelShineCoefficient},
          .polygonOrientation = PolygonOrientation(properties.orientation),
-         .backgroundColor = properties.backgroundColor});
+         .backgroundColor = properties.backgroundColor,
+         .resamplingMode = ResamplingModes(properties.resamplingMode)});
 }
 
 void PropertyManager::LoadInputFile(const char *fileName)
@@ -296,7 +300,15 @@ void PropertyManager::LoadInputFile(const char *fileName)
 
 void PropertyManager::LoadTextureFile(const char *fileName)
 {
-    // TODO:
+    Texture *texture = new Texture(fileName);
+    if (texture->width > 0 && texture->height > 0)
+    {
+        if (managedScene->models[0].texture != nullptr && managedScene->models[0].texture->exists())
+        {
+            delete managedScene->models[0].texture;
+        }
+        managedScene->models[0].texture = texture;
+    }
 }
 
 void PropertyManager::ApplyProperties()
