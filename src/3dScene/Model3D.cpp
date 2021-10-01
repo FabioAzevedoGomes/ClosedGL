@@ -174,10 +174,13 @@ void Model3D::ReadTriangle(FILE *file, int index)
 
         boundingBox.update(this->triangles[index].vertices[vertexNumber].position);
 
-        if (this->textured) {
-            fscanf(file, "\n%d %d\n", &this->triangles[index].vertices[vertexNumber].texture_coords.x,
-                &this->triangles[index].vertices[vertexNumber].texture_coords.y);
-        } else {
+        if (this->textured)
+        {
+            fscanf(file, " %f %f\n", &this->triangles[index].vertices[vertexNumber].texture_coords.x,
+                   &this->triangles[index].vertices[vertexNumber].texture_coords.y);
+        }
+        else
+        {
             fscanf(file, "\n", nullptr);
         }
     }
