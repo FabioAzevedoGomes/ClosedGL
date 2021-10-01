@@ -45,6 +45,13 @@ enum MovementOptions
     Backwards = 6
 };
 
+enum ResamplingModes
+{
+    NearestNeighbor = 0,
+    Bilinear = 1,
+    Trilinear = 2
+};
+
 enum Engines
 {
     OpenGL,
@@ -58,8 +65,10 @@ typedef struct
     int cullingMode = BackfaceCulling;
     int engine = OpenGL;
     int lightingMode = Flat;
+    int resamplingMode = NearestNeighbor;
 
     bool lightOn = true;
+    bool textureOn = true;
 
     glm::vec3 modelDiffuseColor;
     float diffuseIntensity = 1.0f;

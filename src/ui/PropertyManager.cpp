@@ -195,6 +195,27 @@ void PropertyManager::RenderPropertyWindow()
         ImGui::Spacing();
     }
 
+    if (managedScene->models[0].textured && ImGui::CollapsingHeader("Texture"))
+    {
+        if (ImGui::Button("Select Texture..."))
+            ImGui::OpenPopup("Select Texture");
+        if (fileDialog.showFileDialog("Select Texture", imgui_addons::ImGuiFileBrowser::DialogMode::OPEN, ImVec2(700, 310), ".jpg"))
+            LoadTextureFile(fileDialog.selected_path.c_str());
+        ImGui::Spacing();
+
+        ImGui::Checkbox("Enable Textures", &properties.textureOn);
+        ImGui::Spacing();
+
+        ImGui::Text("Resampling mode");
+        ImGui::RadioButton("Nearest Neighbor", &properties.resamplingMode, 0);
+        ImGui::SameLine();
+        ImGui::RadioButton("Bilinear", &properties.resamplingMode, 1);
+        ImGui::SameLine();
+        ImGui::RadioButton("Trilinear", &properties.resamplingMode, 2);
+        ImGui::Spacing();
+    }
+
+    ImGui::Spacing();
     ImGui::End();
 }
 
@@ -271,6 +292,11 @@ void PropertyManager::LoadInputFile(const char *fileName)
     properties.modelShineCoefficient = managedScene->models[0].materials->shineCoefficient;
     managedRenderer->SetupBuffers(*managedScene);
     modelLoaded = true;
+}
+
+void PropertyManager::LoadTextureFile(const char *fileName)
+{
+    // TODO:
 }
 
 void PropertyManager::ApplyProperties()

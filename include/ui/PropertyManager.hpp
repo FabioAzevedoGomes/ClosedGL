@@ -38,6 +38,7 @@ public:
     ~PropertyManager();
 
     void LoadInputFile(const char *fileName);
+    void LoadTextureFile(const char *fileName);
     void ApplyProperties();
 };
 
