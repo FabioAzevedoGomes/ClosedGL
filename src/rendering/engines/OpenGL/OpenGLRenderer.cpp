@@ -15,6 +15,7 @@ void OpenGLRenderer::DrawObject(Model3D object)
     {
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, object.texture->width, object.texture->height, 0, GL_RGBA, GL_UNSIGNED_BYTE, object.texture->image);
         glGenerateMipmap(GL_TEXTURE_2D);
+        object.texture->needsReload = false;
     }
     glUniformMatrix4fv(GetShaderUniformVariableId(UNIFORM_MODEL_ID), 1, GL_FALSE, glm::value_ptr(glm::mat4(1.0f)));
     glBindVertexArray(VAOs[ModelObject_OpenGL]);
