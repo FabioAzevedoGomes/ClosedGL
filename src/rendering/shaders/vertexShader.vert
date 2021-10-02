@@ -3,6 +3,7 @@
 layout(location=0)in vec3 openGLvPosition;
 layout(location=1)in vec3 openGLvColor;
 layout(location=2)in vec3 openGLvNormal;
+layout(location=5)in vec2 openGLvTextureCoordinate;
 
 layout(location=3)in vec4 close2GLvPosition;
 layout(location=4)in vec2 close2GLvTextureCoordinate;
@@ -81,6 +82,7 @@ subroutine (VertexLightingFunction) vec4 Close2GL_TextureShader() {
 
 // Vertex position options
 subroutine (VertexPositionFunction) void OpenGL_VetexCoords() {
+    textureCoordinate = openGLvTextureCoordinate;
     gl_Position = projection * view * model * vec4(openGLvPosition, 1.0);
 }
 

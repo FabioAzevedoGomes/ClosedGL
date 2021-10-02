@@ -7,6 +7,7 @@ enum OpenGL_Buffer_IDs
     OpenGL_VertexPositionBuffer,
     OpenGL_VertexNormalBuffer,
     OpenGL_VertexColorBuffer,
+    OpenGL_VertexTexCoordBuffer,
     OpenGL_NumBuffers
 };
 
@@ -37,6 +38,7 @@ private:
     void SetRenderMode(RenderModes);
     void SetLightingAlgorithm(LightingModes);
     void SetRenderUniformMaterial(Material);
+    void SetResamplingMode(ResamplingModes);
 
 public:
     OpenGLRenderer();

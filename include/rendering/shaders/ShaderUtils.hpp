@@ -17,6 +17,7 @@
 #define UNIFORM_SPECULAR_COLOR_ID "uniformSpecularColor"
 #define UNIFORM_SPECULAR_INTENSITY_ID "uniformSpecularIntensity"
 #define UNIFORM_SHINE_COEFFICIENT_ID "uniformShineCoefficient"
+#define UNIFORM_OPENGL_TEXTURE_ENABLED_ID "openGLtextureEnabled"
 
 #define UNIFORM_MODEL_ID "model"
 #define UNIFORM_VIEW_ID "view"

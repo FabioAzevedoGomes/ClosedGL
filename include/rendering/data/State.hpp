@@ -12,5 +12,6 @@ typedef struct t_state
     Material uniformMaterial;
     PolygonOrientation polygonOrientation;
     glm::vec3 backgroundColor;
+    bool textureOn;
     ResamplingModes resamplingMode;
 } State;

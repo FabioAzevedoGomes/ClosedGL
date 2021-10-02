@@ -18,6 +18,7 @@ uniform float uniformAmbientIntensity;
 uniform vec3 uniformSpecularColor;
 uniform float uniformSpecularIntensity;
 uniform float uniformShineCoefficient;
+uniform int openGLtextureEnabled;
 
 out vec4 fColor;
 
@@ -54,5 +55,12 @@ subroutine uniform FragmentLightingFunction fragmentLightingShader;
 
 void main()
 {
-    fColor = fragmentLightingShader();
+    vec4 color = fragmentLightingShader();
+
+    if (openGLtextureEnabled != 0) {
+        // TODO: Modulate ambient and diffuse terms
+        color = texture(canvasSampler, textureCoordinate);
+    }
+
+    fColor = color;
 }

@@ -35,6 +35,7 @@ public:
     float *GetVertexPositionData();
     float *GetVertexNormalData();
     float *GetVertexColorData();
+    float *GetTextureCoordinateData();
     void PrintInformation();
 
 private:

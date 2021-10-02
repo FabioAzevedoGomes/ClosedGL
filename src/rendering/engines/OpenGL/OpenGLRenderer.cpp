@@ -11,6 +11,11 @@ void OpenGLRenderer::DrawObject(Model3D object)
     // No model manipulation for now
     glm::mat4 model = glm::mat4(1.0f);
 
+    if (object.texture != nullptr && object.texture->exists() && object.texture->needsReload)
+    {
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, object.texture->width, object.texture->height, 0, GL_RGBA, GL_UNSIGNED_BYTE, object.texture->image);
+        glGenerateMipmap(GL_TEXTURE_2D);
+    }
     glUniformMatrix4fv(GetShaderUniformVariableId(UNIFORM_MODEL_ID), 1, GL_FALSE, glm::value_ptr(glm::mat4(1.0f)));
     glBindVertexArray(VAOs[ModelObject_OpenGL]);
     glDrawArrays(GL_TRIANGLES, 0, 3 * object.triangleCount);
@@ -22,6 +27,7 @@ void OpenGLRenderer::RenderSceneToWindow(Scene scene, Window *_)
     glBindVertexArray(VAOs[ModelObject_OpenGL]);
     glUniformMatrix4fv(GetShaderUniformVariableId(UNIFORM_PROJECTION_ID), 1, GL_FALSE, glm::value_ptr(scene.camera.GetProjectionMatrix()));
     glUniformMatrix4fv(GetShaderUniformVariableId(UNIFORM_VIEW_ID), 1, GL_FALSE, glm::value_ptr(scene.camera.GetViewMatrix()));
+    glUniform1i(GetShaderUniformVariableId(UNIFORM_OPENGL_TEXTURE_ENABLED_ID), state.textureOn);
 
     for (auto objectIterator = scene.models.begin(); objectIterator != scene.models.end(); objectIterator++)
         DrawObject(*objectIterator);
@@ -46,6 +52,25 @@ void OpenGLRenderer::BindObjectBuffers(Model3D object)
     glBufferStorage(GL_ARRAY_BUFFER, object.triangleCount * 9 * sizeof(float), object.GetVertexNormalData(), GL_DYNAMIC_STORAGE_BIT);
     glVertexAttribPointer(openGLvertexNormals, 3, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0));
     glEnableVertexAttribArray(openGLvertexNormals);
+
+    if (object.textured)
+    {
+        // Textures
+        glBindBuffer(GL_ARRAY_BUFFER, Buffers[OpenGL_VertexTexCoordBuffer]);
+        glBufferStorage(GL_ARRAY_BUFFER, object.triangleCount * 6 * sizeof(float), object.GetTextureCoordinateData(), GL_DYNAMIC_STORAGE_BIT);
+        glVertexAttribPointer(openGLtextureCoordinates, 2, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0));
+        glEnableVertexAttribArray(openGLtextureCoordinates);
+
+        glGenTextures(1, Textures);
+        glBindTexture(GL_TEXTURE_2D, Textures[ModelTexture_OpenGL]);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
+        if (object.texture != nullptr && object.texture->exists() && object.texture->needsReload)
+        {
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, object.texture->width, object.texture->height, 0, GL_RGBA, GL_UNSIGNED_BYTE, object.texture->image);
+            glGenerateMipmap(GL_TEXTURE_2D);
+        }
+    }
 }
 
 void OpenGLRenderer::SetupVAOS()
@@ -73,6 +98,7 @@ void OpenGLRenderer::SetState(State state)
     SetRenderMode(state.renderMode);
     SetLightingAlgorithm(state.lightingMode);
     SetRenderUniformMaterial(state.uniformMaterial);
+    SetResamplingMode(state.resamplingMode);
 }
 
 void OpenGLRenderer::SetCullingMode(CullingModes cullingMode)
@@ -159,4 +185,24 @@ void OpenGLRenderer::SetRenderUniformMaterial(Material material)
     glUniform3fv(GetShaderUniformVariableId(UNIFORM_SPECULAR_COLOR_ID), 1, glm::value_ptr(material.specularColor));
     glUniform1f(GetShaderUniformVariableId(UNIFORM_SPECULAR_INTENSITY_ID), material.specularIntensity);
     glUniform1f(GetShaderUniformVariableId(UNIFORM_SHINE_COEFFICIENT_ID), material.shineCoefficient);
+}
+
+void OpenGLRenderer::SetResamplingMode(ResamplingModes resamplingMode)
+{
+    switch (resamplingMode)
+    {
+    case Trilinear:
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+        break;
+    case Bilinear:
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        break;
+    case NearestNeighbor:
+    default:
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+        break;
+    }
 }

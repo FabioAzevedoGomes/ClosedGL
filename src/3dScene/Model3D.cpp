@@ -63,7 +63,6 @@ Model3D::Model3D(std::string filename)
     }
 
     fclose(file);
-    std::cout << "Loaded model \"" << this->modelName << "\" from " << this->fileName << std::endl;
 }
 
 float *Model3D::GetVertexPositionData()
@@ -115,6 +114,22 @@ float *Model3D::GetVertexColorData()
     }
 
     return colorData;
+}
+
+float *Model3D::GetTextureCoordinateData()
+{
+    float *textureCoordinateData = new float[6 * triangleCount];
+
+    for (int i = 0; i < triangleCount; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            textureCoordinateData[6 * i + (2 * j + 0)] = this->triangles[i].vertices[j].texture_coords.x;
+            textureCoordinateData[6 * i + (2 * j + 1)] = this->triangles[i].vertices[j].texture_coords.y;
+        }
+    }
+
+    return textureCoordinateData;
 }
 
 void Model3D::PrintInformation()

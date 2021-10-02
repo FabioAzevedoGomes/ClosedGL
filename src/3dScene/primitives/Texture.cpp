@@ -11,6 +11,7 @@ Texture::t_texture()
     this->width = 0;
     this->height = 0;
     this->numChannels = 0;
+    this->needsReload = false;
 }
 
 Texture::t_texture(const char *filename)
@@ -21,6 +22,8 @@ Texture::t_texture(const char *filename)
         &(this->height),
         &(this->numChannels),
         STBI_rgb_alpha);
+    this->needsReload = true;
+    this->name = filename;
 
     if (image == nullptr)
     {
@@ -29,12 +32,18 @@ Texture::t_texture(const char *filename)
         this->width = 0;
         this->height = 0;
         this->numChannels = 0;
+        this->needsReload = false;
     }
 }
 
 Texture::~t_texture()
 {
     stbi_image_free(image);
+}
+
+std::string Texture::getName()
+{
+    return name.length() > 0 ? name : "None";
 }
 
 bool Texture::exists()

@@ -208,6 +208,13 @@ void PropertyManager::RenderPropertyWindow()
                 LoadTextureFile(fileDialog.selected_path.c_str());
             ImGui::Spacing();
 
+            std::string textureName = managedScene->models[0].texture != nullptr ? managedScene->models[0].texture->getName() : "None";
+            ImGui::Text("Current texture:");
+            ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(1.0f, 0.0f, 0.0f, 1.0f));
+            ImGui::Text(textureName.c_str());
+            ImGui::PopStyleColor();
+            ImGui::Spacing();
+
             ImGui::Text("Resampling mode");
             ImGui::RadioButton("Nearest Neighbor", &properties.resamplingMode, 0);
             ImGui::SameLine();
@@ -284,6 +291,7 @@ void PropertyManager::ApplyPropertiesToRenderingEngine()
                              .shineCoefficient = properties.modelShineCoefficient},
          .polygonOrientation = PolygonOrientation(properties.orientation),
          .backgroundColor = properties.backgroundColor,
+         .textureOn = properties.textureOn,
          .resamplingMode = ResamplingModes(properties.resamplingMode)});
 }
 
@@ -296,6 +304,7 @@ void PropertyManager::LoadInputFile(const char *fileName)
     properties.modelShineCoefficient = managedScene->models[0].materials->shineCoefficient;
     managedRenderer->SetupBuffers(*managedScene);
     modelLoaded = true;
+    std::cout << "Loaded model \"" << managedScene->models[0].modelName << "\" from \"" << fileName << "\"" << std::endl;
 }
 
 void PropertyManager::LoadTextureFile(const char *fileName)
@@ -309,6 +318,7 @@ void PropertyManager::LoadTextureFile(const char *fileName)
         }
         managedScene->models[0].texture = texture;
     }
+    std::cout << "Loaded texture from \"" << fileName << "\"" << std::endl;
 }
 
 void PropertyManager::ApplyProperties()
