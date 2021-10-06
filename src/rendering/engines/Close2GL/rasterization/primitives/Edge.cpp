@@ -15,16 +15,18 @@ Edge::Edge(Vertex start, Vertex end, int index)
 
     this->index = index;
 
-    this->dx = std::floor(end.position.x) - std::floor(start.position.x);
-    this->dy = std::floor(end.position.y) - std::floor(start.position.y);
-    this->dz = std::floor(end.position.z) - std::floor(start.position.z);
+    this->dx = end.position.x - start.position.x;
+    this->dy = end.position.y - start.position.y;
+    this->dz = end.position.z - start.position.z;
 
     this->incX = dx / dy;
     this->incZ = dz / dy;
 
     if (dy == 0.0f) // Horizontal edge aligned to scanline
+    {
         this->incX = dx;
-
+        this->incZ = dz/dx;
+    }
     this->justSwapped = true;
 }
 

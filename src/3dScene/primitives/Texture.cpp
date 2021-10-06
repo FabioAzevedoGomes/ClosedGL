@@ -50,3 +50,8 @@ bool Texture::exists()
 {
     return image != nullptr;
 }
+
+void Texture::generateMipmap() 
+{
+    // TODO:
+}

@@ -40,8 +40,14 @@ void RenderingManager::SelectEngine(Engines renderingEngine, Scene scene)
         break;
     }
 
-    if (previous != renderingEngine)
+    if (previous != renderingEngine) 
+    {
         SetupBuffers(scene);
+        if (scene.models[0].texture != nullptr && scene.models[0].texture->exists())
+        {
+            scene.models[0].texture->needsReload = true;
+        }
+    }
 }
 
 void RenderingManager::SetEngineState(State state)

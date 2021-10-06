@@ -202,6 +202,8 @@ void Model3D::ReadTriangle(FILE *file, int index)
         }
         else
         {
+            this->triangles[index].vertices[vertexNumber].texture_coords.x = 0.0f;
+            this->triangles[index].vertices[vertexNumber].texture_coords.y = 0.0f;
             fscanf(file, "\n", nullptr);
         }
     }

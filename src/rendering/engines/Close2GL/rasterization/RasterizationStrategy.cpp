@@ -55,7 +55,7 @@ void RasterizationStrategy::DrawAlongScanlineForEdge(int index)
     float maxZ = activeEdges[index].GetMaxZAfterIncrement();
 
     for (float currentX = minX, currentZ = minZ;
-         currentX <= maxX;
+         currentX <= maxX + 1;
          currentX++, currentZ += activeEdges[index].dz / activeEdges[index].dx)
     {
         interpolateLinearlyOverEdge(activeEdges[index], point, currentX, currentY, currentZ);
@@ -71,7 +71,7 @@ void RasterizationStrategy::drawInterpolatedVertexToBuffer(Vertex vertex)
 
 float RasterizationStrategy::distanceBetween(glm::vec4 pos1, glm::vec4 pos2)
 {
-    return std::sqrt(std::pow(pos1.x - pos2.x, 2) + std::pow(pos1.y - pos2.y, 2));
+    return std::sqrt(std::pow(pos1.x - pos2.x, 2) + std::pow(pos1.y - pos2.y, 2) + std::pow(pos1.z - pos2.z, 2));
 }
 
 void RasterizationStrategy::interpolateLinearlyOverEdge(Edge edge, Vertex &interpolated, float currentX, float currentY, float currentZ)
@@ -79,13 +79,11 @@ void RasterizationStrategy::interpolateLinearlyOverEdge(Edge edge, Vertex &inter
     float alpha = glm::dot(glm::vec4(currentX, currentY, currentZ, 1.0f) - edge.start.position, edge.end.position - edge.start.position) /
                   std::pow(distanceBetween(edge.start.position, edge.end.position), 2);
 
-    float wa = edge.start.wp;
-    float wb = edge.end.wp;
-    float interpolationDenominator = ((1 - alpha) / wa) + (alpha / wb);
+    alpha = std::max(0.0f, std::min(alpha, 1.0f));
 
     interpolated.position = edge.start.position + alpha * (edge.end.position - edge.start.position);
-    interpolated.position.z = edge.start.position.z + alpha * (edge.end.position.z - edge.start.position.z);
-    interpolated.normal = ((edge.start.normal / wa) + alpha * ((edge.end.normal / wb) - (edge.start.normal / wa))) / interpolationDenominator;
-    interpolated.color = ((edge.start.color / wa) + alpha * ((edge.end.color / wb) - (edge.start.color / wa))) / interpolationDenominator;
-    interpolated.wp = 1.0f / interpolationDenominator;
+    interpolated.normal = edge.start.normal + alpha * (edge.end.normal  - edge.start.normal);
+    interpolated.color = edge.start.color + alpha * (edge.end.color - edge.start.color);    
+    interpolated.texture_coords = edge.start.texture_coords + alpha * (edge.end.texture_coords - edge.start.texture_coords);  
+    interpolated.wp = edge.start.wp + alpha * (edge.end.wp - edge.start.wp);
 }

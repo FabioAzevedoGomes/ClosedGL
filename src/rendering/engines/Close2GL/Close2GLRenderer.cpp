@@ -53,6 +53,18 @@ bool Close2GLRenderer::ShouldCull(Triangle triangle)
 
 void Close2GLRenderer::DrawObjectAsSeenByCamera(Model3D object, Camera &camera)
 {
+    if (object.texture != nullptr && object.texture->exists())
+    {
+        fragmentLightingStrategies[state.lightingMode]->SetTextureEnabled(object.texture, state.textureOn);
+        fragmentLightingStrategies[state.lightingMode]->SetResamplingMode(state.resamplingMode);
+
+        if (object.texture->needsReload)
+        {
+            object.texture->generateMipmap();        
+            object.texture->needsReload = false;
+        }
+    }
+    
     glm::mat4 modelViewProjection = projection * view * model;
 
     for (int triangleIndex = 0; triangleIndex < object.triangleCount; triangleIndex++)
@@ -181,4 +193,5 @@ void Close2GLRenderer::SetState(State state)
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     SetActiveVertexShaderSubroutine(UNIFORM_VSHADER_LIGHTING_FUNCTION_ID, VSHADER_LIGHTING_FUNCTION_TEXTURE);
     SetActiveFragmentShaderSubroutine(UNIFORM_FSHADER_LIGHTING_FUNCTION_ID, FSHADER_LIGHTING_FUNCTION_TEXTURE);
+    glUniform1i(GetShaderUniformVariableId(UNIFORM_OPENGL_TEXTURE_ENABLED_ID), 0);
 }

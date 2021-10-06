@@ -2,6 +2,8 @@
 
 #include <iostream>
 
+#define NUM_GENERATED_MIPMAPS 8
+
 typedef struct t_texture
 {
     unsigned char *image;
@@ -14,5 +16,6 @@ typedef struct t_texture
     ~t_texture();
     std::string getName();
     bool exists();
+    void generateMipmap();
 
 } Texture;

@@ -15,6 +15,7 @@ void perspectiveDivideVertex(Vertex &vertex)
     vertex.position = vertex.position / wp;
     vertex.normal = vertex.normal / wp;
     vertex.color = vertex.color / wp;
+    vertex.texture_coords = vertex.texture_coords / wp;
     vertex.wp = 1 / wp;
 }
 

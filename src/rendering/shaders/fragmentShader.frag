@@ -58,8 +58,7 @@ void main()
     vec4 color = fragmentLightingShader();
 
     if (openGLtextureEnabled != 0) {
-        // TODO: Modulate ambient and diffuse terms
-        color = texture(canvasSampler, textureCoordinate);
+        color = (0.8 * texture(canvasSampler, textureCoordinate)) + (0.2 * color);
     }
 
     fColor = color;
