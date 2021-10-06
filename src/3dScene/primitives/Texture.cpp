@@ -51,6 +51,16 @@ bool Texture::exists()
     return image != nullptr;
 }
 
+glm::vec3 Texture::sample(int s, int t)
+{
+    unsigned char * offset = image + (s + (height * t )) * 4;
+    return glm::vec3(
+        (float)offset[0]/255.0f,
+        (float)offset[1]/255.0f,
+        (float)offset[2]/255.0f
+    );
+}
+
 void Texture::generateMipmap() 
 {
     // TODO:
