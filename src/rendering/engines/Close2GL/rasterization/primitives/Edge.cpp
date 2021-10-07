@@ -25,7 +25,7 @@ Edge::Edge(Vertex start, Vertex end, int index)
     if (dy == 0.0f) // Horizontal edge aligned to scanline
     {
         this->incX = dx;
-        this->incZ = dz/dx;
+        this->incZ = 0.0f;
     }
     this->justSwapped = true;
 }

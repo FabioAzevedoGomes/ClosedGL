@@ -5,8 +5,17 @@
 
 #define NUM_GENERATED_MIPMAPS 8
 
+typedef struct t_mipmap 
+{
+    unsigned char *image;
+    int width, height;
+
+    glm::vec<3, unsigned char> sample(int s, int t);
+} Mipmap;
+
 typedef struct t_texture
 {
+    Mipmap mipmaps[NUM_GENERATED_MIPMAPS];
     unsigned char *image;
     std::string name;
     int width, height, numChannels;
