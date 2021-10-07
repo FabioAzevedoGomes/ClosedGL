@@ -22,6 +22,8 @@ Texture::t_texture()
     this->height = 0;
     this->numChannels = 0;
     this->needsReload = false;
+    this->mipmapCount = 0;
+    this->mipmaps = nullptr;
 }
 
 Texture::t_texture(const char *filename)
@@ -49,6 +51,11 @@ Texture::t_texture(const char *filename)
 Texture::~t_texture()
 {
     stbi_image_free(image);
+    for (int i = 0; i < this->mipmapCount; i++) {
+        free(this->mipmaps[i].image);
+    }
+    free(this->mipmaps);
+    this->mipmapCount = 0;
 }
 
 std::string Texture::getName()
@@ -78,6 +85,9 @@ void Texture::generateMipmap()
     int pow2Height = std::pow(2, std::ceil(std::log2(height)));
     unsigned char *initialImage = nullptr;
     
+    this->mipmapCount = 0;
+    this->mipmaps = (Mipmap *)malloc(sizeof(Mipmap) * std::max(std::ceil(std::log2(pow2Width)),std::ceil(std::log2(pow2Height))));
+
     initialImage = (unsigned char *)malloc(sizeof(unsigned char) * pow2Width * pow2Height * 4);
     memset(initialImage, 0, sizeof(unsigned char) * pow2Width * pow2Height * 4);
     memcpy_s(initialImage, pow2Width * pow2Height * 4, image, sizeof(unsigned char));
@@ -91,7 +101,7 @@ void Texture::generateMipmap()
     // Generate pyramid
     int level;
     for (pow2Width /= 2, pow2Height /= 2, level = 1;
-         pow2Width > 1 && level < NUM_GENERATED_MIPMAPS;
+         pow2Width > 1;
          pow2Width /= 2, pow2Height /= 2, level++)
     {    
         unsigned char *buffer = (unsigned char*)malloc(sizeof(unsigned char) * pow2Width * pow2Height * 4);
@@ -116,5 +126,6 @@ void Texture::generateMipmap()
             .width = pow2Width,
             .height = pow2Height,
         };
+        this->mipmapCount++;
     }
 }

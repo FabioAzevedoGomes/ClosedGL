@@ -17,6 +17,9 @@ void FilledRasterizationStrategy::DrawAlongScanline()
         interpolateLinearlyOverEdge(activeEdges[1], left, activeEdges[1].currentX, currentY, activeEdges[1].currentZ);
     }
 
+    left.position.y = std::floor(currentY);
+    right.position.y = std::floor(currentY);
+
     if (left.position.x != right.position.x)
     {
         drawInterpolatedVertexToBuffer(left);

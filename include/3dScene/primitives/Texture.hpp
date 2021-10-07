@@ -15,7 +15,8 @@ typedef struct t_mipmap
 
 typedef struct t_texture
 {
-    Mipmap mipmaps[NUM_GENERATED_MIPMAPS];
+    Mipmap *mipmaps;
+    int mipmapCount;
     unsigned char *image;
     std::string name;
     int width, height, numChannels;
