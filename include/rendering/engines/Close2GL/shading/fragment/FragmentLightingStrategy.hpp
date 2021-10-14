@@ -4,6 +4,7 @@
 #include "Vertex.hpp"
 #include "Material.hpp"
 #include "ShadingConstants.hpp"
+#include "Buffer.hpp"
 
 #include <map>
 
@@ -22,5 +23,5 @@ public:
     void SetTextureEnabled(Texture *, bool);
     void SetResamplingMode(ResamplingModes);
 
-    virtual void ShadeFragmentRelativeToCamera(Vertex &, Camera &){};
+    virtual void ShadeFragmentRelativeToCamera(Vertex &, Camera &, Buffer *buffers){};
 };

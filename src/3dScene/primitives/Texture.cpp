@@ -85,12 +85,12 @@ void Texture::generateMipmap()
     int pow2Height = std::pow(2, std::ceil(std::log2(height)));
     unsigned char *initialImage = nullptr;
     
-    this->mipmapCount = 0;
+    this->mipmapCount = 1;
     this->mipmaps = (Mipmap *)malloc(sizeof(Mipmap) * std::max(std::ceil(std::log2(pow2Width)),std::ceil(std::log2(pow2Height))));
 
     initialImage = (unsigned char *)malloc(sizeof(unsigned char) * pow2Width * pow2Height * 4);
     memset(initialImage, 0, sizeof(unsigned char) * pow2Width * pow2Height * 4);
-    memcpy_s(initialImage, pow2Width * pow2Height * 4, image, sizeof(unsigned char));
+    memcpy(initialImage, image,  pow2Width * pow2Height * 4 * sizeof(unsigned char));
 
     mipmaps[0] = {
         .image = initialImage,
@@ -101,22 +101,33 @@ void Texture::generateMipmap()
     // Generate pyramid
     int level;
     for (pow2Width /= 2, pow2Height /= 2, level = 1;
-         pow2Width > 1;
+         pow2Width > 1 && pow2Height > 1;
          pow2Width /= 2, pow2Height /= 2, level++)
-    {    
+    {
         unsigned char *buffer = (unsigned char*)malloc(sizeof(unsigned char) * pow2Width * pow2Height * 4);
         for (int i = 0; i + 2 < pow2Height * 2; i+=2) {
             for (int j = 0; j + 2 < pow2Width * 2; j+=2) {
-                glm::vec<3, unsigned char> color = glm::vec<3, unsigned char>(0.0f);
-                for (int k = 0; k < 4; k++) {
-                    glm::vec<3, unsigned char> sample = mipmaps[level - 1].sample(j, i);
-                    color.x += sample.x / 4;
-                    color.y += sample.y / 4;
-                    color.z += sample.z / 4;
-                }
-                (buffer + (j/2 + (i/2 * pow2Height)) * 4)[0] = color.x;
-                (buffer + (j/2 + (i/2 * pow2Height)) * 4)[1] = color.y;
-                (buffer + (j/2 + (i/2 * pow2Height)) * 4)[2] = color.z;
+                glm::vec3 color(0.0f);
+                glm::vec3 sample = sampleMipmap(level - 1, j, i);
+                color.x += sample.x / 4.0f;
+                color.y += sample.y / 4.0f;
+                color.z += sample.z / 4.0f;
+                sample = sampleMipmap(level - 1, j, i);
+                color.x += sample.x / 4.0f;
+                color.y += sample.y / 4.0f;
+                color.z += sample.z / 4.0f;
+                sample = sampleMipmap(level - 1, j, i);
+                color.x += sample.x / 4.0f;
+                color.y += sample.y / 4.0f;
+                color.z += sample.z / 4.0f;
+                sample = sampleMipmap(level - 1, j, i);
+                color.x += sample.x / 4.0f;
+                color.y += sample.y / 4.0f;
+                color.z += sample.z / 4.0f;
+
+                (buffer + (j/2 + (i/2 * pow2Height)) * 4)[0] = color.x*255.0f;
+                (buffer + (j/2 + (i/2 * pow2Height)) * 4)[1] = color.y*255.0f;
+                (buffer + (j/2 + (i/2 * pow2Height)) * 4)[2] = color.z*255.0f;
                 (buffer + (j/2 + (i/2 * pow2Height)) * 4)[3] = 255;
             }
         }
@@ -128,4 +139,17 @@ void Texture::generateMipmap()
         };
         this->mipmapCount++;
     }
+}
+
+glm::vec3 Texture::sampleMipmap(int level, int s, int t) 
+{
+    s = std::max(0.0f, (float)std::min(this->mipmaps[level].width, s));
+    t = std::max(0.0f, (float)std::min(this->mipmaps[level].height, t));
+
+    glm::vec<3, unsigned char> color = this->mipmaps[level].sample(s, t);
+    return glm::vec3(
+        (float)color.x/255.0f,
+        (float)color.y/255.0f,
+        (float)color.z/255.0f        
+    );
 }

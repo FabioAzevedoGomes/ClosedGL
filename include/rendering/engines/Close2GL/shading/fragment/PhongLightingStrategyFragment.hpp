@@ -4,5 +4,5 @@
 
 class PhongLightingStrategyFragment : public FragmentLightingStrategy
 {
-    virtual void ShadeFragmentRelativeToCamera(Vertex &, Camera &);
+    virtual void ShadeFragmentRelativeToCamera(Vertex &, Camera &, Buffer *buffers);
 };

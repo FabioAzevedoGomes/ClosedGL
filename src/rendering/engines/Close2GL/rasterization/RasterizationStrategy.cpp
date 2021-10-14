@@ -34,6 +34,7 @@ void RasterizationStrategy::InitializeActiveEdges(Triangle &triangle)
 
 void RasterizationStrategy::SetupForRasterization(Triangle &triangle)
 {
+    buffers->clearST();
     SortVerticesFromHigherToLower(triangle.vertices);
     InitializeActiveEdges(triangle);
 
@@ -65,8 +66,9 @@ void RasterizationStrategy::DrawAlongScanlineForEdge(int index)
 
 void RasterizationStrategy::drawInterpolatedVertexToBuffer(Vertex vertex)
 {
-    fragmentLightingStrategy->ShadeFragmentRelativeToCamera(vertex, *camera);
+    fragmentLightingStrategy->ShadeFragmentRelativeToCamera(vertex, *camera, buffers);
     buffers->draw(vertex.position, glm::vec4(vertex.color, 1.0f));
+    buffers->updateST(vertex.position, vertex.texture_coords);
 }
 
 float RasterizationStrategy::distanceBetween(glm::vec4 pos1, glm::vec4 pos2)

@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <glm/vec3.hpp>
+#include <glm/gtx/string_cast.hpp>
 
 #define NUM_GENERATED_MIPMAPS 8
 
@@ -25,9 +26,11 @@ typedef struct t_texture
     t_texture();
     t_texture(const char *filename);
     ~t_texture();
+    
     std::string getName();
+    glm::vec3 sample(int s, int t);
     bool exists();
     void generateMipmap();
-    glm::vec3 sample(int s, int t);
+    glm::vec3 sampleMipmap(int level, int s, int t);
 
 } Texture;
