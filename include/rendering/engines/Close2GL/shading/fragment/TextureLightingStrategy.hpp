@@ -2,7 +2,7 @@
 
 #include "FragmentLightingStrategy.hpp"
 
-class PassThroughLightingStrategy : public FragmentLightingStrategy
+class TextureLightingStrategy : public FragmentLightingStrategy
 {
     virtual void ShadeFragmentRelativeToCamera(Vertex &, Camera &, Buffer *buffers);
 };

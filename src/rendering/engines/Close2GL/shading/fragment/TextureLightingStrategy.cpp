@@ -1,4 +1,4 @@
-#include "PassThroughLightingStrategy.hpp"
+#include "TextureLightingStrategy.hpp"
 
 void nearestNeighborResample(Texture *texture, Vertex &fragment) 
 {
@@ -10,16 +10,16 @@ void nearestNeighborResample(Texture *texture, Vertex &fragment)
 
 void bilinearResample(Texture *texture, Vertex &fragment)
 {
-    float s = fragment.texture_coords.x * texture->width;
-    float t = fragment.texture_coords.y * texture->height;
+    float s = fragment.texture_coords.x * (texture->width - 1);
+    float t = fragment.texture_coords.y * (texture->height - 1);
     float w11 = ((std::ceil(s) - s) * (std::ceil(t) - t));
     float w12 = ((std::ceil(s) - s) * (t - std::floor(t)));
     float w21 = ((s - std::floor(s)) * (std::ceil(t) - t));
     float w22 = ((s - std::floor(s)) * (t - std::floor(t)));
-    fragment.color = (w11 * texture->sample((int)std::ceil(s), (int)std::ceil(t)))
-                    + (w12 * texture->sample((int)std::ceil(s), (int)std::floor(t)))
-                    + (w21 * texture->sample((int)std::floor(s), (int)std::ceil(t)))
-                    + (w22 * texture->sample((int)std::floor(s), (int) std::floor(t)));
+    fragment.color =  (w21 * texture->sample((int)std::ceil(s), (int)std::floor(t)))
+                    + (w22 * texture->sample((int)std::ceil(s), (int)std::ceil(t)))
+                    + (w11 * texture->sample((int)std::floor(s), (int) std::floor(t)))
+                    + (w12 * texture->sample((int)std::floor(s), (int)std::ceil(t)));
 }
 
 void trilinearResample(Texture *texture, Vertex &fragment, Buffer *buffers)
@@ -48,10 +48,10 @@ void trilinearResample(Texture *texture, Vertex &fragment, Buffer *buffers)
     float w21Lower = ((lowerS - std::floor(lowerS)) * (std::ceil(lowerT) - lowerT));
     float w22Lower = ((lowerS - std::floor(lowerS)) * (lowerT - std::floor(lowerT)));
 
-    glm::vec3 colorLower = (w11Lower * texture->sampleMipmap(lowerLevel, (int)std::ceil(lowerS), (int)std::ceil(lowerT)))
-                         + (w12Lower * texture->sampleMipmap(lowerLevel, (int)std::ceil(lowerS), (int)std::floor(lowerT)))
-                         + (w21Lower * texture->sampleMipmap(lowerLevel, (int)std::floor(lowerS), (int)std::ceil(lowerT)))
-                         + (w22Lower * texture->sampleMipmap(lowerLevel, (int)std::floor(lowerS), (int) std::floor(lowerT)));
+    glm::vec3 colorLower = (w22Lower * texture->sampleMipmap(lowerLevel, (int)std::ceil(lowerS), (int)std::ceil(lowerT)))
+                         + (w21Lower * texture->sampleMipmap(lowerLevel, (int)std::ceil(lowerS), (int)std::floor(lowerT)))
+                         + (w12Lower * texture->sampleMipmap(lowerLevel, (int)std::floor(lowerS), (int)std::ceil(lowerT)))
+                         + (w11Lower * texture->sampleMipmap(lowerLevel, (int)std::floor(lowerS), (int) std::floor(lowerT)));
 
     float upperS = fragment.texture_coords.s * texture->mipmaps[upperLevel].width;
     float upperT = fragment.texture_coords.t * texture->mipmaps[upperLevel].height;
@@ -60,21 +60,22 @@ void trilinearResample(Texture *texture, Vertex &fragment, Buffer *buffers)
     float w21Upper = ((upperS - std::floor(upperS)) * (std::ceil(upperT) - upperT));
     float w22Upper = ((upperS - std::floor(upperS)) * (upperT - std::floor(upperT)));
 
-    glm::vec3 colorUpper = (w11Upper * texture->sampleMipmap(upperLevel, (int)std::ceil(upperS), (int)std::ceil(upperT)))
-                         + (w12Upper * texture->sampleMipmap(upperLevel, (int)std::ceil(upperS), (int)std::floor(upperT)))
-                         + (w21Upper * texture->sampleMipmap(upperLevel, (int)std::floor(upperS), (int)std::ceil(upperT)))
-                         + (w22Upper * texture->sampleMipmap(upperLevel, (int)std::floor(upperS), (int) std::floor(upperT)));
+    glm::vec3 colorUpper = (w22Upper * texture->sampleMipmap(upperLevel, (int)std::ceil(upperS), (int)std::ceil(upperT)))
+                         + (w21Upper * texture->sampleMipmap(upperLevel, (int)std::ceil(upperS), (int)std::floor(upperT)))
+                         + (w12Upper * texture->sampleMipmap(upperLevel, (int)std::floor(upperS), (int)std::ceil(upperT)))
+                         + (w11Upper * texture->sampleMipmap(upperLevel, (int)std::floor(upperS), (int) std::floor(upperT)));
 
     float alpha = level - lowerLevel; 
     fragment.color = (alpha * colorLower) + ((1 - alpha) * colorUpper);
 }
 
-void PassThroughLightingStrategy::ShadeFragmentRelativeToCamera(Vertex &fragment, Camera &camera, Buffer *buffers)
+void TextureLightingStrategy::ShadeFragmentRelativeToCamera(Vertex &fragment, Camera &camera, Buffer *buffers)
 {
     unsigned char *offset = nullptr;
     fragment.color /= fragment.wp;
     fragment.normal /= fragment.wp;
 
+    glm::vec3 prevColor = fragment.color;
     if (textureEnabled) {
         fragment.texture_coords /= fragment.wp;
         fragment.texture_coords.x = std::min(1.0f, std::max(0.0f, fragment.texture_coords.x));
@@ -93,4 +94,6 @@ void PassThroughLightingStrategy::ShadeFragmentRelativeToCamera(Vertex &fragment
                 break;
         }
     }
+
+    fragment.color = (fragment.color * 0.8f) + (prevColor * 0.2f);
 }

@@ -14,7 +14,7 @@
 #include "GouraudADSLightingStrategy.hpp"
 #include "PhongLightingStrategyVertex.hpp"
 #include "PhongLightingStrategyFragment.hpp"
-#include "PassThroughLightingStrategy.hpp"
+#include "TextureLightingStrategy.hpp"
 
 enum Close2GL_Buffer_IDs
 {

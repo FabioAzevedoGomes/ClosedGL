@@ -16,9 +16,9 @@ Close2GLRenderer::Close2GLRenderer()
     vertexLightingStrategies.insert({Gouraud_ADS, new GouraudADSLightingStrategy()});
     vertexLightingStrategies.insert({Phong, new PhongLightingStrategyVertex()});
 
-    fragmentLightingStrategies.insert({Flat, new PassThroughLightingStrategy()});
-    fragmentLightingStrategies.insert({Gouraud_AD, new PassThroughLightingStrategy()});
-    fragmentLightingStrategies.insert({Gouraud_ADS, new PassThroughLightingStrategy()});
+    fragmentLightingStrategies.insert({Flat, new TextureLightingStrategy()});
+    fragmentLightingStrategies.insert({Gouraud_AD, new TextureLightingStrategy()});
+    fragmentLightingStrategies.insert({Gouraud_ADS, new TextureLightingStrategy()});
     fragmentLightingStrategies.insert({Phong, new PhongLightingStrategyFragment()});
 }
 
